@@ -3,4 +3,4 @@
 .sass-cache/*
 
 # Ignore grunt modules
-node-modules
+node_modules
