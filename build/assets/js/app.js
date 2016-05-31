@@ -336,10 +336,16 @@ $('#kidsNumber').on('change each', function() {
   }
 });
 
-$('.input').blur(function () {
+$('.input').change(function () {
+  var $in = $(this);
+  var inputName = this.name;
+  var val = this.value;
   localStorage.setItem('savedData', 'true');
-  localStorage[$(this).attr('name')] = $(this).val();
-  console.log(localStorage);
+  // localStorage.setItem(inputName, val);
+  console.log(inputName);
+  console.log($in);
+  console.log(val);
+  // console.log(localStorage);
 });
 
 });

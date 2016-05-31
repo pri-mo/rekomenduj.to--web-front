@@ -152,7 +152,7 @@
 
   <section class="layout--card-3 roll-out roll-out__container">
     <a href="" class="roll-out__trigger social-reach__add">
-      <span class="roll-out__icon" data-icon="h"></span><span class="roll-out__name">Moje Dane</span><span class="roll-out__status" data-icon="e"></span>
+      <span class="roll-out__icon" data-icon="h"></span><span class="roll-out__name">Kim jestem?</span><span class="roll-out__status" data-icon="e"></span>
     </a>
 
     <div class="roll-out__content">

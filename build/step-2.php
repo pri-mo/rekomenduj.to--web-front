@@ -31,7 +31,7 @@ $tagsTemplate = 'template--steps';
       $stepperContent = <<<STEPPERCONTENT
 
       <div class="input">
-        <input tabindex name="user-email" id="user-email" type="email" autocomplete="email" required spellcheck="false" value="hi@przemektrepka.pl" placeholder="email@domena.pl">
+        <input tabindex name="user-email" id="user-email" type="email" autocomplete="email" required spellcheck="false" placeholder="email@domena.pl">
         <label for="user-email"
         data-focused="Mój email"
         data-original="Podaj swój e-mail"
@@ -39,8 +39,9 @@ $tagsTemplate = 'template--steps';
       </div>
 
       <div class="input">
-        <input tabindex name="user-phone" id="user-phone" type="phone" autocomplete="tel"
-         pattern="[0-9]{9}|[0-9]{3} [0-9]{3} [0-9]{3}|[0-9]{3}-[0-9]{3}-[0-9]{3}"
+        <input tabindex name="user-phone" id="user-phone" type="tel" autocomplete="tel"
+        //  pattern="[0-9]{9}|[0-9]{3} [0-9]{3} [0-9]{3}|[0-9]{3}-[0-9]{3}-[0-9]{3}"
+        pattern="[0-9]{9}|+[0-9]{2}[0-9]{9}"
         spellcheck="false" placeholder="np. 600 500 400">
         <label for="user-phone"
         data-focused="Mój numer komórkowy"

@@ -233,7 +233,7 @@ a:not(no-ripple), .ripple {
   position: relative;
   overflow: hidden !important;
   @include perspective(1000px);
-  @include transform(translate3d(0, 0, -1px));
+  @include transform(translate3d(0, 0, 1px));
   @include backface-visibility(hidden);
 }
 

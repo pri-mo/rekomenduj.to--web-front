@@ -7,4 +7,4 @@
 <link rel="stylesheet" href="/assets/css/main.min.css" media="screen" charset="utf-8">
 
 <script src="/assets/js/libs.min.js" charset="utf-8"></script>
-<!-- <script src="//deepthought.local:35729/livereload.js"></script> -->
+<script src="//deepthought.local:35729/livereload.js"></script>
