@@ -1,0 +1,356 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the profile page of the application.
+// -----------------------------------------------------------------------------
+
+.template--profile {
+  padding-bottom: 1rem;
+}
+
+.profile__coverphoto {
+  color: $bright;
+  padding-bottom: 10rem;
+  text-align: center;
+  overflow: hidden;
+
+  &:not(.cover__container) {
+    @include brand-gradient('backs/ph2.jpg');
+  }
+
+  .template--profile--public & {
+    height: 65vmax;
+  }
+}
+
+.profile__photoedit {
+  position: relative;
+  text-align: center;
+  padding: 2rem 1rem;
+
+  .profile__icon {
+    font-size: $ico-size-m; line-height: 1;
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 100%;
+    background-color: $white; color: $comp-color;
+
+    &:before {
+      position: absolute; top: 50%; left: 50%;
+      @include transform(translate(-50%, -50%) scale(1.36));
+    }
+  }
+}
+
+.profile__uploaded {
+  & + .profile__photoedit .profile__icon {opacity: 0;} // TODO Might by depricated
+}
+
+$pic-size: 36%;
+$button-size: 3 * 1.36rem;
+.profile__pic-container {
+  display: block; margin: 0 auto;
+  width: $pic-size; position: relative;
+  border-radius: 100%;
+  box-shadow: $shadow-4a;
+  z-index: 1;
+
+  &:before {content: ''; display: block; padding-bottom: 100%;}
+
+  & + .profile__photoedit .profile__icon {opacity: 0;}
+}
+
+.profile__controls {
+  position: absolute; top: 50%; left: 50%; @include transform(translate(-50%, -50%));
+  width: $button-size;
+  @include transition(.36s);
+  z-index: 0;
+
+  .profile__photoedit:hover &,
+  .device--mobile & {
+    width: calc(#{$pic-size} + #{$button-size * 3});
+  }
+
+  .button.button--icon {
+    display: block;
+    position: absolute; top: 50%;
+    @include transform(translateY(-50%));
+
+    &:nth-child(1) { left: 0; }
+    &:nth-child(2) { right: 0; }
+  }
+}
+
+
+.profile__welcome { position: relative;}
+
+
+.profile__focus-box {
+  margin-top: -7rem;
+  padding: 0;
+
+  & + & { margin-top: 1rem; }
+}
+
+
+
+.focus--new-user { text-transform: uppercase; padding: 1rem;
+}
+.focus__tasks {
+  text-transform: none;
+  font-size: $header-3;
+  margin: -1rem; margin-top: 1rem;
+
+  li {
+    border-top: 1px solid rgba($white, .1);
+    font-weight: $bold;
+    position: relative;
+    overflow: hidden;
+    max-height: 5rem;
+
+    &:after {
+      content:''; display: block; position: absolute;
+      top: 0;left: 0;right: 0;bottom: 50%;
+      background-color: rgba($brand-color, .36); opacity: 0; z-index: -1;
+    }
+    &:before {
+      content: ''; display: block; position: absolute;
+      top: 0; bottom: 0; left: 0; width: 0; z-index: -1;
+      background-color: $white;
+    }
+
+    a {
+      display: block; text-decoration: none; color: inherit; padding: 1rem;
+
+      .ink { background-color: rgba($white, .22); }
+    }
+
+    [data-icon] { padding-right: .64rem; top: 10%; opacity: .36;
+      display: inline-block;
+    }
+  }
+  [data-complete] {
+    font-weight: $light;
+    animation: color-to-sky .36s .36s ease forwards, task-fold .64s 1.64s ease forwards;
+
+    &:before { animation: task-complete 1s .64s ease forwards; }
+    &:after { animation: fadein .64s 1.64s ease forwards; z-index: 0;}
+
+    [data-icon] { opacity: 1; }
+  }
+
+  @at-root {
+    @include keyframes(task-complete) {
+      100% { width: 100%; }
+    }
+
+    @include keyframes(task-fold) {
+      100% { max-height: 0; border-top: 0;}
+    }
+
+    @include keyframes(fadein) {
+      100% { opacity: 1; }
+    }
+
+    @include keyframes(color-to-sky) {
+      100% { color: $comp-color; }
+    }
+
+  }
+}
+
+
+// Campaign invitation focus box
+.focus--new-campaign {
+  position: relative;
+  background-color: $bright;
+  box-shadow: $shadow-4a;
+  padding: 4rem 1rem;
+  color: $text-color;
+  min-height: 18rem;
+
+
+  &:after {
+    @extend %reko-glyph;
+    content: "\69";
+    font-size: 1.64rem;
+    position: absolute;
+    top: .64rem; left: 1rem;
+    opacity: .64;
+  }
+
+  &:before {
+    content: attr(data-label);
+    display: block;
+    text-transform: uppercase;
+    font-size: .8em;
+    opacity: .64;
+    position: absolute;
+    top: 3rem; left: 1rem;
+  }
+
+  .new-campaign__name {
+    display: block;
+    font-size: $header-1;
+    font-weight: $bold;
+    line-height: 1.36em;
+    padding-right: 30%;
+    padding-top: .64rem;
+  }
+
+  .button {
+    position: absolute!important; bottom: 1rem; left: 50%;
+    @include transform(translate3d(-50%, 0, 0)!important);
+  }
+
+  // Cover images
+  .image--cover {
+    opacity: .5;
+
+    &.cover--tall, &.cover--wide { width: 110%; height: auto; }
+  }
+
+  // Corect inc color
+  &:not(.cover__container) .ink {
+    background-color: rgba($brand-color, .22);
+  }
+
+  // Item has a cover image
+  &.cover__container {
+    background-color: $text-color!important;
+    color: $white!important;
+    box-shadow: $shadow-1a;
+
+    &:before, &:after { opacity: .88; z-index: 1; }
+    .new-campaign__name { position: relative; }
+  }
+}
+
+
+// No items
+.focus--no-items {
+  position: relative;
+  background-color: $bright;
+  box-shadow: $shadow-4a;
+  padding: 4rem 1rem;
+  color: $text-color;
+  min-height: 18rem;
+
+
+  &:after {
+    @extend %reko-glyph;
+    content: "\32";
+    font-size: 1.64rem;
+    position: absolute;
+    top: .64rem; left: 1rem;
+    opacity: .64;
+  }
+
+  &:before {
+    content: attr(data-label);
+    display: block;
+    text-transform: uppercase;
+    font-size: .8em;
+    opacity: .64;
+    position: absolute;
+    top: 3rem; left: 1rem;
+  }
+
+  .focus__name {
+    display: block;
+    font-size: $header-1;
+    font-weight: $bold;
+    line-height: 1.36em;
+    padding-right: 30%;
+    padding-top: .64rem;
+  }
+
+  .button {
+    position: absolute!important; bottom: 1rem; left: 50%;
+    @include transform(translate3d(-50%, 0, 0)!important);
+  }
+
+  // Cover images
+  .image--cover {
+    opacity: .5;
+
+    &.cover--tall, &.cover--wide { width: 110%; height: auto; }
+  }
+
+  // Corect inc color
+  &:not(.cover__container) .ink {
+    background-color: rgba($brand-color, .22);
+  }
+
+  // Item has a cover image
+  &.cover__container {
+    background-color: $text-color!important;
+    color: $white!important;
+    box-shadow: $shadow-1a;
+
+    &:before, &:after { opacity: .88; z-index: 1; }
+    .focus__name { position: relative; }
+  }
+}
+
+
+// Social Reach
+.focus--social-reach {
+  .social-reach__stats {
+    @include align-items(stretch);
+    @include display(flex);
+    @include flex-direction(row);
+    @include justify-content(flex-start);
+    border-top: 1px solid rgba($text-color, .05);
+  }
+  .stats__cell {
+    @include flex(1);
+    padding: 1rem;
+  }
+  .stats__cell--longform {
+    @include flex(2);
+    font-size: .88rem; line-height: 1.36em;
+    opacity: .64;
+  }
+
+  .stats__val {
+    display: block;
+    font-size: $header-1; line-height: 1em; padding-bottom: .36em;
+    font-weight: $bold;
+  }
+  .stats__name {
+    display: block;
+    font-size: .88rem; line-height: 1.1em;
+  }
+
+  .social-reach__icon { font-size: 1.5rem; padding: 0 .5rem;
+    &:first-child { padding-left: 0; }
+  }
+
+  .roll-out--opened { margin-top: 0!important; margin-bottom: 0!important;}
+  .roll-out__content {
+    width: 100%; padding: 0!important;
+    // @include align-items(stretch);
+    @include display(flex);
+    @include flex-flow(row wrap);
+
+    .social-reach__add-channel {
+      @include flex(0 1 auto);
+      padding: 1rem; width: 50%;
+      color: rgba($text-color, .36);
+
+      @include on-event {
+        color: $brand-color; background-color: rgba($text-color, .05);
+      }
+
+      @include respond-to('ph-landscape') { width: 25%; }
+      @include respond-to('phablet') { width: (100%/3); }
+      @include respond-to('tablet') { width: 25%; }
+      @include respond-to('desktop') { width: 20%; }
+    }
+    &:after {
+      content: '';
+      @include flex(0 1 auto);
+    }
+
+    .channel__icon { font-size: 1.5rem; padding: 0 .5rem;}
+    .channel__name { padding: .36rem 0; display: inline-block;}
+  }
+}

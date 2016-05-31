@@ -1,0 +1,15 @@
+// -----------------------------------------------------------------------------
+// This file contains images declarations.
+// -----------------------------------------------------------------------------
+
+.cover__container { overflow: hidden; }
+
+.image--cover {
+  width: 164%;
+  position: absolute;
+  top: 50%; left: 50%;
+  @include transform(translate(-50%, -50%));
+
+  &.cover--tall { width: 105%; }
+  &.cover--wide { height: 105%; width: auto; }
+}

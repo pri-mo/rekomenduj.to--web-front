@@ -1,0 +1,187 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+
+// NOTE Są 3 grubości tekstu: 200, 400, 600
+
+
+// Light
+@font-face {
+  font-family: 'MontserratWeb';
+  src: font('montserrat-light-webfont.woff2') format('woff2'),
+       font('montserrat-light-webfont.woff') format('woff'),
+       font('montserrat-light-webfont.ttf') format('truetype');
+  font-weight: $light;
+  font-style: normal;
+}
+
+// Regular
+@font-face {
+  font-family: 'MontserratWeb';
+  src: font('montserrat-regular-webfont.woff2') format('woff2'),
+       font('montserrat-regular-webfont.woff') format('woff'),
+       font('montserrat-regular-webfont.ttf') format('truetype');
+  font-weight: $regular;
+  font-style: normal;
+}
+
+// Semi Bold
+@font-face {
+  font-family: 'MontserratWeb';
+  src: font('montserrat-semibold-webfont.woff2') format('woff2'),
+       font('montserrat-semibold-webfont.woff') format('woff'),
+       font('montserrat-semibold-webfont.ttf') format('truetype');
+  font-weight: $bold;
+  font-style: normal;
+}
+
+
+// Glyphs
+@font-face {
+  font-family: 'reko-glyphs-10';
+  src:font('reko-glyphs-10.woff') format('woff'),
+      font('reko-glyphs-10.ttf') format('truetype'),
+      font('reko-glyphs-10.svg#reko-glyphs-10') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'social-reach';
+  src:font('social-reach.woff') format('woff'),
+      font('social-reach.ttf') format('truetype'),
+      font('social-reach.svg#social-reach') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+%glyph {
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  position: relative;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Reko Glyphs
+%reko-glyph,
+[class^='rg-']:before,
+[class*=' rg-']:before {
+  @extend %glyph;
+  font-family: 'reko-glyphs-10' !important;
+  top:-.05em;
+}
+[data-icon]:before {
+  @extend %glyph;
+  font-family: 'reko-glyphs-10' !important;
+  top:-.05em;
+  content: attr(data-icon);
+}
+.rg-open-menu:before { content: '\61'; }
+.rg-close-menu:before { content: '\62'; }
+.rg-check:before { content: '\63'; }
+.rg-close-delete:before { content: '\64'; }
+.rg-open-plus:before { content: '\65'; }
+.rg-close-minus:before { content: '\66'; }
+.rg-more:before { content: '\67'; }
+.rg-user:before { content: '\68'; }
+.rg-campaign:before { content: '\69'; }
+.rg-diary:before { content: '\6a'; }
+.rg-upload:before { content: '\6b'; }
+.rg-download:before { content: '\6c'; }
+.rg-add-photo:before { content: '\6d'; }
+.rg-del-photo:before { content: '\6e'; }
+.rg-edit-photo:before { content: '\6f'; }
+.rg-blogger:before { content: '\70'; }
+.rg-blog:before { content: '\71'; }
+.rg-promotion:before { content: '\72'; }
+.rg-poll-done:before { content: '\73'; }
+.rg-poll:before { content: '\74'; }
+.rg-roll-down:before { content: '\75'; }
+.rg-roll-up:before { content: '\76'; }
+.rg-share:before { content: '\77'; }
+.rg-play:before { content: '\78'; }
+.rg-checked:before { content: '\79'; }
+.rg-delete:before { content: '\7a'; }
+.rg-logo:before { content: '\41'; }
+.rg-news:before { content: '\42'; }
+.rg-contact:before { content: '\43'; }
+.rg-help:before { content: '\44'; }
+.rg-right:before { content: '\45'; }
+.rg-left:before { content: '\46'; }
+.rg-up:before { content: '\47'; }
+.rg-down:before { content: '\48'; }
+.rg-community:before { content: '\49'; }
+.rg-grid:before { content: '\4a'; }
+.rg-grip:before { content: '\4b'; }
+.rg-home:before { content: '\4c'; }
+.rg-inbox:before { content: '\4d'; }
+.rg-inbox-full:before { content: '\4e'; }
+.rg-instagram:before { content: '\4f'; }
+.rg-twitter:before { content: '\50'; }
+.rg-facebook:before { content: '\51'; }
+.rg-google-plus:before { content: '\52'; }
+.rg-extra:before { content: '\53'; }
+.rg-info:before { content: '\54'; }
+.rg-add-to-diary:before { content: '\55'; }
+.rg-stack:before { content: '\56'; }
+.rg-campaign-book:before { content: '\57'; }
+.rg-campaign-stuff:before { content: '\58'; }
+.rg-taste:before { content: '\59'; }
+.rg-flier:before { content: '\5a'; }
+.rg-discount:before { content: '\30'; }
+.rg-send-go:before { content: '\31'; }
+.rg-winner:before { content: '\32'; }
+.rg-public:before { content: '\33'; }
+.rg-influencer:before { content: '\34'; }
+.rg-settings:before { content: '\35'; }
+.rg-dashboard:before { content: '\36'; }
+
+
+// Social Reach icons
+[class^='sr-']:before,
+[class*=' sr-']:before {
+  @extend %glyph;
+  font-family: 'social-reach' !important;
+}
+[data-icon-socialreach]:before {
+  @extend %glyph;
+  font-family: 'social-reach' !important;
+  content: attr(data-icon-socialreach);
+}
+.sr-facebook:before { content: '\31'; color: #365397; }
+.sr-facebook-f:before { content: '\31'; color: #365397; }
+.sr-facebook-square:before { content: '\32'; color: #365397; }
+.sr-feed:before { content: '\33'; color: #f26522; }
+.sr-rss:before { content: '\33'; color: #f26522; }
+.sr-get-pocket:before { content: '\35'; color: #ef4056; }
+.sr-globe:before { content: '\34'; color: #008bcf; }
+.sr-google:before { content: '\36'; color: #4285f4; }
+.sr-google-plus:before { content: '\37'; color: #dc4e41; }
+.sr-google-plus-square:before { content: '\38'; color: #dc4e41; }
+.sr-instagram:before { content: '\39'; color: #f56040; }
+.sr-linkedin-square:before { content: '\30'; color: #006db3; }
+.sr-medium:before { content: '\61'; color: #00ab6b; }
+.sr-pinterest:before { content: '\62'; color: #ce1a19; }
+.sr-pinterest-p:before { content: '\63'; color: #ce1a19; }
+.sr-rss-square:before { content: '\64'; color: #f26522; }
+.sr-spotify:before { content: '\65'; color: #2ebd59; }
+.sr-tumblr:before { content: '\66'; color: #304c68; }
+.sr-tumblr-square:before { content: '\67'; color: #304c68; }
+.sr-twitch:before { content: '\68'; color: #6441a5; }
+.sr-twitter:before { content: '\69'; color: #00a9f1; }
+.sr-twitter-square:before { content: '\6a'; color: #00a9f1; }
+.sr-vimeo:before { content: '\6b'; color: #48b6ed; }
+.sr-vimeo-square:before { content: '\6c'; color: #48b6ed; }
+.sr-vine:before { content: '\6d'; color: #00b488; }
+.sr-vk:before { content: '\6e'; color: #45668e; }
+.sr-wikipedia-w:before { content: '\6f'; color: #444; }
+.sr-yelp:before { content: '\70'; color: #c30f00; }
+.sr-youtube:before { content: '\72'; color: #ff3333; }
+.sr-youtube-play:before { content: '\73'; color: #ff3333; }

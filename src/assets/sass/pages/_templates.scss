@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// This file contains style overrides based on template tags.
+// -----------------------------------------------------------------------------
+
+.template--intro {
+  .splash {
+    top: 50%; bottom: auto;
+    @include transform(translateY(-50%));
+
+    .splash__icon { padding-top: 0;}
+  }
+}
+
+.template--steps {
+  .nav__icon--inbox {display: none;}
+}

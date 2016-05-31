@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Rekomenduj.to</title>
+  <link rel="stylesheet" href="assets/css/main.min.css" media="screen" charset="utf-8">
+  <script src="assets/js/main.js" charset="utf-8"></script>
+  <script src="//deepthought.local:35729/livereload.js"></script>
+</head>
+<body class="preload device--mobile nav--transparent template--profile">
+
+  <!-- <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=236102693426940";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> -->
+
+<div class="page__wrapper">
+
+  <header class="background--check">
+    <nav class="nav__mainMenu">
+      <ul>
+        <li class="nav__position"><a href="#" class="rg-home nav__link">Mój profil</a></li>
+        <li class="nav__position"><a href="#" class="rg-campaign nav__link">Kampanie i promocje</a></li>
+        <li class="nav__position"><a href="#" class="rg-diary nav__link">Pamiętnik kampanii</a></li>
+        <li class="nav__position"><a href="#" class="rg-poll nav__link">Ankiety</a></li>
+        <li class="nav__position"><a href="#" class="rg-user nav__link">Moje dane</a></li>
+        <li class="nav__spacer"></li>
+        <li class="nav__position"><a href="#" class="rg-logo nav__link light">Rekomenduj.to</a></li>
+        <li class="nav__position"><a href="#" class="rg-news nav__link light">Aktualności</a></li>
+        <li class="nav__position"><a href="#" class="rg-help nav__link light">Pomoc</a></li>
+        <li class="nav__position"><a href="#" class="rg-contact nav__link light">Kontakt</a></li>
+        <li class="nav__spacer"></li>
+        <li class="nav__account">
+          <div class="nav__username"><a href="#" class="nav__link" data-username="Przemysław Trepka">Wyloguj mnie</a></div>
+          <div class="nav__avatar"><a href="#" class="nav__link--avatar"><img src="assets/images/spoof-profile-pic.jpg" alt=""></a></div>
+        </li>
+      </ul>
+    </nav>
+    <div class="nav--primary">
+      <div class="nav__menuTrigger ripple" tabindex="0" id="triggerMenu"><div class="helper__navCubeCanvas">
+        <div class="nav__iconCube">
+          <div class="nav__icon--menuOpen" data-icon="a"></div>
+          <div class="nav__icon--menuClose" data-icon="b"></div>
+        </div>
+      </div></div>
+      <div class="nav__icon--logo" data-icon="A" tabindex="0" id="triggerLogo"></div>
+      <div class="nav__icon--inbox inbox--notify ripple" data-icon="M" tabindex="0" id="triggerInbox"></div> <!-- NOTE .inbox--notify zmiania ikonę i pokazuję kulkę notyfikacji -->
+    </div>
+  </header>
+
+  <main>
+
+    <section class="layout--base profile__coverphoto">
+      <!-- NOTE public version -->
+      <!-- <img src="/assets/images/spoof-profile-pic.jpg" alt="" class="image--cover profile__uploaded"> -->
+
+      <!-- NOTE User view -->
+      <div class="profile__photoedit">
+        <div class="profile__pic-container">
+          <img src="/assets/images/spoof-profile-pic.jpg" alt="" class="image--cover profile__uploaded">
+        </div>
+      </div>
+      <h2 class="profile__welcome">Cześć Przemek</h2>
+    </section>
+
+    <section class="layout--card-4 profile__focus-box">
+      <div class="focus--new-campaign" data-label="Zapraszamy Cię do kampanii...">
+          <img src="/assets/images/backs/ph17.jpg" alt="" class="image--cover">
+          <span class="new-campaign__name">Kocham gotować</span>
+          <a href="#a" class="button">Poznaj szczegóły</a>
+        </a>
+      </div>
+    </section>
+
+    <section class="layout--base content-list profile__poll-list">
+      <div class="list-sizer"></div>
+      <a href="#aaa" class="list-item list-item--promo" data-label="Promocja"><img src="assets/images/mkino.jpg" alt="" class="image--cover"><span class="list-item__name">Bilety na dowolny seans w Multikinie</span></a>
+      <a href="#aaa" class="list-item list-item--promo" data-label="Do końca zostało 16h"><img src="assets/images/costa.jpg" alt="" class="image--cover"><span class="list-item__name">Poranek z Costa Coffee</span></a>
+      <div class="list-item list-item--promo list-item--doublesided">
+        <div class="doublesided__flipper">
+          <a href="#aaa" class="doublesided__side-a" data-label="Promocja"><img src="/assets/images/backs/ph16.jpg" alt="" class="image--cover"><span class="list-item__name">Ogoleni z BaByliss</span></a>
+          <a href="#aaa" class="doublesided__side-b"><span class="list-item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga odit culpa repellendus quia nesciunt est pariatur amet suscipit perferendis, rerum cumque ipsa, vitae earum ea facere nisi eaque sed possimus.</span></a>
+        </div>
+      </div>
+      <a href="#aaa" class="list-item list-item--poll" data-label="Opowiedz nam o..."><span class="list-item__name">Twoje śniadanie</span></a>
+      <a href="#aaa" class="list-item list-item--poll" data-label="Opowiedz nam o..."><img src="/assets/images/backs/ph6.jpg" alt="" class="image--cover"><span class="list-item__name">Nowoczesne technologie</span></a>
+      <a href="#aaa" class="list-item list-item--poll" data-label="Opowiedz nam o..."><span class="list-item__name">Jak korzystasz z&nbsp;urządzeń mobilnych</span></a>
+      <a href="#aaa" class="list-item list-item--poll" data-label="Opowiedz nam o..."><span class="list-item__name">Twoje śniadanie</span></a>
+      <a href="#aaa" class="list-item list-item--poll" data-label="Opowiedz nam o..."><img src="/assets/images/backs/ph7.jpg" alt="" class="image--cover"><span class="list-item__name">Nowoczesne technologie</span></a>
+      <a href="#aaa" class="list-item list-item--poll" data-label="Opowiedz nam o..."><span class="list-item__name">Jak korzystasz z&nbsp;urządzeń mobilnych</span></a>
+      <a href="#aaa" class="list-item list-item--poll" data-label="Opowiedz nam o..."><img src="/assets/images/backs/ph8.jpg" alt="" class="image--cover"><span class="list-item__name">Twoje śniadanie</span></a>
+      <a href="#aaa" class="list-item list-item--poll" data-label="Opowiedz nam o..."><span class="list-item__name">Nowoczesne technologie</span></a>
+    </section>
+
+  </main>
+
+  <footer>
+
+  </footer>
+
+</div>
+
+<script>
+$('.content-list').masonry({
+  itemSelector: '.list-item',
+  columnWidth: '.list-sizer',
+  percentPosition: true,
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "Rekomenduj.to",
+  "description": "Front end platformy marketingu rekomendacji.",
+  "license": "(ISC OR GPL-3.0)",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
