@@ -1,0 +1,115 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+
+
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'MontserratWeb', sans-serif !default;
+
+/// Basic font size
+/// @type Length
+$text-font-size: calc( 14px + (16 - 14) * ( (100vw - 320px) / ( 800 - 320) ) ) !default;
+
+/// Header sizes
+/// @type Length
+$header-1: calc( 28px + (32 - 28) * ( (100vw - 320px) / ( 800 - 320) ) ) !default;
+$header-2: calc( 21px + (24 - 21) * ( (100vw - 320px) / ( 800 - 320) ) ) !default;
+$header-3: calc( 18px + (21 - 18) * ( (100vw - 320px) / ( 800 - 320) ) ) !default;
+
+/// Font weights
+/// @type Weight
+$light: 200;
+$regular: 400;
+$bold: 600;
+
+/// icon sizes
+/// @type Length
+$ico-size-s: 1rem;
+$ico-size-m: 3rem;
+$ico-size-l: 5rem;
+$ico-size-xl: 7rem;
+
+/// Copy text color
+/// @type Color
+$text-color: rgba(0, 0, 0, 0.88) !default;
+
+/// Main brand colors
+/// @type Color
+$brand-color: rgb(31, 50, 80) !default;
+$comp-color: rgb(70, 177, 219) !default;
+$accent-color: rgb(252, 67, 73) !default;
+
+/// Lights
+/// @type Color
+$bright: rgb(248, 248, 248) !default;
+$white: rgb(255, 255, 255) !default;
+
+/// Medium grey
+/// @type Color
+$grey: rgb(61, 61, 61) !default;
+
+/// Background grey
+/// @type Color
+$base-grey: rgb(241, 240, 239) !default;
+
+// NOTE Colors: $text-color, $brand-color, $comp-color, $accent-color, $bright, $grey, $base-grey
+
+
+/// Consistent drop shadows
+/// @type CSS
+$shadow-1: 0 (1px+2) (3px+2) rgba(0,0,0, 0.11) !default;
+$shadow-2: 0 (2px+2) (5px+2) rgba(0,0,0, 0.11) !default;
+$shadow-3: 0 (3px+2) (8px+2) rgba(0,0,0, 0.11) !default;
+$shadow-4: 0 (4px+2) (13px+2) rgba(0,0,0, 0.11) !default;
+
+$shadow-1a: 0 (1px+2) (3px+2) rgba(0,0,0, 0.22) !default;
+$shadow-2a: 0 (2px+2) (5px+2) rgba(0,0,0, 0.22) !default;
+$shadow-3a: 0 (3px+2) (8px+2) rgba(0,0,0, 0.22) !default;
+$shadow-4a: 0 (4px+2) (13px+2) rgba(0,0,0, 0.22) !default;
+
+$shadow-button: 0 (4px) (13px+2) rgba(0,0,0, 0.11) !default;
+
+$shadows: $shadow-1, $shadow-2, $shadow-3, $shadow-4;
+$shadows-heavy: $shadow-1a, $shadow-2a, $shadow-3a, $shadow-4a;
+
+/// Consistent transition
+/// @type CSS
+$transition: .36s !default;
+$transition-l: .64s !default;
+
+
+
+
+
+
+/// Container's maximum width
+/// Below that is 100%
+/// @type Length
+$max-width: 1330px !default;
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+/// @see {mixin} respond-to
+$breakpoints: (
+  'ph-landscape': (min-width: 360px, orientation: landscape),
+  'ph-portrait': (min-width: 320px, orientation: portrait),
+  'phablet': (min-width: 410px),
+  'tablet': (min-width: 768px),
+  'desktop': (min-width: 1024px),
+) !default;
+
+
+
+
+
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;

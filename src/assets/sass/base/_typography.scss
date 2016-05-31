@@ -1,0 +1,58 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+  color: $text-color;
+  font-family: $text-font-stack;
+  font-size: $text-font-size;
+  font-weight: $light;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0.64rem 0 .36rem;
+  line-height: 1.1;
+  font-weight: $bold;
+
+  &.headline {
+    line-height: 1.5;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      @include size(5rem 0.36rem);
+      background-color: $accent-color;
+    }
+  }
+}
+
+h1 {
+  color: $comp-color;
+  font-size: $header-1;
+}
+h2 {
+  font-size: $header-2;
+}
+h3 {
+  font-size: $header-3;
+}
+h4 {
+  font-size: $text-font-size;
+}
+
+p {
+  padding: 0; margin: 0 0 .64em 0;
+  line-height: 1.64;
+
+  & + & {}
+
+  &:last-child {margin: 0;}
+}
+
+strong { font-weight: $bold; }
+.light { font-weight: $light !important;}

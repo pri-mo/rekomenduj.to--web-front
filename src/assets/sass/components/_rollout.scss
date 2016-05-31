@@ -1,0 +1,73 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the rollout component.
+// -----------------------------------------------------------------------------
+$padding-size: 1.36rem;
+$font-size: 1.36rem;
+$line-height: 1.5rem;
+$rollout-height: ( 2 * $padding-size + $line-height );
+
+.roll-out {
+  padding: 0;
+
+  .roll-out__trigger {
+    display: block; position: relative;
+    padding: $padding-size;
+    font-size: $font-size;
+    line-height: $line-height;
+    height: $rollout-height;
+    color: $text-color;
+
+    .roll-out__value {
+      display: inline-block;
+      height: $line-height; width: 90%;
+      text-overflow: ellipsis; white-space: nowrap;
+      overflow: hidden;
+
+      &:empty { display: none; }
+    }
+    .roll-out__icon { opacity: .64; position: relative; left: -.36em; }
+    .roll-out__name { display: inline; }
+    .roll-out__value:not(:empty) + .roll-out__name { display: none; }
+    .roll-out__status {
+      position: absolute;
+      top: $line-height; right: $padding-size;
+      @include transition($transition);
+      @include transform(scale(1));
+    }
+
+    @include on-event {
+      .roll-out__status {@include transform(scale(1.64));}
+    }
+  }
+
+  .roll-out__content {
+    padding: 1rem;
+    border-top: 1px solid rgba($text-color, .05);
+  }
+
+  // Rolled in
+  &.roll-out__container {
+    overflow: hidden;
+    max-height: $rollout-height;
+    @include transition(.64s 0s $ease-in-out-cubic);
+
+    // Rolled out
+    &.roll-out--opened {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      max-height: 200vh;
+      @include transition(1s .36s $ease-in-out-cubic);
+
+      .roll-out__status {
+        @include transform(scale(1.64) rotate(-45deg));
+      }
+    }
+  }
+
+  // Add border when in group
+  .layout__group & {
+    border-bottom: 1px solid rgba($text-color, .1);
+
+    &:nth-last-child(1) { border-bottom: 0; }
+  }
+}

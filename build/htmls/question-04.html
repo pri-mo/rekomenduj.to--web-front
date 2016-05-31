@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Rekomenduj.to</title>
+
+  <link rel="stylesheet" href="assets/css/main.min.css" media="screen" charset="utf-8">
+  <script src="assets/js/main.js" charset="utf-8"></script>
+  <script src="//deepthought.local:35729/livereload.js"></script>
+</head>
+<body class="preload device--mobile nav--single template--poll">
+
+  <div class="page__wrapper">
+
+    <header>
+      <nav class="nav__mainMenu">
+        <ul>
+          <li class="nav__position"><a href="#" class="rg-home nav__link">Mój profil</a></li>
+          <li class="nav__position"><a href="#" class="rg-campaign nav__link">Kampanie i promocje</a></li>
+          <li class="nav__position"><a href="#" class="rg-diary nav__link">Pamiętnik kampanii</a></li>
+          <li class="nav__position"><a href="#" class="rg-poll nav__link">Ankiety</a></li>
+          <li class="nav__position"><a href="#" class="rg-user nav__link">Moje dane</a></li>
+          <li class="nav__spacer"></li>
+          <li class="nav__position"><a href="#" class="rg-logo nav__link light">Rekomenduj.to</a></li>
+          <li class="nav__position"><a href="#" class="rg-news nav__link light">Aktualności</a></li>
+          <li class="nav__position"><a href="#" class="rg-help nav__link light">Pomoc</a></li>
+          <li class="nav__position"><a href="#" class="rg-contact nav__link light">Kontakt</a></li>
+          <li class="nav__spacer"></li>
+          <li class="nav__account">
+            <div class="nav__username"><a href="#" class="nav__link" data-username="Przemysław Trepka">Wyloguj mnie</a></div>
+            <div class="nav__avatar"><a href="#" class="nav__link--avatar"><img src="https://pbs.twimg.com/profile_images/663683739508084736/N-9RoVha_bigger.jpg" alt=""></a></div>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav--primary">
+        <div class="nav__menuTrigger ripple" tabindex="0" id="triggerMenu"><div class="helper__navCubeCanvas">
+          <div class="nav__iconCube">
+            <div class="nav__icon--menuOpen" data-icon="a"></div>
+            <div class="nav__icon--menuClose" data-icon="b"></div>
+          </div>
+        </div></div>
+        <div class="nav__icon--logo" data-icon="A" tabindex="0" id="triggerLogo"></div>
+        <div class="nav__icon--inbox ripple" data-icon="M" tabindex="0" id="triggerInbox"></div>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="layout--base poll__info">
+        <span class="help__flip">
+          <div class="poll__icon" data-icon="t"></div>
+          <div class="poll__name" data-label="Ankieta">Niezbyt fortunny tytuł ankiety i tak dalej i tak dalej</div>
+        </span>
+      </section>
+
+      <section class="layout--base poll__question">
+        <div class="question__name"
+              data-label="Pytanie 7"
+              data-extrainfo="Możesz wybrać najwyżej trzy odpowiedzi">
+          <!-- <div class="question__img"><img src="https://unsplash.it/500/?image=1083" alt=""></div> -->
+          <!-- <div class="question__vid"><iframe src="https://www.youtube.com/embed/Wk5qT_814xM" frameborder="0" allowfullscreen></iframe></div> -->
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed qui, libero accusantium sit. Fugiat accusantium, animi. Neque excepturi laborum aliquam fuga, libero veritatis, tempora iste, magnam dolorum, asperiores illum sit.
+          </p>
+        </div>
+      </section>
+
+      <section class="layout--base poll__answers poll__answers--grid" data-max-pick="3">
+        <!-- NOTE data-max-pick="3" określa maxymalną ilość opcji do wyboru. Musi być na .poll__answers -->
+        <form class="layout__group" id="question05">
+
+          <label class="layout--card-1 ripple answer answer--pick answer--image" data-fullsize="https://unsplash.it/800/?image=1071">
+            <input name="null" type="checkbox"><span data-icon="y"></span>
+            <img src="https://unsplash.it/300/?image=1071" alt="">
+          </label>
+
+          <label class="layout--card-1 ripple answer answer--pick answer--image" data-fullsize="https://unsplash.it/800/?image=1072">
+            <input name="null" type="checkbox"><span data-icon="y"></span>
+            <img src="https://unsplash.it/300/?image=1072" alt="">
+          </label>
+
+          <label class="layout--card-1 ripple answer answer--pick answer--image" data-fullsize="https://unsplash.it/800/?image=1073">
+            <input name="null" type="checkbox"><span data-icon="y"></span>
+            <img src="https://unsplash.it/300/?image=1073" alt="">
+          </label>
+
+          <label class="layout--card-1 ripple answer answer--pick answer--image" data-fullsize="https://unsplash.it/800/?image=1074">
+            <input name="null" type="checkbox"><span data-icon="y"></span>
+            <img src="https://unsplash.it/300/?image=1074" alt="">
+          </label>
+
+          <label class="layout--card-1 ripple answer answer--pick answer--image" data-fullsize="https://unsplash.it/800/?image=1075">
+            <input name="null" type="checkbox"><span data-icon="y"></span>
+            <img src="https://unsplash.it/300/?image=1075" alt="">
+          </label>
+
+          <label class="layout--card-1 ripple answer answer--pick answer--image" data-fullsize="https://unsplash.it/800/?image=1076">
+            <input name="null" type="checkbox"><span data-icon="y"></span>
+            <img src="https://unsplash.it/300/?image=1076" alt="">
+          </label>
+
+          <label class="layout--card-1 ripple answer answer--pick answer--image" data-fullsize="https://unsplash.it/800/?image=1077">
+            <input name="null" type="checkbox"><span data-icon="y"></span>
+            <img src="https://unsplash.it/300/?image=1077" alt="">
+          </label>
+
+          <label class="layout--card-1 ripple answer answer--pick answer--image" data-fullsize="https://unsplash.it/800/?image=1078">
+            <input name="null" type="checkbox"><span data-icon="y"></span>
+            <img src="https://unsplash.it/300/?image=1078" alt="">
+          </label>
+
+        </form>
+      </section>
+
+      <section class="layout--base poll__nav">
+        <a href="question-01.html" class="poll__nav--back"><span data-icon="F"></span></a>
+        <button type="submit" form="question05" formaction="question-05.html" class="poll__nav--forward">Dalej <span data-icon="E"></span></button>
+      </section>
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+  </div>
+</body>
+</html>

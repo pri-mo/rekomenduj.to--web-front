@@ -1,0 +1,116 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+
+
+/// Responsive breakpoint manager
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+  // Get the query map for $breakpoints map
+  $queries: map-get($breakpoints, $breakpoint);
+
+  // If there is no query called $breakpoint in map, throw an error
+  @if not $queries {
+    @error "No value could be retrieved from `#{$breakpoint}`. "
+    + "Please make sure it is defined in `$breakpoints` map.";
+  }
+
+  // Include the media mixin with $queries
+  @include media($queries) {
+    @content;
+  }
+}
+
+
+/// Media query merger
+/// @author Hugo Giraudel
+/// Create a single media condition out of a map of queries
+/// @param {Map} $queries - Map of media queries
+@mixin media($queries) {
+  @if length($queries) == 0 {
+    @content;
+  } @else {
+    $first-key: nth(map-keys($queries), 1);
+
+    @media ($first-key: map-get($queries, $first-key)) {
+      $queries: map-remove($queries, $first-key);
+
+      @include media($queries) {
+        @content;
+      }
+    }
+  }
+}
+
+
+/// Gradient overlay
+/// @author Przemek Trepka
+/// @param {String} $image ['grain.jpg'] - image name if any
+/// @param {Number} $alpha [.88] - custom image brand-color overlay intensity
+/// @param {Bool} $local [true] - whether the image is an asset or an url
+@mixin brand-gradient($image:'grain.jpg', $alpha:.88, $local:true) {
+  $degree: -150deg; // set the gradient slant
+  $color-specs: rgba($accent-color, .16) 11%,
+                rgba($brand-color, .0),
+                rgba($brand-color, .0),
+                rgba($comp-color, .16) 88%; // set the faint color highlights
+  $overlay: rgba($brand-color, $alpha), rgba($brand-color, $alpha); // set the brand overlay
+
+  background-color: $brand-color; // set fallback color
+  @if ($local == true) {
+    // part of assets
+    @if ($image == 'grain.jpg') {
+      // default grain
+      background: -webkit-linear-gradient($degree $color-specs), image($image); // Safari 5.1+, Chrome
+      background: unquote("linear-gradient(#{$degree}, #{$color-specs})"), image($image);
+      background-size: auto, 320px;
+    } @else {
+      // photo background
+      background: -webkit-linear-gradient($degree $color-specs), -webkit-linear-gradient($overlay), image($image); // Safari 5.1+, Chrome
+      background: unquote("linear-gradient(#{$degree}, #{$color-specs})"), unquote("linear-gradient(#{$overlay})"), image($image);
+      background-size: auto, auto, cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+  } @else {
+    // must a url
+    background: -webkit-linear-gradient($degree $color-specs), -webkit-linear-gradient($overlay), url($image); // Safari 5.1+, Chrome
+    background: unquote("linear-gradient(#{$degree}, #{$color-specs})"), unquote("linear-gradient(#{$overlay})"), url($image);
+    background-size: auto, auto, cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+}
