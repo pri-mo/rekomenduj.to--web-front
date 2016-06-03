@@ -12,5 +12,10 @@
 }
 
 .template--steps {
+  &.nav--transparent header:not(.scrolled):not(.nav--showMenu) { background: none; }
   .nav__icon--inbox {display: none;}
+}
+
+.template--profile {
+  &.nav--transparent header:not(.scrolled):not(.nav--showMenu) { background: none; }
 }

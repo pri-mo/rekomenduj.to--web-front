@@ -32,6 +32,7 @@ module.exports = function (grunt) {
       app: {
         src: [
           'src/assets/js/modal.js',
+          'src/assets/js/functions.js',
           'src/assets/js/main.js',
           'src/assets/js/menu.js',
           'src/assets/js/polls.js'

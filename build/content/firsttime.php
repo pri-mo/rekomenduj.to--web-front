@@ -1,4 +1,4 @@
-<section class="layout--base layout--fullscreen paint--back-<?php echo $step + 2 ?>">
+<section class="layout--base layout--fullscreen paint--gradient<?php // paint--back- echo $step + 2 ?>">
 
 <?php switch ($step) {
 

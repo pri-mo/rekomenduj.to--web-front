@@ -73,7 +73,8 @@ a {
 
   &.link--spare {
     display: block; padding: 1rem;
-    color: inherit; opacity: .36;
+    color: inherit; opacity: .64;
+    font-weight: $regular;
     // text-transform: uppercase;
 
     @include on-event {opacity: 1;}
@@ -232,8 +233,8 @@ a:not(no-ripple), .ripple {
   display: inline-block;
   position: relative;
   overflow: hidden !important;
-  @include perspective(1000px);
-  @include transform(translate3d(0, 0, 1px));
+  // @include perspective(1000px);
+  @include transform(translate3d(0, 0, 0px));
   @include backface-visibility(hidden);
 }
 

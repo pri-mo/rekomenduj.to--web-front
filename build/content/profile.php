@@ -15,7 +15,7 @@
 
 <?php if( isset($tasks) && ($tasks!=null) ) { ?>
 
-  <section class="layout--card-4 paint--sky profile__focus-box">
+  <section class="layout--card-4 paint--red profile__focus-box">
     <div class="focus--new-user">
       Twoje pierwsze kroki
       <ul class="focus__tasks">

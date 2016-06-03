@@ -26,7 +26,7 @@ $tagsTemplate = 'template--profile';
 
       <?php
       $userPhoto = true;
-      $hasSocialReach = 0;
+      $hasSocialReach = 1;
 
       include 'content/profile-details.php'
 

@@ -2,7 +2,7 @@
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
 
-@mixin button($content: $text-color, $frame: .05, $p: 3px, $face: rgba($text-color, .05)) {
+@mixin button($content: $text-color, $frame: .05, $p: 0px, $face: rgba($text-color, .05)) {
   $rounding: 4rem;
   @include appearance(none);
   border: 0; display: inline-block; position: relative;
@@ -38,9 +38,9 @@
     &:after {
       content: ''; display: block;
       position: absolute; top: 50%; left: 50%; @include transform(translate(-50%, -50%));
-      background-color: #00ab6b; border-radius: 100%;
+      background-color: rgb(35,240,170); border-radius: 100%;
       @include transition($transition);
-      @include size(0); opacity: 1;
+      @include size(0);
       z-index: -1;
     }
   }
@@ -64,7 +64,7 @@
       color: $white;
 
       &:after {
-        @include size(10rem); opacity: 1;
+        @include size(10rem);
       }
     }
   }
@@ -81,22 +81,22 @@
 // Uses
 button, .button {
   // General
-  @include button($face: rgba($white, 0), $p: 1px);
+  @include button($face: rgba($white, 0), $p: 0px);
 
   // Paint related buttons
   .paint--navy &,
   [class^='paint--back-'] &,
   [class*=' paint--back-'] &,
   .paint--gradient & {
-    @include button($content: $white, $frame: .33, $face: rgba($text-color, .11));
+    @include button($content: $white, $frame: .36, $p: 0px, $face: rgba($text-color, .036));
   }
   .paint--sky &,
   .paint--red & {
-    @include button($content: $white, $frame: .33);
+    @include button($content: $white, $frame: 0);
   }
 
   // When on cover photo
   .cover__container &, .profile__coverphoto & {
-    @include button($content: $white, $frame: .33, $face: rgba($text-color, .11));
+    @include button($content: $white, $frame: .36, $p: 0px, $face: rgba($text-color, .11));
   }
 }

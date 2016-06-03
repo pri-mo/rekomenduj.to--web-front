@@ -55,7 +55,7 @@ $rollout-height: ( 2 * $padding-size + $line-height );
     &.roll-out--opened {
       margin-top: 1rem;
       margin-bottom: 1rem;
-      max-height: 200vh;
+      max-height: 5000px;
       @include transition(1s .36s $ease-in-out-cubic);
 
       .roll-out__status {

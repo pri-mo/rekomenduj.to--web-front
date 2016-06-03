@@ -13,7 +13,7 @@
   overflow: hidden;
 
   &:not(.cover__container) {
-    @include brand-gradient('backs/ph2.jpg');
+    @include brand-gradient;
   }
 
   .template--profile--public & {
@@ -99,7 +99,7 @@ $button-size: 3 * 1.36rem;
   margin: -1rem; margin-top: 1rem;
 
   li {
-    border-top: 1px solid rgba($white, .1);
+    border-top: 1px solid rgba($white, .22);
     font-weight: $bold;
     position: relative;
     overflow: hidden;
@@ -108,7 +108,7 @@ $button-size: 3 * 1.36rem;
     &:after {
       content:''; display: block; position: absolute;
       top: 0;left: 0;right: 0;bottom: 50%;
-      background-color: rgba($brand-color, .36); opacity: 0; z-index: -1;
+      background-color: rgba($text-color, .11); opacity: 0; z-index: -1;
     }
     &:before {
       content: ''; display: block; position: absolute;
@@ -117,12 +117,13 @@ $button-size: 3 * 1.36rem;
     }
 
     a {
-      display: block; text-decoration: none; color: inherit; padding: 1rem;
+      display: block; text-decoration: none; color: inherit;
+      padding: 1rem; margin-top: 0;
 
       .ink { background-color: rgba($white, .22); }
     }
 
-    [data-icon] { padding-right: .64rem; top: 10%; opacity: .36;
+    [data-icon] { padding-right: .64rem; top: 10%; opacity: .64;
       display: inline-block;
     }
   }
@@ -132,6 +133,7 @@ $button-size: 3 * 1.36rem;
 
     &:before { animation: task-complete 1s .64s ease forwards; }
     &:after { animation: fadein .64s 1.64s ease forwards; z-index: 0;}
+    a {animation: correct-position 1s 1.64s ease forwards; }
 
     [data-icon] { opacity: 1; }
   }
@@ -139,6 +141,10 @@ $button-size: 3 * 1.36rem;
   @at-root {
     @include keyframes(task-complete) {
       100% { width: 100%; }
+    }
+
+    @include keyframes(correct-position) {
+      100% { bottom: 2rem; }
     }
 
     @include keyframes(task-fold) {
@@ -150,7 +156,7 @@ $button-size: 3 * 1.36rem;
     }
 
     @include keyframes(color-to-sky) {
-      100% { color: $comp-color; }
+      100% { color: $accent-color; }
     }
 
   }
@@ -337,7 +343,7 @@ $button-size: 3 * 1.36rem;
       color: rgba($text-color, .36);
 
       @include on-event {
-        color: $brand-color; background-color: rgba($text-color, .05);
+        color: $text-color; background-color: rgba($text-color, .05);
       }
 
       @include respond-to('ph-landscape') { width: 25%; }

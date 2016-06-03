@@ -4,3 +4,7 @@
 
 # Ignore grunt modules
 node_modules
+
+# Ignore Apache config
+.htaccess
+.htpasswd

@@ -38,17 +38,14 @@ $tagsTemplate = 'template--steps';
               data-invalid="Podaj poprawną odpowiedź">Podaj liczbę dzieci</label>
         <span class="number__suffix"
               data-suffix-single="dziecko"
-              data-suffix-maxfive="dzieciaków"
+              data-suffix-maxfive="dzieci"
               data-suffix-fivemore="dzieci"></span>
         <span class="ripple number__more" data-icon="e"></span>
         <span class="ripple number__less" data-icon="f"></span>
       </div>
-
-      <!-- TODO powielać w zależności od ilości dzieci -->
       <div id="kidsInputs">
 
       </div>
-      <!-- Koniec instancji do powielania -->
 
 STEPPERCONTENT;
 

@@ -31,7 +31,7 @@ $tagsTemplate = 'template--steps';
       $stepperContent = <<<STEPPERCONTENT
 
       <div class="input">
-        <input tabindex name="user-email" id="user-email" type="email" autocomplete="email" required spellcheck="false" placeholder="email@domena.pl">
+        <input tabindex name="email" id="user-email" type="email" autocomplete="email" required spellcheck="false" placeholder="email@domena.pl">
         <label for="user-email"
         data-focused="Mój email"
         data-original="Podaj swój e-mail"

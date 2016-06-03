@@ -24,7 +24,7 @@
   box-shadow: $shadow-1;
   padding: 3rem .64rem .64rem;
   color: $text-color;
-  min-height: 13rem;
+  min-height: 12rem;
   @include transition(.36s);
 
 
@@ -47,18 +47,18 @@
   .list-item__name {
     display: block;
     font-size: $header-3;
-    line-height: 1.36em;
+    line-height: 1.1em;
     padding-right: 30%;
-    padding-top: .64rem;
+    padding-top: 1rem;
   }
 
   // Cover images
-  .image--cover {z-index: -1; opacity: .36;}
+  .image--cover {z-index: -1; opacity: .36; }
   .cover--tall { width: 105%; height: auto; }
 
   // Corect inc color
   &:not(.cover__container) .ink {
-    background-color: rgba($brand-color, .11);
+    background-color: rgba($text-color, .11);
   }
 
   // Mix the layout up a bit
@@ -94,16 +94,18 @@
 
   @include on-event {
     text-decoration: none;
-    color: $brand-color;
-    background-color: $white;
+    color: $white;
+    background-color: $brand-color;
     box-shadow: $shadow-4;
     @include transform(scale(1.036));
     z-index: 11;
 
     &.cover__container {
-      background-color: $brand-color !important;
+      // background-color: $text--color !important;
       color: $white !important;
       box-shadow: $shadow-4a;
+
+      .image--cover { }
     }
     // &.list-item--promo { background-color: }
   }

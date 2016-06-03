@@ -5,8 +5,18 @@
 
 
 //// Do stuff after page load
-$(function() { console.log( 'ready!' );
+$(function() {
 
+$('a[href]:not(.roll-out__trigger):not(.no-ripple)').click( function(e) {
+  var linkTarget = $(this).attr('href');
+
+  if ( linkTarget !== "#" ) {
+    e.preventDefault();
+    setTimeout( function() {
+      window.location.href = linkTarget;
+    }, 250);
+  }
+});
 
 $('.social-reach__add-channel').on('click', function() {
   $('body').modal({
@@ -102,60 +112,45 @@ $('.input').click(function(e){
 
 
 //// Facilitate appearance change on focus when input used
-$('body').bind('DOMSubtreeModified', function() {
-  $('input, select, textarea').on('focus', function(e) {
-    var label = $(this).next('label');
+$(document).on('focus change', 'input, select, textarea', function(e) {
+  var label = $(this).next('label');
+  // console.log(e.type);
 
-    $(this).on('blur', function() {
-      var value = $(this).val();
-
-      // check if the input has any value (if we've typed into it)
-      if ( value ) {
-        $(this).addClass('input--used');
-
-        if ( $(this).is(':invalid') ) {
-          label.html( label.data('invalid'));
-        } else {
-          label.html( label.data('focused') );
-        }
-
-      } else {
-        $(this).removeClass('input--used');
-        label.html( label.data('original') );
-      }
-    });
-    // Change when on focus
-    if ($(this).hasClass('input--used') ) {
-      $(this).removeClass('input--used');
-    }
+  $(this).on('focusout', function() {
+    $(this).updLabels();
   });
+  // Change when on focus
+  if ($(this).hasClass('input--used') ) {
+    $(this).removeClass('input--used');
+  }
 });
 
 // Correct input styles on page enter — in case values passing/set
-$('body').bind('DOMSubtreeModified', function() {
-  $('input, select, textarea').each(function() {
-    var label = $(this).next('label');
-    var value = $(this).val();
-
-    // check if the input has any value
-    if ( value ) {
-      $(this).addClass('input--used');
-
-      if ( $(this).is(':invalid') ) {
-        label.html( label.data('invalid') );
-      } else {
-        label.html( label.data('focused') );
-      }
-
-    } else {
-      $(this).removeClass('input--used');
-      label.html( label.data('original') );
-      if ( $(this).is(':valid') ) {
-        $(this).addClass('input--valid');
-      }
-    }
-  });
+$(document).on('change ready', function() {
+  $('input, select, textarea').updLabels();
 });
+
+/*
+—— NOTE Just for beta testing localstorage data
+*/
+// save data on change
+$(document).on('change', 'input, select, textarea', function() {
+  var inputName = this.name;
+  var inputVal = this.value;
+  localStorage.setItem(inputName, inputVal);
+  console.log(localStorage);
+});
+
+// fill data if exists
+if (localStorage.length > 0) {
+  $('input, select, textarea').each(function() {
+    var inputName = this.name;
+    $(this).val(localStorage.getItem(inputName)).addClass('input--used');
+
+  });
+
+  $('#welcomeName').html(localStorage.getItem('user-name'));
+}
 
 
 // Autogrow init
@@ -213,88 +208,15 @@ function WidthChange(mq) {
   }
 }
 
+$(document).on('ready', function(e) {
+  if ($('#kidsNumber').length)
+  updKids();
+});
+
 // Adding and deleting kids
-$('#kidsNumber').on('change each', function() {
-  var kids = $(this).val();
-  var nowKids = $("#kidsInputs .grid__container").length;
-  var r = -1*(nowKids-kids);
-  var n = 1;
-  var html = '';
-
-  if(kids === 0) {
-    $("#kidsInputs .grid__container").slice(r).remove();
-  } else {
-    if(kids > nowKids) {
-      for(i = 0; i < (kids-nowKids); i++) {
-        $('#kidsInputs').append('<div class="grid__container grid--gutter">' +
-        '  <div class="grid__item grid__item--1of2">' +
-        '    <div class="input input--date input--show-label">' +
-        '      <input tabindex' +
-        '      name="user-baby' + kids + '-bday" id="user-baby' + kids + '-bday" type="date"' +
-        '      autocomplete="baby' + kids + '-bday"' +
-        '      required' +
-        '      spellcheck="true"' +
-        '      placeholder="Podaj datę">' +
-        '      <label for="user-baby' + kids + '-bday"' +
-        '      data-focused="' + kids + '. Data urodzenia"' +
-        '      data-original="Podaj datę urodzenia"' +
-        '      data-invalid="To pole jest wymagane."></label>' +
-        '    </div>' +
-        '  </div>' +
-        '  <div class="grid__item grid__item--1of2">' +
-        '    <div class="input input--select input--show-label">' +
-        '      <select name="user-baby' + kids + '-gender" id="user-baby' + kids + '-gender" required>' +
-        '        <option value="" selected disabled>Podaj płeć</option>' +
-        '        <option value="K">Dziewczynka</option>' +
-        '        <option value="M">Chłopiec</option>' +
-        '      </select>' +
-        '      <label for="user-baby' + kids + '-gender"' +
-        '      data-focused="Płeć dziecka"' +
-        '      data-original="Podaj płeć dziecka"' +
-        '      data-invalid="To pole jest obowiązkowe"></label>' +
-        '    </div>' +
-        '  </div>' +
-        '</div>');
-        $('#kidsInputs input, #kidsInputs select').each( function() {
-          var label = $(this).next('label');
-          var value = $(this).val();
-
-          // check if the input has any value
-          if ( value ) {
-            $(this).addClass('input--used');
-
-            if ( $(this).is(':invalid') ) {
-              label.html( label.data('invalid') );
-            } else {
-              label.html( label.data('focused') );
-            }
-
-          } else {
-            $(this).removeClass('input--used');
-            label.html( label.data('original') );
-            if ( $(this).is(':valid') ) {
-              $(this).addClass('input--valid');
-            }
-          }
-        });
-      }
-    } else {
-      r = -1*(nowKids-kids);
-      $("#kidsInputs .grid__container").slice(r).remove();
-    }
-  }
+$(document).on('change', '#kidsNumber', function() {
+  updKids();
 });
 
-$('.input').change(function () {
-  var $in = $(this);
-  var inputName = this.name;
-  var val = this.value;
-  localStorage.setItem('savedData', 'true');
-  // localStorage.setItem(inputName, val);
-  console.log(inputName);
-  console.log($in);
-  console.log(val);
-  // console.log(localStorage);
-});
 
 });
