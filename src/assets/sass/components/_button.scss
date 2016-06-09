@@ -24,7 +24,7 @@
   &:before {
     content: '';
     position: absolute; top: $p; right: $p; left: $p; bottom: $p;
-    border: 1px solid rgba($content, $frame); border-radius: $rounding;
+    border: 1.5px solid rgba($content, $frame); border-radius: $rounding;
   }
 
   .ink { background-color: rgba($text-color, .11); }
@@ -96,7 +96,7 @@ button, .button {
   }
 
   // When on cover photo
-  .cover__container &, .profile__coverphoto & {
+  .cover__container &, .layout__header & {
     @include button($content: $white, $frame: .36, $p: 0px, $face: rgba($text-color, .11));
   }
 }

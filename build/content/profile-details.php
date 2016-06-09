@@ -1,4 +1,4 @@
-<section class="layout--base profile__coverphoto">
+<section class="layout--base layout__header">
   <!-- NOTE Gdy jest zdjęcie -->
   <?php if( isset($userPhoto) && ($userPhoto!=null) ) { ?>
   <div class="profile__photoedit">

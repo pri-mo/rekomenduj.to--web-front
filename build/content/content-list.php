@@ -1,6 +1,7 @@
 <?php
 // require the Faker autoloader
 require_once 'vendor/autoload.php';
+date_default_timezone_set("Europe/Warsaw");
 // alternatively, use another PSR-0 compliant autoloader (like the Symfony2 ClassLoader for instance)
 
 // use the factory to create a Faker\Generator instance
@@ -11,8 +12,25 @@ switch ($contentItems) {
   case 'polls':
     $itemType = 'list-item--poll';
     $itemLabel = 'Opowiedz nam o...';
+    $itemLink = '#dontmove';
     $headerIcon = 'rg-poll';
     $headerTitle = 'Ankiety dla Ciebie';
+    break;
+
+  case 'campaigns':
+    $itemType = 'list-item--campaign';
+    $itemLabel = 'Kampania dla Ciebie';
+    $itemLink = '#dontmove';
+    $headerIcon = 'rg-campaign';
+    $headerTitle = 'Kampanie dla Ciebie';
+    break;
+
+  case 'promos':
+    $itemType = 'list-item--promo';
+    $itemLabel = 'Promocja';
+    $itemLink = '#dontmove';
+    $headerIcon = 'rg-promotion';
+    $headerTitle = 'Promocje dla Ciebie';
     break;
 
   default:
@@ -32,13 +50,13 @@ switch ($contentItems) {
 for ($i=0; $i < $itemCount; $i++) {
   $randChoice = $faker->numberBetween($min = 0, $max = $itemCount);
 ?>
-<a  href="#dontmove"
+<a  href="<?php echo $itemLink ?>"
     class="list-item <?php echo $itemType ?>"
-    data-label="<?php echo $itemLabel ?>"
+    data-label="<?php echo (empty($itemLabelArray[$i])) ? $itemLabel : $itemLabelArray[$i]  ?>"
     data-index="<?php echo $i + 1 ?>">
   <?php
     if ($randChoice % 2 === 0) {
-      echo "<img onerror='imgBroken(this)' src='https://unsplash.it/{$faker->randomElement($array = array ('800', '600'))}/{$faker->randomElement($array = array ('800', '600'))}?image={$faker->numberBetween($min = 0, $max = 1084)}' alt='' class='image--cover'";
+      echo "<img onerror='imgBroken(this)' src='https://unsplash.it/{$faker->randomElement($array = array ('800', '600'))}/{$faker->randomElement($array = array ('800', '600'))}?image={$faker->numberBetween($min = 0, $max = 1084)}' alt='' class='image--cover'>";
     }
   ?>
   <span class="list-item__name"><?php echo $faker->sentence ?></span>

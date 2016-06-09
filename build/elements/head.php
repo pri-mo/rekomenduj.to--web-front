@@ -1,4 +1,6 @@
 <?php
+setlocale(LC_ALL, "pl_PL", "Polish_Poland.28592", "pl", "pol", "polish");
+
 function verFile($filename){
   date_default_timezone_set('UTC');
 

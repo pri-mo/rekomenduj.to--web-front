@@ -1,4 +1,4 @@
-<section class="layout--base profile__coverphoto">
+<section class="layout--base layout__header">
 
   <!-- NOTE User view -->
   <div class="profile__photoedit">
@@ -71,10 +71,10 @@ if( isset($contentList) && ($contentList!=null) ) {
 
 <?php } else { ?>
 
-  <section class="layout--card-4 profile__focus-box">
-    <div class="focus--no-items" data-label="Wygrałeś Rekomenduj.to!!!">
-        <img src="/assets/images/backs/ph12.jpg" alt="" class="image--cover">
-        <span class="focus__name">Wróć tu za jakiś czas...</span>
+  <section class="layout--base profile__focus-box">
+    <div class="focus--no-items" data-label="Puchar dla Ciebie">
+        <!-- <img src="/assets/images/backs/ph12.jpg" alt="" class="image--cover"> -->
+        <span class="focus__name">Chwilowo nie mamy więcej dobroci dla Ciebie, wyłącznie uśmiech. Wróć tu za jakiś czas...</span>
       </a>
     </div>
   </section>

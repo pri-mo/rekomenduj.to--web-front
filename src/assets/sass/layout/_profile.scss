@@ -6,7 +6,7 @@
   padding-bottom: 1rem;
 }
 
-.profile__coverphoto {
+.layout__header {
   color: $white;
   padding-bottom: 10rem;
   text-align: center;
@@ -82,7 +82,7 @@ $button-size: 3 * 1.36rem;
 .profile__welcome { position: relative;}
 
 
-.profile__focus-box {
+section.profile__focus-box {
   margin-top: -7rem;
   padding: 0;
 
@@ -133,7 +133,7 @@ $button-size: 3 * 1.36rem;
 
     &:before { animation: task-complete 1s .64s ease forwards; }
     &:after { animation: fadein .64s 1.64s ease forwards; z-index: 0;}
-    a {animation: correct-position 1s 1.64s ease forwards; }
+    a { animation: correct-position 1s 1.64s ease forwards; }
 
     [data-icon] { opacity: 1; }
   }
@@ -144,7 +144,7 @@ $button-size: 3 * 1.36rem;
     }
 
     @include keyframes(correct-position) {
-      100% { bottom: 2rem; }
+      100% { transform: translateY(-2rem); }
     }
 
     @include keyframes(task-fold) {
@@ -233,10 +233,11 @@ $button-size: 3 * 1.36rem;
 // No items
 .focus--no-items {
   position: relative;
-  background-color: $bright;
-  box-shadow: $shadow-4a;
+  // background-color: $bright;
+  // box-shadow: $shadow-4a;
   padding: 4rem 1rem;
-  color: $text-color;
+  color: $white;
+  text-align: center;
   min-height: 18rem;
 
 
@@ -245,7 +246,7 @@ $button-size: 3 * 1.36rem;
     content: "\32";
     font-size: 1.64rem;
     position: absolute;
-    top: .64rem; left: 1rem;
+    top: .64rem; left: 1rem; right: 1rem;
     opacity: .64;
   }
 
@@ -256,7 +257,7 @@ $button-size: 3 * 1.36rem;
     font-size: .8em;
     opacity: .64;
     position: absolute;
-    top: 3rem; left: 1rem;
+    top: 3rem; left: 1rem; right: 1rem;
   }
 
   .focus__name {
@@ -264,7 +265,7 @@ $button-size: 3 * 1.36rem;
     font-size: $header-1;
     font-weight: $bold;
     line-height: 1.36em;
-    padding-right: 30%;
+    padding-right: 0%;
     padding-top: .64rem;
   }
 

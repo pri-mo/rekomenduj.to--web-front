@@ -5,7 +5,7 @@ $lang = 'pl';
 $tagsBodyBasic = 'preload device--mobile';
 
 $tagsNav = 'nav--transparent';
-$tagsTemplate = 'template--steps';
+$tagsTemplate = 'template--profile--empty';
 
 ?>
 
@@ -25,7 +25,7 @@ $tagsTemplate = 'template--steps';
     <main>
 
       <?php
-      $userPhoto = 0;
+      $userPhoto = 1;
       $campInvite = 0;
       $tasks = 0;
       $contentList = 0;

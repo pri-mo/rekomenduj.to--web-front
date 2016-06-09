@@ -15,7 +15,7 @@
 
 .content-list__header {
   color: $white;
-  padding-bottom: 25rem;
+  padding-bottom: 26rem;
   text-align: center;
   overflow: hidden;
 
@@ -25,7 +25,7 @@
   .content-list__header-icon {
     font-size: $ico-size-l;
     line-height: 1;
-    padding-top: 1rem;
+    padding-top: 3rem;
   }
   .content-list__header-title {}
 
@@ -46,16 +46,19 @@
   @include respond-to('ph-landscape') {
     &:nth-child(5n+3) {width: (2*(100% / 3) - 2% );
       .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+      &.list-item--promo .list-item__name { font-weight: $bold; }
     }
   }
   @include respond-to('ph-portrait') {
     &:nth-child(5n+4) {width: (100% - 2%);
       .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+      &.list-item--promo .list-item__name { font-weight: $bold; }
     }
   }
   @include respond-to('tablet') {
     &:nth-child(5n+4) {width: ((100% / 2) - 2% );
       .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+      &.list-item--promo .list-item__name { font-weight: $bold; }
     }
   }
 
@@ -127,7 +130,6 @@
   &.list-item--promo {
     &.promo--special { color: $comp-color; }
     &:after { content: "\72";}
-    .list-item__name { font-weight: $bold; }
 
     &:not(:hover):not(:focus):not(.cover__container) {
       &:before, &:after {
@@ -170,6 +172,10 @@
       &.list-item--promo {
         background-color: $comp-color!important;
         &.cover__container {background-color: shade($comp-color, 1%)!important;}
+      }
+      &.list-item--campaign {
+        background-color: $brand-color!important;
+        &.cover__container {background-color: shade($brand-color, 2%)!important;}
       }
     }
     // &.list-item--promo { background-color: }

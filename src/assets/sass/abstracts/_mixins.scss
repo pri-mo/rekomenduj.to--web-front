@@ -11,13 +11,13 @@
     &,
     &:hover,
     &:active {
-    // &:focus {
+      // &:focus {
       @content;
     }
   } @else {
     &:hover,
     &:active {
-    // &:focus {
+      // &:focus {
       @content;
     }
   }
@@ -81,21 +81,33 @@
 /// @param {String} $image ['grain.jpg'] - image name if any
 /// @param {Number} $alpha [.88] - custom image brand-color overlay intensity
 /// @param {Bool} $local [true] - whether the image is an asset or an url
-@mixin brand-gradient($image: null, $alpha: .88, $local: true) {
-  $degree: -150deg; // set the gradient slant
-  $color-specs: rgba(#B066FE, .22) 22%,
-                rgba($brand-color, .0),
-                rgba(#63E2FF, .22) 77%; // set the faint color highlights
-  $overlay: rgba($brand-color, $alpha), rgba($brand-color, $alpha); // set the brand overlay
+@mixin brand-gradient($image: null, $grain: null, $alpha: .88, $local: true, $color: $brand-color) {
 
-  background-color: $brand-color; // set fallback color
+  $degree: -150deg; // set the gradient slant
+  // $color-specs: rgba(#B066FE, .22) 22%,
+  //               rgba($color, .0),
+  //               rgba(#63E2FF, .22) 77%; // set the faint color highlights
+  $color-specs: rgba(adjust-hue($color, -50deg), .36) 11%,
+                rgba($color, .0),
+                rgba(adjust-hue($color, 50deg), .36) 88%; // set the faint color highlights
+
+  $overlay: rgba($color, $alpha), rgba($color, $alpha); // set the brand overlay
+
+  background-color: $color; // set fallback color
   @if ($local == true) {
     // part of assets
     @if ($image == null) {
-      // default grain
-      background: -webkit-linear-gradient($degree $color-specs), image('grain-fux.jpg'); // Safari 5.1+, Chrome
-      background: unquote("linear-gradient(#{$degree}, #{$color-specs})"), image('grain-fux.jpg');
-      background-size: auto, 320px;
+      @if ($grain == null) {
+        // default grain
+        background: -webkit-linear-gradient($degree $color-specs), image('grain-fux.jpg'); // Safari 5.1+, Chrome
+        background: unquote("linear-gradient(#{$degree}, #{$color-specs})"), image('grain-fux.jpg');
+        background-size: auto, 320px;
+      } @else {
+        // custom grain
+        background: -webkit-linear-gradient($degree $color-specs), image($grain); // Safari 5.1+, Chrome
+        background: unquote("linear-gradient(#{$degree}, #{$color-specs})"), image($grain);
+        background-size: auto, 320px;
+      }
     } @else {
       // photo background
       background: -webkit-linear-gradient($degree $color-specs), -webkit-linear-gradient($overlay), image($image); // Safari 5.1+, Chrome

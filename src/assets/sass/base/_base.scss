@@ -205,14 +205,14 @@ section {
 
 // Brand gradient and backgrounds
 .paint--gradient {
-  color: $bright;
+  color: $white;
   @include brand-gradient;
 }
 
 @for $n from 1 through 17 {
   .paint--back-#{$n} {
-    color: $bright;
-    @include brand-gradient('backs/ph#{$n}.jpg');
+    color: $white;
+    @include brand-gradient($image: 'backs/ph#{$n}.jpg');
 
     @if $n == 7 {
       // I know this pic... focus is on the right

@@ -29,7 +29,7 @@ body {
   &.nav--single {padding-top: $navHeight;}
   &.nav--double {padding-top: $navHeight * 2;}
   &.nav--transparent {
-    main > section:first-of-type {padding-top: $navHeight + 1rem;}
+    main > section:first-of-type {padding-top: $navHeight + .5rem}
   }
 }
 
@@ -93,16 +93,24 @@ header {
     &.inbox--notify {
       &:before { content: "\4e"; }
       &:after { content: ''; display: block;
-        background-color: $accent-color;
+        background-color: $white;
+        border: 5px solid $comp-color;
         border-radius: 10px; line-height: 0; padding: 0;
         position: absolute; top: 50%; left: 50%; @include transform(translate(-50%, -50%));
         margin-left: -25%; margin-top: -25%;
-        @include animation(intro-scale 1s .36s forwards);
+        @include animation(intro-scale .64s .36s $ease-out-back forwards, attention 10s 3s $ease-out-back infinite );
       }
       @at-root {
         @include keyframes(intro-scale) {
-          0% { @include size(0px); }
-          100% { @include size(10px); }
+          0% { @include size(0px);}
+          100% { @include size(16px);}
+        }
+        @include keyframes(attention) {
+          0% { @include size(16px); }
+          5% { @include size(10px); }
+          10% { @include size(18px); }
+          11% { @include size(16px); }
+          100% { @include size(16px); }
         }
       }
     }
