@@ -3,6 +3,14 @@
 * functions.js
 */
 
+// Broken images
+function imgBroken(image) {
+  // image.onerror = "";
+  $(image).parent().removeClass('cover__container').attr('data-error', 'Image was broken. I deleted it...');
+  image.remove();
+  return true;
+}
+
 // Update kids
 function updKids() {
   var $kNum = document.getElementById('kidsNumber');
@@ -58,35 +66,63 @@ function updKids() {
   }
 }
 
-// Update input labels
-jQuery.fn.extend({
-  updLabels: function () {
-    $(this).each(function() {
-      var label = $(this).next('label');
-      var value = this.value;
+// Extend jQuery
+(function( $ ) {
+  $.fn.extend({
 
-      // check if the input has any value
-      if ( value ) {
+    // Update input labels
+    updLabels: function () {
+      $(this).each(function() {
+        var label = $(this).next('label');
+        var value = this.value;
 
-        $(this).addClass('input--used');
+        // check if the input has any value
+        if ( value ) {
 
-        if ( $(this).is(':invalid') ) {
-          label.html( label.data('invalid') );
+          $(this).addClass('input--used');
+
+          if ( $(this).is(':invalid') ) {
+            label.html( label.data('invalid') );
+          } else {
+            label.html( label.data('focused') );
+          }
+
         } else {
-          label.html( label.data('focused') );
+
+          $(this).removeClass('input--used');
+          label.html( label.data('original') );
+
+          if ( $(this).is(':valid') ) {
+            $(this).addClass('input--valid');
+          }
+
         }
+      });
+      return;
+    },
+    updCovers: function () {
+      return this.each(function() {
+        var $el = $(this);
+        var $parent = $(this).parent();
+        var height = this.height;
+        var width = this.width;
+        var imgRatio = height / width;
+        var parRatio = $parent.height() / $parent.width();
+        var compareRatios = imgRatio*parRatio;
+        var ratioDifference = imgRatio-parRatio;
 
-      } else {
-
-        $(this).removeClass('input--used');
-        label.html( label.data('original') );
-
-        if ( $(this).is(':valid') ) {
-          $(this).addClass('input--valid');
+        if ( imgRatio >= parRatio ) {
+          if ( compareRatios < imgRatio && compareRatios < parRatio && ratioDifference > 0 && ratioDifference < 0.164 ){
+            if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
+          } else {
+            if ( !$el.hasClass('cover-width') ) $el.removeClass('cover--height').addClass('cover--width');
+          }
+        } else {
+          if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
         }
+        // console.log($(this).parent().attr('data-index') + ': ' + parRatio + ' / ' + imgRatio + '\n   (diff:' + ratioDifference + ') (comp:' + compareRatios + ')');
+      });
+    }
 
-      }
-    });
-    return;
-  }
-});
+  });
+})( jQuery );

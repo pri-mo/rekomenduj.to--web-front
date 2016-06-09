@@ -191,13 +191,13 @@
       </div>
 
       <div class="input">
-        <input tabindex name="user-phone" id="user-phone" type="phone" autocomplete="tel"
-         pattern="[0-9]{9}|[0-9]{3} [0-9]{3} [0-9]{3}|[0-9]{3}-[0-9]{3}-[0-9]{3}"
-        spellcheck="false" placeholder="np. 600 500 400">
+        <input tabindex name="user-phone" id="user-phone" type="tel" autocomplete="tel"
+         pattern="[0-9]{9}|[0-9]{4}[0-9]{9}|\+[0-9]{2}[0-9]{9}"
+        spellcheck="false" placeholder="np. +48600500400">
         <label for="user-phone"
         data-focused="Mój numer komórkowy"
         data-original="Podaj numer komórkowy"
-        data-invalid="Poprawny numer to 9 cyfr...">Podaj numer komórkowy</label>
+        data-invalid="Poprawny numer to np. 600500400">Podaj numer komórkowy</label>
       </div>
 
       <div class="layout__button-bar flow--right">

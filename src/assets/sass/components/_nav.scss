@@ -9,11 +9,21 @@ $menuWidth: calc(100% - 4rem);
 body {
   transition: padding .3s;
 
-  header, main { transform: translateZ(0); transition: transform .36s;}
+  header, main {
+    @include transform(translateZ(0));
+    @include transition(transform .36s);
+  }
 
   &.content--toSide {
-    header, main { transform: translate3d( $menuWidth, 0, 0); transition: transform .64s, opacity 1s .36s; }
-    main { opacity: .11; }
+    header, main {
+      @include transform(translate3d($menuWidth, 0, 0));
+      @include transition(transform .64s, opacity 1s .36s)
+    }
+    main {
+      opacity: .11;
+
+      a, button { pointer-events: none; }
+    }
   }
 
   &.nav--single {padding-top: $navHeight;}
@@ -48,16 +58,15 @@ header {
     box-shadow: $shadow-2a;
     z-index: 2;
     @include transition(transform .36s, background-color .64s, box-shadow .36s);
-
   }
 
 
   .nav--transparent &:not(.scrolled):not(.nav--showMenu) {
     @include linear-gradient( rgba($text-color, .36), rgba($text-color, 0), $fallback: 'transparent');
 
-     .nav--primary, .nav--secondary {
+    .nav--primary, .nav--secondary {
       background-color: rgba($brand-color, 0);
-      box-shadow: 0 0 0 1px rgba($white, .1);
+      box-shadow: 0 1px 0 rgba($white, .1);
     }
   }
 
@@ -111,82 +120,82 @@ header {
       perspective: 5000px; height: 2*$cube; width: 2*$cube; line-height: 2*$cube;
       position: absolute; top: 50%; left: 50%;
       margin-left: -.25rem;
-      @include transform(translate(-50%, -50%) scale(.5));}
-
-      .nav__iconCube {
-        transform-style: preserve-3d;
-        position: absolute; width: 2*$cube; height: 2*$cube;
-        transition: transform .36s .36s;
-        @include transform(translateZ( $cube/2 ) rotateX( 0deg ) );
-      }
-
-      [class^="nav__icon--"] { top: 0; padding: 0; transition: opacity .36s .36s; font-size: 2.2*$cube;}
-      .nav__icon--menuOpen { @include transform(translateZ( -$cube/2 ) rotateX( 0deg ) ); opacity: 1;}
-      .nav__icon--menuClose { @include transform(translateZ( 0 ) rotateX( 90deg ) ); opacity: 0;}
-
-      .content--toSide & .nav__iconCube {
-        @include transform(translateZ( $cube/2 ) rotateX( -90deg ) );
-
-        .nav__icon--menuOpen { opacity: 0;}
-        .nav__icon--menuClose { opacity: 1;}
-      }
+      @include transform(translate(-50%, -50%) scale(.5));
     }
 
-    // Nav states
-    &.scrolled {
-      .nav--primary { background-color: rgba($brand-color, 1); box-shadow: $shadow-3a; }
-      .nav--secondary { background-color: rgba($brand-color, 1); box-shadow: $shadow-2a; }
+    .nav__iconCube {
+      transform-style: preserve-3d;
+      position: absolute; width: 2*$cube; height: 2*$cube;
+      transition: transform .36s .36s;
+      @include transform(translateZ( $cube/2 ) rotateX( 0deg ) );
     }
 
-    &.hidden {
-      @include transform(translate(0, -$navHeight));
+    [class^="nav__icon--"] { top: 0; padding: 0; transition: opacity .36s .36s; font-size: 2.2*$cube;}
+    .nav__icon--menuOpen { @include transform(translateZ( -$cube/2 ) rotateX( 0deg ) ); opacity: 1;}
+    .nav__icon--menuClose { @include transform(translateZ( 0 ) rotateX( 90deg ) ); opacity: 0;}
 
-      .nav--primary { box-shadow: none; }
-      .nav--secondary { height: ($navHeight - .64) }
-      .nav__context { line-height: ($navHeight - .64)}
-    }
-    &.nav--showMenu {
-      .nav--primary { background-color: $brand-color; box-shadow: $shadow-3a; }
-      .nav--secondary { @include transform(translate(0, -$navHeight)); }
+    .content--toSide & .nav__iconCube {
+      @include transform(translateZ( $cube/2 ) rotateX( -90deg ) );
+
+      .nav__icon--menuOpen { opacity: 0;}
+      .nav__icon--menuClose { opacity: 1;}
     }
   }
 
-  // Main Menu
-  nav ul { list-style: none; margin: 0; padding: 0; }
-  nav a { color: rgba($bright, .64); text-decoration: none;
-
-    @include on-event { color: $bright; text-decoration: none; }
-    &:active, &:focus { animation: blink .64s; }
-    .device--mobile & { color: $bright; }
+  // Nav states
+  &.scrolled {
+    .nav--primary { background-color: rgba($brand-color, 1); box-shadow: $shadow-3a; }
+    .nav--secondary { background-color: rgba($brand-color, 1); box-shadow: $shadow-2a; }
   }
 
-  .nav__mainMenu {
-    @include brand-gradient;
+  &.hidden {
+    @include transform(translate(0, -$navHeight));
 
-    position: absolute; width: $menuWidth; height: 100vh; right: 100vw;
-    overflow-y: scroll; overflow-x: hidden;
-    overflow-scrolling: touch;
-    padding: 1rem;
-
-    .content--toSide &::before {
-      display: block; content: ''; position: absolute; left: 100%; top: 0;bottom: 0; width: 5px;
-      @include linear-gradient( 90deg,  rgba(0,0,0,.33), rgba(0,0,0,.0), $fallback: transparent );
-    }
-
-    .nav__position { margin: .11rem 0;}
-    .nav__spacer { height: 1px; background-color: rgba($bright, .22); margin: .64rem 0;}
-    .nav__link { display: block; text-transform: uppercase; font-weight: $bold; padding: .36rem .64rem;
-      &[class^="rg-"]::before { font-size: 1.64rem; margin-right: .64rem; opacity: .88;}
-    }
-    .nav__account { @include clearfix; position: relative; }
-    .nav__username {
-      .nav__link { padding: 1rem .64rem; }
-      .nav__link::after { display: block; content: attr(data-username); font-weight: $light; text-transform: none;}
-    }
-    .nav__avatar {
-      position: absolute; right: 1rem; top: 50%; transform: translateY( -50% ); width: 4rem; height: 4rem;
-      .nav__link--avatar { display: block; overflow: hidden; border-radius: 4rem !important; height: 100%; width: 100%; position: relative; z-index: 1;}
-      .nav__link--avatar img { display: block; width: 101%; position: absolute; top: -1%; left: 50%; transform: translate3d(-50%, 0, 0); z-index: -1;}
-    }
-
+    .nav--primary { }
+    .nav--secondary { height: ($navHeight - .64) }
+    .nav__context { line-height: ($navHeight - .64)}
   }
+  &.nav--showMenu {
+    .nav--primary { background-color: $brand-color; box-shadow: $shadow-3a; }
+    .nav--secondary { @include transform(translate(0, -$navHeight)); }
+  }
+}
+
+// Main Menu
+nav ul { list-style: none; margin: 0; padding: 0; }
+nav a { color: rgba($white, .64); text-decoration: none;
+
+  @include on-event { color: $white; text-decoration: none; }
+  .device--mobile & { color: $white; }
+}
+
+.nav__mainMenu {
+  @include brand-gradient;
+
+  position: absolute; width: $menuWidth; height: 100vh; right: 100vw;
+  overflow-y: scroll; overflow-x: hidden;
+  overflow-scrolling: touch;
+  padding: 1rem;
+
+  .content--toSide &::before {
+    display: block; content: ''; position: absolute; left: 100%; top: 0;bottom: 0; width: 5px;
+    @include linear-gradient( 90deg,  rgba(0,0,0,.33), rgba(0,0,0,.0), $fallback: transparent );
+  }
+
+  .nav__position { margin: .11rem 0;}
+  .nav__spacer { height: 1px; background-color: rgba($white, .22); margin: .64rem 0;}
+  .nav__link { display: block; text-transform: uppercase; font-weight: $bold; padding: .36rem .64rem;
+    &[class^="rg-"]::before { font-size: 1.64rem; margin-right: .64rem; opacity: .88;}
+  }
+  .nav__account { @include clearfix; position: relative; }
+  .nav__username {
+    .nav__link { padding: 1rem .64rem; }
+    .nav__link::after { display: block; content: attr(data-username); font-weight: $light; text-transform: none;}
+  }
+  .nav__avatar {
+    position: absolute; right: 1rem; top: 50%; @include transform(translateY(-50%)); width: 4rem; height: 4rem;
+    .nav__link--avatar { display: block; overflow: hidden; border-radius: 4rem !important; height: 100%; width: 100%; position: relative; z-index: 1;}
+    .nav__link--avatar img { display: block; width: 101%; position: absolute; top: -1%; left: 50%; @include transform(translate3d(-50%, 0, 0)); z-index: -1;}
+  }
+
+}

@@ -57,28 +57,28 @@ $(function() {
   });
 
   // shows/hides navigation’s popover if class 'expanded'
-  $('#triggerMenu').on('click touchstart', function(event) {
+  $('#triggerMenu').on('click touchstart', function(e) {
     showHideNav();
-    event.preventDefault();
+    e.preventDefault();
   });
 
   // clicking anywhere inside navigation or heading won’t close navigation’s popover
-  $('header nav').on('click touchstart', function(event){
-    event.stopPropagation();
+  $('header nav').on('click touchstart', function(e){
+    e.stopPropagation();
   });
 
   // clicking on secondary nav shows primary manu
-  $('header .nav--secondary').on('click touchstart', function(event){
+  $('header .nav--secondary').on('click touchstart', function(e){
     if ($('header').hasClass('hidden')) {
       $('header').removeClass('hidden');
-      event.preventDefault();
+      e.preventDefault();
     }
   });
 
-  $('main').on('click touchstart', function(event) {
+  $('main').on('click touchstart', function(e) {
     if ($('header').hasClass('nav--showMenu')) {
       hideNav();
-      event.preventDefault();
+      e.preventDefault();
     }
   });
 
@@ -95,7 +95,7 @@ $(function() {
   function showNav() {
     $('header').removeClass('hidden').addClass('nav--showMenu');
     $('body, html').addClass('content--toSide');
-    window.setTimeout(function(){$('body').addClass('page--noScroll');}, 200); // Firefox hack. Hides scrollbar as soon as menu animation is done
+    window.setTimeout(function(){$('body').addClass('page--noScroll');}, 10); // Firefox hack. Hides scrollbar as soon as menu animation is done
     $('header nav a').attr('tabindex', ''); // links inside navigation should be TAB selectable
   }
 

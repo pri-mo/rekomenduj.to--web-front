@@ -5,11 +5,12 @@
 .cover__container { overflow: hidden; }
 
 .image--cover {
-  width: 164%;
+  width: 100%;
   position: absolute;
   top: 50%; left: 50%;
-  @include transform(translate(-50%, -50%));
+  @include transform($moveToCenter scale(1.1));
+  @include transition(transform $transition-l, opacity $transition);
 
-  &.cover--tall { width: 105%; }
-  &.cover--wide { height: 105%; width: auto; }
+  &.cover--width { height: auto; width: 100%; }
+  &.cover--height { height: 100%; width: auto; }
 }

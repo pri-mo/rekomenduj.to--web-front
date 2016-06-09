@@ -2,10 +2,15 @@
 
 <?php if( isset($masonry) && ($masonry!=null) ) { ?>
 <script type="text/javascript">
-$('.content-list').masonry({
-  itemSelector: '.list-item',
-  columnWidth: '.list-sizer',
-  percentPosition: true,
-});
+// $(window).load(function() {
+// $('.content-list').masonry({
+//   itemSelector: '.list-item',
+//   columnWidth: '.list-sizer',
+//   percentPosition: true,
+// }).masonry('reload');
+// });
+// $(window).resize(function() {
+//   $('.content-list').masonry('reload');
+// });
 </script>
 <?php } ?>

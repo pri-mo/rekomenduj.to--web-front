@@ -28,7 +28,7 @@ html, body {
 
 // Prevent transitions before elements load;
 body {
-  &.preload * { transition: none !important; }
+  &.preload * { @include transition(none!important); }
 }
 
 /**

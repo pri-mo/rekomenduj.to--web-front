@@ -1,0 +1,65 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Cordova overrides.
+// -----------------------------------------------------------------------------
+
+// Application is running on the Desktop Browser - applied if you are running ionic serve
+.platform-browser {}
+
+// Application is running on the device, as the device uses Cordova to display the application
+.platform-cordova {}
+
+// Application is running within a webview on the device within a native application
+.platform-webview {}
+
+// The device is iOS; therefore, the iOS treatment
+.platform-ios {
+  $statusbar: 20px;
+
+  // Just a fake iOS status bar
+  #iOSbar {position: fixed;top: 0;left: 0;width: 100%; z-index: 9999;}
+
+  // Fix header to fit status bar
+  header {
+    // Make primary nav higher
+    .nav--primary {
+      height: calc(#{$navHeight} + #{$statusbar});
+    }
+    // Make room for statusbar when menu is opened
+    .nav__mainMenu { padding-top: calc(1rem + #{$statusbar});}
+
+    // Enable opacity transition when nav hidden
+    .nav--primary,
+    .nav--secondary {
+      & > * {
+        opacity: 1;
+        @include transition(opacity .64s);
+      }
+    }
+
+    // Center Icons in the lower section of primary nav
+    .nav__icon--logo,
+    .nav__icon--inbox,
+    .nav__menuTrigger {
+      margin-top: $statusbar/2;
+    }
+
+    // Fade primary nav icons when nav hidden
+    &.hidden {
+      .nav--primary,
+      .nav--secondary {
+        & > * {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  // First section in main should start a bit lower
+  & main > section:first-of-type {padding-top: calc(5rem + #{$statusbar})!important;}
+}
+
+// iOS device is an iPad - this class is applied, in addition to platform-ios
+.platform-ipad {}
+
+// The device is Android; therefore, the Android treatment
+.platform-android {}

@@ -3,19 +3,62 @@
 // -----------------------------------------------------------------------------
 
 .content-list {
+  position: relative;
+  @include display(flex);
+  @include flex-flow(row wrap);
 
   @at-root section#{&} {
-    padding: 0;
+    padding: 0 0 3rem 0;
     margin: calc(1rem - 1%);
   }
+}
+
+.content-list__header {
+  color: $white;
+  padding-bottom: 25rem;
+  text-align: center;
+  overflow: hidden;
+
+  &:not(.cover__container) { @include brand-gradient; }
+  + .content-list { margin-top: -23rem;}
+
+  .content-list__header-icon {
+    font-size: $ico-size-l;
+    line-height: 1;
+    padding-top: 1rem;
+  }
+  .content-list__header-title {}
 
 }
 
-.list-sizer, .list-item {
-  width: calc( (100% / 2) - 2% );
+.list-sizer {display: none;}
+.list-item {
+  @include flex(0 1 auto);
+  width: ((100% / 2)-2%);
   margin: 1%;
   display: block;
-  min-height: 12rem;
+  min-height: 50vw;
+
+  @include respond-to('ph-landscape') { width: ((100% / 3) - 2% ); }
+  @include respond-to('tablet') { width: ((100% / 4) - 2% ); }
+
+  // Mix the layout up a bit
+  @include respond-to('ph-landscape') {
+    &:nth-child(5n+3) {width: (2*(100% / 3) - 2% );
+      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+    }
+  }
+  @include respond-to('ph-portrait') {
+    &:nth-child(5n+4) {width: (100% - 2%);
+      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+    }
+  }
+  @include respond-to('tablet') {
+    &:nth-child(5n+4) {width: ((100% / 2) - 2% );
+      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+    }
+  }
+
 }
 
 .list-item {
@@ -32,60 +75,71 @@
     @extend %reko-glyph;
     font-size: 1.64rem;
     position: absolute;
-    top: .64rem; left: .64rem;
+    top: .5rem; left: .64rem;
     opacity: .64;
   }
 
   &:before {
+    // content: attr(data-index)'. 'attr(data-label);
     content: attr(data-label);
     display: block;
     text-transform: uppercase;
     font-size: .8em;
     opacity: .64;
-    // position: relative;
   }
   .list-item__name {
     display: block;
-    font-size: $header-3;
-    line-height: 1.1em;
-    padding-right: 30%;
-    padding-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.3em;
+    padding-right: 2rem;
+    padding-top: .5rem;
   }
 
   // Cover images
-  .image--cover {z-index: -1; opacity: .36; }
-  .cover--tall { width: 105%; height: auto; }
+  .image--cover {z-index: -1; opacity: .64;}
 
-  // Corect inc color
-  &:not(.cover__container) .ink {
-    background-color: rgba($text-color, .11);
-  }
-
-  // Mix the layout up a bit
-  // &:first-of-type,
-  &:nth-child(5n+4) {width: (100% - 2%);
-    .image--cover { width: 115%; height: auto; }
-  }
+  // Corect ink color
+  // &:not(.cover__container) .ink { background-color: rgba($text-color, .11); }
 
   // Types of items
   &.list-item--poll {
     &:after { content: "\74";}
+    // .ink { background-color: rgba($text-color, .11); }
+
+    &:not(:hover):not(:focus):not(.cover__container) {
+      &:before, &:after {
+        opacity: 1;
+        color: $accent-color;
+      }
+    }
   }
   &.list-item--campaign {
     &:after { content: "\69";}
-    .image--cover { opacity: .5; }
     .list-item__name { font-weight: $bold; }
+
+    &:not(:hover):not(:focus):not(.cover__container) {
+      &:before, &:after {
+        opacity: 1;
+        color: $brand-color;
+      }
+    }
   }
   &.list-item--promo {
     &.promo--special { color: $comp-color; }
     &:after { content: "\72";}
-    .image--cover { opacity: .5; }
     .list-item__name { font-weight: $bold; }
+
+    &:not(:hover):not(:focus):not(.cover__container) {
+      &:before, &:after {
+        opacity: 1;
+        color: $comp-color;
+      }
+    }
   }
 
   // Item has a cover image
   &.cover__container {
-    background-color: $text-color!important;
+    background-color: black!important;
     color: $white!important;
     box-shadow: $shadow-1a;
 
@@ -100,12 +154,23 @@
     @include transform(scale(1.036));
     z-index: 11;
 
+
     &.cover__container {
       // background-color: $text--color !important;
       color: $white !important;
       box-shadow: $shadow-4a;
 
-      .image--cover { }
+      .image--cover { opacity: .11; @include transform($moveToCenter scale(1.25));}
+    }
+    &:not(.list-item--doublesided) {
+      &.list-item--poll {
+        background-color: $accent-color!important;
+        &.cover__container {background-color: shade(mix($comp-color, $accent-color, 3%), 1%)!important;}
+      }
+      &.list-item--promo {
+        background-color: $comp-color!important;
+        &.cover__container {background-color: shade($comp-color, 1%)!important;}
+      }
     }
     // &.list-item--promo { background-color: }
   }
@@ -123,6 +188,9 @@
   // Some new styles
   @include perspective(1000px);
   height: 12rem;
+
+  // Ink fix
+  .ink { background-color: rgba($text-color, .11); }
 
 
   // General sides defs

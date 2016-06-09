@@ -54,6 +54,14 @@
 * functions.js
 */
 
+// Broken images
+function imgBroken(image) {
+  // image.onerror = "";
+  $(image).parent().removeClass('cover__container').attr('data-error', 'Image was broken. I deleted it...');
+  image.remove();
+  return true;
+}
+
 // Update kids
 function updKids() {
   var $kNum = document.getElementById('kidsNumber');
@@ -109,38 +117,66 @@ function updKids() {
   }
 }
 
-// Update input labels
-jQuery.fn.extend({
-  updLabels: function () {
-    $(this).each(function() {
-      var label = $(this).next('label');
-      var value = this.value;
+// Extend jQuery
+(function( $ ) {
+  $.fn.extend({
 
-      // check if the input has any value
-      if ( value ) {
+    // Update input labels
+    updLabels: function () {
+      $(this).each(function() {
+        var label = $(this).next('label');
+        var value = this.value;
 
-        $(this).addClass('input--used');
+        // check if the input has any value
+        if ( value ) {
 
-        if ( $(this).is(':invalid') ) {
-          label.html( label.data('invalid') );
+          $(this).addClass('input--used');
+
+          if ( $(this).is(':invalid') ) {
+            label.html( label.data('invalid') );
+          } else {
+            label.html( label.data('focused') );
+          }
+
         } else {
-          label.html( label.data('focused') );
+
+          $(this).removeClass('input--used');
+          label.html( label.data('original') );
+
+          if ( $(this).is(':valid') ) {
+            $(this).addClass('input--valid');
+          }
+
         }
+      });
+      return;
+    },
+    updCovers: function () {
+      return this.each(function() {
+        var $el = $(this);
+        var $parent = $(this).parent();
+        var height = this.height;
+        var width = this.width;
+        var imgRatio = height / width;
+        var parRatio = $parent.height() / $parent.width();
+        var compareRatios = imgRatio*parRatio;
+        var ratioDifference = imgRatio-parRatio;
 
-      } else {
-
-        $(this).removeClass('input--used');
-        label.html( label.data('original') );
-
-        if ( $(this).is(':valid') ) {
-          $(this).addClass('input--valid');
+        if ( imgRatio >= parRatio ) {
+          if ( compareRatios < imgRatio && compareRatios < parRatio && ratioDifference > 0 && ratioDifference < 0.164 ){
+            if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
+          } else {
+            if ( !$el.hasClass('cover-width') ) $el.removeClass('cover--height').addClass('cover--width');
+          }
+        } else {
+          if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
         }
+        // console.log($(this).parent().attr('data-index') + ': ' + parRatio + ' / ' + imgRatio + '\n   (diff:' + ratioDifference + ') (comp:' + compareRatios + ')');
+      });
+    }
 
-      }
-    });
-    return;
-  }
-});
+  });
+})( jQuery );
 ;
 
 /**
@@ -150,218 +186,214 @@ jQuery.fn.extend({
 
 //// Do stuff after page load
 $(function() {
+  $('body').removeClass('preload');
 
-$('a[href]:not(.roll-out__trigger):not(.no-ripple)').click( function(e) {
-  var linkTarget = $(this).attr('href');
+  $('a[href]:not(.roll-out__trigger):not(.no-ripple)').click( function(e) {
+    var linkTarget = $(this).attr('href');
 
-  if ( linkTarget !== "#" ) {
-    e.preventDefault();
-    setTimeout( function() {
-      window.location.href = linkTarget;
-    }, 250);
-  }
-});
-
-$('.social-reach__add-channel').on('click', function() {
-  $('body').modal({
-    header: 'Udało się!',
-    message: 'Dodałeś społeczność',
-    buttons: 'ok'
+    if ( linkTarget !== "#" ) {
+      e.preventDefault();
+      setTimeout( function() {
+        window.location.href = linkTarget;
+      }, 250);
+    }
   });
-});
 
-// In case you want to preload images
-$('img').each(function() {
-  $(this).addClass('preload');
-  $(this).on('load', function() {
-    $(this).removeClass('preload');
+  $('.social-reach__add-channel').on('click', function() {
+    $('body').modal({
+      header: 'Udało się!',
+      message: 'Dodałeś społeczność',
+      buttons: 'ok'
+    });
   });
-});
 
-// Prevent transitions on load.
-$('body').removeClass('preload');
+  // In case you want to preload images
+  $('img').each(function() {
+    $(this).addClass('preload');
+    $(this).on('load', function() {
+      $(this).removeClass('preload');
+    });
+  });
 
-// Set classes to cover images based on dimensions.
-$('img.image--cover').each(function() {
-  $(this).on('load', function(e) { // Check if loaded
-    var height = this.height;
-    var width = this.width;
-    var ratio = height / width;
+  // Prevent transitions on load.
+  $('body').removeClass('preload');
 
-    // console.log($(this) + ' = ' + ratio);
-
+  // Set classes to cover images based on dimensions of parent and image.
+  $('img.image--cover').each(function() {
     $(this).parent().addClass('cover__container');
 
-    if (ratio < 0.8) {
-      $(this).addClass('cover--wide');
-    } else if (ratio > 1.2) {
-      $(this).addClass('cover--tall');
-    } else {
-      $(this).addClass('cover--sqr');
+    // Work when image is loaded
+    $(this).on('load', function() {
+      $(this).updCovers();
+    }).each(function() {
+      // If chached, say it's loaded
+      if(this.complete) $(this).load();
+      // if(this.error imgBroken(this);
+    });
+  });
+  // Do the same on window resize
+  $(window).resize(function() {
+    $('img.image--cover').each(function() { $(this).updCovers(); });
+  });
+
+
+  /*
+  * Google Material design riples...
+  */
+  var ink, d, x, y;
+
+  //// ... on links and buttons
+  $('a:not(.no-ripple), button:not(.no-ripple), .ripple').click(function(e){
+    if($(this).find('.ink').length === 0){
+      $(this).prepend('<span class="ink"></span>');
     }
-  }).each(function() { // If chached, say it's loaded
-  if(this.complete) $(this).load();
-});
-});
 
+    ink = $(this).find('.ink');
+    ink.removeClass('animate');
 
-/*
-* Google Material design riples...
-*/
-var ink, d, x, y;
+    if(!ink.height() && !ink.width()){
+      d = Math.max($(this).outerWidth(), $(this).outerHeight());
+      ink.css({height: d, width: d});
+    }
 
-//// ... on links and buttons
-$('a:not(.no-ripple), button:not(.no-ripple), .ripple').click(function(e){
-  if($(this).find('.ink').length === 0){
-    $(this).prepend('<span class="ink"></span>');
-  }
+    x = e.pageX - $(this).offset().left - ink.width()/2;
+    y = e.pageY - $(this).offset().top - ink.height()/2;
 
-  ink = $(this).find('.ink');
-  ink.removeClass('animate');
-
-  if(!ink.height() && !ink.width()){
-    d = Math.max($(this).outerWidth(), $(this).outerHeight());
-    ink.css({height: d, width: d});
-  }
-
-  x = e.pageX - $(this).offset().left - ink.width()/2;
-  y = e.pageY - $(this).offset().top - ink.height()/2;
-
-  ink.css({top: y+'px', left: x+'px'}).addClass('animate');
-});
-
-//// ... on inputs
-$('.input').click(function(e){
-  if($(this).find('.input__field').length === 0){
-    $(this).prepend('<div class="input__field"></div>');
-  }
-
-  if($(this).find('.input__field .ink').length === 0){
-    $(this).find('.input__field').prepend('<span class="ink"></span>');
-  }
-
-  ink = $(this).find('.input__field .ink');
-  ink.removeClass('animate');
-
-  if(!ink.height() && !ink.width()){
-    d = Math.max($(this).outerWidth(), $(this).outerHeight());
-    ink.css({height: d, width: d});
-  }
-
-  x = e.pageX - $(this).offset().left - ink.width()/2;
-  y = e.pageY - $(this).offset().top - ink.height()/2;
-
-  ink.css({top: y+'px', left: x+'px'}).addClass('animate');
-});
-
-
-//// Facilitate appearance change on focus when input used
-$(document).on('focus change', 'input, select, textarea', function(e) {
-  var label = $(this).next('label');
-  // console.log(e.type);
-
-  $(this).on('focusout', function() {
-    $(this).updLabels();
+    ink.css({top: y+'px', left: x+'px'}).addClass('animate');
+    return false;
   });
-  // Change when on focus
-  if ($(this).hasClass('input--used') ) {
-    $(this).removeClass('input--used');
-  }
-});
 
-// Correct input styles on page enter — in case values passing/set
-$(document).on('change ready', function() {
-  $('input, select, textarea').updLabels();
-});
+  //// ... on inputs
+  $('.input').click(function(e){
+    if($(this).find('.input__field').length === 0){
+      $(this).prepend('<div class="input__field"></div>');
+    }
 
-/*
-—— NOTE Just for beta testing localstorage data
-*/
-// save data on change
-$(document).on('change', 'input, select, textarea', function() {
-  var inputName = this.name;
-  var inputVal = this.value;
-  localStorage.setItem(inputName, inputVal);
-  console.log(localStorage);
-});
+    if($(this).find('.input__field .ink').length === 0){
+      $(this).find('.input__field').prepend('<span class="ink"></span>');
+    }
 
-// fill data if exists
-if (localStorage.length > 0) {
-  $('input, select, textarea').each(function() {
+    ink = $(this).find('.input__field .ink');
+    ink.removeClass('animate');
+
+    if(!ink.height() && !ink.width()){
+      d = Math.max($(this).outerWidth(), $(this).outerHeight());
+      ink.css({height: d, width: d});
+    }
+
+    x = e.pageX - $(this).offset().left - ink.width()/2;
+    y = e.pageY - $(this).offset().top - ink.height()/2;
+
+    ink.css({top: y+'px', left: x+'px'}).addClass('animate');
+  });
+
+
+  //// Facilitate appearance change on focus when input used
+  $(document).on('focus change', 'input, select, textarea', function(e) {
+    var label = $(this).next('label');
+    // console.log(e.type);
+
+    $(this).on('focusout', function() {
+      $(this).updLabels();
+    });
+    // Change when on focus
+    if ($(this).hasClass('input--used') ) {
+      $(this).removeClass('input--used');
+    }
+  });
+
+  // Correct input styles on page enter — in case values passing/set
+  $(document).on('change ready', function() {
+    $('input, select, textarea').updLabels();
+  });
+
+  /*
+  —— NOTE Just for beta testing localstorage data
+  */
+  // save data on change
+  $(document).on('change', 'input, select, textarea', function() {
     var inputName = this.name;
-    $(this).val(localStorage.getItem(inputName)).addClass('input--used');
-
+    var inputVal = this.value;
+    localStorage.setItem(inputName, inputVal);
+    console.log(localStorage);
   });
 
-  $('#welcomeName').html(localStorage.getItem('user-name'));
-}
+  // fill data if exists
+  if (localStorage.length > 0) {
+    $('input, select, textarea').each(function() {
+      var inputName = this.name;
+      $(this).val(localStorage.getItem(inputName)).addClass('input--used');
 
+    });
 
-// Autogrow init
-$('textarea').autogrow({
-  horizontal: false,
-  vertical: true,
-  flickering: false
-});
-
-
-//// Show password plugin
-$('#showPass').on('click', function () {
-  $(this).toggleClass('showing');
-  if ( $('#password').is('[type=password]') ) {
-    $('#password').attr('type', 'text').focus();
-  } else {
-    $('#password').attr('type', 'password').focus();
+    $('#welcomeName').html(localStorage.getItem('user-name'));
   }
-});
+
+
+  // Autogrow init
+  $('textarea').autogrow({
+    horizontal: false,
+    vertical: true,
+    flickering: false
+  });
+
+
+  //// Show password plugin
+  $('#showPass').on('click', function () {
+    $(this).toggleClass('showing');
+    if ( $('#password').is('[type=password]') ) {
+      $('#password').attr('type', 'text').focus();
+    } else {
+      $('#password').attr('type', 'password').focus();
+    }
+  });
 
 
 
-//// The rollout
-$('.roll-out__trigger').on('click', function(e) {
-  e.preventDefault();
-  $(this).parent().toggleClass('roll-out--opened');
-});
+  //// The rollout
+  $('.roll-out__trigger').on('click', function(e) {
+    e.preventDefault();
+    $(this).parent().toggleClass('roll-out--opened');
+  });
 
 
-//// On Logo click
-$('#triggerLogo').on('click', function(e) {
-  e.preventDefault();
-  window.location = '/';
-});
+  //// On Logo click
+  $('#triggerLogo').on('click', function(e) {
+    e.preventDefault();
+    window.location = '/';
+  });
 
 
-// Media Query Specific code
-// Event handler
-// TODO Should work on touch too... or rather on touch...
-if (matchMedia) {
-  var mq = window.matchMedia('(min-width: 768px)');
-  mq.addListener(WidthChange);
-  WidthChange(mq);
-}
-
-// Media query change
-function WidthChange(mq) {
-  if (mq.matches) {
-    // Window width is at least 768px
-    $('body').addClass('device--desktop');
-    $('body').removeClass('device--mobile');
-  } else {
-    $('body').removeClass('device--desktop');
-    $('body').addClass('device--mobile');
+  // Media Query Specific code
+  // Event handler
+  // TODO Should work on touch too... or rather on touch...
+  if (matchMedia) {
+    var mq = window.matchMedia('(min-width: 768px)');
+    mq.addListener(WidthChange);
+    WidthChange(mq);
   }
-}
 
-$(document).on('ready', function(e) {
-  if ($('#kidsNumber').length)
-  updKids();
-});
+  // Media query change
+  function WidthChange(mq) {
+    if (mq.matches) {
+      // Window width is at least 768px
+      $('body').addClass('device--desktop');
+      $('body').removeClass('device--mobile');
+    } else {
+      $('body').removeClass('device--desktop');
+      $('body').addClass('device--mobile');
+    }
+  }
 
-// Adding and deleting kids
-$(document).on('change', '#kidsNumber', function() {
-  updKids();
-});
+  $(document).on('ready', function(e) {
+    if ($('#kidsNumber').length)
+    updKids();
+  });
 
+  // Adding and deleting kids
+  $(document).on('change', '#kidsNumber', function() {
+    updKids();
+  });
 
 });
 ;
@@ -424,28 +456,28 @@ $(function() {
   });
 
   // shows/hides navigation’s popover if class 'expanded'
-  $('#triggerMenu').on('click touchstart', function(event) {
+  $('#triggerMenu').on('click touchstart', function(e) {
     showHideNav();
-    event.preventDefault();
+    e.preventDefault();
   });
 
   // clicking anywhere inside navigation or heading won’t close navigation’s popover
-  $('header nav').on('click touchstart', function(event){
-    event.stopPropagation();
+  $('header nav').on('click touchstart', function(e){
+    e.stopPropagation();
   });
 
   // clicking on secondary nav shows primary manu
-  $('header .nav--secondary').on('click touchstart', function(event){
+  $('header .nav--secondary').on('click touchstart', function(e){
     if ($('header').hasClass('hidden')) {
       $('header').removeClass('hidden');
-      event.preventDefault();
+      e.preventDefault();
     }
   });
 
-  $('main').on('click touchstart', function(event) {
+  $('main').on('click touchstart', function(e) {
     if ($('header').hasClass('nav--showMenu')) {
       hideNav();
-      event.preventDefault();
+      e.preventDefault();
     }
   });
 
@@ -462,7 +494,7 @@ $(function() {
   function showNav() {
     $('header').removeClass('hidden').addClass('nav--showMenu');
     $('body, html').addClass('content--toSide');
-    window.setTimeout(function(){$('body').addClass('page--noScroll');}, 200); // Firefox hack. Hides scrollbar as soon as menu animation is done
+    window.setTimeout(function(){$('body').addClass('page--noScroll');}, 10); // Firefox hack. Hides scrollbar as soon as menu animation is done
     $('header nav a').attr('tabindex', ''); // links inside navigation should be TAB selectable
   }
 

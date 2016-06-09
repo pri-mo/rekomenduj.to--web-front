@@ -10,14 +10,14 @@
   @if $self {
     &,
     &:hover,
-    &:active,
-    &:focus {
+    &:active {
+    // &:focus {
       @content;
     }
   } @else {
     &:hover,
-    &:active,
-    &:focus {
+    &:active {
+    // &:focus {
       @content;
     }
   }

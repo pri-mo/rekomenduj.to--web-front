@@ -8,7 +8,9 @@ module.exports = function (grunt) {
         options: {
           style: 'compressed',
           precision: 8,
-          compass: true,
+          // compass: true,
+          // noCache: true,
+          // sourcemap: 'none',
         },
         files: {
           'build/assets/css/main.min.css': [
