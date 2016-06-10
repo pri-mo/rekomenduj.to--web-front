@@ -10,7 +10,7 @@ $(function() {
   hideShowOffset = 10; // scrolling value after which triggers hide/show menu
 
   // on scroll hide/show menu
-  $(window).scroll(function() {
+  $(window).on('scroll load', function() {
 
     if (!$('header').hasClass('nav--showMenu')) {
 

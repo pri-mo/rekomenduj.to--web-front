@@ -40,7 +40,6 @@ $tagsTemplate = 'template--steps';
 
       <div class="input">
         <input tabindex name="user-phone" id="user-phone" type="tel" autocomplete="tel"
-        //  pattern="[0-9]{9}|[0-9]{3} [0-9]{3} [0-9]{3}|[0-9]{3}-[0-9]{3}-[0-9]{3}"
         pattern="[0-9]{9}|[0-9]{4}[0-9]{9}|\+[0-9]{2}[0-9]{9}"
         spellcheck="false" placeholder="np. 600500400">
         <label for="user-phone"

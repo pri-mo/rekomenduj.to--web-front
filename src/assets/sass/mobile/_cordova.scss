@@ -6,13 +6,19 @@
 .platform-browser {}
 
 // Application is running on the device, as the device uses Cordova to display the application
-.platform-cordova {}
+.platform-cordova {
+  * {-webkit-touch-callout: none !important; -webkit-user-select: none !important;}
+}
 
 // Application is running within a webview on the device within a native application
-.platform-webview {}
+.platform-webview {
+  * {-webkit-touch-callout: none !important; -webkit-user-select: none !important;}
+}
 
 // The device is iOS; therefore, the iOS treatment
 .platform-ios {
+  * {-webkit-touch-callout: none !important; -webkit-user-select: none !important;}
+  
   $statusbar: 20px;
 
   // Just a fake iOS status bar
@@ -59,7 +65,12 @@
 }
 
 // iOS device is an iPad - this class is applied, in addition to platform-ios
-.platform-ipad {}
+.platform-ipad {
+  // BACKLOG Test app on iPad and provide appropriate styles
+  * {-webkit-touch-callout: none !important; -webkit-user-select: none !important;}
+}
 
 // The device is Android; therefore, the Android treatment
-.platform-android {}
+.platform-android {
+  * {-webkit-touch-callout: none !important; -webkit-user-select: none !important;}
+}

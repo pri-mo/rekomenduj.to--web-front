@@ -40,6 +40,7 @@
       if (event.target.id == 'modal__close') {
         $('#modal').fadeOut(300, function() { $(this).remove(); });
       }
+      return false;
     });
 
     // Show modal as setup

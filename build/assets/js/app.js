@@ -40,6 +40,7 @@
       if (event.target.id == 'modal__close') {
         $('#modal').fadeOut(300, function() { $(this).remove(); });
       }
+      return false;
     });
 
     // Show modal as setup
@@ -69,6 +70,11 @@ function updKids() {
   var nowKids = $("#kidsInputs .grid__container").length;
   var r = -1*(nowKids-kids);
   var n = 0;
+  var today = new Date();
+  var dd = today.getDate();
+  var m = today.getMonth()+1; //January is 0!
+  var mm = (m <= 9) ? '0' + m : m;
+  var yyyy = today.getFullYear();
 
   if(kids === 0) {
     $("#kidsInputs .grid__container").remove();
@@ -80,7 +86,7 @@ function updKids() {
         '  <div class="grid__item grid__item--1of2">' +
         '    <div class="input input--date input--show-label">' +
         '      <input tabindex' +
-        '      name="user-baby' + n + '-bday" id="user-baby' + n + '-bday" type="date"' +
+        '      name="user-baby' + n + '-bday" id="user-baby' + n + '-bday" type="date" max="' + yyyy + '-' + mm + '-' + dd + '"' +
         '      autocomplete="baby' + n + '-bday"' +
         '      required' +
         '      spellcheck="true"' +
@@ -186,6 +192,7 @@ function updKids() {
 
 //// Do stuff after page load
 $(function() {
+
   $('body').removeClass('preload');
 
   $('a[href]:not(.roll-out__trigger):not(.no-ripple)').click( function(e) {
@@ -245,7 +252,7 @@ $(function() {
   //// ... on links and buttons
   $('a:not(.no-ripple), button:not(.no-ripple), .ripple').click(function(e){
     if($(this).find('.ink').length === 0){
-      $(this).prepend('<span class="ink"></span>');
+      $(this).append('<span class="ink"></span>');
     }
 
     ink = $(this).find('.ink');
@@ -260,17 +267,16 @@ $(function() {
     y = e.pageY - $(this).offset().top - ink.height()/2;
 
     ink.css({top: y+'px', left: x+'px'}).addClass('animate');
-    return false;
   });
 
   //// ... on inputs
   $('.input').click(function(e){
     if($(this).find('.input__field').length === 0){
-      $(this).prepend('<div class="input__field"></div>');
+      $(this).append('<div class="input__field"></div>');
     }
 
     if($(this).find('.input__field .ink').length === 0){
-      $(this).find('.input__field').prepend('<span class="ink"></span>');
+      $(this).find('.input__field').append('<span class="ink"></span>');
     }
 
     ink = $(this).find('.input__field .ink');
@@ -303,7 +309,7 @@ $(function() {
   });
 
   // Correct input styles on page enter — in case values passing/set
-  $(document).on('change ready', function() {
+  $(window).on('change pageshow', function(e) {
     $('input, select, textarea').updLabels();
   });
 
@@ -315,7 +321,7 @@ $(function() {
     var inputName = this.name;
     var inputVal = this.value;
     localStorage.setItem(inputName, inputVal);
-    console.log(localStorage);
+    // console.log(localStorage);
   });
 
   // fill data if exists
@@ -346,6 +352,7 @@ $(function() {
     } else {
       $('#password').attr('type', 'password').focus();
     }
+    return false;
   });
 
 
@@ -354,6 +361,7 @@ $(function() {
   $('.roll-out__trigger').on('click', function(e) {
     e.preventDefault();
     $(this).parent().toggleClass('roll-out--opened');
+    return false;
   });
 
 
@@ -361,6 +369,7 @@ $(function() {
   $('#triggerLogo').on('click', function(e) {
     e.preventDefault();
     window.location = '/';
+    return false;
   });
 
 
@@ -386,14 +395,20 @@ $(function() {
   }
 
   $(document).on('ready', function(e) {
-    if ($('#kidsNumber').length)
-    updKids();
+    if ($('#kidsNumber').length) updKids();
   });
 
   // Adding and deleting kids
   $(document).on('change', '#kidsNumber', function() {
     updKids();
   });
+
+  // Some input masking
+  // NOTE Disabled Formater for the time being as it disabled localStorage saveing on change
+  // new Formatter(document.getElementById('user-phone'), {
+  //   'pattern': '+48{{999999999}}',
+  //   'persistent': false
+  // });
 
 });
 ;
@@ -409,7 +424,7 @@ $(function() {
   hideShowOffset = 10; // scrolling value after which triggers hide/show menu
 
   // on scroll hide/show menu
-  $(window).scroll(function() {
+  $(window).on('scroll load', function() {
 
     if (!$('header').hasClass('nav--showMenu')) {
 
@@ -553,13 +568,13 @@ $(function() {
 
       if (ischecked) {
         if (!$(this).parent().hasClass('no-card')) { // check if should add card
-          $(this).parent().addClass('layout--card-3 picked');
+          $(this).parent().addClass('layout--card-3 paint--accent picked');
         } else {
           $(this).parent().addClass('picked');
         }
       } else {
         if (!$(this).parent().hasClass('no-card')) { // check if should add card
-          $(this).parent().removeClass('layout--card-3 picked');
+          $(this).parent().removeClass('layout--card-3 paint--accent picked');
         } else {
           $(this).parent().removeClass('picked');
         }
@@ -595,17 +610,17 @@ $(function() {
 
   //// The number input
   $('.input--number').each(function() {
-    var plus = $(this).find('.number__more'),
-    minus = $(this).find('.number__less'),
-    numberInput = $(this).find('input[type=number], input[type=tel]'),
-    n = Number(numberInput.val()),
-    min = numberInput.attr('min'),
-    max = numberInput.attr('max'),
-    step = (numberInput.attr('step')) ? Number(numberInput.attr('step')) : 1,
-    suffix = $(this).find('.number__suffix'),
-    suffixData = suffix.data(),
-    burst,
-    burstDelay;
+    var plus = $(this).find('.number__more');
+    var minus = $(this).find('.number__less');
+    var numberInput = $(this).find('input[type=number], input[type=tel]');
+    var n = Number(numberInput.val());
+    var min = numberInput.attr('min');
+    var max = numberInput.attr('max');
+    var step = (numberInput.attr('step')) ? Number(numberInput.attr('step')) : 1;
+    var suffix = $(this).find('.number__suffix');
+    var suffixData = suffix.data();
+    var burst;
+    var burstDelay;
 
     // [i] Init suffix state
     if ( Math.abs(n) >= 5 ) {

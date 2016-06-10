@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 $navHeight: 4rem;
-$menuWidth: calc(100% - 4rem);
+$menuWidth: calc(100% - 3.64rem);
 
 // Nav realted body setup
 body {
@@ -28,7 +28,7 @@ body {
 
   &.nav--single {padding-top: $navHeight;}
   &.nav--double {padding-top: $navHeight * 2;}
-  &.nav--transparent {
+  &.nav--transparent:not(.template--poll) {
     main > section:first-of-type {padding-top: $navHeight + .5rem}
   }
 }
@@ -62,7 +62,7 @@ header {
 
 
   .nav--transparent &:not(.scrolled):not(.nav--showMenu) {
-    @include linear-gradient( rgba($text-color, .36), rgba($text-color, 0), $fallback: 'transparent');
+    @include linear-gradient( rgba($text-color, .22), rgba($text-color, 0), $fallback: 'transparent');
 
     .nav--primary, .nav--secondary {
       background-color: rgba($brand-color, 0);
@@ -186,8 +186,9 @@ nav a { color: rgba($white, .64); text-decoration: none;
   padding: 1rem;
 
   .content--toSide &::before {
-    display: block; content: ''; position: absolute; left: 100%; top: 0;bottom: 0; width: 5px;
-    @include linear-gradient( 90deg,  rgba(0,0,0,.33), rgba(0,0,0,.0), $fallback: transparent );
+    display: block; content: ''; position: absolute; left: 99%; top: 0;bottom: 0; width: 1%;
+    @include linear-gradient( -90deg,  rgba(0,0,0,.11), rgba(0,0,0,.0), $fallback: transparent );
+    z-index: 11;
   }
 
   .nav__position { margin: .11rem 0;}

@@ -18,6 +18,11 @@ function updKids() {
   var nowKids = $("#kidsInputs .grid__container").length;
   var r = -1*(nowKids-kids);
   var n = 0;
+  var today = new Date();
+  var dd = today.getDate();
+  var m = today.getMonth()+1; //January is 0!
+  var mm = (m <= 9) ? '0' + m : m;
+  var yyyy = today.getFullYear();
 
   if(kids === 0) {
     $("#kidsInputs .grid__container").remove();
@@ -29,7 +34,7 @@ function updKids() {
         '  <div class="grid__item grid__item--1of2">' +
         '    <div class="input input--date input--show-label">' +
         '      <input tabindex' +
-        '      name="user-baby' + n + '-bday" id="user-baby' + n + '-bday" type="date"' +
+        '      name="user-baby' + n + '-bday" id="user-baby' + n + '-bday" type="date" max="' + yyyy + '-' + mm + '-' + dd + '"' +
         '      autocomplete="baby' + n + '-bday"' +
         '      required' +
         '      spellcheck="true"' +

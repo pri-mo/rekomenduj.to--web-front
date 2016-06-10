@@ -453,7 +453,7 @@
 
 // The Inverse themes
 //// Navy
-.paint--navy .input,
+.paint--brand .input,
 .paint--gradient .input,
 [class^='paint--back-'] .input,
 [class*=' paint--back-'] .input,
@@ -472,7 +472,7 @@
 // }
 
 //// Sky
-.paint--sky .input {
+.paint--comp .input {
   @include input($static: $white, $focus: $brand-color, $ink: rgba($white, .22), $ratio: $golden );
 
   // Checkbox
@@ -491,7 +491,7 @@
 }
 
 //// Red
-.paint--red .input {
+.paint--accent .input {
   @include input($static: $bright, $focus: $white, $ink: rgba($white, .22), $ratio: $perfect-fourth );
 
   ////// Checkbox

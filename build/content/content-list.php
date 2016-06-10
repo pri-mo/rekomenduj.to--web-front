@@ -12,7 +12,7 @@ switch ($contentItems) {
   case 'polls':
     $itemType = 'list-item--poll';
     $itemLabel = 'Opowiedz nam o...';
-    $itemLink = '#dontmove';
+    $itemLink = 'poll.php';
     $headerIcon = 'rg-poll';
     $headerTitle = 'Ankiety dla Ciebie';
     break;

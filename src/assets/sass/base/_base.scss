@@ -132,9 +132,9 @@ section {
 
   &.transparent--inverse { background-color: rgba( 255,255,255, 0); color: $bright; }
   &.paint--white { background-color: $bright; box-shadow: 0 0 0 1px rgba($text-color, .05); }
-  &.paint--navy { background-color: $brand-color; color: $bright; }
-  &.paint--sky { background-color: $comp-color; color: $bright; }
-  &.paint--red { background-color: $accent-color; color: $bright; }
+  &.paint--brand { background-color: $brand-color; color: $bright; }
+  &.paint--comp { background-color: $comp-color; color: $bright; }
+  &.paint--accent { background-color: $accent-color; color: $bright; }
 
   &.group, .layout__group & {
     margin-bottom: 0; margin-top: 0;
@@ -183,9 +183,9 @@ section {
       &:last-child { margin-bottom: 0; }
     }
 
-    &.paint--navy { background-color: tint($brand-color, ( ( $n - 1 ) * 3% ) ); color: $bright; box-shadow: nth($shadows-heavy, $n);}
-    &.paint--sky { background-color: tint($comp-color, ( ( $n - 1 ) * 3% ) ); color: $bright; box-shadow: nth($shadows, $n);}
-    &.paint--red { background-color: tint($accent-color, ( ( $n - 1 ) * 3% ) ); color: $bright; box-shadow: nth($shadows-heavy, $n);}
+    &.paint--brand { background-color: tint($brand-color, ( ( $n - 1 ) * 3% ) ); color: $bright; box-shadow: nth($shadows-heavy, $n);}
+    &.paint--comp { background-color: tint($comp-color, ( ( $n - 1 ) * 3% ) ); color: $bright; box-shadow: nth($shadows, $n);}
+    &.paint--accent { background-color: tint($accent-color, ( ( $n - 1 ) * 3% ) ); color: $bright; box-shadow: nth($shadows-heavy, $n);}
 
     &.transparent { background-color: rgba( 255,255,255, ( $n * 0.01 ) ); }
     &.transparent--inverse { background-color: rgba( 255,255,255, ( ( $n - 1 ) * .02 ) ); color: $bright; }
@@ -234,7 +234,7 @@ a:not(no-ripple), .ripple {
   position: relative;
   overflow: hidden !important;
   // @include perspective(1000px);
-  @include transform(translate3d(0, 0, 0px));
+  @include transform(translate3d(0, 0, 0));
   @include backface-visibility(hidden);
 }
 
@@ -248,7 +248,7 @@ a:not(no-ripple), .ripple {
   // & ~ & {display: none;}
 
   [class^="layout--card-"] & { background-color: rgba($grey, .11); }
-  .paint--navy &,
+  .paint--brand &,
   .cover__container & { background-color: rgba($white, .36); }
 }
 

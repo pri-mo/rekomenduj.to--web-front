@@ -69,12 +69,12 @@
     }
   }
 
-  [data-icon] { font-size: 1.25em; line-height: 1; display: inline-block; margin-bottom: -.1em;}
+  [data-icon] { font-size: 1.25em; line-height: 1; display: inline-block; position: relative; top: -.1em; margin-bottom: -.3em;}
 
   &.button--icon {
-    padding: 0; height: (1.36rem * 3); width: (1.36rem * 3);
+    padding: 0; @include size((1.36rem * 3));
 
-    [data-icon] { position: absolute; left: 50%; top: 52%; @include transform(translate(-50%, -50%));}
+    [data-icon] { position: absolute; left: 50%; top: 52%; @include transform($moveToCenter);}
   }
 }
 
@@ -84,14 +84,14 @@ button, .button {
   @include button($face: rgba($white, 0), $p: 0px);
 
   // Paint related buttons
-  .paint--navy &,
+  .paint--brand &,
   [class^='paint--back-'] &,
   [class*=' paint--back-'] &,
   .paint--gradient & {
     @include button($content: $white, $frame: .36, $p: 0px, $face: rgba($text-color, .036));
   }
-  .paint--sky &,
-  .paint--red & {
+  .paint--comp &,
+  .paint--accent & {
     @include button($content: $white, $frame: 0);
   }
 

@@ -28,6 +28,7 @@ $tagsTemplate = 'template--steps';
 
       $step = 1; $stepMax = 5;
       $stepperHeader = 'Podaj swoje imię i nazwisko, <br>datę urodzenia oraz płeć.';
+      $maxDate = date('Y-m-d', strtotime('-14 years'));
       $stepperContent = <<<STEPPERCONTENT
 
       <div class="input">
@@ -60,7 +61,7 @@ $tagsTemplate = 'template--steps';
         <div class="grid__item grid__item--1of2">
           <div class="input input--date input--show-label">
             <input tabindex
-            name="user-birthday" id="user-birthday" type="date"
+            name="user-birthday" id="user-birthday" type="date" max="{$maxDate}"
             autocomplete="birthday"
             required
             spellcheck="true"

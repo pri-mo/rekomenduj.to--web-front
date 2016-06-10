@@ -80,7 +80,7 @@ $shadows-heavy: $shadow-1a, $shadow-2a, $shadow-3a, $shadow-4a;
 /// @type CSS
 $transition: .36s !default;
 $transition-l: .64s !default;
-$moveToCenter: translate(-50%, -50%) !default;
+$moveToCenter: translate3d(-50%, -50%, 0) !default;
 
 
 

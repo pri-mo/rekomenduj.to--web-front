@@ -4,8 +4,8 @@ $lang = 'pl';
 
 $tagsBodyBasic = 'preload device--mobile'; // platform-ios
 
-$tagsNav = 'nav--transparent';
-$tagsTemplate = 'template--contentlist template--poll-list';
+$tagsNav = 'nav--single';
+$tagsTemplate = 'template--contentlist template--poll';
 
 ?>
 
@@ -26,10 +26,9 @@ $tagsTemplate = 'template--contentlist template--poll-list';
     <main>
 
       <?php
-      $contentItems = "polls";
-      // $contentItemsCount = 10;
+      // $set defaults
 
-      include 'content/content-list.php'
+      include 'content/poll_question.php'
 
       ?>
 
@@ -39,8 +38,6 @@ $tagsTemplate = 'template--contentlist template--poll-list';
   </div>
 
   <?php
-  $masonry = true;
-
   include 'elements/eof-scripts.php'
   ?>
 </body>

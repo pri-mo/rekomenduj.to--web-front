@@ -6,6 +6,7 @@
 
 //// Do stuff after page load
 $(function() {
+
   $('body').removeClass('preload');
 
   $('a[href]:not(.roll-out__trigger):not(.no-ripple)').click( function(e) {
@@ -65,7 +66,7 @@ $(function() {
   //// ... on links and buttons
   $('a:not(.no-ripple), button:not(.no-ripple), .ripple').click(function(e){
     if($(this).find('.ink').length === 0){
-      $(this).prepend('<span class="ink"></span>');
+      $(this).append('<span class="ink"></span>');
     }
 
     ink = $(this).find('.ink');
@@ -80,17 +81,16 @@ $(function() {
     y = e.pageY - $(this).offset().top - ink.height()/2;
 
     ink.css({top: y+'px', left: x+'px'}).addClass('animate');
-    return false;
   });
 
   //// ... on inputs
   $('.input').click(function(e){
     if($(this).find('.input__field').length === 0){
-      $(this).prepend('<div class="input__field"></div>');
+      $(this).append('<div class="input__field"></div>');
     }
 
     if($(this).find('.input__field .ink').length === 0){
-      $(this).find('.input__field').prepend('<span class="ink"></span>');
+      $(this).find('.input__field').append('<span class="ink"></span>');
     }
 
     ink = $(this).find('.input__field .ink');
@@ -123,7 +123,7 @@ $(function() {
   });
 
   // Correct input styles on page enter — in case values passing/set
-  $(document).on('change ready', function() {
+  $(window).on('change pageshow', function(e) {
     $('input, select, textarea').updLabels();
   });
 
@@ -135,7 +135,7 @@ $(function() {
     var inputName = this.name;
     var inputVal = this.value;
     localStorage.setItem(inputName, inputVal);
-    console.log(localStorage);
+    // console.log(localStorage);
   });
 
   // fill data if exists
@@ -166,6 +166,7 @@ $(function() {
     } else {
       $('#password').attr('type', 'password').focus();
     }
+    return false;
   });
 
 
@@ -174,6 +175,7 @@ $(function() {
   $('.roll-out__trigger').on('click', function(e) {
     e.preventDefault();
     $(this).parent().toggleClass('roll-out--opened');
+    return false;
   });
 
 
@@ -181,6 +183,7 @@ $(function() {
   $('#triggerLogo').on('click', function(e) {
     e.preventDefault();
     window.location = '/';
+    return false;
   });
 
 
@@ -206,13 +209,19 @@ $(function() {
   }
 
   $(document).on('ready', function(e) {
-    if ($('#kidsNumber').length)
-    updKids();
+    if ($('#kidsNumber').length) updKids();
   });
 
   // Adding and deleting kids
   $(document).on('change', '#kidsNumber', function() {
     updKids();
   });
+
+  // Some input masking
+  // NOTE Disabled Formater for the time being as it disabled localStorage saveing on change
+  // new Formatter(document.getElementById('user-phone'), {
+  //   'pattern': '+48{{999999999}}',
+  //   'persistent': false
+  // });
 
 });

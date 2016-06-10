@@ -142,7 +142,7 @@
         <div class="grid__item grid__item--1of2">
           <div class="input input--date input--show-label">
             <input tabindex
-            name="user-birthday" id="user-birthday" type="date"
+            name="user-birthday" id="user-birthday" type="date" <?php echo 'max="' . date('Y-m-d', strtotime('-14 years')) . '"'; ?>
             autocomplete="birthday"
             required
             spellcheck="true"

@@ -23,13 +23,13 @@ $(function() {
 
       if (ischecked) {
         if (!$(this).parent().hasClass('no-card')) { // check if should add card
-          $(this).parent().addClass('layout--card-3 picked');
+          $(this).parent().addClass('layout--card-3 paint--accent picked');
         } else {
           $(this).parent().addClass('picked');
         }
       } else {
         if (!$(this).parent().hasClass('no-card')) { // check if should add card
-          $(this).parent().removeClass('layout--card-3 picked');
+          $(this).parent().removeClass('layout--card-3 paint--accent picked');
         } else {
           $(this).parent().removeClass('picked');
         }
@@ -65,17 +65,17 @@ $(function() {
 
   //// The number input
   $('.input--number').each(function() {
-    var plus = $(this).find('.number__more'),
-    minus = $(this).find('.number__less'),
-    numberInput = $(this).find('input[type=number], input[type=tel]'),
-    n = Number(numberInput.val()),
-    min = numberInput.attr('min'),
-    max = numberInput.attr('max'),
-    step = (numberInput.attr('step')) ? Number(numberInput.attr('step')) : 1,
-    suffix = $(this).find('.number__suffix'),
-    suffixData = suffix.data(),
-    burst,
-    burstDelay;
+    var plus = $(this).find('.number__more');
+    var minus = $(this).find('.number__less');
+    var numberInput = $(this).find('input[type=number], input[type=tel]');
+    var n = Number(numberInput.val());
+    var min = numberInput.attr('min');
+    var max = numberInput.attr('max');
+    var step = (numberInput.attr('step')) ? Number(numberInput.attr('step')) : 1;
+    var suffix = $(this).find('.number__suffix');
+    var suffixData = suffix.data();
+    var burst;
+    var burstDelay;
 
     // [i] Init suffix state
     if ( Math.abs(n) >= 5 ) {
