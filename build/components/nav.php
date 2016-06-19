@@ -31,7 +31,7 @@
   <?php
   if (strpos($tagsNav, 'nav--double') !== false) {
     $locationName = 'Johny Walker\'s Whiskey Honey';
-    include 'elements/nav-secondary.php';
+    include 'components/nav-secondary.php';
   }
   ?>
 </header>

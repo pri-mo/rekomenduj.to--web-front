@@ -12,16 +12,16 @@ $tagsTemplate = 'template--contentlist template--poll-list';
 <!DOCTYPE html>
 <html lang="<?php echo $lang ?>">
 <head>
-  <?php include 'elements/head.php' ?>
+  <?php include 'components/head.php' ?>
 </head>
 
 <body class="<?php echo $tagsBodyBasic . ' ' . $tagsNav . ' ' . $tagsTemplate ?>">
   <!-- <img src="assets/images/phonegap.png" id="iOSbar" alt="" /> -->
-  <?php include 'elements/bof-scripts.php' ?>
+  <?php include 'components/bof-scripts.php' ?>
 
   <div class="page__wrapper">
 
-    <?php include 'elements/nav.php' ?>
+    <?php include 'components/nav.php' ?>
 
     <main>
 
@@ -35,13 +35,13 @@ $tagsTemplate = 'template--contentlist template--poll-list';
 
     </main>
 
-    <?php include 'elements/footer.php' ?>
+    <?php include 'components/footer.php' ?>
   </div>
 
   <?php
   $masonry = true;
 
-  include 'elements/eof-scripts.php'
+  include 'components/eof-scripts.php'
   ?>
 </body>
 </html>

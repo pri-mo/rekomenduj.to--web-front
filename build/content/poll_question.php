@@ -6,86 +6,110 @@ date_default_timezone_set("Europe/Warsaw");
 // use the factory to create a Faker\Generator instance
 $faker = Faker\Factory::create('pl_PL');
 
+$q = (isset($q) && ($q!=null)) ? $q : 1 ; // prevent pointless errors
+
 $itemCount = empty($contentItemsCount) ? 15 : $contentItemsCount;
-$randChoice = $faker->numberBetween($min = 0, $max = $itemCount);
+$randChoice = $faker->numberBetween($min = 1, $max = 64);
+$answerCount = $faker->numberBetween($min = 3, $max = 8);
 
-switch ($randChoice) {
-  case 'polls':
-    $itemType = 'list-item--poll';
-    $itemLabel = 'Opowiedz nam o...';
-    $itemLink = '#dontmove';
-    $headerIcon = 'rg-poll';
-    $headerTitle = 'Ankiety dla Ciebie';
-    break;
+$multiple = (isset($multiple) && ($multiple!=null)) ? $multiple : 'false' ; // prevent pointless errors
 
-  case 'campaigns':
-    $itemType = 'list-item--campaign';
-    $itemLabel = 'Kampania dla Ciebie';
-    $itemLink = '#dontmove';
-    $headerIcon = 'rg-campaign';
-    $headerTitle = 'Kampanie dla Ciebie';
-    break;
+// Get question content or set dummy text
+$questionIntro = (isset($questionIntro) && ($questionIntro!=null) ? $questionIntro : $faker->sentence );
+$questionCall = (isset($questionCall) && ($questionCall!=null) ? $questionCall : $faker->sentence );
 
-  case 'promos':
-    $itemType = 'list-item--promo';
-    $itemLabel = 'Promocja';
-    $itemLink = '#dontmove';
-    $headerIcon = 'rg-promotion';
-    $headerTitle = 'Promocje dla Ciebie';
-    break;
+
+switch ($multiple) {
+  case 'true':
+  $checkType = "checkbox";
+  $extraInfo = (isset($extraInfo) && ($extraInfo!=null)) ? $extraInfo : "Możesz zaznaczyć kilka odpowiedzi";
+  break;
+
+  case ($multiple > 1):
+  $checkType = "checkbox";
+  $extraInfo = "Możesz zaznaczyć tylko {$multiple} odpowiedzi";
+  $maximumPick = $multiple;
+  break;
 
   default:
-    # code...
-    break;
+  $checkType = "radio";
+  $extraInfo = (isset($extraInfo) && ($extraInfo!=null)) ? $extraInfo : "Zaznacz jedną odpowiedź";
+  break;
 }
+
 ?>
 
 <section class="layout--base poll__info">
   <span class="help__flip">
     <div class="poll__icon" data-icon="t"></div>
-    <div class="poll__name" data-label="Ankieta"><?php echo $faker->sentence ?></div>
+    <div class="poll__name" data-label="Ankieta"><?php echo $faker->sentence; ?></div>
   </span>
 </section>
 
 <section class="layout--base poll__question">
-  <div class="question__name" data-label="Pytanie 5" data-extrainfo="Możesz zaznaczyć kilka odpowiedzi">
+  <div class="question__name" data-label="Pytanie <?php echo $q; ?>" data-extrainfo="<?php echo $extraInfo; ?>">
     <?php
-      if ($randChoice % 2 === 0) {
-        echo "<div class='question__img'><img onerror='imgBroken(this)' src='https://unsplash.it/{$faker->randomElement($array = array ('800', '600'))}/{$faker->randomElement($array = array ('800', '600'))}?image={$faker->numberBetween($min = 0, $max = 1084)}' alt=''></div>";
-      }
+    if ($randChoice % 3 === 0) {
+      echo "<div class='question__img'><img onerror='imgBroken(this)' src='https://unsplash.it/{$faker->randomElement($array = array ('800', '600'))}/{$faker->randomElement($array = array ('800', '600'))}?image={$faker->numberBetween($min = 0, $max = 1084)}' alt=''></div>";
+    }
     ?>
     <?php
-      if ($randChoice % 3 === 0) {
-        echo "<div class='question__vid'><iframe src='https://www.youtube.com/embed/Wk5qT_814xM' frameborder='0' allowfullscreen></iframe></div>";
-      }
+    if ($randChoice % 7 === 0) {
+      echo "<div class='question__vid'><iframe src='https://www.youtube.com/embed/Wk5qT_814xM' frameborder='0' allowfullscreen></iframe></div>";
+    }
     ?>
-    <p><?php echo $faker->sentence ?></p>
-    <p><strong><?php echo $faker->sentence ?></strong></p>
+    <p><?php echo $questionIntro ?></p>
+    <p><strong><?php echo $questionCall ?></strong></p>
   </div>
 </section>
 
+<?php if ($answerType == 'drag') { include 'components/elements/drag_buckets.php'; } ?>
 
-<section class="layout--base poll__answers">
-  <form class="layout__group" id="check-answer">
-    <label class="layout--card-1 ripple answer answer--pick"><input name="check-answer" value="1" type="checkbox"><span data-icon="y"></span><?php echo $faker->sentence ?></label>
-    <label class="layout--card-1 ripple answer answer--pick"><input name="check-answer" value="2" type="checkbox"><span data-icon="y"></span><?php echo $faker->sentence ?></label>
-    <label class="layout--card-1 ripple answer answer--pick"><input name="check-answer" value="3" type="checkbox"><span data-icon="y"></span><?php echo $faker->sentence ?></label>
-    <label class="layout--card-1 ripple answer answer--pick"><input name="check-answer" value="4" type="checkbox"><span data-icon="y"></span><?php echo $faker->sentence ?></label>
-    <label class="layout--card-1 ripple answer answer--pick answer--input" for="check-answer-5">
-      <input id="check-answer-5" name="check-answer" value="5" type="checkbox"><span data-icon="y"></span>Inne
-      <div class="input">
-        <input tabindex name="check-answer" id="text" type="text" spellcheck="true" placeholder="Podaj swoją odpowiedź">
-        <label for="text"
-        data-focused="Twoja odpowiedź"
-        data-original="Podaj swoją odpowiedź"
-        data-invalid="Bez tego się nie obejdzie">Podaj swoją odpowiedź</label>
-      </div>
-    </label>
+<section class="layout--base poll__answers <?php echo (isset($imageGrid) ? "poll__answers--grid" : ''); ?>" <?php echo (isset($maximumPick) && ($maximumPick!=null) ? "data-max-pick='{$maximumPick}'" : '' ); ?>>
+  <?php if ($answerType != 'drag') { ?>
+  <form name="question<?php echo $q; ?>" id="question<?php echo $q; ?>" class="layout__group" data-answercount="<?php echo $answerCount; ?>">
+  <?php } ?>
+
+    <?php
+    // Answer types
+    switch ($answerType) {
+      case 'pick':
+      include "components/elements/answer_pick.php";
+      break;
+
+      case 'kids':
+      include "components/elements/answer_kids.php";
+      break;
+
+      case 'longform':
+      include "components/elements/answer_longform.php";
+      break;
+
+      case 'images':
+      include "components/elements/answer_images.php";
+      break;
+
+      case 'drag':
+      include "components/elements/answer_drag.php";
+      break;
+
+      case 'sort':
+      include "components/elements/answer_sort.php";
+      break;
+
+      default:
+        # code...
+      break;
+    }
+    ?>
+
   </form>
 </section>
+
 
 <section class="layout--base poll__nav">
   <!-- TODO Fix the back button with proper destination on final build -->
   <a href="javascript:history.go(-1)" class="button button--icon"><span data-icon="F"></span></a>
-  <button type="submit" form="question{$n}" formaction="question-{$n+1}.html" class="poll__nav--forward">Dalej <span data-icon="E"></span></button>
+  <!-- <button type="submit" form="question<?php echo $randChoice; ?>" formaction="" class="poll__nav--forward">Dalej <span data-icon="E"></span></button> -->
+  <a href="/poll.php?p=1&q=<?php echo ++$q; ?>" class="poll__nav--forward">Dalej <span data-icon="E"></span></a>
 </section>

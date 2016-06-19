@@ -83,13 +83,14 @@ header {
     font-size: 1.64rem;
     position: absolute; top: 50%; padding: .5rem;
     cursor: pointer;
-    line-height: 1;
+    // line-height: 1;
 
     &:focus, &:active { animation: blink .36s; outline: none; }
   }
   .nav__icon--back { left: .5rem; @include transform(translate( 0%, -50% ));}
   .nav__icon--logo { font-size: $navHeight/2; left: 50%; @include transform(translate( -50%, -50% ));}
-  .nav__icon--inbox { right: 1rem; @include transform(translate( 0%, -50% ));
+  .nav__icon--inbox { right: 1rem; line-height: 1; @include transform(translate( 0%, -50% ));
+    &:before {top: 0;}
     &.inbox--notify {
       &:before { content: "\4e"; }
       &:after { content: ''; display: block;

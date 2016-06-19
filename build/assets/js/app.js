@@ -40,7 +40,7 @@
       if (event.target.id == 'modal__close') {
         $('#modal').fadeOut(300, function() { $(this).remove(); });
       }
-      return false;
+      return;
     });
 
     // Show modal as setup
@@ -123,6 +123,38 @@ function updKids() {
   }
 }
 
+// Update pick answers
+function updPicks() {
+  $('.answer--pick > input').each(function() {
+    var ischecked = $(this).is(':checked'),
+        isdisabled = $(this).prop('disabled');
+
+    if (ischecked) {
+      if (!$(this).parent().hasClass('no-card')) { // check if should add card
+        $(this).parent().addClass('layout--card-3 paint--accent picked');
+        $(this).parent().find('.input > input').focus();
+      } else {
+        $(this).parent().addClass('picked');
+        $(this).parent().find('.input > input').focus();
+      }
+    } else {
+      if (!$(this).parent().hasClass('no-card')) { // check if should add card
+        $(this).parent().removeClass('layout--card-3 paint--accent picked');
+        $(this).parent().find('.input > input').off('focus');
+      } else {
+        $(this).parent().removeClass('picked');
+        $(this).parent().find('.input > input').off('focus');
+      }
+    }
+
+    if (isdisabled) {
+      $(this).parent().addClass('disabled');
+    } else {
+      $(this).parent().removeClass('disabled');
+    }
+  });
+}
+
 // Extend jQuery
 (function( $ ) {
   $.fn.extend({
@@ -169,7 +201,7 @@ function updKids() {
         var ratioDifference = imgRatio-parRatio;
 
         if ( imgRatio >= parRatio ) {
-          if ( compareRatios < imgRatio && compareRatios < parRatio && ratioDifference > 0 && ratioDifference < 0.164 ){
+          if ( compareRatios < imgRatio && compareRatios <= parRatio && ratioDifference > 0 && ratioDifference < 0.164 ){
             if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
           } else {
             if ( !$el.hasClass('cover-width') ) $el.removeClass('cover--height').addClass('cover--width');
@@ -295,7 +327,7 @@ $(function() {
 
 
   //// Facilitate appearance change on focus when input used
-  $(document).on('focus change', 'input, select, textarea', function(e) {
+  $(document).on('focus change paste propertychange', 'input, select, textarea', function(e) {
     var label = $(this).next('label');
     // console.log(e.type);
 
@@ -553,8 +585,10 @@ $(function() {
 $(function() {
 
   // Highlight the selected option
-  $('.answer--pick > input').on('change', function() {
+  $(document).on('change propertychange', '.answer--pick > input', function(e) {
+
     var max = $('.poll__answers').data('maxPick');
+    console.log(max);
     if ( $(':checked').length == max ) {
         $('.answer--pick > input').prop('disabled', 'disabled');
         $(':checked').removeAttr('disabled');
@@ -562,48 +596,24 @@ $(function() {
          $('.answer--pick > input').removeAttr('disabled');
     }
 
-    $('.answer--pick > input').each(function() {
-      var ischecked = $(this).is(':checked'),
-          isdisabled = $(this).prop('disabled');
-
-      if (ischecked) {
-        if (!$(this).parent().hasClass('no-card')) { // check if should add card
-          $(this).parent().addClass('layout--card-3 paint--accent picked');
-        } else {
-          $(this).parent().addClass('picked');
-        }
-      } else {
-        if (!$(this).parent().hasClass('no-card')) { // check if should add card
-          $(this).parent().removeClass('layout--card-3 paint--accent picked');
-        } else {
-          $(this).parent().removeClass('picked');
-        }
-      }
-
-      if (isdisabled) {
-        $(this).parent().addClass('disabled');
-      } else {
-        $(this).parent().removeClass('disabled');
-      }
-    });
+    updPicks();
 
   }).change();
 
-  // A special case when there is an input inside a checkbox
-  $('.answer--pick').on('mouseup', function() {
-    var ischecked = $(this).find('[type=checkbox]').is(':checked');
 
-    if (ischecked) {
-      $(this).find('.input > input').off('focus'); // presume user unchecks
+
+  // Gdy podam nową wartość w polu tekstowym niech Checkbox się zaznacza
+  $('.answer--input input[type=text], .answer--input input[type=number]').on('propertychange change click keyup input paste', function() {
+    var inputVal = this.value;
+    // console.log(inputVal);
+    if (inputVal === '' || inputVal == '0' || inputVal === null) {
+      // console.log('pusto');
+      $(this).parent().siblings('input[type=checkbox], input[type=radio]').removeAttr('checked');
+      updPicks();
     } else {
-      $(this).find('.input > input').focus(); // presume user checks, set focus in input
+      $(this).parent().siblings('input[type=checkbox], input[type=radio]').prop('checked', true);
+      updPicks();
     }
-  });
-
-
-  // Gdy klikam w pole tekstowe to niech Checkbox się zaznacza
-  $('.answer--input input[type=text]').on('focus change', function() {
-    $(this).siblings('input[type=checkbox]').prop('checked', true);
   });
 
 
@@ -730,49 +740,43 @@ $(function() {
     revert: true,
     revertDuration: 150,
     drag: function( event, ui ) {
-      // $(this).addClass('layout--card-3 picked');
+      $(this).addClass('layout--card-4 picked');
     },
     stop: function( event, ui ) {
-      // $(this).removeClass('layout--card-3 picked');
+      $(this).removeClass('layout--card-4 picked');
     }
   });
 
   //// Koszyki
   // On sort
+  // TODO Sortable źle wyświetla pozycje przesówanego elementu.
   $('.sort-bucket--source').sortable({
+    items: '.answer--sort',
+    appendTo: $(this),
+    classes: false,
     placeholder: 'answer--sort__placeholder',
+    tolerance: 'pointer',
+  forcePlaceholderSize: true,
 
-    activate: function( event, ui ) {
+    start: function( e,ui ) {
       $(ui.item).addClass('layout--card-4 picked');
-
-      $('.sort-bucket--source').each(function() {
-        if ( $(this).children().length > 1 ) {
-          $(this).addClass('has-content');
-        } else {
-          $(this).removeClass('has-content');
-        }
-      });
     },
-    deactivate: function( event, ui ) {
-      $(ui.item).removeClass('layout--card-4 picked');
-
-      // content check
-      $('.sort-bucket--source').each(function() {
-        if ( $(this).children().length > 1 ) {
-          $(this).addClass('has-content');
-        } else {
-          $(this).removeClass('has-content');
-        }
-      });
-    }
-  });
+    sort: function( e,ui ) {
+      var thisTop = $(ui.item).position().top;
+      $(ui.item).css('top', thisTop + $(window).scrollTop());
+    },
+    stop: function( e,ui ) {
+      $(ui.item).removeAttr('style').removeClass('layout--card-4 picked');
+    },
+  }).disableSelection();
+  $('.answer--sort').disableSelection();
 
   // On drag
   $('.drag-bucket--target, .drag-bucket--source').droppable({
     addClasses: false,
     hoverClass: 'get-ready',
     drop: function( event, ui ) {
-      $(ui.draggable).removeAttr('style').appendTo( this );
+      $(ui.draggable).removeAttr('style').prependTo(this);
     },
     activate: function( event, ui ) {
       $(ui.draggable).addClass('layout--card-4 picked');
@@ -792,6 +796,7 @@ $(function() {
       $('.drag-bucket--target, .drag-bucket--source').each(function() {
         if ( $(this).children().length > 1 ) {
           $(this).addClass('has-content');
+          $(this).find('.placeholder').appendTo(this);
         } else {
           $(this).removeClass('has-content');
         }

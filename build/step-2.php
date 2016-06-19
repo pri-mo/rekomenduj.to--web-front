@@ -12,15 +12,15 @@ $tagsTemplate = 'template--steps';
 <!DOCTYPE html>
 <html lang="<?php echo $lang ?>">
 <head>
-  <?php include 'elements/head.php' ?>
+  <?php include 'components/head.php' ?>
 </head>
 
 <body class="<?php echo $tagsBodyBasic . ' ' . $tagsNav . ' ' . $tagsTemplate ?>">
-  <?php include 'elements/bof-scripts.php' ?>
+  <?php include 'components/bof-scripts.php' ?>
 
   <div class="page__wrapper">
 
-    <?php include 'elements/nav.php' ?>
+    <?php include 'components/nav.php' ?>
 
     <main>
 
@@ -56,9 +56,9 @@ STEPPERCONTENT;
 
     </main>
 
-    <?php include 'elements/footer.php' ?>
+    <?php include 'components/footer.php' ?>
   </div>
 
-  <?php include 'elements/eof-scripts.php' ?>
+  <?php include 'components/eof-scripts.php' ?>
 </body>
 </html>

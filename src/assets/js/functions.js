@@ -71,6 +71,38 @@ function updKids() {
   }
 }
 
+// Update pick answers
+function updPicks() {
+  $('.answer--pick > input').each(function() {
+    var ischecked = $(this).is(':checked'),
+        isdisabled = $(this).prop('disabled');
+
+    if (ischecked) {
+      if (!$(this).parent().hasClass('no-card')) { // check if should add card
+        $(this).parent().addClass('layout--card-3 paint--accent picked');
+        $(this).parent().find('.input > input').focus();
+      } else {
+        $(this).parent().addClass('picked');
+        $(this).parent().find('.input > input').focus();
+      }
+    } else {
+      if (!$(this).parent().hasClass('no-card')) { // check if should add card
+        $(this).parent().removeClass('layout--card-3 paint--accent picked');
+        $(this).parent().find('.input > input').off('focus');
+      } else {
+        $(this).parent().removeClass('picked');
+        $(this).parent().find('.input > input').off('focus');
+      }
+    }
+
+    if (isdisabled) {
+      $(this).parent().addClass('disabled');
+    } else {
+      $(this).parent().removeClass('disabled');
+    }
+  });
+}
+
 // Extend jQuery
 (function( $ ) {
   $.fn.extend({
@@ -117,7 +149,7 @@ function updKids() {
         var ratioDifference = imgRatio-parRatio;
 
         if ( imgRatio >= parRatio ) {
-          if ( compareRatios < imgRatio && compareRatios < parRatio && ratioDifference > 0 && ratioDifference < 0.164 ){
+          if ( compareRatios < imgRatio && compareRatios <= parRatio && ratioDifference > 0 && ratioDifference < 0.164 ){
             if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
           } else {
             if ( !$el.hasClass('cover-width') ) $el.removeClass('cover--height').addClass('cover--width');

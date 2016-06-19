@@ -156,6 +156,7 @@ section {
 }
 
 .layout__group {
+  position: relative;
   & + & { margin-top: 1rem; }
 }
 
@@ -243,7 +244,7 @@ a:not(no-ripple), .ripple {
   position: absolute;
   background-color:rgba($white, .36);
   border-radius: 100%;
-  @include transform(scale(0));
+  @include transform(scale(0) translate3d(0,0,0));
 
   // & ~ & {display: none;}
 
@@ -257,16 +258,16 @@ a:not(no-ripple), .ripple {
 }
 
 @-webkit-keyframes ripple {
-  100% {opacity: 0; -webkit-transform: scale(2.5);}
+  100% {opacity: 0; -webkit-transform: scale(2.5) translate3d(0,0,0);}
 }
 @-moz-keyframes ripple {
-  100% {opacity: 0; -moz-transform: scale(2.5);}
+  100% {opacity: 0; -moz-transform: scale(2.5) translate3d(0,0,0);}
 }
 @-o-keyframes ripple {
-  100% {opacity: 0; -o-transform: scale(2.5);}
+  100% {opacity: 0; -o-transform: scale(2.5) translate3d(0,0,0);}
 }
 @keyframes ripple {
-  100% {opacity: 0; transform: scale(2.5);}
+  100% {opacity: 0; transform: scale(2.5) translate3d(0,0,0);}
 }
 
 

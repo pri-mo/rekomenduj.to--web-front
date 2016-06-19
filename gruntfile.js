@@ -7,29 +7,26 @@ module.exports = function (grunt) {
       dist: {
         options: {
           style: 'compressed',
-          precision: 8,
-          // compass: true,
-          // noCache: true,
-          // sourcemap: 'none',
+          precision: 8
         },
         files: {
           'build/assets/css/main.min.css': [
-            'src/assets/sass/main.scss',
+            'src/assets/sass/main.scss'
           ],
         },
       },
     },
     concat: {
       options: {
-        separator: ';\n',
+        separator: ';\n'
       },
       libs: {
         src: [
           'src/assets/js/vendor/jquery.min.js',
           'src/assets/js/vendor/jquery-ui.min.js',
-          'src/assets/js/vendor/*.js',
+          'src/assets/js/vendor/*.js'
         ],
-        dest: 'build/assets/js/libs.js',
+        dest: 'build/assets/js/libs.js'
       },
       app: {
         src: [
@@ -39,44 +36,44 @@ module.exports = function (grunt) {
           'src/assets/js/menu.js',
           'src/assets/js/polls.js'
         ],
-        dest: 'build/assets/js/app.js',
+        dest: 'build/assets/js/app.js'
       },
     },
     uglify: {
       libs: {
         options: {
-          mangle: false,
+          mangle: false
         },
         files: {
-          'build/assets/js/libs.min.js': ['build/assets/js/libs.js'],
+          'build/assets/js/libs.min.js': ['build/assets/js/libs.js']
         },
       },
       app: {
         files: {
-          'build/assets/js/app.min.js': ['build/assets/js/app.js'],
+          'build/assets/js/app.min.js': ['build/assets/js/app.js']
         },
       },
     },
     watch: {
       options: {
-        livereload: true,
+        livereload: true
       },
       sass: {
         files: [
-          'src/assets/sass/**/*.scss',
+          'src/assets/sass/**/*.scss'
         ],
-        tasks: ['sass'],
+        tasks: ['sass']
       },
       js: {
         files: [
-          'src/assets/js/**/*.js',
+          'src/assets/js/**/*.js'
         ],
-        tasks: ['concat', 'uglify:app'],
+        tasks: ['concat', 'uglify:app']
       },
       html: {
         files: [
           'build/*.html',
-          'build/**/*.php',
+          'build/**/*.php'
         ],
       },
     },

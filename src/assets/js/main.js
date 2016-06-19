@@ -109,7 +109,7 @@ $(function() {
 
 
   //// Facilitate appearance change on focus when input used
-  $(document).on('focus change', 'input, select, textarea', function(e) {
+  $(document).on('focus change paste propertychange', 'input, select, textarea', function(e) {
     var label = $(this).next('label');
     // console.log(e.type);
 

@@ -120,7 +120,8 @@
     &:after {
       content: attr(data-extrainfo); display: block;
       text-transform: uppercase;
-      font-size: .64em; opacity: .36;
+      font-size: .64em; line-height: 1.36;
+      opacity: .36;
       position: relative; top: 3rem;
       // color: $text-color;
     }
@@ -182,15 +183,15 @@
       &:checked + span { max-width: 4rem; margin-right: .64rem; }
     }
     img { width: 100%; }
+    &.disabled { opacity: .36; pointer-events: none; }
   }
 
   .answer--image {
     position: relative; display: inline-block; white-space: absolute;
-    padding: 1rem; opacity: .75;
+    padding: 1rem; opacity: .75; border: 0;
 
     &:hover { opacity: 1; }
     &.picked { padding: 0; opacity: 1; }
-    &.disabled { opacity: .36; pointer-events: none; }
 
     input[type=checkbox],
     input[type=radio] {
@@ -210,7 +211,10 @@
         max-width: none; margin-right: 0;
       }
     }
-    img { -webkit-touch-callout: none !important; -webkit-user-select: none !important;}
+    img {
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+    }
   }
 
   .answer--input {}
@@ -258,34 +262,55 @@
 .drag-bucket--source,
 .sort-bucket--source {
   width: 100%;
-  border: 1px dashed rgba(0,0,0,.22);
+  border: 1px solid rgba(0,0,0,.05);
   padding: 1rem;
+  position: relative;
+  @include transition(border .1s, box-shadow .36s, padding-top .36s, padding-bottom .36s, background-color .64s);
+
+  .placeholder {
+    color: rgba($text-color, .36);
+    overflow: hidden;
+    max-height: 4rem;
+    display: block;
+    opacity: 1;
+    @include transition(.36s);
+  }
 
   &.get-ready {
-    border: 1px solid rgba(0,0,0,.64);
+    background-color: rgba($white, .36);
+    // border: 1px solid rgba(0,0,0,.64);
+    border: 1px solid rgba(0,0,0,.0);
+    box-shadow: inset 0 0 5px rgba(0,0,0,.22);
   }
 
   &.has-content {
     padding: 0; border:0;
 
-    .placeholder { display: none; }
+    &:not(.drag-bucket--source).get-ready {padding-top: 1rem;}
+    .placeholder { max-height: 0; opacity: 0;}
   }
 }
 
 .answer--drag,
 .answer--sort {
   display: block;
+  padding: 1rem;
+  margin-top: 1px;
   @include transition(box-shadow .64s);
 
   span[data-icon] {
     position: absolute;
-    right: 1rem; top: .75rem;
-    font-size: 2rem; opacity: .36;
+    right: 1rem;
+    font-size: 1.64rem;
+    line-height: 1; opacity: .36;
     cursor: all-scroll;
   }
+
+  & + & { border-top: 1px solid rgba(0,0,0,.05); margin-top: 0;}
 }
 .answer--sort__placeholder {
-  min-height: 3rem;
+  height: 3.5rem;
+  margin-bottom: 1px;
   display: block;
 }
 
