@@ -55,8 +55,8 @@
 // Poll info
 .poll__info {
   body:not(.poll--end-screen) & {
-    // color: $text-color;
-    opacity: .22;
+    color: $brand-color;
+    opacity: .64;
     padding: 0;
     position: absolute;
     top: 2.5rem; left: 1.5rem;
@@ -220,15 +220,22 @@
   .answer--input {}
 
   .answer--slider {
+    @include display(flex);
+    @include flex-wrap(wrap);
+
     label,
     input,
     select {
       @include appearance(none);
-      display: inline;
+      display: inline-block;
       border:0; background: none; border-radius: 0;
       padding: 0; margin: 0;
       font-size: 1rem; line-height: 2em;
     }
+    label { opacity: .64; }
+    label + input, select { margin-left: .36em; width: 100%; flex: 1; color: $brand-color-darker; }
+
+    .slider { width: 100%; }
   }
 
   &.poll__answers--grid .layout__group {
@@ -316,6 +323,11 @@
 
 // Matrix answer
 .answer--matrix {
+  margin-right: -.64rem;
+  @include respond-to('tablet') { margin-right: 0;}
+  @include respond-to('tablet') {
+    table { table-layout: fixed; }
+  }
   th, td {
     border-right: 1px solid rgba($text-color, .05);
     font-size: .8rem; line-height: 1.3em;
@@ -323,20 +335,27 @@
     padding: .5rem;
     font-weight: $light;
   }
-  th { font-weight: $regular; }
+  th { font-weight: $regular;}
   tr:nth-of-type(even) {background-color: rgba($grey, .05); }
 
   thead { background-color: $white;
-    th { font-size: 1rem; text-align: center; }
+    th { font-size: 1rem; text-align: center;  vertical-align: bottom;}
   }
   th:empty {padding: 0;}
 
-  .matrix__questions { min-width: (100vw / 3); background-color: rgba($white, .36); }
+  .matrix__questions { min-width: (100vw / 3); background-color: rgba($white, .36);
+    @include respond-to('tablet') {max-width: 100px; };
+  }
   .matrix__answers {
     padding: 0; line-height: 1;
 
-    .answer--slider { min-width: 10rem; padding: .5rem 1rem;}
+    .layout--card-1 { background-color: transparent; box-shadow: none;}
+
+    .answer--slider { min-width: (100vw / 2); padding: .5rem;
+      select { font-size: .8rem; }
+    }
     .answer--pick {
+      min-width: (100vw / 4);
       padding: 2rem;
 
       line-height: 1;
@@ -348,7 +367,7 @@
 
         + span {
           position: absolute; top: 50%; left: 50%;
-          @include transform(translate(-50%, -50%));
+          @include transform($moveToCenter);
 
           display: block; overflow: visible; opacity: .1;
           font-size: 1.64rem; line-height: .9em;
@@ -357,19 +376,19 @@
           box-shadow: inset 0 0 0 1px rgba($text-color, 1);
 
           max-width: none; margin-right: 0;
-          color: rgba($text-color, 0);
+          color: rgba($white, 0);
           @include transition(opacity .64s, color .36s, box-shadow .1s);
         }
 
         &:checked + span {
           box-shadow: inset 0 0 0 1px rgba($text-color, 0);
-          color: $text-color;
+          color: $white;
           max-width: none; margin-right: 0;
           opacity: 1;
         }
       }
       &.picked {
-        background-color: rgba($white, .64);
+        background-color: $comp-color;
         box-shadow: inset 0 0 0 1px rgba($text-color, .02);
       }
     }

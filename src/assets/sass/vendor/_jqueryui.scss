@@ -151,7 +151,7 @@
 $handle-size: 2rem;
 
 .ui-slider {
-  background-color: rgba($text-color, .36);
+  background-color: $brand-color;
   border-radius: 1rem;
   position: relative;
   text-align: left;
@@ -159,7 +159,7 @@ $handle-size: 2rem;
 
   .ui-slider-handle {
     position: absolute;
-    background-color: $white;
+    background-color: lighten($brand-color, 15%);
     z-index: 2;
     width: $handle-size;
     height: $handle-size;
@@ -169,6 +169,12 @@ $handle-size: 2rem;
     touch-action: none;
     outline: none;
     border-radius: 100%;
+    border: 5px solid $white;
+    transition: background-color $transition;
+
+    @include on-event {
+      background-color: $comp-color;
+    }
   }
 
   .ui-slider-range {

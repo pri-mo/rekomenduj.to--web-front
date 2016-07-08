@@ -25,7 +25,7 @@ $rollout-height: ( 2 * $padding-size + $line-height );
 
       &:empty { display: none; }
     }
-    .roll-out__icon { opacity: .64; position: relative; left: -.36em; }
+    .roll-out__icon { opacity: .64; position: relative; left: -.36em; color: $brand-color-darker;}
     .roll-out__name { display: inline; }
     .roll-out__value:not(:empty) + .roll-out__name { display: none; }
     .roll-out__status {

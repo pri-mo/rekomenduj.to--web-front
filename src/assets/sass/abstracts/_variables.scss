@@ -35,41 +35,43 @@ $ico-size-xl: 7rem;
 
 /// Copy text color
 /// @type Color
-$text-color: rgba(0, 0, 0, 0.88) !default;
+$text-color: rgba(0, 0, 0, .75) !default;
 
 /// Main brand colors
 /// @type Color
-$brand-color: #8E78FF !default;
-$comp-color: #FC7D7B !default;
-$accent-color: #FBB03B !default;
+// $brand-color: #8e78ff !default;
+$brand-color: #b5a18d !default;
+$brand-color-darker: darken( $brand-color, 25% ) !default;
+$comp-color: #ff7f00 !default;
+$accent-color: #fc4349 !default;
 
 /// Lights
 /// @type Color
-$bright: rgb(248, 248, 248) !default;
-$white: rgb(255, 255, 255) !default;
+$bright: #f9f9f9 !default;
+$white: #ffffff !default;
 
 /// Medium grey
 /// @type Color
-$grey: rgb(61, 61, 61) !default;
+$grey: #3d3d3d !default;
 
 /// Background grey
 /// @type Color
-$base-grey: rgb(241, 240, 239) !default;
+$base-grey: #f1f0ef !default;
 
 // NOTE Colors: $text-color, $brand-color, $comp-color, $accent-color, $bright, $grey, $base-grey
 
 
 /// Consistent drop shadows
 /// @type CSS
-$shadow-1: 0 (1px+2) (3px+2) rgba(0,0,0, 0.11) !default;
+$shadow-1: 0 (1px+1) (3px+1) rgba(0,0,0, 0.11) !default;
 $shadow-2: 0 (2px+2) (5px+2) rgba(0,0,0, 0.11) !default;
 $shadow-3: 0 (3px+2) (8px+2) rgba(0,0,0, 0.11) !default;
-$shadow-4: 0 (4px+2) (13px+2) rgba(0,0,0, 0.11) !default;
+$shadow-4: 0 (4px+3) (13px+3) rgba(0,0,0, 0.11) !default;
 
-$shadow-1a: 0 (1px+2) (3px+2) rgba(0,0,0, 0.22) !default;
+$shadow-1a: 0 (1px+1) (3px+1) rgba(0,0,0, 0.22) !default;
 $shadow-2a: 0 (2px+2) (5px+2) rgba(0,0,0, 0.22) !default;
 $shadow-3a: 0 (3px+2) (8px+2) rgba(0,0,0, 0.22) !default;
-$shadow-4a: 0 (4px+2) (13px+2) rgba(0,0,0, 0.22) !default;
+$shadow-4a: 0 (4px+3) (13px+3) rgba(0,0,0, 0.22) !default;
 
 $shadow-button: 0 (4px) (13px+2) rgba(0,0,0, 0.11) !default;
 

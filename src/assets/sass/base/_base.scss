@@ -15,7 +15,9 @@
 }
 
 html, body {
-  background-color: $base-grey;
+  // background-color: $base-grey;
+  // @include brand-gradient($grain: 'grain-bright.jpg', $color: $white);
+  background: image('grain-bright.jpg'); background-size: 300px;
   box-sizing: border-box;
   font-size: $text-font-size;
   width: 100vw;
@@ -64,6 +66,7 @@ a {
   color: $comp-color;
   text-decoration: none;
   transition: $transition;
+  // cursor: pointer;
 
   @include on-event {
     color: $brand-color;
@@ -75,7 +78,6 @@ a {
     display: block; padding: 1rem;
     color: inherit; opacity: .64;
     font-weight: $regular;
-    // text-transform: uppercase;
 
     @include on-event {opacity: 1;}
   }
@@ -206,7 +208,7 @@ section {
 
 // Brand gradient and backgrounds
 .paint--gradient {
-  color: $white;
+  color: dynamic-color($brand-color);
   @include brand-gradient;
 }
 
@@ -250,6 +252,8 @@ a:not(no-ripple), .ripple {
 
   [class^="layout--card-"] & { background-color: rgba($grey, .11); }
   .paint--brand &,
+  .paint--comp &,
+  .paint--accent &,
   .cover__container & { background-color: rgba($white, .36); }
 }
 

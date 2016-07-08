@@ -4,7 +4,7 @@ $lang = 'pl';
 
 $tagsBodyBasic = 'preload device--mobile'; // platform-ios
 
-$tagsNav = 'nav--transparent';
+$tagsNav = 'nav--white';
 $tagsTemplate = 'template--contentlist template--campaigns';
 
 ?>

@@ -98,6 +98,71 @@ $answerType = "pick";
         $extraInfo = "Aby przenieść, przytrzymaj palec na odpowiedzi i przesuń ją.";
         break;
 
+        case '9':
+        $answerType = "slider-value";
+        $sliderLabel = "Na dziecko: ";
+        $dataSuffix = " zł";
+        $questionIntro = "Forma interaktywna odpowiedzi";
+        $questionCall = "Użytkownik ma za zadanie podać odpowiedź przeciągając suwak";
+        $extraInfo = "Aby ustawić suwak, przytrzymaj palec na jasnej kulce i przesuń ją.";
+        break;
+
+        case '10':
+        $answerType = "slider-value";
+        $sliderRange = true;
+        $sliderLabel = "Name your price: ";
+        $dataPreffix = "$";
+        $questionIntro = "Forma interaktywna odpowiedzi";
+        $questionCall = "Użytkownik ma za zadanie podać odpowiedź przeciągając suwak";
+        $extraInfo = "Aby ustawić suwak, przytrzymaj palec na jasnej kulce i przesuń ją.";
+        break;
+
+        case '11':
+        $answerType = "slider-range";
+        $sliderLabel = "Name your price: ";
+        $dataDefault = "[-200, 200]";
+        $dataMin = "-500";
+        $dataMax = "500";
+        $dataStep = "10";
+        $dataPreffix = "$";
+        $questionIntro = "Forma interaktywna odpowiedzi";
+        $questionCall = "Użytkownik ma za zadanie podać odpowiedź przeciągając suwak";
+        $extraInfo = "Aby ustawić suwak, przytrzymaj palec na jasnej kulce i przesuń ją.";
+        break;
+
+        case '12':
+        $answerType = "slider-select";
+        $selectPlaceholder = "Pyknij kuleczkę...";
+        $questionIntro = "Forma interaktywna odpowiedzi";
+        $questionCall = "Użytkownik ma za zadanie podać odpowiedź przeciągając suwak";
+        $extraInfo = "Aby ustawić suwak, przytrzymaj palec na kulce i przesuń ją.";
+        break;
+
+        case '13':
+        $answerType = "matrix";
+        $matrixType = "slider-select";
+        $questionIntro = "Zaawansowane pytanie w postaci macierzy.";
+        $questionCall = "Użytkownik ma za zadanie podać szereg odpowiedzi na szereg pytań.";
+        $extraInfo = "Przesuwając tabelę odkryjesz więcej kolumn.";
+        break;
+
+        case '14':
+        $answerType = "matrix";
+        $matrixType = "pick";
+        $questionIntro = "Zaawansowane pytanie w postaci macierzy.";
+        $questionCall = "Użytkownik ma za zadanie podać szereg odpowiedzi na szereg pytań.";
+        $extraInfo = "Przesuwając tabelę odkryjesz więcej kolumn.";
+        break;
+
+        case '15':
+        $answerType = "matrix";
+        $matrixType = "pick";
+        $pickType = "radio";
+        $questionIntro = "Zaawansowane pytanie w postaci macierzy.";
+        $questionCall = "Użytkownik ma za zadanie podać szereg odpowiedzi na szereg pytań.";
+        $extraInfo = "Przesuwając tabelę odkryjesz więcej kolumn.";
+        break;
+
         default:
         $multiple = false;
         $answerType = "pick";

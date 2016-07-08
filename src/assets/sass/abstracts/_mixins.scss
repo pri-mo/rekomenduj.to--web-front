@@ -23,6 +23,45 @@
   }
 }
 
+
+/// Mixes a color with yellow.
+///
+/// @param {Color} $color
+/// @param {Number (Percentage)} $percent
+///   The amount of yellow to be mixed in.
+/// @return {Color}
+
+@function warm($color, $percent) {
+  $scaled: scale-color($color, $red: $percent, $blue: -$percent);
+  @return scale-color($scaled, $lightness: -( $percent * .25 ) );
+}
+
+
+/// Mixes a color with blue.
+///
+/// @param {Color} $color
+/// @param {Number (Percentage)} $percent
+///   The amount of blue to be mixed in.
+/// @return {Color}
+
+@function cool($color, $percent) {
+  $scaled: scale-color($color, $blue: $percent, $red: -$percent);
+  @return scale-color($scaled, $lightness: -( $percent * .25 ) );
+}
+
+
+/// Make text color respond to color lightness
+/// @author Sebastian Ekström
+/// @param {Color} $color
+@function dynamic-color($color) {
+  @if (lightness($color) > 50) {
+    @return darken($color, 50%); // Lighter backgorund, return dark color
+  } @else {
+    @return lighten($color, 50%); // Darker background, return light color
+  }
+}
+
+
 /// Make a context based selector a little more friendly
 /// @author Hugo Giraudel
 /// @param {String} $context
@@ -83,13 +122,13 @@
 /// @param {Bool} $local [true] - whether the image is an asset or an url
 @mixin brand-gradient($image: null, $grain: null, $alpha: .88, $local: true, $color: $brand-color) {
 
-  $degree: -150deg; // set the gradient slant
+  $degree: 180deg; // set the gradient slant
   // $color-specs: rgba(#B066FE, .22) 22%,
   //               rgba($color, .0),
   //               rgba(#63E2FF, .22) 77%; // set the faint color highlights
-  $color-specs: rgba(adjust-hue($color, -50deg), .36) 11%,
-                rgba($color, .0),
-                rgba(adjust-hue($color, 50deg), .36) 88%; // set the faint color highlights
+  $color-specs: rgba(darken($color, 15%), .36) 11%,
+                rgba($color, .22),
+                rgba(lighten($color, 30%), .36) 88%; // set the faint color highlights
 
   $overlay: rgba($color, $alpha), rgba($color, $alpha); // set the brand overlay
 
@@ -99,8 +138,8 @@
     @if ($image == null) {
       @if ($grain == null) {
         // default grain
-        background: -webkit-linear-gradient($degree $color-specs), image('grain-fux.jpg'); // Safari 5.1+, Chrome
-        background: unquote("linear-gradient(#{$degree}, #{$color-specs})"), image('grain-fux.jpg');
+        background: -webkit-linear-gradient($degree $color-specs), image('grain-bright.jpg'); // Safari 5.1+, Chrome
+        background: unquote("linear-gradient(#{$degree}, #{$color-specs})"), image('grain-bright.jpg');
         background-size: auto, 320px;
       } @else {
         // custom grain

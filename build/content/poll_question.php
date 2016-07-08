@@ -97,6 +97,22 @@ switch ($multiple) {
       include "components/elements/answer_sort.php";
       break;
 
+      case 'slider-value':
+      include "components/elements/answer_slider-value.php";
+      break;
+
+      case 'slider-range':
+      include "components/elements/answer_slider-range.php";
+      break;
+
+      case 'slider-select':
+      include "components/elements/answer_slider-select.php";
+      break;
+
+      case 'matrix':
+      include "components/elements/answer_matrix.php";
+      break;
+
       default:
         # code...
       break;
@@ -110,6 +126,9 @@ switch ($multiple) {
 <section class="layout--base poll__nav">
   <!-- TODO Fix the back button with proper destination on final build -->
   <a href="javascript:history.go(-1)" class="button button--icon"><span data-icon="F"></span></a>
-  <!-- <button type="submit" form="question<?php echo $randChoice; ?>" formaction="" class="poll__nav--forward">Dalej <span data-icon="E"></span></button> -->
-  <a href="/poll.php?p=1&q=<?php echo ++$q; ?>" class="poll__nav--forward">Dalej <span data-icon="E"></span></a>
+  <?php if (++$q == 16) { ?>
+    <a href="/poll-complete.php" class="poll__nav--forward">Dalej <span data-icon="E"></span></a>
+  <?php } else { ?>
+    <a href="/poll.php?p=1&q=<?php echo ++$q; ?>" class="poll__nav--forward">Dalej <span data-icon="E"></span></a>
+  <?php } ?>
 </section>

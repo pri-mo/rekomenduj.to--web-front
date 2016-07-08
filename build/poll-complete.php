@@ -4,8 +4,8 @@ $lang = 'pl';
 
 $tagsBodyBasic = 'preload device--mobile'; // platform-ios
 
-$tagsNav = 'nav--white';
-$tagsTemplate = 'template--contentlist template--poll-list';
+$tagsNav = 'nav--single';
+$tagsTemplate = 'template--poll poll--end-screen';
 
 ?>
 
@@ -16,7 +16,6 @@ $tagsTemplate = 'template--contentlist template--poll-list';
 </head>
 
 <body class="<?php echo $tagsBodyBasic . ' ' . $tagsNav . ' ' . $tagsTemplate ?>">
-  <!-- <img src="assets/images/phonegap.png" id="iOSbar" alt="" /> -->
   <?php include 'components/bof-scripts.php' ?>
 
   <div class="page__wrapper">
@@ -25,13 +24,7 @@ $tagsTemplate = 'template--contentlist template--poll-list';
 
     <main>
 
-      <?php
-      $contentItems = "polls";
-      // $contentItemsCount = 10;
-
-      include 'content/content-list.php'
-
-      ?>
+      <?php include 'content/poll_end.php' ?>
 
     </main>
 
@@ -39,8 +32,6 @@ $tagsTemplate = 'template--contentlist template--poll-list';
   </div>
 
   <?php
-  $masonry = true;
-
   include 'components/eof-scripts.php'
   ?>
 </body>

@@ -15,6 +15,7 @@
 
 .content-list__header {
   color: $white;
+  text-shadow: $shadow-1;
   padding-bottom: 26rem;
   text-align: center;
   overflow: hidden;
@@ -112,7 +113,7 @@
     &:not(:hover):not(:focus):not(.cover__container) {
       &:before, &:after {
         opacity: 1;
-        color: $accent-color;
+        color: $comp-color;
       }
     }
   }
@@ -128,13 +129,13 @@
     }
   }
   &.list-item--promo {
-    &.promo--special { color: $comp-color; }
+    &.promo--special { color: $accent-color; }
     &:after { content: "\72";}
 
     &:not(:hover):not(:focus):not(.cover__container) {
       &:before, &:after {
         opacity: 1;
-        color: $comp-color;
+        color: $accent-color;
       }
     }
   }
@@ -166,12 +167,12 @@
     }
     &:not(.list-item--doublesided) {
       &.list-item--poll {
-        background-color: $accent-color!important;
-        &.cover__container {background-color: shade(mix($comp-color, $accent-color, 3%), 1%)!important;}
-      }
-      &.list-item--promo {
         background-color: $comp-color!important;
         &.cover__container {background-color: shade($comp-color, 1%)!important;}
+      }
+      &.list-item--promo {
+        background-color: $accent-color!important;
+        &.cover__container {background-color: shade($accent-color, 1%)!important;}
       }
       &.list-item--campaign {
         background-color: $brand-color!important;

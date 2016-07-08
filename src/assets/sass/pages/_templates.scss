@@ -11,12 +11,6 @@
   }
 }
 
-// :not(.template--profile--public),
-.template--steps,
-.template--profile,
-.template--profile--empty {
-  &.nav--transparent header:not(.scrolled):not(.nav--showMenu) { background: none; }
-}
 
 .template--steps {
   .nav__icon--inbox {display: none;}
@@ -28,16 +22,15 @@
 }
 
 .template--campaigns {
-  .content-list__header:first-of-type:not(.cover__container) { @include brand-gradient($grain: 'grain-gold.jpg', $color: $accent-color); }
+  // .content-list__header:first-of-type:not(.cover__container) { @include brand-gradient($grain: 'grain-gold.jpg', $color: $accent-color); }
 }
 .template--poll-list {
-  .content-list__header:first-of-type:not(.cover__container) { @include brand-gradient($grain: 'grain-pastelred.jpg', $color: $comp-color); }
+  // .content-list__header:first-of-type:not(.cover__container) { @include brand-gradient($grain: 'grain-pastelred.jpg', $color: $comp-color); }
   // .content-list__header:first-of-type:not(.cover__container) { @include brand-gradient($grain: 'grain-bright.jpg', $color: rgb(239, 243, 251)); }
 }
 
 .template--poll {
   main {
-    @include brand-gradient($grain: 'grain-bright.jpg', $color: rgb(255,245,245));
     min-height: 100vh;
     position: relative;
     padding-left: 2rem;

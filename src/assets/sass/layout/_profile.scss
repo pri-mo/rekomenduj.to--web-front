@@ -7,13 +7,13 @@
 }
 
 .layout__header {
-  color: $white;
-  padding-bottom: 10rem;
+  color: $brand-color;
+  padding-bottom: 8rem;
   text-align: center;
   overflow: hidden;
 
   &:not(.cover__container) {
-    @include brand-gradient;
+    // @include brand-gradient;
   }
 
   .template--profile--public & {
@@ -24,7 +24,7 @@
 .profile__photoedit {
   position: relative;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 1.64rem 1rem;
 
   .profile__icon {
     font-size: $ico-size-m; line-height: 1;
@@ -49,7 +49,7 @@ $button-size: 3 * 1.36rem;
   display: block; margin: 0 auto;
   width: $pic-size; position: relative;
   border-radius: 100%;
-  box-shadow: $shadow-4a;
+  box-shadow: $shadow-3;
   z-index: 1;
 
   &:before {content: ''; display: block; padding-bottom: 100%;}
@@ -120,7 +120,8 @@ section.profile__focus-box {
       display: block; text-decoration: none; color: inherit;
       padding: 1rem; margin-top: 0;
 
-      .ink { background-color: rgba($white, .22); }
+      .ink { background-color: rgba($white, .36); }
+      @include on-event { background-color: rgba($white, .22); }
     }
 
     [data-icon] { padding-right: .64rem; top: 10%; opacity: .64;
@@ -156,7 +157,7 @@ section.profile__focus-box {
     }
 
     @include keyframes(color-to-sky) {
-      100% { color: $accent-color; }
+      100% { color: $comp-color; }
     }
 
   }

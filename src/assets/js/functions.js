@@ -79,7 +79,7 @@ function updPicks() {
 
     if (ischecked) {
       if (!$(this).parent().hasClass('no-card')) { // check if should add card
-        $(this).parent().addClass('layout--card-3 paint--accent picked');
+        $(this).parent().addClass('layout--card-3 paint--comp picked');
         $(this).parent().find('.input > input').focus();
       } else {
         $(this).parent().addClass('picked');
@@ -87,7 +87,7 @@ function updPicks() {
       }
     } else {
       if (!$(this).parent().hasClass('no-card')) { // check if should add card
-        $(this).parent().removeClass('layout--card-3 paint--accent picked');
+        $(this).parent().removeClass('layout--card-3 paint--comp picked');
         $(this).parent().find('.input > input').off('focus');
       } else {
         $(this).parent().removeClass('picked');

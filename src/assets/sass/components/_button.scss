@@ -2,30 +2,23 @@
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
 
-@mixin button($content: $text-color, $frame: .05, $p: 0px, $face: rgba($text-color, .05)) {
+@mixin button($back: $brand-color, $content: dynamic-color($back), $frame: .1, $p: 0px, $face: rgba(dynamic-color($back), .05)) {
   $rounding: 4rem;
   @include appearance(none);
-  border: 0; display: inline-block; position: relative;
+  border: 1px solid rgba($content, $frame); display: inline-block; position: relative;
   overflow: hidden;
   background-color: $face;
   padding: 1.36rem 2rem;
   font-size: 1.36rem; line-height: 1em;
   border-radius: $rounding;
   color: $content;
+  font-weight: $regular;
   box-shadow: 0;
   white-space: nowrap;
   z-index: 1;
   @include transform(translate3d(0, 0, 0));
   @include backface-visibility(hidden);
-  // @include animation(none);
-
-  &, &:before { @include transition($transition); }
-
-  &:before {
-    content: '';
-    position: absolute; top: $p; right: $p; left: $p; bottom: $p;
-    border: 1.5px solid rgba($content, $frame); border-radius: $rounding;
-  }
+  @include transition($transition);
 
   .ink { background-color: rgba($text-color, .11); }
 
@@ -53,13 +46,13 @@
   &:only-child { min-width: 50%; }
 
   @include on-event {
+    border-color: transparent;
     background-color: $white;
     box-shadow: $shadow-button;
     color: $text-color;
     text-decoration: none;
     outline: none;
 
-    &:before { top: -1px; left: -1px; right: -1px; bottom: -1px; border-color: rgba($content, .0)}
     &.button--cta {
       color: $white;
 
@@ -88,7 +81,7 @@ button, .button {
   [class^='paint--back-'] &,
   [class*=' paint--back-'] &,
   .paint--gradient & {
-    @include button($content: $white, $frame: .36, $p: 0px, $face: rgba($text-color, .036));
+    @include button($back: $brand-color, $p: 0px, $face: rgba($text-color, .0));
   }
   .paint--comp &,
   .paint--accent & {

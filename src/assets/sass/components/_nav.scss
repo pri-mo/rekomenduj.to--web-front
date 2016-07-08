@@ -28,7 +28,7 @@ body {
 
   &.nav--single {padding-top: $navHeight;}
   &.nav--double {padding-top: $navHeight * 2;}
-  &.nav--transparent:not(.template--poll) {
+  &:not(.template--poll) {
     main > section:first-of-type {padding-top: $navHeight + .5rem}
   }
 }
@@ -42,9 +42,8 @@ header {
   .nav--primary {
     position: relative;
     height: $navHeight;
-    background-color: $brand-color;
-    color: $bright;
-    box-shadow: $shadow-3a;
+    color: $brand-color;
+    box-shadow: 0 1px 0 rgba($brand-color, .22);
     z-index: 3;
     @include transition(background-color .64s, box-shadow .36s);
   }
@@ -53,26 +52,15 @@ header {
   .nav--secondary {
     position: relative;
     height: $navHeight;
-    background-color: $brand-color;
-    color: $bright;
+    color: $brand-color;
     box-shadow: $shadow-2a;
     z-index: 2;
     @include transition(transform .36s, background-color .64s, box-shadow .36s);
   }
 
-
-  .nav--transparent &:not(.scrolled):not(.nav--showMenu) {
-    @include linear-gradient( rgba($text-color, .22), rgba($text-color, 0), $fallback: 'transparent');
-
+  .nav--white &:not(.scrolled):not(.nav--showMenu) {
     .nav--primary, .nav--secondary {
-      background-color: rgba($brand-color, 0);
-      box-shadow: 0 1px 0 rgba($white, .1);
-    }
-  }
-
-  &.background--light:not(.scrolled):not(.nav--showMenu) {
-    .nav--primary, .nav--secondary {
-      .nav--transparent & { color: $text-color; box-shadow: 0 0 0 1px rgba($text-color, .1);}
+      color: $white; box-shadow: 0 1px 0 rgba($white, .11);
     }
   }
 
@@ -95,7 +83,7 @@ header {
       &:before { content: "\4e"; }
       &:after { content: ''; display: block;
         background-color: $white;
-        border: 5px solid $comp-color;
+        border: 5px solid $accent-color;
         border-radius: 10px; line-height: 0; padding: 0;
         position: absolute; top: 50%; left: 50%; @include transform(translate(-50%, -50%));
         margin-left: -25%; margin-top: -25%;
@@ -152,50 +140,51 @@ header {
   }
 
   // Nav states
-  &.scrolled {
-    .nav--primary { background-color: rgba($brand-color, 1); box-shadow: $shadow-3a; }
-    .nav--secondary { background-color: rgba($brand-color, 1); box-shadow: $shadow-2a; }
+  &.scrolled, &.nav--showMenu {
+    .nav--primary, .nav--secondary { background-color: $white; color:$brand-color; box-shadow: $shadow-3a; }
+    .nav--secondary { box-shadow: $shadow-2a; }
   }
 
   &.hidden {
     @include transform(translate(0, -$navHeight));
 
-    .nav--primary { }
+    .nav--primary { box-shadow: none;}
     .nav--secondary { height: ($navHeight - .64) }
     .nav__context { line-height: ($navHeight - .64)}
   }
   &.nav--showMenu {
-    .nav--primary { background-color: $brand-color; box-shadow: $shadow-3a; }
+    // .nav--primary { background-color: $brand-color; box-shadow: $shadow-3a; }
     .nav--secondary { @include transform(translate(0, -$navHeight)); }
   }
 }
 
 // Main Menu
 nav ul { list-style: none; margin: 0; padding: 0; }
-nav a { color: rgba($white, .64); text-decoration: none;
+nav a { color: rgba($text-color, .64); text-decoration: none;
 
-  @include on-event { color: $white; text-decoration: none; }
-  .device--mobile & { color: $white; }
+  @include on-event { color: $text-color; text-decoration: none; }
+  // .device--mobile & { color: $text-color; }
 }
 
 .nav__mainMenu {
-  @include brand-gradient;
+  // @include brand-gradient;
+  background-color: rgba($text-color, .05);
 
   position: absolute; width: $menuWidth; height: 100vh; right: 100vw;
   overflow-y: scroll; overflow-x: hidden;
   overflow-scrolling: touch;
   padding: 1rem;
 
-  .content--toSide &::before {
-    display: block; content: ''; position: absolute; left: 99%; top: 0;bottom: 0; width: 1%;
-    @include linear-gradient( -90deg,  rgba(0,0,0,.11), rgba(0,0,0,.0), $fallback: transparent );
-    z-index: 11;
-  }
+  // .content--toSide &::before {
+  //   display: block; content: ''; position: absolute; left: 99%; top: 0;bottom: 0; width: 1%;
+  //   @include linear-gradient( -90deg,  rgba(0,0,0,.11), rgba(0,0,0,.0), $fallback: transparent );
+  //   z-index: 11;
+  // }
 
   .nav__position { margin: .11rem 0;}
-  .nav__spacer { height: 1px; background-color: rgba($white, .22); margin: .64rem 0;}
+  .nav__spacer { height: 1px; background-color: rgba($brand-color, .22); margin: .64rem 0;}
   .nav__link { display: block; text-transform: uppercase; font-weight: $bold; padding: .36rem .64rem;
-    &[class^="rg-"]::before { font-size: 1.64rem; margin-right: .64rem; opacity: .88;}
+    &[class^="rg-"]::before { font-size: 1.64rem; margin-right: .64rem; color: $brand-color;}
   }
   .nav__account { @include clearfix; position: relative; }
   .nav__username {

@@ -178,8 +178,6 @@ $(function() {
     appendTo: $(this),
     classes: false,
     placeholder: 'answer--sort__placeholder',
-    tolerance: 'pointer',
-  forcePlaceholderSize: true,
 
     start: function( e,ui ) {
       $(ui.item).addClass('layout--card-4 picked');

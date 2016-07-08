@@ -9,9 +9,9 @@
 
   <link rel="stylesheet" href="/assets/css/main.min.css" media="screen" charset="utf-8">
   <script src="/assets/js/app.min.js" charset="utf-8"></script>
-  <script src="//deepthought.local:35729/livereload.js"></script>
+  <script src="//localhost:35729/livereload.js"></script>
 </head>
-<body class="preload device--mobile nav--single template--poll">
+<body class="preload device--mobile nav--single nav--transparent nav--colored template--poll">
 
   <div class="page__wrapper">
 
@@ -52,17 +52,18 @@
       <section class="layout--base poll__info">
         <span class="help__flip">
           <div class="poll__icon" data-icon="t"></div>
-          <div class="poll__name" data-label="Ankieta">Niezbyt fortunny tytuł ankiety i tak dalej i tak dalej</div>
+          <div class="poll__name" data-label="Ankieta rekrutacyjna">#PolecamBank</div>
         </span>
       </section>
 
       <section class="layout--base poll__question">
         <div class="question__name"
-              data-label="Pytanie 7"
-              data-extrainfo="Opowiedz o tym co się wydarzyło...">
+              data-label="Pytanie 3"
+              data-extrainfo="Podaj 10 cyfr...">
+          <div class="question__img"><img src="/assets/images/mbank.png" alt=""></div>
           <!-- <div class="question__img"><img src="https://unsplash.it/500/?image=1083" alt=""></div> -->
           <!-- <div class="question__vid"><iframe src="https://www.youtube.com/embed/Wk5qT_814xM" frameborder="0" allowfullscreen></iframe></div> -->
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed qui, libero accusantium sit. Fugiat accusantium, animi. Neque excepturi laborum aliquam fuga, libero veritatis, tempora iste, magnam dolorum, asperiores illum sit.
+          <p>Podaj 10 ostatnich cyfr swojego konta w mBank, abyśmy mogli odblokować dla Ciebie specjalne nagrody
           </p>
         </div>
       </section>
@@ -81,7 +82,7 @@
             </div>
           </div>
 
-          <label class="layout--card-1 ripple answer answer--pick answer--input">
+          <!-- <label class="layout--card-1 ripple answer answer--pick answer--input">
             <input name="null" type="radio"><span data-icon="y"></span>Chciałam być mamą ponieważ...
             <div class="input">
               <textarea tabindex name="email" id="longform" required spellcheck="true" placeholder="Opowiedz o tym..."></textarea>
@@ -92,7 +93,7 @@
 
               <!-- <div class="input__field"></div> -->
             </div>
-          </label>
+          </label> -->
         </form>
       </section>
 

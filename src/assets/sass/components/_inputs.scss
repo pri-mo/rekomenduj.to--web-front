@@ -13,10 +13,10 @@
   }
 }
 
-@mixin input($static: $text-color, $focus: $brand-color, $error: $comp-color, $ink: rgba($text-color, .11), $ratio: $minor-seventh) {
+@mixin input($back: $brand-color, $static: dynamic-color($back), $focus: rgba(dynamic-color($back), .64), $error: $comp-color, $ink: rgba(dynamic-color($back), .11), $ratio: $minor-seventh) {
   $alpha-major: .64;
   $alpha-minor: $alpha-major / $ratio;
-  $alpha-faint: $alpha-minor / $ratio;
+  $alpha-faint: ($alpha-major / 3) / $ratio;
 
   $tt: normal;
 
@@ -448,63 +448,26 @@
   }
 }
 
-.input { @include input;}
+.input { @include input($back: $white, $focus: $brand-color);}
 
 
 // The Inverse themes
-//// Navy
+//// Brand
 .paint--brand .input,
 .paint--gradient .input,
 [class^='paint--back-'] .input,
 [class*=' paint--back-'] .input,
 .grad .input,
 .transparent--inverse .input {
-  @include input($static: $white, $focus: $accent-color, $ink: rgba($white, .22), $ratio: $golden );
+  @include input($back: $brand-color, $focus: $brand-color-darker);
 }
 
-// Checkbox on gradient exception
-// .paint--gradient .input,
-// [class^='paint--back-'] .input,
-// [class*=' paint--back-'] .input {
-//   &.input--check {
-//     &:after { @include linear-gradient(rgba($brand-color, 0), $brand-color); }
-//   }
-// }
-
-//// Sky
+//// Comp
 .paint--comp .input {
-  @include input($static: $white, $focus: $brand-color, $ink: rgba($white, .22), $ratio: $golden );
-
-  // Checkbox
-  // &.input--check {
-  //   &:after { @include linear-gradient(rgba($comp-color, 0), $comp-color); }
-  //   label {
-  //     &:before { color: rgba($brand-color, .36);
-  //     }
-  //
-  //     .input--check__icon { background-color: rgba($bright, .36); box-shadow: $shadow-1;
-  //       &:before { color: $brand-color; }
-  //     }
-  //     :checked + .input--check__icon { background-color: $bright; box-shadow: $shadow-2;}
-  //   }
-  // }
+  @include input($back: $comp-color);
 }
 
-//// Red
+//// Accent
 .paint--accent .input {
-  @include input($static: $bright, $focus: $white, $ink: rgba($white, .22), $ratio: $perfect-fourth );
-
-  ////// Checkbox
-  // &.input--check {
-  //   &:after { @include linear-gradient(rgba($accent-color, 0), $accent-color); }
-  //   label {
-  //     &:before { color: rgba($bright, .64);
-  //     }
-  //
-  //     .input--check__icon { background-color: rgba($bright, .36); box-shadow: $shadow-1;
-  //       &:before { color: $text-color; }
-  //     }
-  //     :checked + .input--check__icon { background-color: $bright; box-shadow: $shadow-2;}
-  //   }
-  // }
+  @include input($back: $accent-color);
 }
