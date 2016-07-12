@@ -40,14 +40,14 @@ $text-color: rgba(0, 0, 0, .75) !default;
 /// Main brand colors
 /// @type Color
 // $brand-color: #8e78ff !default;
-$brand-color: #b5a18d !default;
+$brand-color: #FFA900 !default;
 $brand-color-darker: darken( $brand-color, 25% ) !default;
-$comp-color: #ff7f00 !default;
-$accent-color: #fc4349 !default;
+$comp-color: #BCBDAD !default;
+$accent-color: #E4643D !default;
 
 /// Lights
 /// @type Color
-$bright: #f9f9f9 !default;
+$bright: #FBFAE5 !default;
 $white: #ffffff !default;
 
 /// Medium grey
