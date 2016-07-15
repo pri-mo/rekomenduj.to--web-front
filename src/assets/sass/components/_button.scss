@@ -90,6 +90,6 @@ button, .button {
 
   // When on cover photo
   .cover__container &, .layout__header & {
-    @include button($content: $white, $frame: .36, $p: 0px, $face: rgba($text-color, .11));
+    @include button($content: $text-color, $frame: .11, $p: 0px, $face: transparent);
   }
 }

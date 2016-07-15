@@ -33,9 +33,16 @@ $ico-size-m: 3rem;
 $ico-size-l: 5rem;
 $ico-size-xl: 7rem;
 
+/// Basic colors
+/// @type Color
+$white: #fff !default;
+$bright: darken($white, 2%) !default;
+$grey: darken($white, 50%) !default;
+$black: darken($white, 100%) !default;
+
 /// Copy text color
 /// @type Color
-$text-color: rgba(0, 0, 0, .75) !default;
+$text-color: lighten($black, 10%) !default;
 
 /// Main brand colors
 /// @type Color
@@ -45,38 +52,34 @@ $brand-color-darker: darken( $brand-color, 25% ) !default;
 $comp-color: #BCBDAD !default;
 $accent-color: #E4643D !default;
 
-/// Lights
-/// @type Color
-$bright: #FBFAE5 !default;
-$white: #ffffff !default;
+$nav-color: $text-color !default;
+$menuIcons-color: darken($brand-color, 20%) !default;
+$menuBackground-color: rgba($text-color, .05)!default;
 
-/// Medium grey
+/// Background color
 /// @type Color
-$grey: #3d3d3d !default;
-
-/// Background grey
-/// @type Color
-$base-grey: #f1f0ef !default;
+$base-color: darken($white, 1%) !default;
 
 // NOTE Colors: $text-color, $brand-color, $comp-color, $accent-color, $bright, $grey, $base-grey
 
 
-/// Consistent drop shadows
+/// Shadows
 /// @type CSS
-$shadow-1: 0 (1px+1) (3px+1) rgba(0,0,0, 0.11) !default;
-$shadow-2: 0 (2px+2) (5px+2) rgba(0,0,0, 0.11) !default;
-$shadow-3: 0 (3px+2) (8px+2) rgba(0,0,0, 0.11) !default;
-$shadow-4: 0 (4px+3) (13px+3) rgba(0,0,0, 0.11) !default;
+$frame-shadow: inset 0 0 1px rgba(0,0,0, 0.22) !default;
+$frame-shadow-outside: 0 0 1px rgba(0,0,0,0.22) !default;
 
-$shadow-1a: 0 (1px+1) (3px+1) rgba(0,0,0, 0.22) !default;
-$shadow-2a: 0 (2px+2) (5px+2) rgba(0,0,0, 0.22) !default;
-$shadow-3a: 0 (3px+2) (8px+2) rgba(0,0,0, 0.22) !default;
-$shadow-4a: 0 (4px+3) (13px+3) rgba(0,0,0, 0.22) !default;
+$shadow-1: 0 2px 4px rgba(0,0,0, 0.11) !default;
+$shadow-2: 0 5px 10px rgba(0,0,0, 0.11) !default;
+$shadow-3: 0 7px 16px rgba(0,0,0, 0.11) !default;
 
-$shadow-button: 0 (4px) (13px+2) rgba(0,0,0, 0.11) !default;
+$shadow-1a: 0 2px 4px rgba(0,0,0, 0.22) !default;
+$shadow-2a: 0 5px 10px rgba(0,0,0, 0.22) !default;
+$shadow-3a: 0 7px 16px rgba(0,0,0, 0.22) !default;
 
-$shadows: $shadow-1, $shadow-2, $shadow-3, $shadow-4;
-$shadows-heavy: $shadow-1a, $shadow-2a, $shadow-3a, $shadow-4a;
+$shadow-button: 0 4px 20px rgba(0,0,0, 0.16) !default;
+
+$shadows: $shadow-1, $shadow-2, $shadow-3;
+$shadows-heavy: $shadow-1a, $shadow-2a, $shadow-3a;
 
 /// Consistent transition and helpers
 /// @type CSS

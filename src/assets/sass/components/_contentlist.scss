@@ -14,13 +14,11 @@
 }
 
 .content-list__header {
-  color: $white;
-  text-shadow: $shadow-1;
+  color: $text-color;
   padding-bottom: 26rem;
   text-align: center;
   overflow: hidden;
 
-  &:not(.cover__container) { @include brand-gradient; }
   + .content-list { margin-top: -23rem;}
 
   .content-list__header-icon {
@@ -67,8 +65,8 @@
 
 .list-item {
   position: relative;
-  background-color: $bright;
-  box-shadow: $shadow-1;
+  background-color: $white;
+  box-shadow: $frame-shadow;
   padding: 3rem .64rem .64rem;
   color: $text-color;
   min-height: 12rem;
@@ -144,7 +142,6 @@
   &.cover__container {
     background-color: black!important;
     color: $white!important;
-    box-shadow: $shadow-1a;
 
     &:before, &:after { opacity: .88; }
   }
@@ -153,7 +150,7 @@
     text-decoration: none;
     color: $white;
     background-color: $brand-color;
-    box-shadow: $shadow-4;
+    box-shadow: $shadow-2;
     @include transform(scale(1.036));
     z-index: 11;
 
@@ -161,7 +158,7 @@
     &.cover__container {
       // background-color: $text--color !important;
       color: $white !important;
-      box-shadow: $shadow-4a;
+      box-shadow: $shadow-2a;
 
       .image--cover { opacity: .11; @include transform($moveToCenter scale(1.25));}
     }
@@ -288,7 +285,7 @@
 
     .doublesided__side-a,
     .doublesided__side-b {
-      background-color: $white; box-shadow: $shadow-4;
+      background-color: $white; box-shadow: $shadow-3;
     }
   };
 

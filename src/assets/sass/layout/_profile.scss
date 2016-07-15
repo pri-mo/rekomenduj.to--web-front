@@ -7,7 +7,6 @@
 }
 
 .layout__header {
-  color: $brand-color;
   padding-bottom: 8rem;
   text-align: center;
   overflow: hidden;
@@ -49,7 +48,7 @@ $button-size: 3 * 1.36rem;
   display: block; margin: 0 auto;
   width: $pic-size; position: relative;
   border-radius: 100%;
-  box-shadow: $shadow-3;
+  box-shadow: $frame-shadow-outside;
   z-index: 1;
 
   &:before {content: ''; display: block; padding-bottom: 100%;}
@@ -168,7 +167,6 @@ section.profile__focus-box {
 .focus--new-campaign {
   position: relative;
   background-color: $bright;
-  box-shadow: $shadow-4a;
   padding: 4rem 1rem;
   color: $text-color;
   min-height: 18rem;
@@ -234,8 +232,6 @@ section.profile__focus-box {
 // No items
 .focus--no-items {
   position: relative;
-  // background-color: $bright;
-  // box-shadow: $shadow-4a;
   padding: 4rem 1rem;
   color: $white;
   text-align: center;

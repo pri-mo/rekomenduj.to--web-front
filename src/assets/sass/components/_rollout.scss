@@ -49,14 +49,14 @@ $rollout-height: ( 2 * $padding-size + $line-height );
   &.roll-out__container {
     overflow: hidden;
     max-height: $rollout-height;
-    @include transition(.64s 0s $ease-in-out-cubic);
+    @include transition(.36s 0s $ease-in-out-cubic);
 
     // Rolled out
     &.roll-out--opened {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+      margin-top: .64rem;
+      margin-bottom: .64rem;
       max-height: 5000px;
-      @include transition(1s .36s $ease-in-out-cubic);
+      @include transition(.64s .11s $ease-in-out-cubic);
 
       .roll-out__status {
         @include transform(scale(1.64) rotate(-45deg));
@@ -66,7 +66,7 @@ $rollout-height: ( 2 * $padding-size + $line-height );
 
   // Add border when in group
   .layout__group & {
-    border-bottom: 1px solid rgba($text-color, .1);
+    margin: 0 .64rem;
 
     &:nth-last-child(1) { border-bottom: 0; }
   }

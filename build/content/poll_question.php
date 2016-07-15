@@ -40,10 +40,8 @@ switch ($multiple) {
 ?>
 
 <section class="layout--base poll__info">
-  <span class="help__flip">
-    <div class="poll__icon" data-icon="t"></div>
-    <div class="poll__name" data-label="Ankieta"><?php echo $faker->sentence; ?></div>
-  </span>
+  <div class="poll__icon" data-icon="t"></div>
+  <div class="poll__name" data-label="Ankieta"><?php echo $faker->sentence; ?></div>
 </section>
 
 <section class="layout--base poll__question">

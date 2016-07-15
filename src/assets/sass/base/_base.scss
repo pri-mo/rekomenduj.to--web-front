@@ -17,7 +17,8 @@
 html, body {
   // background-color: $base-grey;
   // @include brand-gradient($grain: 'grain-bright.jpg', $color: $white);
-  background: image('grain-bright.jpg'); background-size: 300px;
+  // background: image('grain-bright.jpg'); background-size: 300px;
+  background-color: $base-color;
   box-sizing: border-box;
   font-size: $text-font-size;
   width: 100vw;
@@ -132,11 +133,10 @@ section {
   transition: $transition;
   position: relative;
 
-  &.transparent--inverse { background-color: rgba( 255,255,255, 0); color: $bright; }
-  &.paint--white { background-color: $bright; box-shadow: 0 0 0 1px rgba($text-color, .05); }
-  &.paint--brand { background-color: $brand-color; color: $bright; }
-  &.paint--comp { background-color: $comp-color; color: $bright; }
-  &.paint--accent { background-color: $accent-color; color: $bright; }
+  &.transparent--inverse { background-color: rgba( 255,255,255, 0); color: $white; }
+  &.paint--brand { background-color: $brand-color; color: $white; }
+  &.paint--comp { background-color: $comp-color; color: $white; }
+  &.paint--accent { background-color: $accent-color; color: $white; }
 
   &.group, .layout__group & {
     margin-bottom: 0; margin-top: 0;
@@ -162,11 +162,21 @@ section {
   & + & { margin-top: 1rem; }
 }
 
+.layout--card {
+  margin: .64rem;
+  padding: .64rem;
+  background-color: $white;
+  box-shadow: $frame-shadow;
+  transition: $transition;
+  z-index: 1;
+  position: relative;
+}
+
 @for $n from 1 through length($shadows) {
   .layout--card-#{$n} {
     margin: .64rem;
     padding: .64rem;
-    background-color: lighten($bright, ( ( $n - 1 ) * 2% ) );
+    background-color: $white;
     box-shadow: nth($shadows, $n);
     transition: $transition;
     z-index: $n;
@@ -244,13 +254,13 @@ a:not(no-ripple), .ripple {
 .ink {
   display: block;
   position: absolute;
-  background-color:rgba($white, .36);
+  background-color:rgba($black, .11);
   border-radius: 100%;
   @include transform(scale(0) translate3d(0,0,0));
 
   // & ~ & {display: none;}
 
-  [class^="layout--card-"] & { background-color: rgba($grey, .11); }
+  [class^="layout--card-"] & { background-color: rgba($black, .11); }
   .paint--brand &,
   .paint--comp &,
   .paint--accent &,
@@ -258,7 +268,7 @@ a:not(no-ripple), .ripple {
 }
 
 .animate {
-  @include animation(ripple .64s ease-out);
+  @include animation(ripple .36s ease-out);
 }
 
 @-webkit-keyframes ripple {

@@ -4,7 +4,7 @@ $lang = 'pl';
 
 $tagsBodyBasic = 'preload device--mobile'; // platform-ios
 
-$tagsNav = 'nav--white';
+$tagsNav = '';
 $tagsTemplate = 'template--contentlist template--poll-list';
 
 ?>

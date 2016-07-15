@@ -39,28 +39,24 @@ header {
   width: 100vw;
 
   // Main nav
-  .nav--primary {
+  .nav--primary, .nav--secondary {
+    color: $nav-color;
     position: relative;
     height: $navHeight;
-    color: $brand-color;
-    box-shadow: 0 1px 0 rgba($brand-color, .22);
+    box-shadow: 0 1px 0 rgba($nav-color, .11);
     z-index: 3;
     @include transition(background-color .64s, box-shadow .36s);
   }
 
   // Helper nav
   .nav--secondary {
-    position: relative;
-    height: $navHeight;
-    color: $brand-color;
-    box-shadow: $shadow-2a;
     z-index: 2;
     @include transition(transform .36s, background-color .64s, box-shadow .36s);
   }
 
   .nav--white &:not(.scrolled):not(.nav--showMenu) {
     .nav--primary, .nav--secondary {
-      color: $white; box-shadow: 0 1px 0 rgba($white, .11);
+      color: $white; box-shadow: 0 1px 0 rgba($white, .22);
     }
   }
 
@@ -76,7 +72,7 @@ header {
     &:focus, &:active { animation: blink .36s; outline: none; }
   }
   .nav__icon--back { left: .5rem; @include transform(translate( 0%, -50% ));}
-  .nav__icon--logo { font-size: $navHeight/2; left: 50%; @include transform(translate( -50%, -50% ));}
+  .nav__icon--logo { font-size: $navHeight/2; opacity:.22; left: 50%; @include transform(translate( -50%, -50% ));}
   .nav__icon--inbox { right: 1rem; line-height: 1; @include transform(translate( 0%, -50% ));
     &:before {top: 0;}
     &.inbox--notify {
@@ -141,7 +137,7 @@ header {
 
   // Nav states
   &.scrolled, &.nav--showMenu {
-    .nav--primary, .nav--secondary { background-color: $white; color:$brand-color; box-shadow: $shadow-3a; }
+    .nav--primary, .nav--secondary { background-color: $white; color:$nav-color; box-shadow: $shadow-3a; }
     .nav--secondary { box-shadow: $shadow-2a; }
   }
 
@@ -168,7 +164,7 @@ nav a { color: rgba($text-color, .64); text-decoration: none;
 
 .nav__mainMenu {
   // @include brand-gradient;
-  background-color: rgba($text-color, .05);
+  background-color: $menuBackground-color;
 
   position: absolute; width: $menuWidth; height: 100vh; right: 100vw;
   overflow-y: scroll; overflow-x: hidden;
@@ -182,9 +178,9 @@ nav a { color: rgba($text-color, .64); text-decoration: none;
   // }
 
   .nav__position { margin: .11rem 0;}
-  .nav__spacer { height: 1px; background-color: rgba($brand-color, .22); margin: .64rem 0;}
+  .nav__spacer { height: 1px; background-color: rgba(dynamic-color($menuBackground-color), .22); margin: .64rem 0;}
   .nav__link { display: block; text-transform: uppercase; font-weight: $bold; padding: .36rem .64rem;
-    &[class^="rg-"]::before { font-size: 1.64rem; margin-right: .64rem; color: $brand-color;}
+    &[class^="rg-"]::before { font-size: 1.64rem; margin-right: .64rem; color: $menuIcons-color;}
   }
   .nav__account { @include clearfix; position: relative; }
   .nav__username {
@@ -193,7 +189,7 @@ nav a { color: rgba($text-color, .64); text-decoration: none;
   }
   .nav__avatar {
     position: absolute; right: 1rem; top: 50%; @include transform(translateY(-50%)); width: 4rem; height: 4rem;
-    .nav__link--avatar { display: block; overflow: hidden; border-radius: 4rem !important; height: 100%; width: 100%; position: relative; z-index: 1;}
+    .nav__link--avatar { display: block; overflow: hidden; border-radius: 4rem !important; height: 100%; width: 100%; position: relative; z-index: 1; box-shadow: $frame-shadow-outside;}
     .nav__link--avatar img { display: block; width: 101%; position: absolute; top: -1%; left: 50%; @include transform(translate3d(-50%, 0, 0)); z-index: -1;}
   }
 

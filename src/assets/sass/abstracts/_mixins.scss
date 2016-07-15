@@ -55,9 +55,9 @@
 /// @param {Color} $color
 @function dynamic-color($color, $text: $color) {
   @if (lightness($color) > 40) {
-    @return darken($text, 50%); // Lighter backgorund, return dark color
+    @return darken($text, 75%); // Lighter backgorund, return dark color
   } @else {
-    @return lighten($text, 50%); // Darker background, return light color
+    @return lighten($text, 75%); // Darker background, return light color
   }
 }
 
@@ -120,7 +120,7 @@
 /// @param {String} $image ['grain.jpg'] - image name if any
 /// @param {Number} $alpha [.88] - custom image brand-color overlay intensity
 /// @param {Bool} $local [true] - whether the image is an asset or an url
-@mixin brand-gradient($image: null, $grain: null, $alpha: .88, $local: true, $color: $brand-color, $color2: $comp-color) {
+@mixin brand-gradient($image: null, $grain: null, $alpha: .88, $local: true, $color: $brand-color, $color2: $color) {
 
   $degree: 180deg; // set the gradient slant
   // $color-specs: rgba(#B066FE, .22) 22%,

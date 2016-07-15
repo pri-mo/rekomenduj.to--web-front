@@ -20,7 +20,7 @@
   <h2 class="profile__welcome">Cześć <span id="welcomeName"></span></h2>
 </section>
 
-<section class="layout--card-4 profile__focus-box">
+<section class="layout--card profile__focus-box">
   <div class="focus--social-reach">
     <div class="roll-out roll-out__container">
       <a href="" class="roll-out__trigger social-reach__add" id="triggerAddSocial">
@@ -96,7 +96,7 @@
 
 <div class="layout__group">
 
-  <section class="layout--card-3 roll-out roll-out__container">
+  <section class="layout--card roll-out roll-out__container">
     <a href="" class="roll-out__trigger social-reach__add">
       <span class="roll-out__icon" data-icon="h"></span><span class="roll-out__name">Kim jestem?</span><span class="roll-out__status" data-icon="e"></span>
     </a>
@@ -177,7 +177,7 @@
     </div>
   </section>
 
-  <section class="layout--card-3 roll-out roll-out__container">
+  <section class="layout--card roll-out roll-out__container">
     <a href="" class="roll-out__trigger social-reach__add">
       <span class="roll-out__icon" data-icon="C"></span><span class="roll-out__name">Kontakt ze mną</span><span class="roll-out__status" data-icon="e"></span>
     </a>
@@ -208,7 +208,7 @@
     </div>
   </section>
 
-  <section class="layout--card-3 roll-out roll-out__container">
+  <section class="layout--card roll-out roll-out__container">
     <a href="" class="roll-out__trigger social-reach__add">
       <span class="roll-out__icon" data-icon="i"></span><span class="roll-out__name">Mój adres dostawy</span><span class="roll-out__status" data-icon="e"></span>
     </a>
@@ -282,7 +282,7 @@
     </div>
   </section>
 
-  <section class="layout--card-3 roll-out roll-out__container">
+  <section class="layout--card roll-out roll-out__container">
     <a href="" class="roll-out__trigger social-reach__add">
       <span class="roll-out__icon" data-icon="p"></span><span class="roll-out__name">Jestem blogerem</span><span class="roll-out__status" data-icon="e"></span>
     </a>
@@ -336,7 +336,7 @@
     </div>
   </section>
 
-  <section class="layout--card-3 roll-out roll-out__container">
+  <section class="layout--card roll-out roll-out__container">
     <a href="" class="roll-out__trigger social-reach__add">
       <span class="roll-out__icon" data-icon="3"></span><span class="roll-out__name">Więcej o mnie...</span><span class="roll-out__status" data-icon="e"></span>
     </a>

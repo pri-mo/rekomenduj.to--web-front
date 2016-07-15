@@ -15,7 +15,7 @@
 
 <?php if( isset($tasks) && ($tasks!=null) ) { ?>
 
-  <section class="layout--card-4 paint--comp profile__focus-box">
+  <section class="layout--card paint--comp profile__focus-box">
     <div class="focus--new-user">
       Twoje pierwsze kroki
       <ul class="focus__tasks">
@@ -35,7 +35,7 @@
 if( isset($campInvite) && ($campInvite!=null) ) {
 ?>
 
-  <section class="layout--card-4 profile__focus-box">
+  <section class="layout--card-3 profile__focus-box">
     <div class="focus--new-campaign" data-label="Zapraszamy Cię do kampanii...">
         <img src="/assets/images/backs/ph17.jpg" alt="" class="image--cover">
         <span class="new-campaign__name">Kocham gotować</span>
