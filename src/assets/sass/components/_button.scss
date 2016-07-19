@@ -76,20 +76,23 @@ button, .button {
   // General
   @include button($face: rgba($white, 0), $p: 0px);
 
-  // Paint related buttons
   .paint--brand &,
-  [class^='paint--back-'] &,
-  [class*=' paint--back-'] &,
   .paint--gradient & {
     @include button($back: $brand-color, $p: 0px, $face: rgba($text-color, .0));
   }
+
   .paint--comp &,
   .paint--accent & {
     @include button($content: $white, $frame: 0);
   }
 
   // When on cover photo
-  .cover__container &, .layout__header & {
+  .cover__video &,
+  .cover__container & {
+    @include button($back: $black);
+  }
+
+  .layout__header & {
     @include button($content: $text-color, $frame: .11, $p: 0px, $face: transparent);
   }
 }

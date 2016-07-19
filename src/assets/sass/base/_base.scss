@@ -69,10 +69,12 @@ a {
   transition: $transition;
   // cursor: pointer;
 
-  @include on-event {
-    color: $brand-color;
+  &#{$link-exclude} {
+    @include on-event {
+      color: $brand-color;
 
-    p & {text-decoration: underline;}
+      p & {text-decoration: underline;}
+    }
   }
 
   &.link--spare {
@@ -82,6 +84,7 @@ a {
 
     @include on-event {opacity: 1;}
   }
+
 }
 
 /**
@@ -134,9 +137,9 @@ section {
   position: relative;
 
   &.transparent--inverse { background-color: rgba( 255,255,255, 0); color: $white; }
-  &.paint--brand { background-color: $brand-color; color: $white; }
-  &.paint--comp { background-color: $comp-color; color: $white; }
-  &.paint--accent { background-color: $accent-color; color: $white; }
+  &.paint--brand { background-color: $brand-color; color: dynamic-color($brand-color); }
+  &.paint--comp { background-color: $comp-color; color: dynamic-color($comp-color); }
+  &.paint--accent { background-color: $accent-color; color: dynamic-color($accent-color); }
 
   &.group, .layout__group & {
     margin-bottom: 0; margin-top: 0;
@@ -166,7 +169,7 @@ section {
   margin: .64rem;
   padding: .64rem;
   background-color: $white;
-  box-shadow: $frame-shadow;
+  border: 1px solid $frame-color;
   transition: $transition;
   z-index: 1;
   position: relative;
@@ -176,6 +179,7 @@ section {
   .layout--card-#{$n} {
     margin: .64rem;
     padding: .64rem;
+    border-color: $white;
     background-color: $white;
     box-shadow: nth($shadows, $n);
     transition: $transition;
@@ -205,6 +209,23 @@ section {
   }
 }
 
+
+.layout__header {
+  padding-bottom: 12rem;
+  text-align: center;
+  overflow: hidden;
+
+  &:not(.cover__container) {
+    background-color: $brand-color;
+    color: $white;
+  }
+
+  .template--profile--public & {
+    height: 65vmax;
+  }
+}
+
+
 .layout__button-bar {
   padding-top: 1rem;
 
@@ -212,7 +233,7 @@ section {
   &.space--l { padding-top: $ico-size-l; }
   &.space--xl { padding-top: $ico-size-xl; }
   &.button-bar--divided {
-    .grid__item + .grid__item { border-left: 1px solid rgba($white, .1);}
+    .grid__item + .grid__item { border-left: 1px solid rgba(dynamic-color($brand-color), .1);}
   }
 }
 
@@ -247,7 +268,7 @@ a:not(no-ripple), .ripple {
   position: relative;
   overflow: hidden !important;
   // @include perspective(1000px);
-  @include transform(translate3d(0, 0, 0));
+  @include transform(translate3d(0, 0, 1px));
   @include backface-visibility(hidden);
 }
 
@@ -260,7 +281,6 @@ a:not(no-ripple), .ripple {
 
   // & ~ & {display: none;}
 
-  [class^="layout--card-"] & { background-color: rgba($black, .11); }
   .paint--brand &,
   .paint--comp &,
   .paint--accent &,

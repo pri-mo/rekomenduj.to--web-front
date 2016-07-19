@@ -55,9 +55,11 @@
 /// @param {Color} $color
 @function dynamic-color($color, $text: $color) {
   @if (lightness($color) > 40) {
-    @return darken($text, 75%); // Lighter backgorund, return dark color
+    // @return darken($text, 75%); // Lighter backgorund, return dark color
+    @return $text-color; // Lighter backgorund, return dark color
   } @else {
-    @return lighten($text, 75%); // Darker background, return light color
+    // @return lighten($text, 75%); // Darker background, return light color
+    @return $white; // Darker background, return light color
   }
 }
 

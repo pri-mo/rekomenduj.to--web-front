@@ -2,10 +2,6 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-
-
-
-
 /// Regular font family
 /// @type List
 $text-font-stack: 'MontserratWeb', sans-serif !default;
@@ -47,10 +43,12 @@ $text-color: lighten($black, 10%) !default;
 /// Main brand colors
 /// @type Color
 // $brand-color: #8e78ff !default;
-$brand-color: #FFA900 !default;
-$brand-color-darker: darken( $brand-color, 25% ) !default;
-$comp-color: #BCBDAD !default;
-$accent-color: #E4643D !default;
+$brand-color: #f4c741 !default;
+$brand-color-lighter: #e9c761 !default;
+$brand-color-darker: darken( $brand-color, 5% ) !default;
+$comp-color: #ff9d2a !default;
+$accent-color: #606060 !default;
+$alert-color: #db223a !default;
 
 $nav-color: $text-color !default;
 $menuIcons-color: darken($brand-color, 20%) !default;
@@ -62,12 +60,13 @@ $base-color: darken($white, 1%) !default;
 
 // NOTE Colors: $text-color, $brand-color, $comp-color, $accent-color, $bright, $grey, $base-grey
 
-
-/// Shadows
-/// @type CSS
+/// Frames
+$frame-color: darken($white, 8%) !default;
 $frame-shadow: inset 0 0 1px rgba(0,0,0, 0.22) !default;
 $frame-shadow-outside: 0 0 1px rgba(0,0,0,0.22) !default;
 
+/// Shadows
+/// @type CSS
 $shadow-1: 0 2px 4px rgba(0,0,0, 0.11) !default;
 $shadow-2: 0 5px 10px rgba(0,0,0, 0.11) !default;
 $shadow-3: 0 7px 16px rgba(0,0,0, 0.11) !default;
@@ -102,8 +101,8 @@ $max-width: 1330px !default;
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 /// @see {mixin} respond-to
 $breakpoints: (
+  'ph-portrait': (min-width: 360px, orientation: portrait),
   'ph-landscape': (min-width: 360px, orientation: landscape),
-  'ph-portrait': (min-width: 320px, orientation: portrait),
   'phablet': (min-width: 410px),
   'tablet': (min-width: 768px),
   'desktop': (min-width: 1024px),
@@ -119,3 +118,9 @@ $breakpoints: (
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
 $base-url: '/assets/' !default;
+
+
+
+
+/// Exclude some classes from link hover definition
+$link-exclude: ':not(.list-item):not(.nav__link):not(.roll-out__trigger):not(.button):not(.link--spare)' !default;

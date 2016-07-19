@@ -143,13 +143,14 @@ function updPicks() {
         var $parent = $(this).parent();
         var height = this.height;
         var width = this.width;
+        var widthRatio = $parent.width / width;
         var imgRatio = height / width;
         var parRatio = $parent.height() / $parent.width();
         var compareRatios = imgRatio*parRatio;
         var ratioDifference = imgRatio-parRatio;
 
         if ( imgRatio >= parRatio ) {
-          if ( compareRatios < imgRatio && compareRatios <= parRatio && ratioDifference > 0 && ratioDifference < 0.164 ){
+          if ( compareRatios < imgRatio && compareRatios <= parRatio && ratioDifference < 0.164 && ratioDifference > 0 ){
             if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
           } else {
             if ( !$el.hasClass('cover-width') ) $el.removeClass('cover--height').addClass('cover--width');
@@ -157,7 +158,7 @@ function updPicks() {
         } else {
           if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
         }
-        // console.log($(this).parent().attr('data-index') + ': ' + parRatio + ' / ' + imgRatio + '\n   (diff:' + ratioDifference + ') (comp:' + compareRatios + ')');
+        // console.log($(this).parent().attr('data-index') + ': widthRatio: ' + widthRatio + '; ' + parRatio + ' / ' + imgRatio + '\n   (diff:' + ratioDifference + ') (comp:' + compareRatios + ')');
       });
     }
 

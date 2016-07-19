@@ -27,7 +27,7 @@ $tagsTemplate = 'template--contentlist template--poll-list';
 
       <?php
       $contentItems = "polls";
-      // $contentItemsCount = 10;
+      $contentItemsCount = 4;
 
       include 'content/content-list.php'
 

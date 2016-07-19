@@ -452,22 +452,19 @@
 
 
 // The Inverse themes
-//// Brand
-.paint--brand .input,
 .paint--gradient .input,
-[class^='paint--back-'] .input,
-[class*=' paint--back-'] .input,
-.grad .input,
-.transparent--inverse .input {
-  @include input($back: $brand-color, $focus: $brand-color-darker);
+.transparent--inverse .input,
+.cover__video .input,
+.cover__container .input {
+  @include input($back: $black, $focus: $brand-color-darker);
 }
 
-//// Comp
-.paint--comp .input {
-  @include input($back: $comp-color);
+.paint--brand .input {
+  @include input($back: $brand-color, $focus: $accent-color);
 }
-
-//// Accent
 .paint--accent .input {
-  @include input($back: $accent-color);
+  @include input($back: $accent-color, $focus: $brand-color);
+}
+.paint--comp .input {
+  @include input($back: $comp-color, $focus: $brand-color-darker);
 }

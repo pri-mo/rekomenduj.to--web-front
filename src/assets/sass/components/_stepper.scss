@@ -17,7 +17,7 @@
 
     .stepper__nav-item {
       display: block;
-      background-color: $white;
+      background-color: $text-color;
       border-radius: 100%;
       opacity: .36;
       @include transform(scale(.5));

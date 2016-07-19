@@ -1,4 +1,4 @@
-<section class="layout--base layout--fullscreen paint--gradient">
+<section class="layout--base layout--fullscreen paint--brand">
 
   <div class="sign-form">
 

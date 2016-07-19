@@ -36,7 +36,7 @@
     @at-root {
       @include keyframes(loader) {
         0% { width: 0 }
-        100% { width: 90%; }
+        100% { width: 64%; }
       }
       @include keyframes(loader-hide) {
         100% { width: 0; height: 0; margin: 0; }

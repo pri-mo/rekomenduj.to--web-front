@@ -4,7 +4,7 @@ $lang = 'pl';
 
 $tagsBodyBasic = 'preload device--mobile';
 
-$tagsNav = 'nav--white';
+$tagsNav = '';
 $tagsTemplate = 'template--steps';
 
 ?>

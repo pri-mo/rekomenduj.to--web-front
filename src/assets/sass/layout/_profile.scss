@@ -6,20 +6,6 @@
   padding-bottom: 1rem;
 }
 
-.layout__header {
-  padding-bottom: 8rem;
-  text-align: center;
-  overflow: hidden;
-
-  &:not(.cover__container) {
-    // @include brand-gradient;
-  }
-
-  .template--profile--public & {
-    height: 65vmax;
-  }
-}
-
 .profile__photoedit {
   position: relative;
   text-align: center;
@@ -29,7 +15,7 @@
     font-size: $ico-size-m; line-height: 1;
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
     border-radius: 100%;
-    background-color: $white; color: $comp-color;
+    background-color: $white; color: $brand-color;
 
     &:before {
       position: absolute; top: 50%; left: 50%;
@@ -48,7 +34,7 @@ $button-size: 3 * 1.36rem;
   display: block; margin: 0 auto;
   width: $pic-size; position: relative;
   border-radius: 100%;
-  box-shadow: $frame-shadow-outside;
+  border: 1px solid rgba(dynamic-color($brand-color), .05);
   z-index: 1;
 
   &:before {content: ''; display: block; padding-bottom: 100%;}
@@ -78,11 +64,11 @@ $button-size: 3 * 1.36rem;
 }
 
 
-.profile__welcome { position: relative;}
+.profile__welcome { position: relative; color: dynamic-color($brand-color); opacity: .36;}
 
 
 section.profile__focus-box {
-  margin-top: -7rem;
+  margin-top: -10rem;
   padding: 0;
 
   & + & { margin-top: 1rem; }
@@ -98,7 +84,7 @@ section.profile__focus-box {
   margin: -1rem; margin-top: 1rem;
 
   li {
-    border-top: 1px solid rgba($white, .22);
+    border-top: 1px solid $frame-color;
     font-weight: $bold;
     position: relative;
     overflow: hidden;
@@ -120,7 +106,7 @@ section.profile__focus-box {
       padding: 1rem; margin-top: 0;
 
       .ink { background-color: rgba($white, .36); }
-      @include on-event { background-color: rgba($white, .22); }
+      @include on-event { background-color: rgba($brand-color-lighter, .11); }
     }
 
     [data-icon] { padding-right: .64rem; top: 10%; opacity: .64;

@@ -8,175 +8,143 @@
   @include flex-flow(row wrap);
 
   @at-root section#{&} {
-    padding: 0 0 3rem 0;
+    padding: 0 0 2rem 0;
     margin: calc(1rem - 1%);
   }
 }
 
 .content-list__header {
-  color: $text-color;
-  padding-bottom: 26rem;
+  color: $brand-color;
+  // padding-bottom: 26rem;
   text-align: center;
   overflow: hidden;
+  position: relative;
 
-  + .content-list { margin-top: -23rem;}
+  // + .content-list { margin-top: -23rem;}
 
   .content-list__header-icon {
-    font-size: $ico-size-l;
-    line-height: 1;
-    padding-top: 3rem;
+    color: $brand-color;
+    font-size: $ico-size-m;
+    border-radius: 100%;
+    line-height: $ico-size-m*1.36;
+    margin: .5rem auto 0;
   }
-  .content-list__header-title {}
+  .content-list__header-title {
+    font-weight: $light;
+    color: $brand-color;
+  }
 
+  &:nth-child(n+2) .content-list__header-title { top: $ico-size-l;}
 }
 
 .list-sizer {display: none;}
 .list-item {
   @include flex(0 1 auto);
-  width: ((100% / 2)-2%);
+  width: (100% - 2%);
   margin: 1%;
   display: block;
-  min-height: 50vw;
-
-  @include respond-to('ph-landscape') { width: ((100% / 3) - 2% ); }
-  @include respond-to('tablet') { width: ((100% / 4) - 2% ); }
-
-  // Mix the layout up a bit
-  @include respond-to('ph-landscape') {
-    &:nth-child(5n+3) {width: (2*(100% / 3) - 2% );
-      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
-      &.list-item--promo .list-item__name { font-weight: $bold; }
-    }
-  }
-  @include respond-to('ph-portrait') {
-    &:nth-child(5n+4) {width: (100% - 2%);
-      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
-      &.list-item--promo .list-item__name { font-weight: $bold; }
-    }
-  }
-  @include respond-to('tablet') {
-    &:nth-child(5n+4) {width: ((100% / 2) - 2% );
-      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
-      &.list-item--promo .list-item__name { font-weight: $bold; }
-    }
-  }
-
-}
-
-.list-item {
-  position: relative;
   background-color: $white;
-  box-shadow: $frame-shadow;
-  padding: 3rem .64rem .64rem;
+  border: 1px solid $frame-color;
   color: $text-color;
-  min-height: 12rem;
+  position: relative;
+  padding: 3.5rem 1rem 1rem;
+  min-height: 15rem;
   @include transition(.36s);
 
+  &:after, &:before {
+    display: block;
+    color: $accent-color;
+    @include transition(.36s);
+  }
 
   &:after {
     @extend %reko-glyph;
     font-size: 1.64rem;
     position: absolute;
-    top: .5rem; left: .64rem;
+    top: 1rem; left: 1rem;
     opacity: .64;
   }
 
   &:before {
     // content: attr(data-index)'. 'attr(data-label);
     content: attr(data-label);
-    display: block;
     text-transform: uppercase;
     font-size: .8em;
     opacity: .64;
   }
   .list-item__name {
     display: block;
-    font-size: 1rem;
+    font-weight: $bold;
+    font-size: 1.3rem;
     line-height: 1.3em;
     padding-right: 2rem;
     padding-top: .5rem;
+    @include transition(0s);
+  }
+
+  @include respond-to('ph-landscape' and 'phablet') {
+    width: ((100% / 2) - 1% );
+    margin: .5%;
+  }
+  @include respond-to('tablet') {
+    width: ((100% / 3) - 1%);
+    &:nth-child(5n+3) {width: ( 2 * (100% / 3) - 1% );
+      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+    }
+  }
+  @include respond-to('desktop') {
+    width: ((100% / 4) - 1%);
+    margin: .5%;
+
+    &:nth-child(5n+3) { width: ( (100% / 4) - 1% ); }
+
+    &:nth-child(5n+4) { width: ( (100% / 2) - 1% );
+      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+    }
   }
 
   // Cover images
   .image--cover {z-index: -1; opacity: .64;}
 
-  // Corect ink color
-  // &:not(.cover__container) .ink { background-color: rgba($text-color, .11); }
-
   // Types of items
   &.list-item--poll {
     &:after { content: "\74";}
-    // .ink { background-color: rgba($text-color, .11); }
-
-    &:not(:hover):not(:focus):not(.cover__container) {
-      &:before, &:after {
-        opacity: 1;
-        color: $comp-color;
-      }
-    }
   }
   &.list-item--campaign {
     &:after { content: "\69";}
-    .list-item__name { font-weight: $bold; }
-
-    &:not(:hover):not(:focus):not(.cover__container) {
-      &:before, &:after {
-        opacity: 1;
-        color: $brand-color;
-      }
-    }
   }
   &.list-item--promo {
-    &.promo--special { color: $accent-color; }
     &:after { content: "\72";}
-
-    &:not(:hover):not(:focus):not(.cover__container) {
-      &:before, &:after {
-        opacity: 1;
-        color: $accent-color;
-      }
-    }
   }
 
   // Item has a cover image
   &.cover__container {
-    background-color: black!important;
-    color: $white!important;
+    background-color: $black;
+    color: $white;
 
-    &:before, &:after { opacity: .88; }
+    &:before, &:after { opacity: .88; color: $white;}
   }
 
-  @include on-event {
-    text-decoration: none;
-    color: $white;
-    background-color: $brand-color;
-    box-shadow: $shadow-2;
-    @include transform(scale(1.036));
-    z-index: 11;
+  // Desktop Hover
+  @include respond-to('desktop') {
+    @include on-event {
+      text-decoration: none;
+      color: $white;
+      background-color: $brand-color;
+      box-shadow: $shadow-2;
+      @include transform(scale(1.036));
+      z-index: 11;
 
+      &:before, &:after { color: $white; opacity: 1; }
 
-    &.cover__container {
-      // background-color: $text--color !important;
-      color: $white !important;
-      box-shadow: $shadow-2a;
+      &.cover__container {
+        background-color: $brand-color-darker;
+        color: $white !important;
+        box-shadow: $shadow-2a;
 
-      .image--cover { opacity: .11; @include transform($moveToCenter scale(1.25));}
-    }
-    &:not(.list-item--doublesided) {
-      &.list-item--poll {
-        background-color: $comp-color!important;
-        &.cover__container {background-color: shade($comp-color, 1%)!important;}
-      }
-      &.list-item--promo {
-        background-color: $accent-color!important;
-        &.cover__container {background-color: shade($accent-color, 1%)!important;}
-      }
-      &.list-item--campaign {
-        background-color: $brand-color!important;
-        &.cover__container {background-color: shade($brand-color, 2%)!important;}
+        .image--cover { opacity: .11; @include transform($moveToCenter scale(1.25));}
       }
     }
-    // &.list-item--promo { background-color: }
   }
 }
 
@@ -188,21 +156,18 @@
   padding: 0;
   background-color: transparent;
   box-shadow: none;
+  border: 0;
 
   // Some new styles
   @include perspective(1000px);
   height: 12rem;
 
-  // Ink fix
-  .ink { background-color: rgba($text-color, .11); }
-
-
   // General sides defs
   .doublesided__side-a,
   .doublesided__side-b {
     background-color: $bright;
-    box-shadow: $shadow-1;
-    padding: 3rem .64rem .64rem;
+    border: 1px solid $frame-color;
+    padding: 3rem 1rem 1rem;
     text-decoration: none !important;
 
     @include backface-visibility(hidden);
@@ -228,7 +193,7 @@
       @extend %reko-glyph;
       font-size: 1.64rem;
       position: absolute;
-      top: .64rem; left: .64rem;
+      top: 1rem; left: 1rem;
       opacity: .64;
     }
 
@@ -243,7 +208,6 @@
     &.cover__container {
       background-color: $text-color!important;
       color: $white!important;
-      box-shadow: $shadow-1a;
 
       &:before, &:after { opacity: .88; }
     }
