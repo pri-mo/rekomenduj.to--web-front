@@ -1,180 +1,254 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the profile page of the application.
-// -----------------------------------------------------------------------------
-
 .template--profile {
   padding-bottom: 1rem;
 }
 
 .profile__photoedit {
+  padding: 1.64rem 1rem;
   position: relative;
   text-align: center;
-  padding: 1.64rem 1rem;
 
   .profile__icon {
-    font-size: $ico-size-m; line-height: 1;
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: $white;
     border-radius: 100%;
-    background-color: $white; color: $brand-color;
+    bottom: 0;
+    color: $brand-color;
+    font-size: $ico-size-m;
+    left: 0;
+    line-height: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
 
-    &:before {
-      position: absolute; top: 50%; left: 50%;
+    &::before {
       @include transform(translate(-50%, -50%) scale(1.36));
+
+      left: 50%;
+      position: absolute;
+      top: 50%;
     }
   }
 }
 
-.profile__uploaded {
-  & + .profile__photoedit .profile__icon {opacity: 0;} // TODO Might by depricated
-}
-
 $pic-size: 36%;
 $button-size: 3 * 1.36rem;
+
 .profile__pic-container {
-  display: block; margin: 0 auto;
-  width: $pic-size; position: relative;
-  border-radius: 100%;
   border: 1px solid rgba(dynamic-color($brand-color), .05);
+  border-radius: 100%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width: $pic-size;
   z-index: 1;
 
-  &:before {content: ''; display: block; padding-bottom: 100%;}
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
 
-  & + .profile__photoedit .profile__icon {opacity: 0;}
+  + .profile__photoedit .profile__icon {
+    opacity: 0;
+  }
 }
 
 .profile__controls {
-  position: absolute; top: 50%; left: 50%; @include transform(translate(-50%, -50%));
-  width: $button-size;
+  @include transform(translate(-50%, -50%));
   @include transition(.36s);
+
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: $button-size;
   z-index: 0;
 
   .profile__photoedit:hover &,
   .device--mobile & {
-    width: calc(#{$pic-size} + #{$button-size * 3});
+    width: calc(#{$pic-size} + #{$button-size} * 3);
   }
 
   .button.button--icon {
-    display: block;
-    position: absolute; top: 50%;
     @include transform(translateY(-50%));
 
-    &:nth-child(1) { left: 0; }
-    &:nth-child(2) { right: 0; }
+    display: block;
+    position: absolute;
+    top: 50%;
+
+    &:nth-child(1) {
+      left: 0;
+    }
+
+    &:nth-child(2) {
+      right: 0;
+    }
   }
 }
 
-
-.profile__welcome { position: relative; color: dynamic-color($brand-color); opacity: .36;}
-
+.profile__welcome {
+  color: $white;
+  position: relative;
+}
 
 section.profile__focus-box {
   margin-top: -10rem;
   padding: 0;
 
-  & + & { margin-top: 1rem; }
+  & + & {
+    margin-top: 1rem;
+  }
 }
 
-
-
-.focus--new-user { text-transform: uppercase; padding: 1rem;
+.focus--new-user {
+  padding: 1rem;
+  text-transform: uppercase;
 }
+
 .focus__tasks {
-  text-transform: none;
   font-size: $header-3;
-  margin: -1rem; margin-top: 1rem;
+  margin: -1rem;
+  margin-top: 1rem;
+  text-transform: none;
 
   li {
     border-top: 1px solid $frame-color;
     font-weight: $bold;
-    position: relative;
-    overflow: hidden;
     max-height: 5rem;
+    overflow: hidden;
+    position: relative;
 
-    &:after {
-      content:''; display: block; position: absolute;
-      top: 0;left: 0;right: 0;bottom: 50%;
-      background-color: rgba($text-color, .11); opacity: 0; z-index: -1;
+    &::after {
+      background-color: rgba($text-color, .11);
+      bottom: 50%;
+      content: '';
+      display: block;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
     }
-    &:before {
-      content: ''; display: block; position: absolute;
-      top: 0; bottom: 0; left: 0; width: 0; z-index: -1;
+
+    &::before {
       background-color: $white;
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 0;
+      z-index: -1;
     }
 
     a {
-      display: block; text-decoration: none; color: inherit;
-      padding: 1rem; margin-top: 0;
+      color: inherit;
+      display: block;
+      margin-top: 0;
+      padding: 1rem;
+      text-decoration: none;
 
-      .ink { background-color: rgba($white, .36); }
-      @include on-event { background-color: rgba($brand-color-lighter, .11); }
+      @include on-event {
+        background-color: rgba($brand-color-lighter, .11);
+      }
+
+      .ink {
+        background-color: rgba($white, .36);
+      }
     }
 
-    [data-icon] { padding-right: .64rem; top: 10%; opacity: .64;
+    [data-icon] {
       display: inline-block;
+      opacity: .64;
+      padding-right: .64rem;
+      top: 10%;
     }
   }
+
   [data-complete] {
-    font-weight: $light;
     animation: color-to-sky .36s .36s ease forwards, task-fold .64s 1.64s ease forwards;
+    font-weight: $light;
 
-    &:before { animation: task-complete 1s .64s ease forwards; }
-    &:after { animation: fadein .64s 1.64s ease forwards; z-index: 0;}
-    a { animation: correct-position 1s 1.64s ease forwards; }
+    &::before {
+      animation: task-complete 1s .64s ease forwards;
+    }
 
-    [data-icon] { opacity: 1; }
+    &::after {
+      animation: fadein .64s 1.64s ease forwards;
+      z-index: 0;
+    }
+
+    a {
+      animation: correct-position 1s 1.64s ease forwards;
+    }
+
+    [data-icon] {
+      opacity: 1;
+    }
   }
 
   @at-root {
     @include keyframes(task-complete) {
-      100% { width: 100%; }
+      100% {
+        width: 100%;
+      }
     }
 
     @include keyframes(correct-position) {
-      100% { transform: translateY(-2rem); }
+      100% {
+        transform: translateY(-2rem);
+      }
     }
 
     @include keyframes(task-fold) {
-      100% { max-height: 0; border-top: 0;}
+      100% {
+        border-top: 0;
+        max-height: 0;
+      }
     }
 
     @include keyframes(fadein) {
-      100% { opacity: 1; }
+      100% {
+        opacity: 1;
+      }
     }
 
     @include keyframes(color-to-sky) {
-      100% { color: $comp-color; }
+      100% {
+        color: $comp-color;
+      }
     }
-
   }
 }
 
-
 // Campaign invitation focus box
 .focus--new-campaign {
-  position: relative;
   background-color: $bright;
-  padding: 4rem 1rem;
   color: $text-color;
   min-height: 18rem;
+  padding: 4rem 1rem;
+  position: relative;
 
-
-  &:after {
+  &::after {
     @extend %reko-glyph;
-    content: "\69";
+
+    content: '\69';
     font-size: 1.64rem;
-    position: absolute;
-    top: .64rem; left: 1rem;
+    left: 1rem;
     opacity: .64;
+    position: absolute;
+    top: .64rem;
   }
 
-  &:before {
+  &::before {
     content: attr(data-label);
     display: block;
-    text-transform: uppercase;
     font-size: .8em;
+    left: 1rem;
     opacity: .64;
     position: absolute;
-    top: 3rem; left: 1rem;
+    text-transform: uppercase;
+    top: 3rem;
   }
 
   .new-campaign__name {
@@ -186,16 +260,23 @@ section.profile__focus-box {
     padding-top: .64rem;
   }
 
-  .button {
-    position: absolute!important; bottom: 1rem; left: 50%;
-    @include transform(translate3d(-50%, 0, 0)!important);
+  &.cover__container .button {
+    @include transform(translate3d(-50%, 0, 0));
+
+    bottom: 1rem;
+    left: 50%;
+    position: absolute !important;
   }
 
   // Cover images
   .image--cover {
     opacity: .5;
 
-    &.cover--tall, &.cover--wide { width: 110%; height: auto; }
+    &.cover--tall,
+    &.cover--wide {
+      height: auto;
+      width: 110%;
+    }
   }
 
   // Corect inc color
@@ -205,42 +286,52 @@ section.profile__focus-box {
 
   // Item has a cover image
   &.cover__container {
-    background-color: $text-color!important;
-    color: $white!important;
+    background-color: $text-color !important;
     box-shadow: $shadow-1a;
+    color: $white !important;
 
-    &:before, &:after { opacity: .88; z-index: 1; }
-    .new-campaign__name { position: relative; }
+    &::before,
+    &::after {
+      opacity: .88;
+      z-index: 1;
+    }
+
+    .new-campaign__name {
+      position: relative;
+    }
   }
 }
 
-
 // No items
 .focus--no-items {
-  position: relative;
-  padding: 4rem 1rem;
   color: $white;
-  text-align: center;
   min-height: 18rem;
+  padding: 4rem 1rem;
+  position: relative;
+  text-align: center;
 
-
-  &:after {
+  &::after {
     @extend %reko-glyph;
-    content: "\32";
+
+    content: '\32';
     font-size: 1.64rem;
-    position: absolute;
-    top: .64rem; left: 1rem; right: 1rem;
+    left: 1rem;
     opacity: .64;
+    position: absolute;
+    right: 1rem;
+    top: .64rem;
   }
 
-  &:before {
+  &::before {
     content: attr(data-label);
     display: block;
-    text-transform: uppercase;
     font-size: .8em;
+    left: 1rem;
     opacity: .64;
     position: absolute;
-    top: 3rem; left: 1rem; right: 1rem;
+    right: 1rem;
+    text-transform: uppercase;
+    top: 3rem;
   }
 
   .focus__name {
@@ -248,20 +339,26 @@ section.profile__focus-box {
     font-size: $header-1;
     font-weight: $bold;
     line-height: 1.36em;
-    padding-right: 0%;
+    padding-right: 0;
     padding-top: .64rem;
   }
 
   .button {
-    position: absolute!important; bottom: 1rem; left: 50%;
-    @include transform(translate3d(-50%, 0, 0)!important);
+    @include transform(translate3d(-50%, 0, 0));
+    bottom: 1rem;
+    left: 50%;
+    position: absolute !important;
   }
 
   // Cover images
   .image--cover {
     opacity: .5;
 
-    &.cover--tall, &.cover--wide { width: 110%; height: auto; }
+    &.cover--tall,
+    &.cover--wide {
+      height: auto;
+      width: 110%;
+    }
   }
 
   // Corect inc color
@@ -271,15 +368,21 @@ section.profile__focus-box {
 
   // Item has a cover image
   &.cover__container {
-    background-color: $text-color!important;
-    color: $white!important;
+    background-color: $text-color !important;
     box-shadow: $shadow-1a;
+    color: $white !important;
 
-    &:before, &:after { opacity: .88; z-index: 1; }
-    .focus__name { position: relative; }
+    &::before,
+    &::after {
+      opacity: .88;
+      z-index: 1;
+    }
+
+    .focus__name {
+      position: relative;
+    }
   }
 }
-
 
 // Social Reach
 .focus--social-reach {
@@ -288,59 +391,102 @@ section.profile__focus-box {
     @include display(flex);
     @include flex-direction(row);
     @include justify-content(flex-start);
+
     border-top: 1px solid rgba($text-color, .05);
   }
+
   .stats__cell {
     @include flex(1);
+
     padding: 1rem;
   }
+
   .stats__cell--longform {
     @include flex(2);
-    font-size: .88rem; line-height: 1.36em;
+
+    font-size: .88rem;
+    line-height: 1.36em;
     opacity: .64;
   }
 
   .stats__val {
     display: block;
-    font-size: $header-1; line-height: 1em; padding-bottom: .36em;
+    font-size: $header-1;
     font-weight: $bold;
+    line-height: 1em;
+    padding-bottom: .36em;
   }
+
   .stats__name {
     display: block;
-    font-size: .88rem; line-height: 1.1em;
+    font-size: .88rem;
+    line-height: 1.1em;
   }
 
-  .social-reach__icon { font-size: 1.5rem; padding: 0 .5rem;
-    &:first-child { padding-left: 0; }
+  .social-reach__icon {
+    font-size: 1.5rem;
+    padding: 0 .5rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
   }
 
-  .roll-out--opened { margin-top: 0!important; margin-bottom: 0!important;}
+  .roll-out--opened {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+
   .roll-out__content {
-    width: 100%; padding: 0!important;
-    // @include align-items(stretch);
     @include display(flex);
     @include flex-flow(row wrap);
 
+    padding: 0 !important;
+    width: 100%;
+
     .social-reach__add-channel {
       @include flex(0 1 auto);
-      padding: 1rem; width: 50%;
+
       color: rgba($text-color, .36);
+      padding: 1rem;
+      width: 50%;
 
       @include on-event {
-        color: $text-color; background-color: rgba($text-color, .05);
+        background-color: rgba($text-color, .05);
+        color: $text-color;
       }
 
-      @include respond-to('ph-landscape') { width: 25%; }
-      @include respond-to('phablet') { width: (100%/3); }
-      @include respond-to('tablet') { width: 25%; }
-      @include respond-to('desktop') { width: 20%; }
-    }
-    &:after {
-      content: '';
-      @include flex(0 1 auto);
+      @include respond-to('ph-landscape') {
+        width: 25%;
+      }
+
+      @include respond-to('phablet') {
+        width: (100% / 3);
+      }
+
+      @include respond-to('tablet') {
+        width: 25%;
+      }
+
+      @include respond-to('desktop') {
+        width: 20%;
+      }
     }
 
-    .channel__icon { font-size: 1.5rem; padding: 0 .5rem;}
-    .channel__name { padding: .36rem 0; display: inline-block;}
+    &::after {
+      @include flex(0 1 auto);
+
+      content: '';
+    }
+
+    .channel__icon {
+      font-size: 1.5rem;
+      padding: 0 .5rem;
+    }
+
+    .channel__name {
+      display: inline-block;
+      padding: .36rem 0;
+    }
   }
 }

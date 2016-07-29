@@ -15,7 +15,7 @@ function imgBroken(image) {
 function updKids() {
   var $kNum = document.getElementById('kidsNumber');
   var kids = $kNum.value;
-  var nowKids = $("#kidsInputs .grid__container").length;
+  var nowKids = $('#kidsInputs .grid__container').length;
   var r = -1*(nowKids-kids);
   var n = 0;
   var today = new Date();
@@ -25,7 +25,7 @@ function updKids() {
   var yyyy = today.getFullYear();
 
   if(kids === 0) {
-    $("#kidsInputs .grid__container").remove();
+    $('#kidsInputs .grid__container').remove();
   } else {
     if(kids > nowKids) {
       for(i = 0; i < (kids-nowKids); i++) {
@@ -66,7 +66,7 @@ function updKids() {
       });
     } else {
       r = -1*(nowKids-kids);
-      $("#kidsInputs .grid__container").slice(r).remove();
+      $('#kidsInputs .grid__container').slice(r).remove();
     }
   }
 }

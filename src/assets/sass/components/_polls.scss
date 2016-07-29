@@ -23,7 +23,7 @@
   // Video
   .media__vid {
     position: relative;
-    padding-bottom: (100% / (16/9));
+    padding-bottom: (100% / (16 / 9));
     margin-bottom: .64rem;
     height: 0;
     overflow: hidden;
@@ -55,18 +55,24 @@
 // Poll info
 .poll__info {
   body:not(.poll--end-screen) & {
+    @include transform(rotate(90deg));
+    @include transform-origin(0% 50%);
+
     color: $brand-color;
     opacity: .64;
     padding: 0;
     position: absolute;
-    top: 2.5rem; left: 1.5rem;
+    top: 2.5rem;
+    left: 1.5rem;
     line-height: 2rem;
     white-space: nowrap;
     text-align: right;
-    @include transform(rotate(90deg));
-    @include transform-origin(0% 50%);
 
-    .help__flip { display: block; @include transform(rotate(180deg));}
+    .help__flip {
+      @include transform(rotate(180deg));
+
+      display: block;
+    }
 
     .poll__icon {
       display: inline;
@@ -77,7 +83,7 @@
       display: inline;
       font-weight: $bold;
 
-      &:before {
+      &::before {
         // Type of poll label
         content: attr(data-label); display: inline-block;
         padding-right: 1rem; text-transform: uppercase;
@@ -92,7 +98,7 @@
 
     .poll__icon {font-size: $ico-size-xl; padding: 1.64rem 0; line-height: 1;}
     .poll__name {font-size: $header-3; font-weight: $bold ;line-height: 1.3em; padding: .64rem 2rem;
-      &:before {
+      &::before {
         content: attr(data-label); display: block;
         text-transform: uppercase;
         font-weight: $light; font-size: $text-font-size;
@@ -110,14 +116,14 @@
     font-size: 1.36rem; line-height: 1.5em;
     // color: $brand-color;
 
-    &:before {
+    &::before {
       // question number label
       content: attr(data-label); display: block;
       text-transform: uppercase;
       font-size: .64em; opacity: .22;
       // color: $text-color;
     }
-    &:after {
+    &::after {
       content: attr(data-extrainfo); display: block;
       text-transform: uppercase;
       font-size: .64em; line-height: 1.36;
@@ -367,7 +373,7 @@
 
         + span {
           position: absolute; top: 50%; left: 50%;
-          @include transform($moveToCenter);
+          @include transform($move-to-center);
 
           display: block; overflow: visible; opacity: .1;
           font-size: 1.64rem; line-height: .9em;
@@ -416,6 +422,7 @@
     @include transition(all .36s $ease-out-quad);
     z-index: 100;
     width: auto;
+    background-color: $white;
     /* Prevent table from stretching to full size */
   }
 
@@ -423,7 +430,6 @@
     box-shadow: $shadow-3;
     z-index: 50;
     width: 100%;
-    background-color: $white;
     /* Force stretch */
   }
 
@@ -450,7 +456,7 @@ td.user-name {
 
 // Poll navigation
 .poll__nav {
-  padding: 3rem; padding-top: 1.5rem; margin-left: -2rem!important;
+  padding: 3rem; padding-top: 1.5rem;
   // @include brand-gradient($grain: 'grain-pastelred.jpg', $color: $comp-color);
   @include clearfix;
 

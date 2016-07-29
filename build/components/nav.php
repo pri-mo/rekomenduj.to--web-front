@@ -1,5 +1,5 @@
 <header>
-  <nav class="nav__mainMenu">
+  <nav class="nav__main-menu">
     <ul>
       <li class="nav__position"><a href="profile-with-photo.php" class="rg-home nav__link">Moje Reko</a></li>
       <li class="nav__position"><a href="kampanie-i-promocje.php" class="rg-campaign nav__link">Kampanie i promocje</a></li>
@@ -19,10 +19,10 @@
     </ul>
   </nav>
   <div class="nav--primary">
-    <div class="nav__menuTrigger ripple" tabindex="0" id="triggerMenu"><div class="helper__navCubeCanvas">
-      <div class="nav__iconCube">
-        <div class="nav__icon--menuOpen" data-icon="a"></div>
-        <div class="nav__icon--menuClose" data-icon="b"></div>
+    <div class="nav__menu-trigger ripple" tabindex="0" id="triggerMenu"><div class="helper__nav-cube-canvas">
+      <div class="nav__icon-cube">
+        <div class="nav__icon--menu-open" data-icon="a"></div>
+        <div class="nav__icon--menu-close" data-icon="b"></div>
       </div>
     </div></div>
     <div class="nav__icon--logo" data-icon="A" tabindex="0" id="triggerLogo"></div>

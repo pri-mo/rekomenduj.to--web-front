@@ -40,7 +40,6 @@ if( isset($campInvite) && ($campInvite!=null) ) {
         <img src="/assets/images/backs/ph17.jpg" alt="" class="image--cover">
         <span class="new-campaign__name">Kocham gotować</span>
         <a href="#a" class="button">Poznaj szczegóły</a>
-      </a>
     </div>
   </section>
 
@@ -73,9 +72,7 @@ if( isset($contentList) && ($contentList!=null) ) {
 
   <section class="layout--base profile__focus-box">
     <div class="focus--no-items" data-label="Puchar dla Ciebie">
-        <!-- <img src="/assets/images/backs/ph12.jpg" alt="" class="image--cover"> -->
-        <span class="focus__name">Chwilowo nie mamy więcej dobroci dla Ciebie, wyłącznie uśmiech. Wróć tu za jakiś czas...</span>
-      </a>
+      <span class="focus__name">Chwilowo nie mamy więcej dobroci dla Ciebie, wyłącznie uśmiech. Wróć tu za jakiś czas...</span>
     </div>
   </section>
 

@@ -27,6 +27,6 @@ $faker = Faker\Factory::create('pl_PL');
   </div>
 </section>
 
-<section class="layout--card-3 poll__nav">
-  <a href="/" class="button">Do profilu</a>
+<section class="layout--base poll__nav">
+  <a href="profile-with-photo.php" class="button">Do profilu</a>
 </section>

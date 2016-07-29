@@ -51,13 +51,13 @@
   min-height: 15rem;
   @include transition(.36s);
 
-  &:after, &:before {
+  &::after, &::before {
     display: block;
     color: $accent-color;
     @include transition(.36s);
   }
 
-  &:after {
+  &::after {
     @extend %reko-glyph;
     font-size: 1.64rem;
     position: absolute;
@@ -65,7 +65,7 @@
     opacity: .64;
   }
 
-  &:before {
+  &::before {
     // content: attr(data-index)'. 'attr(data-label);
     content: attr(data-label);
     text-transform: uppercase;
@@ -108,13 +108,13 @@
 
   // Types of items
   &.list-item--poll {
-    &:after { content: "\74";}
+    &::after { content: "\74";}
   }
   &.list-item--campaign {
-    &:after { content: "\69";}
+    &::after { content: "\69";}
   }
   &.list-item--promo {
-    &:after { content: "\72";}
+    &::after { content: "\72";}
   }
 
   // Item has a cover image
@@ -122,7 +122,7 @@
     background-color: $black;
     color: $white;
 
-    &:before, &:after { opacity: .88; color: $white;}
+    &::before, &::after { opacity: .88; color: $white;}
   }
 
   // Desktop Hover
@@ -135,14 +135,14 @@
       @include transform(scale(1.036));
       z-index: 11;
 
-      &:before, &:after { color: $white; opacity: 1; }
+      &::before, &::after { color: $white; opacity: 1; }
 
       &.cover__container {
         background-color: $brand-color-darker;
         color: $white !important;
         box-shadow: $shadow-2a;
 
-        .image--cover { opacity: .11; @include transform($moveToCenter scale(1.25));}
+        .image--cover { opacity: .11; @include transform($move-to-center scale(1.25));}
       }
     }
   }
@@ -189,7 +189,7 @@
     z-index: 2;
     @include transform(rotateY(0deg));
 
-    &:after {
+    &::after {
       @extend %reko-glyph;
       font-size: 1.64rem;
       position: absolute;
@@ -197,7 +197,7 @@
       opacity: .64;
     }
 
-    &:before {
+    &::before {
       content: attr(data-label);
       display: block;
       text-transform: uppercase;
@@ -209,20 +209,20 @@
       background-color: $text-color!important;
       color: $white!important;
 
-      &:before, &:after { opacity: .88; }
+      &::before, &::after { opacity: .88; }
     }
   }
   // List type icons
   &.list-item--poll {
-    &:after { content: ""; display: none; }
+    &::after { content: ""; display: none; }
     .doublesided__side-a:after { content: "\74";}
   }
   &.list-item--campaign {
-    &:after { content: ""; display: none; }
+    &::after { content: ""; display: none; }
     .doublesided__side-a:after { content: "\69";}
   }
   &.list-item--promo {
-    &:after { content: ""; display: none; }
+    &::after { content: ""; display: none; }
     .doublesided__side-a:after { content: "\72";}
   }
 

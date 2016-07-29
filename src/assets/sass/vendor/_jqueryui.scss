@@ -1,151 +1,144 @@
 /*
- * -----------------------------------------------------------------------------
- * Some jQuery UI styles — Custom build
- * -----------------------------------------------------------------------------
- */
+* -----------------------------------------------------------------------------
+* Some jQuery UI styles — Custom build
+* -----------------------------------------------------------------------------
+*/
 
- /* Component containers
- ----------------------------------*/
+/* Component containers
+----------------------------------*/
 
- .ui-widget {
-  //  font-size: 1em;
+.ui-widget {
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 1em;
+  }
+}
 
-   .ui-widget { // font-size: 1em;
-   }
-   input, select, textarea, button { font-size: 1em;
-   }
- }
+.ui-widget-content {
+  a {
+    color: $text-color;
+  }
+}
 
- .ui-widget-content {
+.ui-widget-header {
+  font-weight: bold;
+  a {
+    color: $text-color;
+  }
+}
 
-   a { color: $text-color;
-   }
- }
+/* Interaction states
+----------------------------------*/
+.ui-state-default {
+  a {
+    color: $text-color;
+    text-decoration: none;
+    &:link,
+    &:visited {
+      color: $text-color;
+      text-decoration: none;
+    }
+  }
+  .ui-widget-content &,
+  .ui-widget-header & {
+    @include transition(background-color .36s, box-shadow .36s, color .36s);
 
- .ui-widget-header {
-   font-weight: bold;
+    background: $bright;
+    box-shadow: $shadow-1;
+    color: $text-color;
+    font-weight: normal;
+  }
+}
 
-   a { color: $text-color;
-   }
- }
 
- /* Interaction states
- ----------------------------------*/
+.ui-state-hover,
+.ui-state-focus {
+  a {
+    text-decoration: none;
+    &:hover,
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+  .ui-widget-content &,
+  .ui-widget-header & {
+    box-shadow: $shadow-2;
+  }
+}
 
- .ui-state-default,
- .ui-widget-content .ui-state-default,
- .ui-widget-header .ui-state-default {
-   background: $bright;
-   box-shadow: $shadow-1;
-   font-weight: normal;
-   color: $text-color;
+.ui-state-active {
+  a {
+    text-decoration: none;
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+  .ui-widget-content &,
+  .ui-widget-header & {
+    background: $white;
+    box-shadow: $shadow-3;
+    font-weight: normal;
+  }
+}
 
-   @include transition(background-color .36s, box-shadow .36s, color .36s);
- }
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight {
+  .ui-widget-content &,
+  .ui-widget-header & {
+    background: #fffa90;
+    border: 1px solid #dad55e;
+    color: #777620;
+  }
+}
 
- .ui-state-default a {
-   color: $text-color;
-   text-decoration: none;
+.ui-state-highlight a {
+  .ui-widget-content &,
+  .ui-widget-header & {
+    color: #777620;
+  }
+}
 
-   &:link, &:visited {
-     color: $text-color;
-     text-decoration: none;
-   }
- }
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+  background: #fddfdf;
+  border: 1px solid #f1a899;
+  color: #5f3f3f;
+}
 
- .ui-state-hover,
- .ui-widget-content .ui-state-hover,
- .ui-widget-header .ui-state-hover,
- .ui-state-focus,
- .ui-widget-content .ui-state-focus,
- .ui-widget-header .ui-state-focus {
-  //  background: lighten($bright, 5%);
-   box-shadow: $shadow-2;
- }
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a,
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text {
+  color: #5f3f3f;
+}
 
- .ui-state-hover a {
-   text-decoration: none;
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary {
+  font-weight: bold;
+}
 
-   &:hover, &:link, &:visited {
-     text-decoration: none;
-   }
- }
+.ui-priority-secondary {
+  .ui-widget-content &,
+  .ui-widget-header & {
+    opacity: .7;
+  }
+}
 
- .ui-state-focus a {
-   text-decoration: none;
-
-   &:hover, &:link, &:visited {
-     text-decoration: none;
-   }
- }
-
- .ui-state-active,
- .ui-widget-content .ui-state-active,
- .ui-widget-header .ui-state-active {
-   background: $white;
-   font-weight: normal;
-   box-shadow: $shadow-3;
- }
-
- .ui-state-active a {
-   text-decoration: none;
-
-   &:link, &:visited {
-     text-decoration: none;
-   }
- }
-
- /* Interaction Cues
- ----------------------------------*/
- .ui-state-highlight,
- .ui-widget-content .ui-state-highlight,
- .ui-widget-header .ui-state-highlight {
-   border: 1px solid #dad55e;
-   background: #fffa90;
-   color: #777620;
- }
-
- .ui-state-highlight a,
- .ui-widget-content .ui-state-highlight a,
- .ui-widget-header .ui-state-highlight a {
-   color: #777620;
- }
-
- .ui-state-error,
- .ui-widget-content .ui-state-error,
- .ui-widget-header .ui-state-error {
-   border: 1px solid #f1a899;
-   background: #fddfdf;
-   color: #5f3f3f;
- }
-
- .ui-state-error a,
- .ui-widget-content .ui-state-error a,
- .ui-widget-header .ui-state-error a,
- .ui-state-error-text,
- .ui-widget-content .ui-state-error-text,
- .ui-widget-header .ui-state-error-text {
-   color: #5f3f3f;
- }
-
- .ui-priority-primary,
- .ui-widget-content .ui-priority-primary,
- .ui-widget-header .ui-priority-primary {
-   font-weight: bold;
- }
-
- .ui-priority-secondary,
- .ui-widget-content .ui-priority-secondary,
- .ui-widget-header .ui-priority-secondary {
-   opacity: .7;
- }
-
- .ui-state-disabled,
- .ui-widget-content .ui-state-disabled,
- .ui-widget-header .ui-state-disabled {
-   opacity: .35;
- }
-
+.ui-state-disabled {
+  .ui-widget-content &,
+  .ui-widget-header & {
+    opacity: .35;
+  }
+}
 
 // Slider
 $handle-size: 2rem;
@@ -153,44 +146,42 @@ $handle-size: 2rem;
 .ui-slider {
   background-color: $brand-color;
   border-radius: 1rem;
+  margin: 1rem $handle-size / 2;
   position: relative;
   text-align: left;
-  margin: 1rem $handle-size/2;
-
   .ui-slider-handle {
-    position: absolute;
-    background-color: lighten($brand-color, 15%);
-    z-index: 2;
-    width: $handle-size;
-    height: $handle-size;
-    margin-top: -$handle-size/2;
-    cursor: pointer;
-    -ms-touch-action: none;
-    touch-action: none;
-    outline: none;
-    border-radius: 100%;
-    border: 5px solid $white;
-    transition: background-color $transition;
-
     @include on-event {
       background-color: $comp-color;
     }
-  }
 
+    background-color: lighten($brand-color, 15%);
+    border: 5px solid $white;
+    border-radius: 100%;
+    cursor: pointer;
+    height: $handle-size;
+    margin-top: -$handle-size / 2;
+    outline: none;
+    position: absolute;
+    touch-action: none;
+    transition: background-color $transition;
+    width: $handle-size;
+    z-index: 2;
+  }
   .ui-slider-range {
+    @include transform(translateY(-50%));
+
+    background-color: $comp-color;
+    border: 0;
+    border-radius: 5rem;
+    display: block;
+    font-size: .7em;
     position: absolute;
     z-index: 1;
-    font-size: .7em;
-    display: block;
-    border: 0;
-    background-color: $comp-color;
-    border-radius: 5rem;
-    @include transform(translateY(-50%));
   }
-
   &.ui-state-disabled {
     .ui-slider-handle,
-    .ui-slider-range { filter: inherit;
+    .ui-slider-range {
+      filter: inherit;
     }
   }
 }
@@ -198,27 +189,38 @@ $handle-size: 2rem;
 /* support: IE8 - See #6727 */
 .ui-slider-horizontal {
   height: .36rem;
-
-  .ui-slider-handle { top: 50%; margin-left: -$handle-size/2;
+  .ui-slider-handle {
+    margin-left: -$handle-size / 2;
+    top: 50%;
   }
-  .ui-slider-range { top: 50%; height: 1rem;
+  .ui-slider-range {
+    height: 1rem;
+    top: 50%;
   }
-  .ui-slider-range-min { left: 0;
+  .ui-slider-range-min {
+    left: 0;
   }
-  .ui-slider-range-max { right: 0;
+  .ui-slider-range-max {
+    right: 0;
   }
 }
 
 .ui-slider-vertical {
-  width: .36rem;
   height: 100px;
-
-  .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em;
+  width: .36rem;
+  .ui-slider-handle {
+    left: -.3em;
+    margin-bottom: -.6em;
+    margin-left: 0;
   }
-  .ui-slider-range { left: 0; width: 100%;
+  .ui-slider-range {
+    left: 0;
+    width: 100%;
   }
-  .ui-slider-range-min { bottom: 0;
+  .ui-slider-range-min {
+    bottom: 0;
   }
-  .ui-slider-range-max { top: 0;
+  .ui-slider-range-max {
+    top: 0;
   }
 }

@@ -26,10 +26,8 @@ $tagsTemplate = 'template--profile';
 
       <?php
       $userPhoto = true;
-      $hasSocialReach = 1;
-
+      $hasSocialReach = 0;
       include 'content/profile-details.php'
-
       ?>
 
     </main>
@@ -38,8 +36,6 @@ $tagsTemplate = 'template--profile';
   </div>
 
   <?php
-  $masonry = true;
-
   include 'components/eof-scripts.php'
   ?>
 </body>

@@ -18,7 +18,7 @@
 // The device is iOS; therefore, the iOS treatment
 .platform-ios {
   * {-webkit-touch-callout: none !important; -webkit-user-select: none !important;}
-  
+
   $statusbar: 20px;
 
   // Just a fake iOS status bar
@@ -28,10 +28,10 @@
   header {
     // Make primary nav higher
     .nav--primary {
-      height: calc(#{$navHeight} + #{$statusbar});
+      height: calc(#{$nav-height} + #{$statusbar});
     }
     // Make room for statusbar when menu is opened
-    .nav__mainMenu { padding-top: calc(1rem + #{$statusbar});}
+    .nav__main-menu { padding-top: calc(1rem + #{$statusbar});}
 
     // Enable opacity transition when nav hidden
     .nav--primary,
@@ -45,7 +45,7 @@
     // Center Icons in the lower section of primary nav
     .nav__icon--logo,
     .nav__icon--inbox,
-    .nav__menuTrigger {
+    .nav__menu-trigger {
       margin-top: $statusbar/2;
     }
 

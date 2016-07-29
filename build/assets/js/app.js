@@ -67,7 +67,7 @@ function imgBroken(image) {
 function updKids() {
   var $kNum = document.getElementById('kidsNumber');
   var kids = $kNum.value;
-  var nowKids = $("#kidsInputs .grid__container").length;
+  var nowKids = $('#kidsInputs .grid__container').length;
   var r = -1*(nowKids-kids);
   var n = 0;
   var today = new Date();
@@ -77,7 +77,7 @@ function updKids() {
   var yyyy = today.getFullYear();
 
   if(kids === 0) {
-    $("#kidsInputs .grid__container").remove();
+    $('#kidsInputs .grid__container').remove();
   } else {
     if(kids > nowKids) {
       for(i = 0; i < (kids-nowKids); i++) {
@@ -118,7 +118,7 @@ function updKids() {
       });
     } else {
       r = -1*(nowKids-kids);
-      $("#kidsInputs .grid__container").slice(r).remove();
+      $('#kidsInputs .grid__container').slice(r).remove();
     }
   }
 }
@@ -231,7 +231,7 @@ $(function() {
   $('a[href]:not(.roll-out__trigger):not(.no-ripple)').click( function(e) {
     var linkTarget = $(this).attr('href');
 
-    if ( linkTarget !== "#" ) {
+    if ( linkTarget !== '#' ) {
       e.preventDefault();
       setTimeout( function() {
         window.location.href = linkTarget;
@@ -459,7 +459,7 @@ $(function() {
   // on scroll hide/show menu
   $(window).on('scroll load', function() {
 
-    if (!$('header').hasClass('nav--showMenu')) {
+    if (!$('header').hasClass('nav--show-menu')) {
 
       var currentScroll = $(this).scrollTop(), // gets current scroll position
       scrollDifference = Math.abs(currentScroll - previousScroll); // calculates how fast user is scrolling
@@ -523,7 +523,7 @@ $(function() {
   });
 
   $('main').on('click touchstart', function(e) {
-    if ($('header').hasClass('nav--showMenu')) {
+    if ($('header').hasClass('nav--show-menu')) {
       hideNav();
       e.preventDefault();
     }
@@ -531,7 +531,7 @@ $(function() {
 
   // checks if navigation’s popover is shown
   function showHideNav() {
-    if ($('header').hasClass('nav--showMenu')) {
+    if ($('header').hasClass('nav--show-menu')) {
       hideNav();
     } else {
       showNav();
@@ -540,8 +540,8 @@ $(function() {
 
   // shows the navigation’s drawer
   function showNav() {
-    $('header').removeClass('hidden').addClass('nav--showMenu');
-    $('body, html').addClass('content--toSide');
+    $('header').removeClass('hidden').addClass('nav--show-menu');
+    $('body, html').addClass('content--to-side');
     window.setTimeout(function(){$('body').addClass('page--noScroll');}, 10); // Firefox hack. Hides scrollbar as soon as menu animation is done
     $('header nav a').attr('tabindex', ''); // links inside navigation should be TAB selectable
   }
@@ -549,9 +549,9 @@ $(function() {
 
   // hides the navigation’s drawer
   function hideNav() {
-    $('body, html').removeClass('content--toSide');
+    $('body, html').removeClass('content--to-side');
     window.setTimeout(function(){$('body').removeClass('page--noScroll');}, 10); // allow animations to start before removing class (Firefox)
-    $('header').removeClass('nav--showMenu');
+    $('header').removeClass('nav--show-menu');
     $('header nav a').attr('tabindex', '-1'); // links inside hidden navigation should not be TAB selectable
     $('#triggerMenu').blur(); // deselect icon when navigation is hidden
   }

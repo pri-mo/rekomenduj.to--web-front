@@ -6,47 +6,47 @@
 
 // 1. Configuration and helpers
 @import
-  'abstracts/functions',
-  'abstracts/mixins',
-  'abstracts/variables';
+'abstracts/functions',
+'abstracts/mixins',
+'abstracts/variables';
 
 // 2. Vendors
 @import
-  'vendor/normalize',
-  'vendor/jqueryui';
+'vendor/normalize',
+'vendor/jqueryui';
 
 // 3. Base stuff
 @import
-  'base/base',
-  'base/fonts',
-  'base/typography',
-  'base/helpers';
+'base/base',
+'base/fonts',
+'base/typography',
+'base/helpers';
 
 // 4. Layout-related sections
 @import
-  'layout/header',
-  'layout/footer',
-  'layout/profile';
+'layout/header',
+'layout/footer',
+'layout/profile';
 
 // 5. Components
 @import
-  'components/nav',
-  'components/button',
-  'components/inputs',
-  'components/images',
-  'components/splash',
-  'components/stepper',
-  'components/contentlist',
-  'components/polls',
-  'components/modals',
-  'components/rollout';
+'components/nav',
+'components/button',
+'components/inputs',
+'components/images',
+'components/splash',
+'components/stepper',
+'components/contentlist',
+'components/polls',
+'components/modals',
+'components/rollout';
 
 // 6. Page-specific styles
 @import
-  'pages/templates',
-  'pages/home',
-  'pages/sign';
+'pages/templates',
+'pages/home',
+'pages/sign';
 
 // 7. Cordova overrides
 @import
-  'mobile/cordova';
+'mobile/cordova';

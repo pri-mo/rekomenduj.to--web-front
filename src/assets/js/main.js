@@ -12,7 +12,7 @@ $(function() {
   $('a[href]:not(.roll-out__trigger):not(.no-ripple)').click( function(e) {
     var linkTarget = $(this).attr('href');
 
-    if ( linkTarget !== "#" ) {
+    if ( linkTarget !== '#' ) {
       e.preventDefault();
       setTimeout( function() {
         window.location.href = linkTarget;

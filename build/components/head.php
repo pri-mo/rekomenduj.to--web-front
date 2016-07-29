@@ -18,8 +18,9 @@ function livereload() {
   $isLocal = $_SERVER['SERVER_NAME'];
   $host = '//'.$_SERVER['SERVER_NAME'].':35729/';
 
-  if ($isLocal === 'localhost' || $isLocal === 'deepthought.local') {
-    echo '<script src="'.$host.'livereload.js"></script>';
+  if ($isLocal === 'localhost' || $isLocal === 'deepthought.local') {?>
+    <script src="<?php echo $host ?>livereload.js"></script>
+  <?php
   }
 }
 ?>
@@ -32,5 +33,5 @@ function livereload() {
 
 <link rel="stylesheet" href="<?php verFile('/assets/css/main.min.css'); ?>" media="screen" charset="utf-8">
 
-<script src="/assets/js/libs.min.js" charset="utf-8"></script>
+<script src="/assets/js/libs.js" charset="utf-8"></script>
 <?php livereload(); ?>

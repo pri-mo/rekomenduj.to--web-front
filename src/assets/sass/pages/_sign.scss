@@ -6,9 +6,10 @@
   padding: 0 $ico-size-s;
 
   .icon--logo {
-    padding: $ico-size-s 0;
-    font-size: $ico-size-l; line-height: 1;
-    text-align: center;
     color: dynamic-color($brand-color);
+    font-size: $ico-size-l;
+    line-height: 1;
+    padding: $ico-size-s 0;
+    text-align: center;
   }
 }

@@ -1,39 +1,53 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the button component.
-// -----------------------------------------------------------------------------
-
-@mixin button($back: $brand-color, $content: dynamic-color($back), $frame: .1, $p: 0px, $face: rgba(dynamic-color($back), .05)) {
+@mixin button($back: $brand-color, $content: dynamic-color($back), $frame: .11, $p: 0, $face: rgba(dynamic-color($back), .05)) {
   $rounding: 4rem;
+  $frame: 1 - $frame;
+
   @include appearance(none);
-  border: 1px solid rgba($content, $frame); display: inline-block; position: relative;
-  overflow: hidden;
-  background-color: $face;
-  padding: 1.36rem 2rem;
-  font-size: 1.36rem; line-height: 1em;
-  border-radius: $rounding;
-  color: $content;
-  font-weight: $regular;
-  box-shadow: 0;
-  white-space: nowrap;
-  z-index: 1;
-  @include transform(translate3d(0, 0, 0));
   @include backface-visibility(hidden);
+  @include transform(translate3d(0, 0, 0));
   @include transition($transition);
 
-  .ink { background-color: rgba($text-color, .11); }
+  background-color: $face;
+  border-radius: $rounding;
+  border: 1px solid transparentize($content, $frame);
+  box-shadow: 0;
+  color: $content;
+  display: inline-block;
+  font-size: 1.36rem;
+  font-weight: $regular;
+  line-height: 1em;
+  overflow: hidden;
+  padding: 1.36rem 2rem;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 1;
+
+  .ink {
+    background-color: transparentize($text-color, .88);
+  }
 
   &.button--secondary {
-    color: rgba($content, .36);
+    color: transparentize($content, .36);
   }
-  &.button--cta {
-    .ink { background-color: rgba($white, .22);}
 
-    &:after {
-      content: ''; display: block;
-      position: absolute; top: 50%; left: 50%; @include transform(translate(-50%, -50%));
-      background-color: rgb(35,240,170); border-radius: 100%;
-      @include transition($transition);
+  &.button--cta {
+    .ink {
+      background-color: transparentize($white, .22);
+    }
+
+    &::after {
       @include size(0);
+      @include transform(translate(-50%, -50%));
+      @include transition($transition);
+
+      background-color: $accept-color;
+      border-radius: 100%;
+      content: '';
+      display: block;
+      left: 50%;
+      position: absolute;
+      top: 50%;
       z-index: -1;
     }
   }
@@ -43,42 +57,63 @@
     margin-left: .5rem;
   }
 
-  &:only-child { min-width: 50%; }
+  &:only-child {
+    @include transform(translate3d(-50%, 0, 0));
+
+    margin: 0 0 0 50%;
+    min-width: 50%;
+  }
 
   @include on-event {
-    border-color: transparent;
     background-color: $white;
+    border-color: transparent;
     box-shadow: $shadow-button;
     color: $text-color;
-    text-decoration: none;
     outline: none;
+    text-decoration: none;
 
     &.button--cta {
       color: $white;
 
-      &:after {
+      &::after {
         @include size(10rem);
       }
     }
   }
 
-  [data-icon] { font-size: 1.25em; line-height: 1; display: inline-block; position: relative; top: -.1em; margin-bottom: -.3em;}
+  [data-icon] {
+    display: inline-block;
+    font-size: 1.25em;
+    line-height: 1;
+    margin-bottom: -.3em;
+    position: relative;
+    top: -.1em;
+  }
 
   &.button--icon {
-    padding: 0; @include size((1.36rem * 3));
+    @include size(1.36rem * 3);
 
-    [data-icon] { position: absolute; left: 50%; top: 52%; @include transform($moveToCenter);}
+    padding: 0;
+
+    [data-icon] {
+      @include transform($move-to-center);
+
+      left: 50%;
+      position: absolute;
+      top: 52%;
+    }
   }
 }
 
 // Uses
-button, .button {
+button,
+.button {
   // General
-  @include button($face: rgba($white, 0), $p: 0px);
+  @include button($face: transparentize($white, 1), $p: 0);
 
   .paint--brand &,
   .paint--gradient & {
-    @include button($back: $brand-color, $p: 0px, $face: rgba($text-color, .0));
+    @include button($back: $brand-color, $p: 0, $face: transparentize($text-color, 1));
   }
 
   .paint--comp &,
@@ -93,6 +128,6 @@ button, .button {
   }
 
   .layout__header & {
-    @include button($content: $text-color, $frame: .11, $p: 0px, $face: transparent);
+    @include button($content: $text-color, $p: 0, $face: transparent);
   }
 }

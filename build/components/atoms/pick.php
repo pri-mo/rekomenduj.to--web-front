@@ -3,10 +3,16 @@
 $inputName = (isset($inputName) && ($inputName!=null)) ? $inputName : "q{$q}-answer" ;
 $pickType = (isset($pickType) && ($pickType!=null)) ? $pickType : "checkbox" ;
 
-if (isset($i) && ($i!=null)) {
-  echo "<label class='ripple answer answer--pick no-card'><input name='q{$q}-answer-{$i}' id='check-answer-{$i}' type='{$pickType}'><span data-icon='y'></span></label>";
-} else {
-  echo "<label class='ripple answer answer--pick no-card'><input name='{$inputName}' id='{$inputName}' type='{$pickType}'><span data-icon='y'></span></label>";
+if (isset($i) && ($i!=null)) { ?>
+  <label class="ripple answer answer--pick no-card">
+  <input name="<?php echo "q{$q}-answer-{$i}" ?>" id="<?php echo "check-answer-{$i}_{$faker->numberBetween($min = 111, $max = 999)}" ?>" type="<?php echo $pickType ?>">
+  <span data-icon="y"></span>
+  </label>
+<?php } else { ?>
+  <label class="ripple answer answer--pick no-card">
+  <input name="<?php echo $inputName ?>" id="<?php echo "{$inputName}" ?>" type="<?php echo $pickType ?>">
+  <span data-icon="y"></span>
+  </label>
+<?php
 }
-
 ?>

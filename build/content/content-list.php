@@ -12,7 +12,7 @@ switch ($contentItems) {
   case 'polls':
     $itemType = 'list-item--poll';
     $itemLabel = 'Opowiedz nam o...';
-    $itemLink = 'poll.php';
+    $itemLink = 'q1.php';
     $headerIcon = 'rg-poll';
     $headerTitle = 'Ankiety dla Ciebie';
     break;
@@ -20,7 +20,7 @@ switch ($contentItems) {
   case 'campaigns':
     $itemType = 'list-item--campaign';
     $itemLabel = 'Kampania dla Ciebie';
-    $itemLink = '#dontmove';
+    $itemLink = 'campaign.php';
     $headerIcon = 'rg-campaign';
     $headerTitle = 'Kampanie dla Ciebie';
     break;
@@ -55,8 +55,9 @@ for ($i=0; $i < $itemCount; $i++) {
     data-label="<?php echo (empty($itemLabelArray[$i])) ? $itemLabel : $itemLabelArray[$i]  ?>"
     data-index="<?php echo $i + 1 ?>">
   <?php
-    if ($randChoice % 2 === 0) {
-      echo "<img onerror='imgBroken(this)' src='https://unsplash.it/{$faker->randomElement($array = array ('800', '600'))}/{$faker->randomElement($array = array ('800', '600'))}?image={$faker->numberBetween($min = 0, $max = 1084)}' alt='' class='image--cover'>";
+    if ($randChoice % 2 === 0) { ?>
+      <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('800', '600'))?>/<?php echo $faker->randomElement($array = array ('800', '600'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
+    <?php
     }
   ?>
   <span class="list-item__name"><?php echo $faker->sentence ?></span>

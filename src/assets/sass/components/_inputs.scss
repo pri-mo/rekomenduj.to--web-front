@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 #{$all-text-inputs} {
   background-color: transparent;
-  border: none;
+  border: 0;
   outline: none;
 
   // NOTE Override autcomplete banana yellow... the best i could.
@@ -41,7 +41,7 @@
     opacity: $alpha-major;
     z-index: 3;
 
-    &:after {
+    &::after {
       content: 'Pokaż hasło';
       display: block; position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
@@ -52,7 +52,7 @@
 
     &.showing {
       opacity: 1;
-      &:after {content: 'Ukryj hasło'}
+      &::after {content: 'Ukryj hasło'}
     }
   }
 
@@ -67,9 +67,11 @@
   label {
     width: 100%;
     display: block;
-    margin: 0; padding: 0;
-    border: none;
-    font-size: 1.25rem; line-height: 2rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 
   //// Text fields
@@ -128,7 +130,7 @@
         top: .5rem; left: 0;
         text-transform: $tt;
       }
-      &:invalid {
+      &.invalid {
         color: $error;
         box-shadow: 0 1px 0 rgba($error, $alpha-major);
         & + label { color: $error;}
@@ -191,7 +193,7 @@
         top: .5rem; left: 0;
         text-transform: $tt;
       }
-      &:invalid { color: $error;
+      &.invalid { color: $error;
         & + label { color: $error;}
       }
     }
@@ -211,7 +213,7 @@
       &.input--used {
         & + label { text-align: left; }
       }
-      &.input--used:invalid {
+      &.input--used.invalid {
         color: $error;
 
         &:focus { box-shadow: 0 2px 0 $error; }
@@ -258,7 +260,7 @@
     overflow: hidden;
     @include transition(max-height .64s $ease-in-out-quad);
 
-    &:after {
+    &::after {
       content: '';
       display: block;
       position: absolute;
@@ -282,7 +284,7 @@
 
       .more {display: block; height: .64rem;}
 
-      &:before {
+      &::before {
         content: attr(data-label);
         color: rgba($static, $alpha-minor);
         font-size: .75rem; line-height: 1em;
@@ -301,7 +303,7 @@
 
         @include transition(.64s $ease-out-expo);
 
-        &:before {
+        &::before {
           content: "\63"; color: $bright;
           opacity: 0;
           position: absolute; left: 53%; top: 55%;
@@ -314,14 +316,14 @@
         background-color: $focus;
         box-shadow: $shadow-2a;
 
-        &:before { opacity: 1;}
+        &::before { opacity: 1;}
       }
     }
 
     &:focus, &:hover {
       max-height: 50rem;
 
-      &:after {opacity: 0;}
+      &::after {opacity: 0;}
     }
 
     .input__field { height: calc(100% - 2rem); z-index: 0; }
@@ -329,7 +331,7 @@
 
   //// Select Boxes
   &.input--select {
-    &:before {
+    &::before {
       @extend %reko-glyph;
       content: "\75";
       position: absolute;
@@ -388,7 +390,7 @@
         bottom: 3rem; left: 0;
         text-transform: $tt;
       }
-      &:invalid { color: $error;
+      &.invalid { color: $error;
         & + label { color: $error;}
       }
     }

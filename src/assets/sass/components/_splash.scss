@@ -9,7 +9,7 @@
 
   &.splash--force-white * { color: $white!important;}
 
-  &:after {
+  &::after {
     content: attr(data-extra);
     margin: auto;
     display: block;

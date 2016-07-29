@@ -1,194 +1,379 @@
-// -----------------------------------------------------------------------------
-// This file contains top menu declarations.
-// -----------------------------------------------------------------------------
-
-$navHeight: 4rem;
-$menuWidth: calc(100% - 3.64rem);
+$nav-height: 4rem;
+$menu-width: calc(100% - 3.64rem);
 
 // Nav realted body setup
 body {
   transition: padding .3s;
 
-  header, main {
+  header,
+  main {
     @include transform(translateZ(0));
     @include transition(transform .36s);
   }
 
-  &.content--toSide {
-    header, main {
-      @include transform(translate3d($menuWidth, 0, 0));
-      @include transition(transform .64s)
-    }
+  &.content--to-side {
+    header,
     main {
-      a, button { pointer-events: none; }
+      @include transform(translate3d($menu-width, 0, 0));
+      @include transition(transform .64s);
+    }
+
+    main {
+      a,
+      button {
+        pointer-events: none;
+      }
     }
   }
 
-  &.nav--single {padding-top: $navHeight;}
-  &.nav--double {padding-top: $navHeight * 2;}
+  &.nav--single {
+    padding-top: $nav-height;
+  }
+
+  &.nav--double {
+    padding-top: ($nav-height * 2);
+  }
+
   &:not(.template--poll) {
-    main > section:first-of-type {padding-top: $navHeight + .5rem}
+    main > section:first-of-type {
+      padding-top: ($nav-height + .5rem);
+    }
   }
 }
 
 // Nav bar
 header {
-  position: fixed; left: 0; top: 0; z-index: 1000;
+  $nav-transition: 'background-color .64s, box-shadow .36s, height .36s';
+  // 3D Menu Trigger
+  $cube: 1.36rem;
+  left: 0;
+  position: fixed;
+  top: 0;
   width: 100vw;
+  z-index: 1000;
 
-  // Main nav
-  .nav--primary, .nav--secondary {
-    color: $nav-color;
-    position: relative;
-    height: $navHeight;
+  .nav--primary,
+  .nav--secondary {
+    @include transition(unquote($nav-transition));
     box-shadow: 0 1px 0 rgba($nav-color, .11);
+    color: $nav-color;
+    height: $nav-height;
+    position: relative;
     z-index: 3;
-    @include transition(background-color .64s, box-shadow .36s);
   }
 
   // Helper nav
   .nav--secondary {
+    @include transition(transform .36s, unquote($nav-transition));
     z-index: 2;
-    @include transition(transform .36s, background-color .64s, box-shadow .36s);
   }
 
-  .nav--white &:not(.scrolled):not(.nav--showMenu) {
-    .nav--primary, .nav--secondary {
-      color: $white; box-shadow: 0 1px 0 rgba($white, .22);
+  .nav--white &:not(.scrolled):not(.nav--show-menu) {
+    .nav--primary,
+    .nav--secondary {
+      box-shadow: 0 1px 0 rgba($white, .22);
+      color: $white;
     }
   }
 
-  .nav__context { line-height: $navHeight; text-align: center; }
+  .nav__context {
+    line-height: $nav-height;
+    text-align: center;
+  }
 
   // Nav icons (no text) definition
-  [class^="nav__icon--"] {
-    font-size: 1.64rem;
-    position: absolute; top: 50%; padding: .5rem;
+  [class^='nav__icon--'] {
     cursor: pointer;
+    font-size: 1.64rem;
+    padding: .5rem;
+    position: absolute;
+    top: 50%;
     // line-height: 1;
-
-    &:focus, &:active { animation: blink .36s; outline: none; }
+    &:focus,
+    &:active {
+      animation: blink .36s;
+      outline: none;
+    }
   }
-  .nav__icon--back { left: .5rem; @include transform(translate( 0%, -50% ));}
-  .nav__icon--logo { font-size: $navHeight/2; opacity:.22; left: 50%; @include transform(translate( -50%, -50% ));}
-  .nav__icon--inbox { right: 1rem; line-height: 1; @include transform(translate( 0%, -50% ));
-    &:before {top: 0;}
+
+  .nav__icon--back {
+    @include transform(translate(0%, -50%));
+    left: .5rem;
+  }
+
+  .nav__icon--logo {
+    @include transform(translate(-50%, -50%));
+    @include transition(font-size .36s);
+    font-size: $nav-height / 2;
+    left: 50%;
+    opacity: .22;
+  }
+
+  .nav__icon--inbox {
+    @include transform(translate(0%, -50%));
+    line-height: 1;
+    right: 1rem;
+
+    &::before {
+      top: 0;
+    }
+
     &.inbox--notify {
-      &:before { content: "\4e"; }
-      &:after { content: ''; display: block;
+      &::before {
+        content: '\4e';
+      }
+
+      &::after {
+        @include transform(translate(-50%, -50%));
+        @include animation(intro-scale .64s .36s $ease-out-back forwards, attention 10s 3s $ease-out-back infinite);
         background-color: $white;
         border: 5px solid $alert-color;
-        border-radius: 10px; line-height: 0; padding: 0;
-        position: absolute; top: 50%; left: 50%; @include transform(translate(-50%, -50%));
-        margin-left: -25%; margin-top: -25%;
-        @include animation(intro-scale .64s .36s $ease-out-back forwards, attention 10s 3s $ease-out-back infinite );
+        border-radius: 10px;
+        content: '';
+        display: block;
+        left: 50%;
+        line-height: 0;
+        margin-left: -25%;
+        margin-top: -25%;
+        padding: 0;
+        position: absolute;
+        top: 50%;
       }
+
       @at-root {
         @include keyframes(intro-scale) {
-          0% { @include size(0px);}
-          100% { @include size(16px);}
+          0% {
+            @include size(0);
+          }
+
+          100% {
+            @include size(16px);
+          }
         }
+
         @include keyframes(attention) {
-          0% { @include size(16px); }
-          5% { @include size(10px); }
-          10% { @include size(18px); }
-          11% { @include size(16px); }
-          100% { @include size(16px); }
+          0% {
+            @include size(16px);
+          }
+
+          5% {
+            @include size(10px);
+          }
+
+          10% {
+            @include size(18px);
+          }
+
+          11% {
+            @include size(16px);
+          }
+
+          100% {
+            @include size(16px);
+          }
         }
       }
     }
   }
 
-  // 3D Menu Trigger
-  $cube: 1.36rem;
-  .nav__menuTrigger {
-    position: absolute; left: .5rem; top: 50%;
-    height: ($navHeight - $cube); width: ($navHeight - $cube);
-    @include transform(translate( 0%, -50% ));
+  .nav__menu-trigger {
+    @include transform(translate(0%, -50%));
+    height: ($nav-height - $cube);
+    left: .5rem;
     outline: none;
+    position: absolute;
+    top: 50%;
+    width: ($nav-height - $cube);
 
-    .helper__navCubeCanvas {
-      perspective: 5000px; height: 2*$cube; width: 2*$cube; line-height: 2*$cube;
-      position: absolute; top: 50%; left: 50%;
-      margin-left: -.25rem;
+    .helper__nav-cube-canvas {
       @include transform(translate(-50%, -50%) scale(.5));
+      height: 2 * $cube;
+      left: 50%;
+      line-height: 2 * $cube;
+      margin-left: -.25rem;
+      position: absolute;
+      top: 50%;
+      width: 2 * $cube;
+      perspective: 5000px;
     }
 
-    .nav__iconCube {
-      transform-style: preserve-3d;
-      position: absolute; width: 2*$cube; height: 2*$cube;
+    .nav__icon-cube {
+      @include transform(translateZ($cube / 2) rotateX(0deg));
+      height: 2 * $cube;
+      position: absolute;
       transition: transform .36s .36s;
-      @include transform(translateZ( $cube/2 ) rotateX( 0deg ) );
+      width: 2 * $cube;
+      transform-style: preserve-3d;
     }
 
-    [class^="nav__icon--"] { top: 0; padding: 0; transition: opacity .36s .36s; font-size: 2.2*$cube;}
-    .nav__icon--menuOpen { @include transform(translateZ( -$cube/2 ) rotateX( 0deg ) ); opacity: 1;}
-    .nav__icon--menuClose { @include transform(translateZ( 0 ) rotateX( 90deg ) ); opacity: 0;}
+    [class^='nav__icon--'] {
+      font-size: 2.2 * $cube;
+      padding: 0;
+      top: 0;
+      transition: opacity .36s .36s;
+    }
 
-    .content--toSide & .nav__iconCube {
-      @include transform(translateZ( $cube/2 ) rotateX( -90deg ) );
+    .nav__icon--menu-open {
+      @include transform(translateZ(-$cube / 2) rotateX(0deg));
+      opacity: 1;
+    }
 
-      .nav__icon--menuOpen { opacity: 0;}
-      .nav__icon--menuClose { opacity: 1;}
+    .nav__icon--menu-close {
+      @include transform(translateZ(0) rotateX(90deg));
+      opacity: 0;
+    }
+
+    .content--to-side & .nav__icon-cube {
+      @include transform(translateZ($cube / 2) rotateX(-90deg));
+
+      .nav__icon--menu-open {
+        opacity: 0;
+      }
+
+      .nav__icon--menu-close {
+        opacity: 1;
+      }
     }
   }
-
   // Nav states
-  &.scrolled, &.nav--showMenu {
-    .nav--primary, .nav--secondary { background-color: $white; color:$nav-color; box-shadow: $shadow-3; }
-    .nav--secondary { box-shadow: $shadow-2a; }
+  &.scrolled,
+  &.nav--show-menu {
+    .nav--primary,
+    .nav--secondary {
+      background-color: $white;
+      box-shadow: $shadow-3;
+      color: $nav-color;
+      height: ($nav-height - .75);
+    }
+
+    .nav--secondary {
+      box-shadow: $shadow-2a;
+    }
+
+    .nav__icon--logo {
+      font-size: $nav-height - 2.5;
+    }
   }
 
   &.hidden {
-    @include transform(translate(0, -$navHeight));
+    @include transform(translate(0, -$nav-height));
 
-    .nav--primary { box-shadow: none;}
-    .nav--secondary { height: ($navHeight - .64) }
-    .nav__context { line-height: ($navHeight - .64)}
+    .nav--primary {
+      box-shadow: none;
+    }
+
+    .nav--secondary {
+      height: ($nav-height - .64);
+    }
+
+    .nav__context {
+      line-height: ($nav-height - .64);
+    }
   }
-  &.nav--showMenu {
-    // .nav--primary { background-color: $brand-color; box-shadow: $shadow-3a; }
-    .nav--secondary { @include transform(translate(0, -$navHeight)); }
+
+  &.nav--show-menu {
+    .nav--secondary {
+      @include transform(translate(0, -$nav-height));
+    }
   }
 }
 
 // Main Menu
-nav ul { list-style: none; margin: 0; padding: 0; }
-nav a { color: rgba($text-color, .64); text-decoration: none;
-
-  @include on-event { color: $text-color; text-decoration: none; }
-  // .device--mobile & { color: $text-color; }
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.nav__mainMenu {
-  // @include brand-gradient;
-  background-color: $menuBackground-color;
+nav a {
+  color: rgba($text-color, .64);
+  text-decoration: none;
 
-  position: absolute; width: $menuWidth; height: 100vh; right: 100vw;
-  overflow-y: scroll; overflow-x: hidden;
-  overflow-scrolling: touch;
+  @include on-event {
+    color: $text-color;
+    text-decoration: none;
+  }
+}
+
+.nav__main-menu {
+  background-color: $menu-background-color;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   padding: 1rem;
+  position: absolute;
+  right: 100vw;
+  width: $menu-width;
+  -webkit-overflow-scrolling: touch;
 
-  // .content--toSide &::before {
-  //   display: block; content: ''; position: absolute; left: 99%; top: 0;bottom: 0; width: 1%;
-  //   @include linear-gradient( -90deg,  rgba(0,0,0,.11), rgba(0,0,0,.0), $fallback: transparent );
-  //   z-index: 11;
-  // }
-
-  .nav__position { margin: .11rem 0;}
-  .nav__spacer { height: 1px; background-color: rgba(dynamic-color($brand-color), .11); margin: .64rem 0;}
-  .nav__link { display: block; text-transform: uppercase; font-weight: $bold; padding: .36rem .64rem;
-    &[class^="rg-"]::before { font-size: 1.64rem; margin-right: .64rem; color: $menuIcons-color;}
+  .nav__position {
+    margin: .11rem 0;
   }
-  .nav__account { @include clearfix; position: relative; }
+
+  .nav__spacer {
+    background-color: rgba(dynamic-color($brand-color), .11);
+    height: 1px;
+    margin: .64rem 0;
+  }
+
+  .nav__link {
+    display: block;
+    font-weight: $bold;
+    padding: .36rem .64rem;
+    text-transform: uppercase;
+
+    &[class^='rg-']::before {
+      color: $menu-icons-color;
+      font-size: 1.64rem;
+      margin-right: .64rem;
+    }
+  }
+
+  .nav__account {
+    @include clearfix;
+    position: relative;
+  }
+
   .nav__username {
-    .nav__link { padding: 1rem .64rem; }
-    .nav__link::after { display: block; content: attr(data-username); font-weight: $light; text-transform: none;}
-  }
-  .nav__avatar {
-    position: absolute; right: 1rem; top: 50%; @include transform(translateY(-50%)); width: 4rem; height: 4rem;
-    .nav__link--avatar { display: block; overflow: hidden; border-radius: 4rem !important; height: 100%; width: 100%; position: relative; z-index: 1; box-shadow: $frame-shadow-outside;}
-    .nav__link--avatar img { display: block; width: 101%; position: absolute; top: -1%; left: 50%; @include transform(translate3d(-50%, 0, 0)); z-index: -1;}
+    .nav__link {
+      padding: 1rem .64rem;
+    }
+
+    .nav__link::after {
+      content: attr(data-username);
+      display: block;
+      font-weight: $light;
+      text-transform: none;
+    }
   }
 
+  .nav__avatar {
+    @include transform(translateY(-50%));
+    height: 4rem;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: 4rem;
+
+    .nav__link--avatar {
+      border-radius: 4rem !important;
+      box-shadow: $frame-shadow-outside;
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      z-index: 1;
+
+      img {
+        @include transform(translate3d(-50%, 0, 0));
+        display: block;
+        left: 50%;
+        position: absolute;
+        top: -1%;
+        width: 101%;
+        z-index: -1;
+      }
+    }
+  }
 }

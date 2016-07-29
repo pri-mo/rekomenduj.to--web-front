@@ -4,39 +4,47 @@
 $padding-size: 1.36rem;
 $font-size: 1.36rem;
 $line-height: 1.5rem;
-$rollout-height: ( 2 * $padding-size + $line-height );
+$rollout-height: (2 * $padding-size + $line-height);
 
 .roll-out {
   padding: 0;
 
   .roll-out__trigger {
-    display: block; position: relative;
-    padding: $padding-size;
-    font-size: $font-size;
-    line-height: $line-height;
-    height: $rollout-height;
     color: $text-color;
+    display: block;
+    font-size: $font-size;
+    height: $rollout-height;
+    line-height: $line-height;
+    padding: $padding-size;
+    position: relative;
 
     .roll-out__value {
       display: inline-block;
-      height: $line-height; width: 90%;
-      text-overflow: ellipsis; white-space: nowrap;
+      height: $line-height;
+      width: 90%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       overflow: hidden;
 
       &:empty { display: none; }
     }
-    .roll-out__icon { opacity: .64; position: relative; left: -.36em; color: $brand-color-darker;}
+
+    .roll-out__icon { position: relative; left: -.36em; color: $brand-color-darker;}
     .roll-out__name { display: inline; }
     .roll-out__value:not(:empty) + .roll-out__name { display: none; }
     .roll-out__status {
-      position: absolute;
-      top: $line-height; right: $padding-size;
       @include transition($transition);
       @include transform(scale(1));
+
+      position: absolute;
+      top: $line-height;
+      right: $padding-size;
     }
 
     @include on-event {
-      .roll-out__status {@include transform(scale(1.64));}
+      .roll-out__status {
+        @include transform(scale(1.64));
+      }
     }
   }
 
@@ -47,17 +55,19 @@ $rollout-height: ( 2 * $padding-size + $line-height );
 
   // Rolled in
   &.roll-out__container {
+    @include transition(.36s 0s $ease-in-out-cubic);
+
     overflow: hidden;
     max-height: $rollout-height;
-    @include transition(.36s 0s $ease-in-out-cubic);
 
     // Rolled out
     &.roll-out--opened {
+      @include transition(.64s .11s $ease-in-out-cubic);
+
       max-height: 5000px;
       box-shadow: $shadow-button;
       background-color: $white;
       z-index: 3;
-      @include transition(.64s .11s $ease-in-out-cubic);
 
       .roll-out__status {
         @include transform(scale(1.64) rotate(-45deg));
@@ -69,6 +79,8 @@ $rollout-height: ( 2 * $padding-size + $line-height );
   .layout__group & {
     margin: 0 .64rem;
 
-    &:not(:nth-last-child(1)):not(.roll-out--opened) { border-bottom-color:$white; }
+    &:not(:nth-last-child(1)):not(.roll-out--opened) {
+      border-bottom-color: $white;
+    }
   }
 }

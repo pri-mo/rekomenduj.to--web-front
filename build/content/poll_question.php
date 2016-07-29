@@ -47,13 +47,16 @@ switch ($multiple) {
 <section class="layout--base poll__question">
   <div class="question__name" data-label="Pytanie <?php echo $q; ?>" data-extrainfo="<?php echo $extraInfo; ?>">
     <?php
-    if ($randChoice % 3 === 0) {
-      echo "<div class='question__img'><img onerror='imgBroken(this)' src='https://unsplash.it/{$faker->randomElement($array = array ('800', '600'))}/{$faker->randomElement($array = array ('800', '600'))}?image={$faker->numberBetween($min = 0, $max = 1084)}' alt=''></div>";
+    if ($randChoice % 3 === 0) { ?>
+      <div class="question__img">
+      <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('800', '600')) ?>/<?php echo $faker->randomElement($array = array ('800', '600')) ?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084) ?>" alt=""></div>
+    <?php
     }
     ?>
     <?php
-    if ($randChoice % 7 === 0) {
-      echo "<div class='question__vid'><iframe src='https://www.youtube.com/embed/Wk5qT_814xM' frameborder='0' allowfullscreen></iframe></div>";
+    if ($randChoice % 7 === 0) { ?>
+      <div class="question__vid"><iframe src="https://www.youtube.com/embed/Wk5qT_814xM" frameborder="0" allowfullscreen></iframe></div>
+    <?php
     }
     ?>
     <p><?php echo $questionIntro ?></p>
@@ -63,7 +66,7 @@ switch ($multiple) {
 
 <?php if ($answerType == 'drag') { include 'components/elements/drag_buckets.php'; } ?>
 
-<section class="layout--base poll__answers <?php echo (isset($imageGrid) ? "poll__answers--grid" : ''); ?>" <?php echo (isset($maximumPick) && ($maximumPick!=null) ? "data-max-pick='{$maximumPick}'" : '' ); ?>>
+<section class="layout--base poll__answers <?php echo (isset($imageGrid) ? "poll__answers--grid" : ''); ?>" <?php echo (isset($maximumPick) && ($maximumPick!=null) ? 'data-max-pick="' . $maximumPick . '"' : '' ); ?>>
   <?php if ($answerType != 'drag') { ?>
   <form name="question<?php echo $q; ?>" id="question<?php echo $q; ?>" class="layout__group" data-answercount="<?php echo $answerCount; ?>">
   <?php } ?>
@@ -127,6 +130,6 @@ switch ($multiple) {
   <?php if (++$q == 16) { ?>
     <a href="/poll-complete.php" class="poll__nav--forward">Dalej <span data-icon="E"></span></a>
   <?php } else { ?>
-    <a href="/poll.php?p=1&q=<?php echo ++$q; ?>" class="poll__nav--forward">Dalej <span data-icon="E"></span></a>
+    <a href="/q<?php echo $q; ?>.php" class="poll__nav--forward">Dalej <span data-icon="E"></span></a>
   <?php } ?>
 </section>

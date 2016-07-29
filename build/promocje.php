@@ -15,7 +15,7 @@ $tagsTemplate = 'template--contentlist template--poll-list';
   <?php include "components/head.php" ?>
 </head>
 
-<?php echo "<body class='$tagsBodyBasic $tagsNav $tagsTemplate'>" ?>
+<body class="<?php echo $tagsBodyBasic . ' ' . $tagsNav . ' ' . $tagsTemplate ?>">
   <!-- <img src="assets/images/phonegap.png" id="iOSbar" alt="" /> -->
   <?php include "components/bof-scripts.php" ?>
 

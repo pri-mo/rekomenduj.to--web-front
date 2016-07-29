@@ -1,0 +1,52 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="Montserrat, sans-serif" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body>
+    <mj-container>
+      <mj-section><mj-column>
+        <mj-image src="https://www.dropbox.com/s/szmgt5msp4y92ie/logo.png?raw=1" width="30" padding-top="5%" padding-bottom="5%" />
+      </mj-column></mj-section>
+
+      <mj-section padding="0">
+        <mj-column>
+
+          <mj-text font-size="28" line-height="1em" font-weight="600" padding="0 8% 6% 8%" color="#f4c741" >
+            Aktywuj swoje konto
+          </mj-text>
+          <mj-divider padding="0 75% 0 8%" border-color="#f4c741"></mj-divider>
+
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="0 0 10% 0">
+        <mj-column>
+          <mj-text font-size="14" color="#444" padding="8% 8% 10%">
+            Cieszymy się, że&nbsp;jesteś z&nbsp;nami! Już&nbsp;wkrótce rozpoczniesz przygodę z&nbsp;rekomenduj.to. Czeka na&nbsp;Ciebie wiele atrakcji.<br/><br/>
+            Aby zakończyć rejestrację potwierdź swój adres email klikając na&nbsp;link poniżej.
+          </mj-text>
+          <mj-button href="#" background-color="#23f0aa" color="#fff" border-radius="100px" padding="1em 1.64em" line-height="1em" font-size="16" font-weight="600"><span style="text-transform: uppercase">Zakończ rejestrację</span></mj-button>
+        </mj-column>
+      </mj-section>
+
+      <mj-section background-color="#f7f7f7">
+        <mj-column>
+          <mj-social
+            display="facebook"
+            google-icon-color="#f4c741"
+            facebook-icon-color="#f4c741"
+            facebook-content="Polub nas na Facebooku"
+            font-family="Montserrat"
+            facebook-href="https://www.facebook.com/Rekomendujto-426718860729095/" />
+          <mj-divider border-width="1px" border-color="#ddd" padding-top="3%"></mj-divider>
+          <mj-text font-weight="" font-size="10" line-height="1.36em" color="#999" padding="5% 8%" align="justify">
+            Otrzymujesz tę wiadomość ponieważ Twój email [[user_email]] został użyty do rejestracji w http://rekomenduj.to/. Jeśli to pomyłka z Twojej strony lub kiepski żart, zignoruj ten email. Jeśli konto nie zostanie aktywowane przez 14 dni, ten e-mail zostanie usunięty z bazy. Przed tym faktem, pozwolimy sobie wysłać Ci jeszcze jeden e-mail.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+    </mj-container>
+  </mj-body>
+</mjml>

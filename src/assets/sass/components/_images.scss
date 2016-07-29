@@ -8,7 +8,7 @@
   width: 100%;
   position: absolute;
   top: 50%; left: 50%;
-  @include transform($moveToCenter scale(1.1));
+  @include transform($move-to-center scale(1.1));
   @include transition(transform $transition-l, opacity $transition);
 
   &.cover--width { height: auto; width: 100%; }
