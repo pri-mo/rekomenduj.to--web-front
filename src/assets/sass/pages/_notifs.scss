@@ -1,0 +1,79 @@
+// Notifications list and config
+$notifs-padding: .5rem;
+$notifs-icon-size: 2rem;
+$notifs-icon-space: 2 * $notifs-padding + $notifs-icon-size;
+
+.notifs__item__icon {
+  background-color: transparent;
+  color: $text-color-faded;
+  display: block;
+  font-size: $notifs-icon-size;
+  height: $notifs-icon-space;
+  left: 0;
+  margin: $notifs-padding;
+  padding: 0 $notifs-padding;
+  position: absolute;
+  top: 0;
+  width: $notifs-icon-space;
+
+  &::before {
+    line-height: $notifs-icon-size;
+  }
+}
+
+.notifs__item__cta {
+  display: block;
+  font-weight: $bold;
+  padding-bottom: .36rem;
+
+  &::before {
+    content: attr(data-greeting)' ';
+    font-weight: $regular;
+  }
+}
+
+.notifs__item__time {
+  color: $grey;
+  display: block;
+  font-size: .64em;
+}
+
+.notifs__item {
+  border: 1px solid $base-color;
+  border-bottom: 1px solid $frame-color;
+  color: $text-color-faded;
+  display: block;
+  padding: $notifs-padding;
+  padding-left: $notifs-icon-space + 2 * $notifs-padding;
+  position: relative;
+
+  @include on-event {
+    color: $text-color;
+    background-color: $bright;
+
+    .notifs__item__icon {
+      background-color: $brand-color;
+      color: $white;
+    }
+  }
+
+  li:first-child & {
+    border-top: 1px solid  $frame-color;
+  }
+
+  &.notifs__item--unread {
+    background-color: $white;
+    border: 1px solid $frame-color;
+    border-top-color: $white;
+    color: $text-color;
+
+    .notifs__item__icon {
+      background-color: $brand-color;
+      color: $white;
+    }
+  }
+}
+
+.notifs {
+  margin-top: 1rem;
+}

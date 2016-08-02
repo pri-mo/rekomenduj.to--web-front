@@ -2,19 +2,20 @@
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
 
-/**
-* Set up a decent box model on the root element
-*/
+//
+// Set up a decent box model on the root element
+//
 
 :root {
   cursor: default;
   font-smooth: always;
   -webkit-font-smoothing: auto;
   -moz-font-smoothing: auto;
-  vertical-align: top
+  vertical-align: top;
 }
 
-html, body {
+html,
+body {
   // background-color: $base-grey;
   // @include brand-gradient($grain: 'grain-bright.jpg', $color: $white);
   // background: image('grain-bright.jpg'); background-size: 300px;
@@ -30,17 +31,22 @@ html, body {
 }
 
 // Prevent transitions before elements load;
+
 body {
-  &.preload * { @include transition(none!important); }
+  &.preload * {
+    @include transition(none !important);
+  }
 }
 
-/**
-* Make all elements from the DOM inherit from the parent box-sizing
-* Since `*` has a specificity of 0, it does not override the `html` value
-* making all elements inheriting from the root box-sizing value
-* See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
-*/
-*, *::before, *::after {
+
+// Make all elements from the DOM inherit from the parent box-sizing
+// Since `*` has a specificity of 0, it does not override the `html` value
+// making all elements inheriting from the root box-sizing value
+// See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+
+*,
+*::before,
+*::after {
   box-sizing: inherit;
   color: inherit;
   font-family: inherit;
@@ -50,83 +56,125 @@ body {
   vertical-align: inherit;
 
   // iOS active touch highlight modify
-  &, &:link { -webkit-tap-highlight-color: rgba($bright, .02); }
+  &,
+  &:link {
+    -webkit-tap-highlight-color: rgba($bright, .02);
+  }
 }
 
 // Fix images width
-img:not(.free):not(.image--cover) { max-width: 100%; }
+img:not(.free):not(.image--cover) {
+  max-width: 100%;
+}
 
 // Reset unordered list
-ul { list-style: none; margin: 0; padding: 0; }
-ul li { margin: 0; padding: 0; }
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-/**
-* Basic styles for links
-*/
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// Basic styles for links
 a {
   color: $comp-color;
   text-decoration: none;
   transition: $transition;
+
   // cursor: pointer;
 
-  &#{$link-exclude} {
-    @include on-event {
-      color: $brand-color;
+  @include on-event {
+    color: $brand-color-darker;
 
-      p & {text-decoration: underline;}
+    p & {
+      text-decoration: underline;
     }
   }
 
   &.link--spare {
-    display: block; padding: 1rem;
-    color: inherit; opacity: .64;
+    display: block;
+    padding: 1rem;
+    color: inherit;
+    opacity: .64;
     font-weight: $regular;
 
-    @include on-event {opacity: 1;}
+    @include on-event {
+      opacity: 1;
+    }
   }
-
 }
 
-/**
-* General layout
-*/
+
+// General layout
 section {
-  &.layout--fullscreen { min-height: 100vh}
+  &.layout--fullscreen {
+    min-height: 100vh;
+  }
 }
 
 // Grid system
 // TODO Finish grid system
 .grid__container {
-  position: relative;
   @include display(flex);
   @include flex-flow(row wrap);
+  position: relative;
 
-  & > .grid__item {
+  > .grid__item {
     @include flex(0 1 auto);
 
-    &.grid__item--1of8 { width: (100%/8); }
-    &.grid__item--1of7 { width: (100%/7); }
-    &.grid__item--1of6 { width: (100%/6); }
-    &.grid__item--1of5 { width: (100%/5); }
-    &.grid__item--1of4 { width: (100%/4); }
-    &.grid__item--1of3 { width: (100%/3); }
-    &.grid__item--1of2 { width: (100%/2); }
-    &.grid__item--1of1 { width: 100%; }
+    &.grid__item--1of8 {
+      width: (100% / 8);
+    }
 
-    // TODO Grid System — Revise breakpoints
+    &.grid__item--1of7 {
+      width: (100% / 7);
+    }
+
+    &.grid__item--1of6 {
+      width: (100% / 6);
+    }
+
+    &.grid__item--1of5 {
+      width: (100% / 5);
+    }
+
+    &.grid__item--1of4 {
+      width: (100% / 4);
+    }
+
+    &.grid__item--1of3 {
+      width: (100% / 3);
+    }
+
+    &.grid__item--1of2 {
+      width: (100% / 2);
+    }
+
+    &.grid__item--1of1 {
+      width: 100%;
+    }
+
+    // TODO Grid System - Revise breakpoints
+
   }
 
   &.grid--gutter {
     $gutter: 1rem;
 
-    section & {margin: -($gutter/2); margin-top: ($gutter/2);}
+    section & {
+      margin: -($gutter / 2);
+      margin-top: $gutter / 2;
+    }
 
-    & > .grid__item {
-      padding: ($gutter/2);
+    > .grid__item {
+      padding: $gutter / 2;
     }
   }
 }
-
 
 // Elevations and layout
 .layout--base {
@@ -136,33 +184,72 @@ section {
   transition: $transition;
   position: relative;
 
-  &.transparent--inverse { background-color: rgba( 255,255,255, 0); color: $white; }
-  &.paint--brand { background-color: $brand-color; color: dynamic-color($brand-color); }
-  &.paint--comp { background-color: $comp-color; color: dynamic-color($comp-color); }
-  &.paint--accent { background-color: $accent-color; color: dynamic-color($accent-color); }
+  &.transparent--inverse {
+    background-color: transparent;
+    color: $white;
+  }
 
-  &.group, .layout__group & {
-    margin-bottom: 0; margin-top: 0;
+  &.paint--brand {
+    background-color: $brand-color;
+    color: dynamic-color($brand-color);
+  }
 
-    &:first-child { margin-top: 1rem; }
-    &:last-child { margin-bottom: 1rem; }
+  &.paint--comp {
+    background-color: $comp-color;
+    color: dynamic-color($comp-color);
+  }
+
+  &.paint--accent {
+    background-color: $accent-color;
+    color: dynamic-color($accent-color);
+  }
+
+  &.group,
+  .layout__group & {
+    margin-bottom: 0;
+    margin-top: 0;
+
+    &:first-child {
+      margin-top: 1rem;
+    }
+
+    &:last-child {
+      margin-bottom: 1rem;
+    }
   }
 
   & & {
-    margin-left: 0; margin-right: 0;
-    &:first-child { margin-top: 0; }
-    &:last-child { margin-bottom: 0; }
+    margin-left: 0;
+    margin-right: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
-  &:first-of-type { margin-top: 0; }
-  &:last-of-type { margin-bottom: 0; }
+  &:first-of-type {
+    margin-top: 0;
+  }
 
-  @at-root section#{&} { margin: 0; }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @at-root section#{&} {
+    margin: 0;
+  }
 }
 
 .layout__group {
   position: relative;
-  & + & { margin-top: 1rem; }
+
+  & + & {
+    margin-top: 1rem;
+  }
 }
 
 .layout--card {
@@ -186,29 +273,61 @@ section {
     z-index: $n;
     position: relative;
 
+    &.group,
+    .layout__group & {
+      margin-bottom: 0;
+      margin-top: 0;
 
-    &.group, .layout__group & {
-      margin-bottom: 0; margin-top: 0;
+      &:first-child {
+        margin-top: 1rem;
+      }
 
-      &:first-child { margin-top: 1rem; }
-      &:last-child { margin-bottom: 1rem; }
+      &:last-child {
+        margin-bottom: 1rem;
+      }
     }
 
     .layout--base & {
-      margin-left: 0; margin-right: 0;
-      &:first-child { margin-top: 0; }
-      &:last-child { margin-bottom: 0; }
+      margin-left: 0;
+      margin-right: 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
-    &.paint--brand { background-color: tint($brand-color, ( ( $n - 1 ) * 3% ) ); color: $bright; box-shadow: nth($shadows-heavy, $n);}
-    &.paint--comp { background-color: tint($comp-color, ( ( $n - 1 ) * 3% ) ); color: $bright; box-shadow: nth($shadows, $n);}
-    &.paint--accent { background-color: tint($accent-color, ( ( $n - 1 ) * 3% ) ); color: $bright; box-shadow: nth($shadows-heavy, $n);}
+    &.paint--brand {
+      background-color: tint($brand-color, ($n - 1) * 3%);
+      color: $bright;
+      box-shadow: nth($shadows-heavy, $n);
+    }
 
-    &.transparent { background-color: rgba( 255,255,255, ( $n * 0.01 ) ); }
-    &.transparent--inverse { background-color: rgba( 255,255,255, ( ( $n - 1 ) * .02 ) ); color: $bright; }
+    &.paint--comp {
+      background-color: tint($comp-color, ($n - 1) * 3%);
+      color: $bright;
+      box-shadow: nth($shadows, $n);
+    }
+
+    &.paint--accent {
+      background-color: tint($accent-color, ($n - 1) * 3%);
+      color: $bright;
+      box-shadow: nth($shadows-heavy, $n);
+    }
+
+    &.transparent {
+      background-color: rgba(255, 255, 255, $n * .01);
+    }
+
+    &.transparent--inverse {
+      background-color: rgba(255, 255, 255, ($n - 1) * .02);
+      color: $bright;
+    }
   }
 }
-
 
 .layout__header {
   padding-bottom: 12rem;
@@ -225,28 +344,38 @@ section {
   }
 }
 
-
 .layout__button-bar {
   padding-top: 1rem;
 
-  &.space--m { padding-top: $ico-size-m; }
-  &.space--l { padding-top: $ico-size-l; }
-  &.space--xl { padding-top: $ico-size-xl; }
+  &.space--m {
+    padding-top: $ico-size-m;
+  }
+
+  &.space--l {
+    padding-top: $ico-size-l;
+  }
+
+  &.space--xl {
+    padding-top: $ico-size-xl;
+  }
+
   &.button-bar--divided {
-    .grid__item + .grid__item { border-left: 1px solid rgba(dynamic-color($brand-color), .1);}
+    .grid__item + .grid__item {
+      border-left: 1px solid rgba(dynamic-color($brand-color), .1);
+    }
   }
 }
 
 // Brand gradient and backgrounds
 .paint--gradient {
-  color: dynamic-color($brand-color);
   @include brand-gradient;
+  color: dynamic-color($brand-color);
 }
 
 @for $n from 1 through 17 {
   .paint--back-#{$n} {
-    color: $white;
     @include brand-gradient($image: 'backs/ph#{$n}.jpg');
+    color: $white;
 
     @if $n == 7 {
       // I know this pic... focus is on the right
@@ -256,59 +385,52 @@ section {
 }
 
 // Content flow
-.flow--right { text-align: right; }
-.flow--center { text-align: center; }
+.flow--right {
+  text-align: right;
+}
 
+.flow--center {
+  text-align: center;
+}
 
-/**
-* Ripples
-*/
-a:not(no-ripple), .ripple {
+// Ripples
+a:not(no-ripple),
+.ripple {
+  @include backface-visibility(hidden);
+  @include transform(translate3d(0, 0, 1px));
+
   display: inline-block;
   position: relative;
   overflow: hidden !important;
+
   // @include perspective(1000px);
-  @include transform(translate3d(0, 0, 1px));
-  @include backface-visibility(hidden);
 }
 
 .ink {
+  @include transform(scale(0) translate3d(0, 0, 0));
+
   display: block;
   position: absolute;
-  background-color:rgba($black, .11);
+  background-color: rgba($black, .11);
   border-radius: 100%;
-  @include transform(scale(0) translate3d(0,0,0));
 
   // & ~ & {display: none;}
 
   .paint--brand &,
   .paint--comp &,
   .paint--accent &,
-  .cover__container & { background-color: rgba($white, .36); }
+  .cover__container & {
+    background-color: rgba($white, .36);
+  }
 }
 
 .animate {
   @include animation(ripple .36s ease-out);
 }
 
-@-webkit-keyframes ripple {
-  100% {opacity: 0; -webkit-transform: scale(2.5) translate3d(0,0,0);}
+@include keyframes(ripple) {
+  100% {
+    @include transform(scale(2.5) translate3d(0, 0, 0));
+    opacity: 0;
+  }
 }
-@-moz-keyframes ripple {
-  100% {opacity: 0; -moz-transform: scale(2.5) translate3d(0,0,0);}
-}
-@-o-keyframes ripple {
-  100% {opacity: 0; -o-transform: scale(2.5) translate3d(0,0,0);}
-}
-@keyframes ripple {
-  100% {opacity: 0; transform: scale(2.5) translate3d(0,0,0);}
-}
-
-
-/**
-* Animation repo
-*/
-// @keyframes blink {
-//   0% { opacity: .36; }
-//   100% { opacity: 1;}
-// }

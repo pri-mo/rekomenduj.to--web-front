@@ -116,7 +116,7 @@ module.exports = function (grunt) {
         files: [
           'src/assets/sass/**/*.scss'
         ],
-        tasks: ['sass']
+        tasks: ['sass:build']
       },
       js: {
         files: [
@@ -140,7 +140,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-php2html');
   // Register tasks
-  grunt.registerTask('default', ['sass', 'concat', 'watch']);
+  grunt.registerTask('default', ['sass:build', 'concat', 'watch']);
   grunt.registerTask('build', ['sass:build', 'concat', 'uglify:libs', 'uglify:app']);
   grunt.registerTask('dist', ['sass:dist', 'concat', 'uglify', 'php2html']);
 };

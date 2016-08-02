@@ -4,29 +4,47 @@
 
 .template--intro {
   .splash {
-    top: 50%; bottom: auto;
     @include transform(translateY(-50%));
 
-    .splash__icon { padding-top: 0;}
+    top: 50%;
+    bottom: auto;
+
+    .splash__icon {
+      padding-top: 0;
+    }
   }
 }
 
-
 .template--steps {
-  .nav__icon--inbox {display: none;}
+  .nav__icon--inbox {
+    display: none;
+  }
+}
+
+.template--notifications {
+  h3 {
+    padding: .64rem .64rem .36rem;
+  }
 }
 
 .template--profile--empty {
-  main {@include brand-gradient($image: 'backs/ph12.jpg'); min-height: 100vh;}
-  .layout__header { background: none!important;}
+  main {
+    @include brand-gradient($image: 'backs/ph12.jpg');
+
+    min-height: 100vh;
+  }
+
+  .layout__header {
+    background: none !important;
+  }
 }
 
 .template--campaigns {
-  // .content-list__header:first-of-type:not(.cover__container) { @include brand-gradient($grain: 'grain-gold.jpg', $color: $accent-color); }
+  //
 }
+
 .template--poll-list {
-  // .content-list__header:first-of-type:not(.cover__container) { @include brand-gradient($grain: 'grain-pastelred.jpg', $color: $comp-color); }
-  // .content-list__header:first-of-type:not(.cover__container) { @include brand-gradient($grain: 'grain-bright.jpg', $color: rgb(239, 243, 251)); }
+  //
 }
 
 .template--poll {
@@ -35,7 +53,10 @@
     position: relative;
     padding-left: 2rem;
   }
+
   &.poll--end-screen {
-    main { padding-left: 0;}
+    main {
+      padding-left: 0;
+    }
   }
 }

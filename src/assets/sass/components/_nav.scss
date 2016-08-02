@@ -84,11 +84,13 @@ header {
   // Nav icons (no text) definition
   [class^='nav__icon--'] {
     cursor: pointer;
+    color: $nav-color;
     font-size: 1.64rem;
     padding: .5rem;
     position: absolute;
     top: 50%;
     // line-height: 1;
+
     &:focus,
     &:active {
       animation: blink .36s;

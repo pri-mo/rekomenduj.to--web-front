@@ -39,6 +39,7 @@ $black: darken($white, 100%) !default;
 /// Copy text color
 /// @type Color
 $text-color: lighten($black, 10%) !default;
+$text-color-faded: transparentize($text-color, .36);
 
 /// Main brand colors
 /// @type Color
@@ -53,7 +54,7 @@ $accept-color: #23f0aa !default;
 
 $nav-color: $text-color !default;
 $menu-icons-color: darken($brand-color, 20%) !default;
-$menu-background-color: rgba($text-color, .05) !default;
+$menu-background-color: transparentize($text-color, .95) !default;
 
 /// Background color
 /// @type Color
@@ -87,13 +88,10 @@ $transition: .36s !default;
 $transition-l: .64s !default;
 $move-to-center: translate3d(-50%, -50%, 0) !default;
 
-
 /// Container's maximum width
 /// Below that is 100%
 /// @type Length
 $max-width: 1330px !default;
-
-
 
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
@@ -104,18 +102,11 @@ $breakpoints: (
   'ph-landscape': (min-width: 360px, orientation: landscape),
   'phablet': (min-width: 410px),
   'tablet': (min-width: 768px),
-  'desktop': (min-width: 1024px),
-) !default;
-
-
+  'desktop': (min-width: 1024px)
+  ) !default;
 
 /// Relative or absolute URL where all assets are served from
 /// @type String
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
 $base-url: '/assets/' !default;
-
-
-
-/// Exclude some classes from link hover definition
-$link-exclude: ':not(.list-item):not(.nav__link):not(.roll-out__trigger):not(.button):not(.link--spare)' !default;

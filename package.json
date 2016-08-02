@@ -2,7 +2,7 @@
   "name": "Rekomenduj.to",
   "description": "Front end platformy marketingu rekomendacji.",
   "license": "(ISC OR GPL-3.0)",
-  "version": "0.0.1",
+  "version": "0.5.0",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-concat": "^1.0.0",

@@ -9,11 +9,22 @@ body {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
-  padding: 0.64rem 0 .36rem;
+  padding: .64rem 0 .36rem;
   line-height: 1.1;
   font-weight: $bold;
+
+  &.brand-color {
+    color: $brand-color-darker;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
 
   &.headline {
     line-height: 1.5;
@@ -22,12 +33,13 @@ h1, h2, h3, h4 {
     position: relative;
 
     &::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      @include size(5rem 0.36rem);
-      border-radius: .64rem;
+      @include size(5rem .36rem);
       background-color: $accent-color;
+      border-radius: .64rem;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
     }
   }
 }
@@ -36,25 +48,33 @@ h1 {
   // color: $comp-color;
   font-size: $header-1;
 }
+
 h2 {
-  color: $brand-color-darker;
   font-size: $header-2;
 }
+
 h3 {
   font-size: $header-3;
 }
+
 h4 {
   font-size: $text-font-size;
 }
 
 p {
-  padding: 0; margin: 0 0 .64em 0;
+  padding: 0;
+  margin: 0 0 .64em;
   line-height: 1.64;
 
-  & + & {}
-
-  &:last-child {margin: 0;}
+  &:last-child {
+    margin: 0;
+  }
 }
 
-strong { font-weight: $bold; }
-.light { font-weight: $light !important;}
+strong {
+  font-weight: $bold;
+}
+
+.light {
+  font-weight: $light !important;
+}

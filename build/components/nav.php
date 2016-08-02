@@ -26,7 +26,7 @@
       </div>
     </div></div>
     <div class="nav__icon--logo" data-icon="A" tabindex="0" id="triggerLogo"></div>
-    <div class="nav__icon--inbox  inbox--notify ripple" data-icon="M" tabindex="0" id="triggerInbox"></div>
+    <a href="notifications.php" class="nav__icon--inbox  inbox--notify ripple" data-icon="M" tabindex="0" id="triggerInbox"></a>
   </div>
   <?php
   if (strpos($tagsNav, 'nav--double') !== false) {
