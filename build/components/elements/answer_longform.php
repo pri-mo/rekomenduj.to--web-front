@@ -1,3 +1,3 @@
-<div class="layout--card-1">
+<div class="layout--card">
   <?php include "components/atoms/longform.php"; ?>
 </div>

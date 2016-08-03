@@ -2,7 +2,7 @@
 
 $selectPlaceholder = (isset($selectPlaceholder) && ($selectPlaceholder!=null)) ? $selectPlaceholder : "Wybierz opcję suwakiem";
 ?>
-<div class="layout--card-1 answer--slider">
+<div class="answer--slider">
   <select id="<?php echo "q{$q}-{$faker->numberBetween($min = 111, $max = 999)}" ?>" name="<?php echo "question_{$q}[]" ?>">
     <option value="" selected disabled><?php echo $selectPlaceholder ?></option>
     <option value="1">1 — zdecydowanie nie</option>

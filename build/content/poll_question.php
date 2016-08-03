@@ -58,8 +58,11 @@ switch ($multiple) {
       <div class="question__vid"><iframe src="https://www.youtube.com/embed/Wk5qT_814xM" frameborder="0" allowfullscreen></iframe></div>
     <?php
     }
+
+    if (isset($questionIntro) && ($questionIntro!=null)  && ($questionIntro!=" ")) {
     ?>
     <p><?php echo $questionIntro ?></p>
+    <?php } ?>
     <p><strong><?php echo $questionCall ?></strong></p>
   </div>
 </section>

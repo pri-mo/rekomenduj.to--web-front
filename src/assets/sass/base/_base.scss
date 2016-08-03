@@ -205,7 +205,7 @@ section {
   }
 
   &.group,
-  .layout__group & {
+  .layout__group > & {
     margin-bottom: 0;
     margin-top: 0;
 
@@ -260,6 +260,50 @@ section {
   transition: $transition;
   z-index: 1;
   position: relative;
+
+  &.paint--brand {
+    background-color: $brand-color;
+    color: dynamic-color($brand-color);
+  }
+
+  &.paint--comp {
+    background-color: $comp-color;
+    color: dynamic-color($comp-color);
+  }
+
+  &.paint--accent {
+    background-color: $accent-color;
+    color: dynamic-color($accent-color);
+  }
+
+  &.group,
+  .layout__group & {
+    margin-bottom: 0;
+    margin-top: 0;
+    border-bottom-color: transparent;
+
+    &:first-child {
+      margin-top: 1rem;
+    }
+
+    &:last-child { //Tutaj coś nie gra z kontekstem i nie jest uwzględniana ta zmiana.
+      margin-bottom: 1rem;
+      border-bottom-color: $frame-color;
+    }
+  }
+
+  .layout--base & {
+    margin-left: 0;
+    margin-right: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 @for $n from 1 through length($shadows) {

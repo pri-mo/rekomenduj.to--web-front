@@ -163,10 +163,10 @@ $(function() {
     revert: true,
     revertDuration: 150,
     drag: function( event, ui ) {
-      $(this).addClass('layout--card-4 picked');
+      $(this).addClass('picked');
     },
     stop: function( event, ui ) {
-      $(this).removeClass('layout--card-4 picked');
+      $(this).removeClass('picked');
     }
   });
 
@@ -180,14 +180,14 @@ $(function() {
     placeholder: 'answer--sort__placeholder',
 
     start: function( e,ui ) {
-      $(ui.item).addClass('layout--card-4 picked');
+      $(ui.item).addClass('picked');
     },
     sort: function( e,ui ) {
       var thisTop = $(ui.item).position().top;
       $(ui.item).css('top', thisTop + $(window).scrollTop());
     },
     stop: function( e,ui ) {
-      $(ui.item).removeAttr('style').removeClass('layout--card-4 picked');
+      $(ui.item).removeAttr('style').removeClass('picked');
     },
   }).disableSelection();
   $('.answer--sort').disableSelection();
@@ -200,7 +200,7 @@ $(function() {
       $(ui.draggable).removeAttr('style').prependTo(this);
     },
     activate: function( event, ui ) {
-      $(ui.draggable).addClass('layout--card-4 picked');
+      $(ui.draggable).addClass('picked');
 
       $('.drag-bucket--target, .drag-bucket--source').each(function() {
         if ( $(this).children().length > 1 ) {
@@ -211,7 +211,7 @@ $(function() {
       });
     },
     deactivate: function( event, ui ) {
-      $(ui.draggable).removeClass('layout--card-4 picked');
+      $(ui.draggable).removeClass('picked');
 
       // content check
       $('.drag-bucket--target, .drag-bucket--source').each(function() {

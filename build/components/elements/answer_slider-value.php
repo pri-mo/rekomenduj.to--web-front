@@ -16,7 +16,7 @@ if (isset($dataSuffix) && $dataSuffix!=null) {
   $dataAffix = "";
 }
 ?>
-<div class="layout--card-1 answer--slider">
+<div class="answer--slider">
   <label class="slider__label" for="<?php echo "q{$q}"?>"><?php echo $sliderLabel ?></label>
   <input id="<?php echo "q{$q}"?>" name="<?php echo "question_{$q}[]"?>" size="" class="slider__value" type="text" readonly>
   <div class="slider slider--snapping slider--value" data-s-min="<?php echo $dataMin ?>" data-s-max="<?php echo $dataMax ?>" data-s-default="<?php echo $dataDefault ?>" data-s-step="<?php echo $dataStep ?>" <?php echo $dataAffix ?>>
