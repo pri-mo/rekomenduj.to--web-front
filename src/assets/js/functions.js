@@ -31,34 +31,34 @@ function updKids() {
       for(i = 0; i < (kids-nowKids); i++) {
         n = 1 + nowKids + i;
         $('#kidsInputs').append('<div class="grid__container grid--gutter" data-row="'+ n +'">' +
-        '  <div class="grid__item grid__item--1of2">' +
-        '    <div class="input input--date input--show-label">' +
-        '      <input tabindex' +
-        '      name="user-baby' + n + '-bday" id="user-baby' + n + '-bday" type="date" max="' + yyyy + '-' + mm + '-' + dd + '"' +
-        '      autocomplete="baby' + n + '-bday"' +
-        '      required' +
-        '      spellcheck="true"' +
-        '      placeholder="Podaj datę">' +
-        '      <label for="user-baby' + n + '-bday"' +
-        '      data-focused="' + n + '. Data urodzenia"' +
-        '      data-original="Podaj datę urodzenia"' +
-        '      data-invalid="To pole jest wymagane."></label>' +
-        '    </div>' +
-        '  </div>' +
-        '  <div class="grid__item grid__item--1of2">' +
-        '    <div class="input input--select input--show-label">' +
-        '      <select name="user-baby' + n + '-gender" id="user-baby' + n + '-gender" required>' +
-        '        <option value="" selected disabled>Podaj płeć</option>' +
-        '        <option value="K">Dziewczynka</option>' +
-        '        <option value="M">Chłopiec</option>' +
-        '      </select>' +
-        '      <label for="user-baby' + n + '-gender"' +
-        '      data-focused="Płeć dziecka"' +
-        '      data-original="Podaj płeć dziecka"' +
-        '      data-invalid="To pole jest obowiązkowe"></label>' +
-        '    </div>' +
-        '  </div>' +
-        '</div>');
+          '  <div class="grid__item grid__item--1of2">' +
+          '    <div class="input input--date input--show-label">' +
+          '      <input tabindex' +
+          '      name="user-baby' + n + '-bday" id="user-baby' + n + '-bday" type="date" max="' + yyyy + '-' + mm + '-' + dd + '"' +
+          '      autocomplete="baby' + n + '-bday"' +
+          '      required' +
+          '      spellcheck="true"' +
+          '      placeholder="Podaj datę">' +
+          '      <label for="user-baby' + n + '-bday"' +
+          '      data-focused="' + n + '. Data urodzenia"' +
+          '      data-original="Podaj datę urodzenia"' +
+          '      data-invalid="To pole jest wymagane."></label>' +
+          '    </div>' +
+          '  </div>' +
+          '  <div class="grid__item grid__item--1of2">' +
+          '    <div class="input input--select input--show-label">' +
+          '      <select name="user-baby' + n + '-gender" id="user-baby' + n + '-gender" required>' +
+          '        <option value="" selected disabled>Podaj płeć</option>' +
+          '        <option value="K">Dziewczynka</option>' +
+          '        <option value="M">Chłopiec</option>' +
+          '      </select>' +
+          '      <label for="user-baby' + n + '-gender"' +
+          '      data-focused="Płeć dziecka"' +
+          '      data-original="Podaj płeć dziecka"' +
+          '      data-invalid="To pole jest obowiązkowe"></label>' +
+          '    </div>' +
+          '  </div>' +
+          '</div>');
       }
       $('#kidsInputs input, #kidsInputs select').each( function() {
         var inputName = this.name;
@@ -75,24 +75,14 @@ function updKids() {
 function updPicks() {
   $('.answer--pick > input').each(function() {
     var ischecked = $(this).is(':checked'),
-        isdisabled = $(this).prop('disabled');
+    isdisabled = $(this).prop('disabled');
 
     if (ischecked) {
-      if (!$(this).parent().hasClass('no-card')) { // check if should add card
-        $(this).parent().addClass('picked');
-        $(this).parent().find('.input > input').focus();
-      } else {
-        $(this).parent().addClass('picked');
-        $(this).parent().find('.input > input').focus();
-      }
+      $(this).parent().addClass('picked');
+      $(this).parent().find('.input > input').focus();
     } else {
-      if (!$(this).parent().hasClass('no-card')) { // check if should add card
-        $(this).parent().removeClass('picked');
-        $(this).parent().find('.input > input').off('focus');
-      } else {
-        $(this).parent().removeClass('picked');
-        $(this).parent().find('.input > input').off('focus');
-      }
+      $(this).parent().removeClass('picked');
+      $(this).parent().find('.input > input').off('focus');
     }
 
     if (isdisabled) {

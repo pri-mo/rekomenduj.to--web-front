@@ -1,3 +1,5 @@
+@charset 'UTF-8';
+
 // -----------------------------------------------------------------------------
 // This file contains CSS classes for input, textarea and select fields.
 // -----------------------------------------------------------------------------
@@ -8,15 +10,15 @@
 
   // NOTE Override autcomplete banana yellow... the best i could.
   &:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px $comp-color inset!important;
-    -webkit-text-fill-color: $white!important;
+    -webkit-box-shadow: 0 0 0px 1000px $comp-color inset !important;
+    -webkit-text-fill-color: $white !important;
   }
 }
 
 @mixin input($back: $brand-color, $static: dynamic-color($back), $focus: rgba(dynamic-color($back), .64), $error: $comp-color, $ink: rgba(dynamic-color($back), .11), $ratio: $minor-seventh) {
   $alpha-major: .64;
   $alpha-minor: $alpha-major / $ratio;
-  $alpha-faint: ($alpha-major / 3) / $ratio;
+  $alpha-faint: $alpha-major / 3 / $ratio;
 
   $tt: normal;
 
@@ -25,16 +27,29 @@
   padding: 1rem 0 2px;
 
   .input__field {
-    display: block; position: absolute; bottom: 0; left: 0; right: 0;
-    width: 100%; height: calc(100% - 1.36rem); overflow: hidden; z-index: 0;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(100% - 1.36rem);
+    overflow: hidden;
+    z-index: 0;
   }
-  .ink { background-color: $ink; }
 
-  // NOTE Pooki co ten element wydaje się dosyć ordynarny
+  .ink {
+    background-color: $ink;
+  }
+
   .input__show-password {
-    display: none; position: absolute; right: .0; bottom: .5rem;
-    height: 2rem; width: 3.4rem;
-    background-color: rgba(255,255,255,.001);
+    display: none;
+    position: absolute;
+    right: .0;
+    bottom: .5rem;
+    height: 2rem;
+    width: 3.4rem;
+    background-color: rgba($white, .001);
     box-shadow: 0 0 0 1px rgba($static, $alpha-minor);
     color: rgba($static, $alpha-major);
     border-radius: 2px;
@@ -42,24 +57,38 @@
     z-index: 3;
 
     &::after {
-      content: 'Pokaż hasło';
-      display: block; position: absolute; top: 50%; left: 50%;
+      content: 'Show pass';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      width: 100%; height: auto;
+      width: 100%;
+      height: auto;
       text-align: center;
-      text-transform: uppercase; font-size: .75rem; line-height: .9em;
+      text-transform: uppercase;
+      font-size: .75rem;
+      line-height: .9em;
     }
 
     &.showing {
       opacity: 1;
-      &::after {content: 'Ukryj hasło'}
+
+      &::after {
+        content: 'Hide pass';
+      }
     }
   }
 
-  &:first-child { margin-top: -.36rem;}
-  & + &,
-  & + .grid__container,
-  & + .grid__container.grid--gutter { margin-top: 1rem;}
+  &:first-child {
+    margin-top: -.36rem;
+  }
+
+  + &,
+  + .grid__container,
+  + .grid__container.grid--gutter {
+    margin-top: 1rem;
+  }
 
   input,
   select,
@@ -77,46 +106,70 @@
   //// Text fields
   input {
     @include appearance(none);
-    border-radius: 0;
-    padding: .5rem .3rem; margin-top: .36rem;
-    height: 3rem;
-    box-sizing: border-box!important;
-    background: rgba($static, .0);
-    box-shadow: 0 1px 0 rgba($static, $alpha-faint);
     @include transition(.64s $ease-out-expo);
-    position: relative; z-index: 2;
 
-    @include placeholder { color: rgba($static, $alpha-faint); opacity: 0; @include transition(opacity .36s);};
+    border-radius: 0;
+    padding: .5rem .3rem;
+    margin-top: .36rem;
+    height: 3rem;
+    box-sizing: border-box !important;
+    background: rgba($static, 0);
+    box-shadow: 0 1px 0 rgba($static, $alpha-faint);
+    position: relative;
+    z-index: 2;
 
-    &[type=date] {height: calc(3rem + 1px);}
+    @include placeholder {
+      @include transition(opacity .36s);
+      color: rgba($static, $alpha-faint);
+      opacity: 0;
+    }
 
-    & + label {
-      top: 2rem; left: .3rem; right: 0;
+
+    &[type=date] {
+      height: calc(3rem + 1px);
+    }
+
+    + label {
+      @include transition(.36s $ease-out-expo);
+
+      top: 2rem;
+      left: .3rem;
+      right: 0;
       color: rgba($static, $alpha-minor);
       font-weight: $light;
       position: absolute;
       white-space: nowrap;
-      padding: 0; margin: 0;
-      @include transition(.36s $ease-out-expo);
+      padding: 0;
+      margin: 0;
       z-index: 1;
     }
 
-    &:focus, &:not(:empty) {
+    &:focus,
+    &:not(:empty) {
       box-shadow: 0 2px 0 $focus;
       color: $static;
       font-weight: $regular;
       outline: none;
 
-      @include placeholder { opacity: 1; };
+      @include placeholder {
+        opacity: 1;
+      }
 
-      & + label {
+
+      + label {
         color: $focus;
-        font-size: .75rem; line-height: 1em;
-        top: .5rem; left: 0;
+        font-size: .75rem;
+        line-height: 1em;
+        top: .5rem;
+        left: 0;
         text-transform: $tt;
         font-weight: $regular;
       }
-      & ~ .input__show-password {display: block; cursor: pointer;}
+
+      ~ .input__show-password {
+        display: block;
+        cursor: pointer;
+      }
     }
 
     &.input--used {
@@ -124,131 +177,214 @@
       color: $static;
       font-weight: $regular;
 
-      & + label {
+      + label {
         color: rgba($static, $alpha-minor);
-        font-size: .75rem; line-height: 1em;
-        top: .5rem; left: 0;
+        font-size: .75rem;
+        line-height: 1em;
+        top: .5rem;
+        left: 0;
         text-transform: $tt;
       }
+
       &.invalid {
         color: $error;
         box-shadow: 0 1px 0 rgba($error, $alpha-major);
-        & + label { color: $error;}
+
+        + label {
+          color: $error;
+        }
       }
 
-      & ~ .input__show-password {display: block; cursor: pointer;}
+      ~ .input__show-password {
+        display: block;
+        cursor: pointer;
+      }
     }
   }
 
   // Longform fields
   textarea {
     @include appearance(none);
+    @include transition(box-shadow .64s $ease-out-expo);
+
     border-radius: 0;
-    padding: .5rem .3rem; margin-top: .36rem;
-    background: rgba($static, .0);
+    padding: .5rem .3rem;
+    margin-top: .36rem;
+    background: rgba($static, 0);
     box-shadow: 0 1px 0 rgba($static, $alpha-faint);
     resize: none;
-    height: 3rem; max-height: calc(2rem * 7 + 1rem);
-    @include transition(box-shadow .64s $ease-out-expo);
-    position: relative; z-index: 2;
+    height: 3rem;
+    max-height: calc(2rem * 7 + 1rem);
+    position: relative;
+    z-index: 2;
 
-    @include placeholder { color: rgba($static, $alpha-faint); opacity: 0; @include transition(opacity .36s);};
+    @include placeholder {
+      @include transition(opacity .36s);
+      color: rgba($static, $alpha-faint);
+      opacity: 0;
+    }
 
-    & + label {
-      top: 2rem; left: .3rem; right: 0;
+
+    + label {
+      @include transition(.36s $ease-out-expo);
+      top: 2rem;
+      left: .3rem;
+      right: 0;
       color: rgba($static, $alpha-minor);
       font-weight: $light;
       position: absolute;
       white-space: nowrap;
-      padding: 0; margin: 0;
-      @include transition(.36s $ease-out-expo);
+      padding: 0;
+      margin: 0;
       z-index: 1;
     }
 
-    &:focus, &:not(:empty) {
+    &:focus,
+    &:not(:empty) {
       box-shadow: 0 2px 0 $focus;
       color: $static;
       font-weight: $regular;
       outline: none;
 
-      @include placeholder { opacity: 1; };
+      @include placeholder {
+        opacity: 1;
+      }
 
-      & + label {
+      + label {
         color: $focus;
-        font-size: .75rem; line-height: 1em;
-        top: .5rem; left: 0;
+        font-size: .75rem;
+        line-height: 1em;
+        top: .5rem;
+        left: 0;
         text-transform: $tt;
         font-weight: $regular;
       }
     }
 
-    &.input--used, &.input--used:focus {
+    &.input--used,
+    &.input--used:focus {
       box-shadow: 0 1px 0 rgba($static, $alpha-faint);
       color: $static;
       font-weight: $regular;
 
-      & + label {
+      + label {
         color: rgba($static, $alpha-minor);
-        font-size: .75rem; line-height: 1em;
-        top: .5rem; left: 0;
+        font-size: .75rem;
+        line-height: 1em;
+        top: .5rem;
+        left: 0;
         text-transform: $tt;
       }
-      &.invalid { color: $error;
-        & + label { color: $error;}
+
+      &.invalid {
+        color: $error;
+
+        + label {
+          color: $error;
+        }
       }
     }
   }
 
   //// Number box
   &.input--number {
-
     input {
       text-align: right;
-      padding-left: 3rem; padding-right: 50%;
+      padding-left: 3rem;
+      padding-right: 50%;
 
-      & + label { text-align: center; }
+      + label {
+        text-align: center;
+      }
 
-      & ~ .number__suffix {display: none;}
-      &.input--used ~ .number__suffix, &:focus ~ .number__suffix {display: block;}
+      ~ .number__suffix {
+        display: none;
+      }
+
+      &.input--used ~ .number__suffix,
+      &:focus ~ .number__suffix {
+        display: block;
+      }
+
       &.input--used {
-        & + label { text-align: left; }
-      }
-      &.input--used.invalid {
-        color: $error;
+        &.invalid {
+          color: $error;
 
-        &:focus { box-shadow: 0 2px 0 $error; }
+          @include placeholder {
+            opacity: 0;
+          }
 
-        & + label {
-          color: $error; font-size: .75rem; line-height: 1em;
-          bottom: 3rem; left: 0;
-          text-transform: $tt;
+          &:focus {
+            box-shadow: 0 2px 0 $error;
+          }
+
+          + label {
+            color: $error;
+            font-size: .75rem;
+            line-height: 1em;
+            bottom: 3rem;
+            left: 0;
+            text-transform: $tt;
+          }
+
+          ~ .number__suffix {
+            color: $error;
+          }
         }
-        & ~ .number__suffix { color: $error;}
 
-        @include placeholder { opacity: 0; }
+        + label {
+          text-align: left;
+        }
       }
 
-      &:focus, &:not(:empty):valid {
-        @include placeholder { opacity: 0; }
-        & + label { text-align: left; }
+      &:focus,
+      &:not(:empty):valid {
+        @include placeholder {
+          opacity: 0;
+        }
+
+
+        + label {
+          text-align: left;
+        }
       }
     }
 
-    .number__more, .number__less {
-      display: block; position: absolute; font-size: 2rem; line-height: 2rem; height: 2rem;
-      bottom: .5rem; z-index: 10; cursor: pointer;
+    .number__more,
+    .number__less {
       @include user-select(none);
+
+      display: block;
+      position: absolute;
+      font-size: 2rem;
+      line-height: 2rem;
+      height: 2rem;
+      bottom: .5rem;
+      z-index: 10;
+      cursor: pointer;
     }
-    .number__more { right: 0; }
-    .number__less { left: 0; }
+
+    .number__more {
+      right: 0;
+    }
+
+    .number__less {
+      left: 0;
+    }
+
     .number__suffix {
-      position: absolute; padding: .5rem 0 .5rem .5rem; bottom: .1rem; left: 50%;
-      font-size: 1.3rem; line-height: 2rem;
+      position: absolute;
+      padding: .5rem 0 .5rem .5rem;
+      bottom: .1rem;
+      left: 50%;
+      font-size: 1.3rem;
+      line-height: 2rem;
       opacity: $alpha-major;
     }
 
     // ! hide defoult number spinner
-    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
@@ -256,25 +392,33 @@
 
   //// Checkbox
   &.input--check {
-    max-height: 5rem;
-    overflow: hidden;
     @include transition(max-height .64s $ease-in-out-quad);
 
+    max-height: 5rem;
+    overflow: hidden;
+
     &::after {
+      @include transition(opacity .64s $ease-in-out-quad);
+
       content: '';
       display: block;
       position: absolute;
-      bottom: 0; left: 3rem; right: 0;
+      bottom: 0;
+      left: 3rem;
+      right: 0;
       height: 1px;
       background: rgba($static, $alpha-minor);
-      @include transition(opacity .64s $ease-in-out-quad);
     }
 
-    input { display: none; }
+    input {
+      display: none;
+    }
+
     label {
+      @include hyphens(auto);
+
       cursor: pointer;
       font-size: .75rem;
-      @include hyphens(auto);
       line-height: 1.5em;
       padding-top: 1.5rem;
       padding-left: 3rem;
@@ -282,83 +426,125 @@
       text-align: justify;
       z-index: 1;
 
-      .more {display: block; height: .64rem;}
+      .more {
+        display: block;
+        height: .64rem;
+      }
 
       &::before {
         content: attr(data-label);
         color: rgba($static, $alpha-minor);
-        font-size: .75rem; line-height: 1em;
-        position: absolute; top: 0; left: 0;
+        font-size: .75rem;
+        line-height: 1em;
+        position: absolute;
+        top: 0;
+        left: 0;
         text-transform: uppercase;
       }
 
       .input--check__icon {
         @extend %reko-glyph;
+
+        @include transition(.64s $ease-out-expo);
+
         text-align: center;
-        font-size: 1.64rem; line-height: 2rem; height: 2rem; width: 2rem;
-        position: absolute; top: 1.36rem; left: .36rem;
+        font-size: 1.64rem;
+        line-height: 2rem;
+        height: 2rem;
+        width: 2rem;
+        position: absolute;
+        top: 1.36rem;
+        left: .36rem;
         border-radius: 100%;
         background-color: #fff;
         box-shadow: $shadow-2;
 
-        @include transition(.64s $ease-out-expo);
-
         &::before {
-          content: "\63"; color: $bright;
-          opacity: 0;
-          position: absolute; left: 53%; top: 55%;
           @include transform(translate(-50%, -50%));
-
           @include transition(.64s $ease-out-expo);
+
+          content: '\63';
+          color: $bright;
+          opacity: 0;
+          position: absolute;
+          left: 53%;
+          top: 55%;
         }
       }
+
       :checked + .input--check__icon {
         background-color: $focus;
         box-shadow: $shadow-2a;
 
-        &::before { opacity: 1;}
+        &::before {
+          opacity: 1;
+        }
       }
     }
 
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       max-height: 50rem;
 
-      &::after {opacity: 0;}
+      &::after {
+        opacity: 0;
+      }
     }
 
-    .input__field { height: calc(100% - 2rem); z-index: 0; }
+    .input__field {
+      height: calc(100% - 2rem);
+      z-index: 0;
+    }
   }
 
   //// Select Boxes
   &.input--select {
     &::before {
       @extend %reko-glyph;
-      content: "\75";
+
+      content: '\75';
       position: absolute;
-      right: .0; bottom: .5rem; top: auto;
+      right: .0;
+      bottom: .5rem;
+      top: auto;
       z-index: 1;
-      font-size: 2rem; line-height: 1.1;
+      font-size: 2rem;
+      line-height: 1.1;
     }
   }
+
   select {
     @include appearance(none);
-    border-radius: 0;
-    padding: .5rem .3rem; margin-top: .5rem;
-    background: rgba($static, .0);
-    box-shadow: 0 1px 0 rgba($static, $alpha-faint);
     @include transition(.64s $ease-out-expo);
-    position: relative; z-index: 2;
 
-    @include placeholder { color: rgba($static, $alpha-faint); opacity: 0; @include transition(opacity .36s);};
+    border-radius: 0;
+    padding: .5rem .3rem;
+    margin-top: .5rem;
+    background: rgba($static, 0);
+    box-shadow: 0 1px 0 rgba($static, $alpha-faint);
 
-    & + label {
-      bottom: .5rem; left: .3rem; right: 0;
+    position: relative;
+    z-index: 2;
+
+    @include placeholder {
+      @include transition(opacity .36s);
+
+      color: rgba($static, $alpha-faint);
+      opacity: 0;
+    }
+
+    + label {
+      @include transition(.36s $ease-out-expo);
+
+      bottom: .5rem;
+      left: .3rem;
+      right: 0;
       color: rgba($static, $alpha-minor);
       font-weight: $light;
       position: absolute;
       white-space: nowrap;
-      padding: 0; margin: 0;
-      @include transition(.36s $ease-out-expo);
+      padding: 0;
+      margin: 0;
       z-index: 0;
     }
 
@@ -368,12 +554,16 @@
       font-weight: $regular;
       outline: none;
 
-      @include placeholder { opacity: 1; };
+      @include placeholder {
+        opacity: 1;
+      }
 
-      & + label {
+      + label {
         color: $focus;
-        font-size: .75rem; line-height: 1em;
-        bottom: 3rem; left: 0;
+        font-size: .75rem;
+        line-height: 1em;
+        bottom: 3rem;
+        left: 0;
         text-transform: $tt;
         font-weight: $regular;
       }
@@ -384,49 +574,72 @@
       color: $static;
       font-weight: $regular;
 
-      & + label {
+      + label {
         color: rgba($static, $alpha-minor);
-        font-size: .75rem; line-height: 1em;
-        bottom: 3rem; left: 0;
+        font-size: .75rem;
+        line-height: 1em;
+        bottom: 3rem;
+        left: 0;
         text-transform: $tt;
       }
-      &.invalid { color: $error;
-        & + label { color: $error;}
+
+      &.invalid {
+        color: $error;
+
+        + label {
+          color: $error;
+        }
       }
     }
   }
 
   //// Expetions for labeled instances
   &.input--show-label {
-    input, select {
+    input,
+    select {
       font-weight: $regular;
 
-      @include placeholder { opacity: $alpha-major; };
+      @include placeholder {
+        opacity: $alpha-major;
+      }
 
-      & + label {
-        font-size: .75rem; line-height: 1em;
-        top: .5rem; left: 0;
+      + label {
+        font-size: .75rem;
+        line-height: 1em;
+        top: .5rem;
+        left: 0;
         text-transform: $tt;
       }
 
-      &:focus, &:valid {
-        @include placeholder { opacity: 1; };
+      &:focus,
+      &:valid {
+        @include placeholder {
+          opacity: 1;
+        }
       }
     }
 
     textarea {
       font-weight: $regular;
 
-      @include placeholder { opacity: $alpha-major; };
+      @include placeholder {
+        opacity: $alpha-major;
+      }
 
-      & + label {
-        font-size: .75rem; line-height: 1em;
-        top: .5rem; left: 0;
+
+      + label {
+        font-size: .75rem;
+        line-height: 1em;
+        top: .5rem;
+        left: 0;
         text-transform: $tt;
       }
 
-      &:focus, &:valid {
-        @include placeholder { opacity: 1; };
+      &:focus,
+      &:valid {
+        @include placeholder {
+          opacity: 1;
+        }
       }
     }
 
@@ -434,24 +647,32 @@
       input {
         font-weight: $regular;
 
-        @include placeholder { opacity: $alpha-major; };
+        @include placeholder {
+          opacity: $alpha-major;
+        }
 
-        & + label {
-          font-size: .75rem; line-height: 1em;
-          top: .36rem; left: 0;
+        + label {
+          font-size: .75rem;
+          line-height: 1em;
+          top: .36rem;
+          left: 0;
           text-transform: $tt;
         }
 
-        &:focus, &:valid {
-          @include placeholder { opacity: 1; };
+        &:focus,
+        &:valid {
+          @include placeholder {
+            opacity: 1;
+          }
         }
       }
     }
   }
 }
 
-.input { @include input($back: $white, $focus: $brand-color);}
-
+.input {
+  @include input($back: $white, $focus: $brand-color);
+}
 
 // The Inverse themes
 .paint--gradient .input,
@@ -461,12 +682,15 @@
   @include input($back: $black, $focus: $brand-color-darker);
 }
 
-.paint--brand .input {
+.paint--brand .input,
+.picked .input {
   @include input($back: $brand-color, $focus: $accent-color);
 }
+
 .paint--accent .input {
   @include input($back: $accent-color, $focus: $brand-color);
 }
+
 .paint--comp .input {
   @include input($back: $comp-color, $focus: $brand-color-darker);
 }

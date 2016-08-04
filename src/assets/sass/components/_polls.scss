@@ -63,6 +63,7 @@
     padding: .64rem .64rem 0 2.36rem;
     position: relative;
     line-height: 2rem;
+    opacity: .36;
 
     .poll__icon {
       display: block;
@@ -130,15 +131,6 @@
     font-size: 1.36rem;
     line-height: 1.5em;
 
-    // &::before {
-    //   // question number label
-    //   content: attr(data-label);
-    //   display: block;
-    //   text-transform: uppercase;
-    //   font-size: .64em;
-    //   opacity: .22;
-    // }
-
     &::after {
       content: attr(data-extrainfo);
       display: block;
@@ -154,6 +146,7 @@
   // Image
   .question__img {
     text-align: center;
+    border: 1px solid  $frame-color;
     margin-bottom: .64rem;
 
     img {
@@ -193,30 +186,30 @@
     position: relative;
     padding-left: 2.64rem;
 
-    input[type=checkbox],
-    input[type=radio] {
+    [type=checkbox],
+    [type=radio] {
       display: none;
+    }
 
-      + span {
-        @include transition(color .25s);
+    > span {
+      @include transition(color .25s);
 
-        display: block;
-        font-size: 2.1rem;
-        line-height: 1;
+      display: block;
+      font-size: 2.1rem;
+      line-height: 1;
+      position: absolute;
+      top: .64rem;
+      left: .64rem;
+      color: transparentize($text-color, .95);
+      width: 1.36rem;
+      height: 1.36rem;
+
+      &::before {
+        @include transform(translateY(-50%) translateX(-50%));
+        margin-top: .05em;
         position: absolute;
-        top: .64rem;
-        left: .64rem;
-        color: transparentize($text-color, .95);
-        width: 1.36rem;
-        height: 1.36rem;
-
-        &::before {
-          @include transform(translateY(-50%) translateX(-50%));
-          margin-top: .05em;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-        }
+        top: 50%;
+        left: 50%;
       }
     }
 
@@ -227,21 +220,10 @@
     &.picked {
       background-color: $brand-color-lighter;
       border-color: $brand-color;
+      z-index: 10;
 
-      + .picked {
-        border-top-color: transparent;
-      }
-
-      + .answer:not(.picked) {
-        border-top-color: transparent;
-      }
-
-      + span {
+      span {
         color: $text-color;
-      }
-
-      &:last-child {
-        border-color: $brand-color;
       }
     }
 
@@ -276,8 +258,8 @@
       }
     }
 
-    input[type=checkbox],
-    input[type=radio] {
+    [type=checkbox],
+    [type=radio] {
       + span {
         @include transform(translate(-50%, -50%));
         @include transition(opacity .36s);
@@ -306,7 +288,9 @@
     }
   }
 
-  .answer--input {}
+  .answer--input {
+    //
+  }
 
   .answer--slider {
     @include display(flex);
@@ -331,7 +315,8 @@
       opacity: .64;
     }
 
-    label + input, select {
+    label + input,
+    select {
       margin-left: .36em;
       width: 100%;
       flex: 1;
@@ -344,16 +329,13 @@
   }
 
   &.poll__answers--grid .layout__group {
-    position: relative;
-
-    // @include align-items(stretch);
     @include display(flex);
-
     @include flex-flow(row wrap);
-
     @include justify-content(flex-start);
 
-    & > .answer {
+    position: relative;
+
+    > .answer {
       @include flex(1);
 
       @include flex-basis(calc( ( 100% / 2 ) - 2px ));
@@ -369,7 +351,6 @@
   padding-top: 0;
 
   h4 {
-    padding-top: 0;
     padding-top: .64rem;
   }
 
@@ -385,29 +366,26 @@
 .drag-bucket--target,
 .drag-bucket--source,
 .sort-bucket--source {
+  @include transition(border .1s, box-shadow .36s, padding-top .36s, padding-bottom .36s, background-color .64s);
+
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, .05);
+  border: 1px dashed $frame-color;
   padding: 1rem;
   position: relative;
 
-  @include transition(border .1s, box-shadow .36s, padding-top .36s, padding-bottom .36s, background-color .64s);
 
   .placeholder {
+    @include transition(.36s);
+
     color: rgba($text-color, .36);
     overflow: hidden;
     max-height: 4rem;
     display: block;
     opacity: 1;
-
-    @include transition(.36s);
   }
 
-  &.get-ready {
-    background-color: rgba($white, .36);
-
-    // border: 1px solid rgba(0, 0, 0, .64);
-    border: 1px solid rgba(0, 0, 0, 0);
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, .22);
+  &.get-ready {;
+    border: 1px solid $frame-color;
   }
 
   &.has-content {
@@ -427,13 +405,12 @@
 
 .answer--drag,
 .answer--sort {
-  display: block;
-  padding: 1rem;
-  margin-top: 1px;
-
   @include transition(box-shadow .64s);
 
-  span[data-icon] {
+  display: block;
+  padding: 1rem;
+
+  [data-icon] {
     position: absolute;
     right: 1rem;
     font-size: 1.64rem;
@@ -444,7 +421,7 @@
 
   & + & {
     // border-top: 1px solid rgba(0, 0, 0, .05);
-    margin-top: 0;
+    // margin-top: 0;
   }
 }
 
@@ -470,7 +447,8 @@
   }
 
 
-  th, td {
+  th,
+  td {
     border-right: 1px solid rgba($text-color, .05);
     font-size: .8rem;
     line-height: 1.3em;
@@ -529,22 +507,20 @@
     }
 
     .answer--pick {
+      @include transition(background-color .36s, box-shadow .64s);
+
       min-width: (100vw / 4);
       padding: 2rem;
       line-height: 1;
       text-align: center;
 
-      @include transition(background-color .36s, box-shadow .64s);
-
-      input[type=checkbox],
-      input[type=radio] {
+      [type=checkbox],
+      [type=radio] {
         + span {
+          @include transform($move-to-center);
           position: absolute;
           top: 50%;
           left: 50%;
-
-          @include transform($move-to-center);
-
           display: block;
           overflow: visible;
           opacity: .1;
@@ -594,19 +570,25 @@
   padding: 0;
   width: 100%;
 
-  .sticky-thead, .sticky-col, .sticky-intersect {
+  &.overflow-y {
+    overflow-y: auto;
+    max-height: 50vh;
+  }
+
+  .sticky-thead,
+  .sticky-col,
+  .sticky-intersect {
+    @include transition(all .36s $ease-out-quad);
+
     opacity: 0;
     position: absolute;
     top: 0;
     left: 0;
-
-    @include transition(all .36s $ease-out-quad);
-
     z-index: 100;
     width: auto;
     background-color: $white;
 
-    /* Prevent table from stretching to full size */
+    // Prevent table from stretching to full size
   }
 
   .sticky-thead {
@@ -614,7 +596,7 @@
     z-index: 50;
     width: 100%;
 
-    /* Force stretch */
+    // Force stretch
   }
 
   .sticky-intersect {
@@ -622,29 +604,24 @@
     z-index: 150;
   }
 
-  td, th {
+  td,
+  th {
     box-sizing: border-box;
   }
 }
 
-/* Not needed for sticky header/column functionality */
+// Not needed for sticky header/column functionality
 
-td.user-name {
+.user-name {
   text-transform: capitalize;
-}
-
-.sticky-wrap.overflow-y {
-  overflow-y: auto;
-  max-height: 50vh;
 }
 
 // Poll navigation
 .poll__nav {
+  @include clearfix;
+
   padding: 3rem;
   padding-top: 1.5rem;
-
-  // @include brand-gradient($grain: 'grain-pastelred.jpg', $color: $comp-color);
-  @include clearfix;
 
   .poll__nav--back {
     @include button($face: rgba(#fff, 0), $p: 1px);
@@ -659,8 +636,4 @@ td.user-name {
 
     float: right;
   }
-
-  // .poll__nav--back, .poll__nav--forward {
-  //   @include transform(scale(1.36));
-  // }
 }

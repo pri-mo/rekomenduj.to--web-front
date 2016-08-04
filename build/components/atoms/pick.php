@@ -10,7 +10,7 @@ if (isset($i) && ($i!=null)) { ?>
   </label>
 <?php } else { ?>
   <label class="layout--card ripple answer answer--pick no-card">
-  <input name="<?php echo $inputName ?>" id="<?php echo "{$inputName}" ?>" type="<?php echo $pickType ?>">
+  <input name="<?php echo $inputName ?>" id="<?php echo $inputName ?>" type="<?php echo $pickType ?>">
   <span data-icon="y"></span>
   </label>
 <?php

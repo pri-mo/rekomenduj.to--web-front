@@ -278,17 +278,11 @@ section {
 
   &.group,
   .layout__group & {
+    margin-top: -1px;
     margin-bottom: 0;
-    margin-top: 0;
-    border-bottom-color: transparent;
 
     &:first-child {
       margin-top: 1rem;
-    }
-
-    &:last-child { //Tutaj coś nie gra z kontekstem i nie jest uwzględniana ta zmiana.
-      margin-bottom: 1rem;
-      border-bottom-color: $frame-color;
     }
   }
 
