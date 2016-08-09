@@ -54,9 +54,9 @@
   //   padding-left: 2rem;
   // }
 
-  // &.poll--end-screen {
-  //   main {
-  //     padding-left: 0;
-  //   }
-  // }
+  &.poll--end-screen {
+    .poll__icon {
+      color: $brand-color;
+    }
+  }
 }

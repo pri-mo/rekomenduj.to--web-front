@@ -264,16 +264,19 @@ section {
   &.paint--brand {
     background-color: $brand-color;
     color: dynamic-color($brand-color);
+    border-color: darken($brand-color, 16%);
   }
 
   &.paint--comp {
     background-color: $comp-color;
     color: dynamic-color($comp-color);
+    border-color: darken($comp-color, 16%);
   }
 
   &.paint--accent {
     background-color: $accent-color;
     color: dynamic-color($accent-color);
+    border-color: darken($accent-color, 16%);
   }
 
   &.group,

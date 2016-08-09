@@ -8,10 +8,8 @@ $faker = Faker\Factory::create('pl_PL');
 ?>
 
 <section class="layout--base poll__info">
-  <span class="help__flip">
-    <div class="poll__icon" data-icon="s"></div>
-    <div class="poll__name" data-label="Ankieta ukończona"><?php echo $faker->sentence; ?></div>
-  </span>
+  <div class="poll__icon" data-icon="s"></div>
+  <div class="poll__name" data-label="Ankieta ukończona"><?php echo $faker->sentence; ?></div>
 </section>
 
 <section class="layout--base poll__thankyou thankyou--swap"> <!-- klasa thankyou--swap zamienie kolejność media i text -->

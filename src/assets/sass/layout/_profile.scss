@@ -116,6 +116,10 @@ section.profile__focus-box {
     overflow: hidden;
     position: relative;
 
+    .paint--brand & { border-color: darken($brand-color, 16%); }
+    .paint--comp & { border-color: darken($comp-color, 16%); }
+    .paint--accent & { border-color: darken($accent-color, 16%); }
+
     &::after {
       background-color: rgba($text-color, .11);
       bottom: 50%;

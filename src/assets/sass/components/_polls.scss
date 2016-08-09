@@ -405,8 +405,6 @@
 
 .answer--drag,
 .answer--sort {
-  @include transition(box-shadow .64s);
-
   display: block;
   padding: 1rem;
 
@@ -492,9 +490,9 @@
     padding: 0;
     line-height: 1;
 
-    .layout--card-1 {
+    .layout--card {
       background-color: transparent;
-      box-shadow: none;
+      border-color: transparent;
     }
 
     .answer--slider {
@@ -535,11 +533,11 @@
           margin-right: 0;
           color: rgba($white, 0);
 
-          @include transition(opacity .64s, color .36s, box-shadow .1s);
+          @include transition(opacity .64s, color .36s, box-shadow .36s);
         }
 
         &:checked + span {
-          box-shadow: inset 0 0 0 1px rgba($text-color, 0);
+          box-shadow: none;
           color: $white;
           max-width: none;
           margin-right: 0;
@@ -548,8 +546,11 @@
       }
 
       &.picked {
-        background-color: $comp-color;
-        box-shadow: inset 0 0 0 1px rgba($text-color, .02);
+        background-color: $brand-color;
+      }
+
+      @at-root .answer--matrix tr:nth-of-type(even) .matrix__answers .picked {
+        background-color: darken($brand-color, 8%);
       }
     }
   }
