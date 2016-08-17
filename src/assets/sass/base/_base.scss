@@ -33,6 +33,7 @@ body {
 // Prevent transitions before elements load;
 
 body {
+  padding-bottom: 2rem;
   &.preload * {
     @include transition(none !important);
   }
@@ -184,9 +185,8 @@ section {
   transition: $transition;
   position: relative;
 
-  &.transparent--inverse {
-    background-color: transparent;
-    color: $white;
+  &.force-top {
+    padding-top: 0 !important;
   }
 
   &.paint--brand {
@@ -202,6 +202,10 @@ section {
   &.paint--accent {
     background-color: $accent-color;
     color: dynamic-color($accent-color);
+  }
+
+  &.inverse {
+    color: $white;
   }
 
   &.group,
@@ -435,7 +439,7 @@ section {
 }
 
 // Ripples
-a:not(no-ripple),
+a:not(.no-ripple),
 .ripple {
   @include backface-visibility(hidden);
   @include transform(translate3d(0, 0, 1px));

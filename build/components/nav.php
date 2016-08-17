@@ -13,7 +13,7 @@
       <li class="nav__position"><a href="#" class="rg-contact nav__link light">Kontakt</a></li>
       <li class="nav__spacer"></li>
       <li class="nav__account">
-        <div class="nav__username"><a href="/" onclick="localStorage.clear()" class="nav__link" data-username="Przemysław Trepka">Wyloguj mnie</a></div>
+        <div class="nav__username"><a href="/" onclick="localStorage.clear()" class="nav__link" data-username="Marta Niezwykła">Wyloguj mnie</a></div>
         <div class="nav__avatar"><a href="profile-edit.php" class="nav__link--avatar"><img src="assets/images/spoof-profile-pic.jpg" alt=""></a></div>
       </li>
     </ul>

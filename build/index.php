@@ -13,7 +13,7 @@ $tagsTemplate = 'template--intro';
 <html lang="<?php echo $lang ?>">
 <head>
   <?php include 'components/head.php' ?>
-  <meta http-equiv="refresh" content="5; URL=/sign-in.php">
+  <meta http-equiv="refresh">
 </head>
 
 <body class="<?php echo $tagsBodyBasic . ' ' . $tagsNav . ' ' . $tagsTemplate ?>">

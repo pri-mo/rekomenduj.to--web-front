@@ -18,7 +18,7 @@ function livereload() {
   $isLocal = $_SERVER['SERVER_NAME'];
   $host = '//'.$_SERVER['SERVER_NAME'].':35729/';
 
-  if ($isLocal === 'localhost' || $isLocal === 'deepthought.local') {?>
+  if ($isLocal === 'localhost' || $isLocal === 'trepski.local') {?>
     <script src="<?php echo $host ?>livereload.js"></script>
   <?php
   }

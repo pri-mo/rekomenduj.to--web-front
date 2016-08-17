@@ -14,7 +14,7 @@
 }
 
 .content-list__header {
-  color: $brand-color;
+  // color: $brand-color;
   // padding-bottom: 26rem;
   text-align: center;
   overflow: hidden;
@@ -23,15 +23,16 @@
   // + .content-list { margin-top: -23rem;}
 
   .content-list__header-icon {
-    color: $brand-color;
-    font-size: $ico-size-m;
+    color: $text-color-faded;
+    font-size: $ico-size-l;
     border-radius: 100%;
-    line-height: $ico-size-m*1.36;
+    line-height: $ico-size-m * 1.36;
     margin: .5rem auto 0;
   }
   .content-list__header-title {
-    font-weight: $light;
-    color: $brand-color;
+    font-weight: $bold;
+    color: $text-color-faded;
+    letter-spacing: -.036em;
   }
 
   &:nth-child(n+2) .content-list__header-title { top: $ico-size-l;}

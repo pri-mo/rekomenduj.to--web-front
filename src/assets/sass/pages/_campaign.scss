@@ -1,0 +1,431 @@
+// -----------------------------------------------------------------------------
+// This file contains campaign declarations.
+// -----------------------------------------------------------------------------
+
+.layout__header--campaign {
+  padding-top: 0 !important;
+  color: dynamic-color($brand-color);
+  background-color: $brand-color;
+
+  a {
+    color: dynamic-color($brand-color);
+  }
+}
+
+.campaign__slider {
+  margin: 0 -.64rem;
+
+  ul {
+    display: block;
+    white-space: nowrap;
+
+    li {
+      display: inline-block;
+    }
+  }
+
+  .slider__item {
+    display: block;
+    width: 100vw;
+  }
+}
+
+.campaign__intro {
+  padding: 1.64rem;
+
+  .campaign__name {
+    padding: 1.64rem 0;
+    text-align: center;
+  }
+
+  .campaign__description {
+    color: $text-color-faded;
+    padding-bottom: 1rem;
+  }
+
+  .link__toggle-more {
+    padding: .36rem;
+    margin-top: .64rem;
+
+    @include on-event {
+      text-decoration: none;
+    }
+
+
+    [class^='rg'] {
+      padding-right: .36rem;
+    }
+  }
+}
+
+.campaign__content {
+  padding: 1rem 0;
+
+  .content-list__header {
+    padding-top: 2rem;
+  }
+}
+
+// campaign__tasks__item
+.campaign__tasks {
+  @include display(flex);
+  @include flex-flow(row wrap);
+  position: relative;
+  margin: calc(1rem - 1%);
+
+  > .campaign__tasks__item {
+    @include flex(0 1 auto);
+    // color: $white;
+    border: 1px solid $frame-color;
+    background-color: $white;
+    width: calc(50% - 4px);
+    height: 7rem;
+    padding: .64rem;
+    margin: 2px;
+
+    .task__mission {
+      color: $text-color-faded;
+      display: block;
+      font-size: .75rem;
+    }
+
+    .task__target {
+      color: $text-color-faded;
+      display: block;
+      font-size: 1.25rem;
+      font-weight: $bold;
+    }
+
+    .task__icon {
+      @extend %social-logo;
+      line-height: 1;
+      display: block;
+      font-size: 3rem;
+      position: absolute;
+      bottom: .64rem;
+      right: .64rem;
+    }
+
+    &:hover {
+      background-color: $brand-color;
+      * { color: $white; }
+    }
+  }
+}
+
+
+.campaign__social-feed {
+
+  > .social-feed__item {
+    width: calc(50% - 4px);
+    height: calc(50vw - 4px);
+    min-height: 0;
+    padding: .64rem;
+    margin: 2px;
+
+    // &:first-of-type,
+    &:nth-of-type(5n+1) {
+      width: calc(100% - 4px);
+    }
+
+    &.cover__container {
+      border: 0;
+
+      .image--cover { opacity: .88; }
+    }
+
+    .social-feed__text {
+      display: block;
+      font-size: .9rem;
+      line-height: 1.3em;
+      height: 7 * 1.3em;
+      overflow: hidden;
+
+      em {
+        font-weight: $bold;
+        font-style: normal;
+      }
+    }
+
+    .social-feed__details {
+      opacity: .9;
+      display: block;
+      font-size: .88rem;
+      position: absolute;
+      bottom: .64rem;
+      left: .64rem;
+
+      &::after {
+        display: block;
+        content: attr(data-timestamp);
+        font-size: .75em;
+        line-height: 1;
+      }
+    }
+
+    .social-feed__icon {
+      @extend %social-logo;
+      font-size: 2rem;
+      line-height: 1;
+      position: absolute;
+      bottom: .64rem;
+      right: .64rem;
+    }
+  }
+}
+
+
+// Tasks variations
+.task--other {
+  color: #f26522;
+
+  .task__icon::before {
+    @extend %reko-glyph;
+    content: '\53';
+    font-size: 3.36rem;
+    line-height: .75;
+    left: .25rem;
+  }
+}
+
+.task--facebook {
+  color: #365397;
+
+  .task__icon::before {
+    content: '\31';
+  }
+}
+
+.task--rss {
+  color: #f26522;
+
+  .task__icon::before {
+    content: '\33';
+  }
+}
+
+.task--get-pocket {
+  color: #ef4056;
+
+  .task__icon::before {
+    content: '\35';
+  }
+}
+
+.task--globe {
+  color: #008bcf;
+
+  .task__icon::before {
+    content: '\34';
+  }
+}
+
+.task--google {
+  color: #4285f4;
+
+  .task__icon::before {
+    content: '\36';
+  }
+}
+
+.task--google-plus {
+  color: #dc4e41;
+
+  .task__icon::before {
+    content: '\37';
+  }
+}
+
+.task--instagram {
+  color: #f56040;
+
+  .task__icon::before {
+    content: '\39';
+  }
+}
+
+.task--linkedin-square {
+  color: #006db3;
+
+  .task__icon::before {
+    content: '\30';
+  }
+}
+
+.task--medium {
+  color: #00ab6b;
+
+  .task__icon::before {
+    content: '\61';
+  }
+}
+
+.task--pinterest {
+  color: #ce1a19;
+
+  .task__icon::before {
+    content: '\62';
+  }
+}
+
+.task--rss-square {
+  color: #f26522;
+
+  .task__icon::before {
+    content: '\64';
+  }
+}
+
+.task--spotify {
+  color: #2ebd59;
+
+  .task__icon::before {
+    content: '\65';
+  }
+}
+
+.task--tumblr {
+  color: #304c68;
+
+  .task__icon::before {
+    content: '\66';
+  }
+}
+
+.task--twitch {
+  color: #6441a5;
+
+  .task__icon::before {
+    content: '\68';
+  }
+}
+
+.task--twitter {
+  color: #00a9f1;
+
+  .task__icon::before {
+    content: '\69';
+  }
+}
+
+.task--vimeo {
+  color: #48b6ed;
+
+  .task__icon::before {
+    content: '\6b';
+  }
+}
+
+.task--vine {
+  color: #00b488;
+
+  .task__icon::before {
+    content: '\6d';
+  }
+}
+
+.task--vk {
+  color: #45668e;
+
+  .task__icon::before {
+    content: '\6e';
+  }
+}
+
+.task--wikipedia-w {
+  color: #444;
+
+  .task__icon::before {
+    content: '\6f';
+  }
+}
+
+.task--yelp {
+  color: #c30f00;
+
+  .task__icon::before {
+    content: '\70';
+  }
+}
+
+.task--youtube {
+  color: #f33;
+
+  .task__icon::before {
+    content: '\73';
+  }
+}
+
+
+// Social Feed channels
+.item--facebook {
+  .social-feed__icon::before {
+    content: '\31';
+  }
+}
+
+.item--google-plus {
+  .social-feed__icon::before {
+    content: '\37';
+  }
+}
+
+.item--instagram {
+  .social-feed__icon::before {
+    content: '\39';
+  }
+}
+
+.item--medium {
+  .social-feed__icon::before {
+    content: '\61';
+  }
+}
+
+.item--pinterest {
+  .social-feed__icon::before {
+    content: '\62';
+  }
+}
+
+.item--tumblr {
+  .social-feed__icon::before {
+    content: '\66';
+  }
+}
+
+.item--twitter {
+  .social-feed__icon::before {
+    content: '\69';
+  }
+}
+
+.item--vimeo {
+  .social-feed__icon::before {
+    content: '\6b';
+  }
+}
+
+.item--vine {
+  .social-feed__icon::before {
+    content: '\6d';
+  }
+}
+
+.item--vk {
+  .social-feed__icon::before {
+    content: '\6e';
+  }
+}
+
+.item--yelp {
+  .social-feed__icon::before {
+    content: '\70';
+  }
+}
+
+.item--youtube {
+  .social-feed__icon::before {
+    content: '\73';
+  }
+}

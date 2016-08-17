@@ -10,7 +10,7 @@
       <?php } ?>
     </div>
   </div>
-  <h2 class="profile__welcome">Cześć Przemek</h2>
+  <h2 class="profile__welcome">Cześć Marta</h2>
 </section>
 
 <?php if( isset($tasks) && ($tasks!=null) ) { ?>
