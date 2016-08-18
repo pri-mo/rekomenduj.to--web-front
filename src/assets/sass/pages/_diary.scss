@@ -1,0 +1,59 @@
+// Diary
+
+
+.diary-entries {
+
+}
+
+.diary-entry {
+  // padding: 1rem;
+}
+
+.diary-entry__timestamp {
+  font-size: .88rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  opacity: .36;
+}
+
+.diary-entry__user {
+  font-size: .88rem;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  line-height: 2rem;
+
+  .user__avatar {
+    @include size(2rem);
+    display: inline-block;
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+  .user__name {
+    display: inline-block;
+    font-weight: $bold;
+    padding-left: .36rem;
+  }
+}
+
+.diary-entry__content {
+
+}
+
+.diary-entry__more {
+  @include size(1.5rem);
+  display: block;
+  color: $text-color;
+  opacity: .64;
+  position: absolute !important;
+  bottom: 1rem;
+  right: 1rem;
+  text-align: center;
+  line-height: 1.5rem;
+
+  @include on-event {
+    color: $text-color;
+    opacity: 1;
+  }
+}

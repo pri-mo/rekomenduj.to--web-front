@@ -152,7 +152,39 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
           </a>
         </section>
 
+        <section class="layout--base content-list__header">
+          <?php
+          $headerIcon = 'rg-influencer';
+          $headerTitle = 'To mówią Ambasadorzy';
+          ?>
+          <div class="<?php echo $headerIcon ?> content-list__header-icon"></div>
+          <h2 class="content-list__header-title"><?php echo $headerTitle ?></h2>
+        </section>
+        <section class="content-list diary-entries">
+          <div class="list-item diary-entry">
+            <div class="diary-entry__timestamp">3 sie 2016</div>
+            <div class="diary-entry__user">
+              <div class="user__avatar"><img src="assets/images/spoof-profile-pic.jpg"></div>
+              <div class="user__name">Nina Todd</div>
+            </div>
+            <div class="diary-entry__content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
+            </div>
+            <a class="diary-entry__more"><span class="rg-more"></span></a>
+          </div>
 
+          <div class="list-item diary-entry">
+            <div class="diary-entry__timestamp">3 sie 2016</div>
+            <div class="diary-entry__user">
+              <div class="user__avatar"><img src="assets/images/spoof-profile-pic.jpg"></div>
+              <div class="user__name">Nina Todd</div>
+            </div>
+            <div class="diary-entry__content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
+            </div>
+            <a class="diary-entry__more"><span class="rg-more"></span></a>
+          </div>
+        </section>
       </div>
 
     </main>
