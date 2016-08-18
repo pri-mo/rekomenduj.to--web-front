@@ -11,9 +11,11 @@
 'abstracts/variables';
 
 // 2. Vendors
+// TODO get rid of jUI and/or Swiper if not using
 @import
 'vendor/normalize',
-'vendor/jqueryui';
+'vendor/jqueryui',
+'vendor/swiper';
 
 // 3. Base stuff
 @import

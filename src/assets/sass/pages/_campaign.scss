@@ -3,30 +3,45 @@
 // -----------------------------------------------------------------------------
 
 .layout__header--campaign {
-  padding-top: 0 !important;
-  color: dynamic-color($brand-color);
-  background-color: $brand-color;
+  color: dynamic-color($white);
+  background-color: $white;
+
+  box-shadow: $shadow-3;
 
   a {
-    color: dynamic-color($brand-color);
+    color: dynamic-color($white);
   }
 }
 
-.campaign__slider {
-  margin: 0 -.64rem;
+.cs__container {
+  width: 100%;
+  height: 80vw;
+  margin: 1rem 0;
+}
 
-  ul {
-    display: block;
-    white-space: nowrap;
+.cs__pagination {
+  margin-top: 1rem;
+  text-align: center;
 
-    li {
-      display: inline-block;
-    }
+  .swiper-pagination-bullet-active {
+    background-color: $brand-color;
   }
+}
 
-  .slider__item {
-    display: block;
-    width: 100vw;
+.cs__item {
+  @include display(flex);
+  @include box-pack(center);
+  @include box-align(center);
+  @include justify-content(center);
+  @include align-items(center);
+
+  text-align: center;
+  background-color: $white;
+  border: 1px solid $frame-color;
+  width: 80vw;
+
+  &.cs__item--video {
+    background-color: $black;
   }
 }
 
@@ -106,8 +121,10 @@
       right: .64rem;
     }
 
-    &:hover {
+    @include on-event {
       background-color: $brand-color;
+      border-color: $brand-color;
+
       * { color: $white; }
     }
   }
@@ -170,6 +187,16 @@
       position: absolute;
       bottom: .64rem;
       right: .64rem;
+    }
+
+    @include on-event {
+      background-color: $brand-color;
+      border-color: $brand-color;
+      color: $white;
+
+      .image--cover {
+        opacity: .1;
+      }
     }
   }
 }
