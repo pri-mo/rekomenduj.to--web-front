@@ -4,7 +4,9 @@
 
 .content-list {
   position: relative;
+
   @include display(flex);
+
   @include flex-flow(row wrap);
 
   @at-root section#{&} {
@@ -29,92 +31,133 @@
     line-height: $ico-size-m * 1.36;
     margin: .5rem auto 0;
   }
+
   .content-list__header-title {
     font-weight: $bold;
     color: $text-color-faded;
     letter-spacing: -.036em;
   }
 
-  &:nth-child(n+2) .content-list__header-title { top: $ico-size-l;}
+  &:nth-child(n+2) .content-list__header-title {
+    top: $ico-size-l;
+  }
 }
 
-.list-sizer {display: none;}
+.list-sizer {
+  display: none;
+}
+
 .list-item {
   @include flex(0 1 auto);
-  width: (100% - 2%);
+  @include transition(.36s);
+  width: 100% - 2%;
   margin: 1%;
   display: block;
   background-color: $white;
   border: 1px solid $frame-color;
   color: $text-color;
+  padding: 1rem;
   position: relative;
-  padding: 3.5rem 1rem 1rem;
   min-height: 15rem;
-  @include transition(.36s);
 
-  &::after, &::before {
+  &[data-label] {
+    padding: 3.5rem 1rem 1rem;
+  }
+
+  &[data-label]::after,
+  &[data-label]::before {
+    @include transition(.36s);
     display: block;
     // color: $accent-color;
     opacity: .64;
-    @include transition(.36s);
   }
 
-  &::after {
+  &[data-label]::after {
     @extend %reko-glyph;
+
     font-size: 1.64rem;
     position: absolute;
-    top: 1rem; left: 1rem;
+    top: 1rem;
+    left: 1rem;
   }
 
-  &::before {
-    // content: attr(data-index)'. 'attr(data-label);
+  &[data-label]::before {
     content: attr(data-label);
     text-transform: uppercase;
     font-size: .8em;
   }
+
   .list-item__name {
+    @include transition(0s);
     display: block;
     font-weight: $bold;
     font-size: 1.3rem;
     line-height: 1.3em;
     padding-right: 2rem;
     padding-top: .5rem;
-    @include transition(0s);
   }
 
   @include respond-to('ph-landscape' and 'phablet') {
-    width: ((100% / 2) - 1% );
+    width: 100% / 2 - 1%;
     margin: .5%;
   }
+
   @include respond-to('tablet') {
-    width: ((100% / 3) - 1%);
-    &:nth-child(5n+3) {width: ( 2 * (100% / 3) - 1% );
-      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+    width: 100% / 3 - 1%;
+
+    &:nth-child(5n+3) {
+      width: 2 * 100% / 3 - 1%;
+
+      .list-item__name {
+        padding-right: 36%;
+        font-size: 1.3rem;
+      }
     }
   }
+
+
   @include respond-to('desktop') {
-    width: ((100% / 4) - 1%);
+    width: 100% / 4 - 1%;
     margin: .5%;
 
-    &:nth-child(5n+3) { width: ( (100% / 4) - 1% ); }
+    &:nth-child(5n+3) {
+      width: 100% / 4 - 1%;
+    }
 
-    &:nth-child(5n+4) { width: ( (100% / 2) - 1% );
-      .list-item__name { padding-right: 36%; font-size: 1.3rem; }
+    &:nth-child(5n+4) {
+      width: 100% / 2 - 1%;
+
+      .list-item__name {
+        padding-right: 36%;
+        font-size: 1.3rem;
+      }
     }
   }
+
 
   // Cover images
-  .image--cover {z-index: -1; opacity: .64;}
+  .image--cover {
+    z-index: -1;
+    opacity: .64;
+  }
 
   // Types of items
   &.list-item--poll {
-    &::after { content: "\74";}
+    &::after {
+      content: '\74';
+    }
   }
+
   &.list-item--campaign {
-    &::after { content: "\69";}
+    &::after {
+      content: '\69';
+    }
   }
+
   &.list-item--promo {
-    &::after { content: "\72";}
+    &::after {
+      content: '\72';
+    }
   }
 
   // Item has a cover image
@@ -122,27 +165,37 @@
     background-color: $black;
     color: $white;
 
-    &::before, &::after { opacity: .88; color: $white;}
+    &::before,
+    &::after {
+      opacity: .88;
+      color: $white;
+    }
   }
 
   // Desktop Hover
-  @include respond-to('desktop') {
-    @include on-event {
-      text-decoration: none;
+  @include on-event {
+    @include transform(scale(1.036));
+    text-decoration: none;
+    color: $white;
+    background-color: $brand-color;
+    box-shadow: $shadow-2;
+
+    z-index: 11;
+
+    &::before,
+    &::after {
       color: $white;
-      background-color: $brand-color;
-      box-shadow: $shadow-2;
-      @include transform(scale(1.036));
-      z-index: 11;
+      opacity: 1;
+    }
 
-      &::before, &::after { color: $white; opacity: 1; }
+    &.cover__container {
+      background-color: $brand-color-darker;
+      color: $white !important;
+      box-shadow: $shadow-2a;
 
-      &.cover__container {
-        background-color: $brand-color-darker;
-        color: $white !important;
-        box-shadow: $shadow-2a;
-
-        .image--cover { opacity: .11; @include transform($move-to-center scale(1.25));}
+      .image--cover {
+        @include transform($move-to-center scale(1.25));
+        opacity: .11;
       }
     }
   }
@@ -150,54 +203,57 @@
 
 // Special case of two sides with a flip
 .list-item--doublesided {
-
-  // .list-item overrides
-  overflow: visible;
+  @include perspective(1000px);
   padding: 0;
   background-color: transparent;
-  box-shadow: none;
   border: 0;
-
-  // Some new styles
-  @include perspective(1000px);
   height: 12rem;
 
   // General sides defs
   .doublesided__side-a,
   .doublesided__side-b {
-    background-color: $bright;
+    @include backface-visibility(hidden);
+    background-color: $white;
     border: 1px solid $frame-color;
-    padding: 3rem 1rem 1rem;
+    padding: 1rem;
     text-decoration: none !important;
 
-    @include backface-visibility(hidden);
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &[data-label] {
+      padding: 3rem 1rem 1rem;
+    }
   }
 
   // The flipping module
   .doublesided__flipper {
+    @include transition(.6s);
+    @include transform-style(preserve-3d);
     width: 100%;
     height: 100%;
-    @include transition(0.6s);
-    @include transform-style(preserve-3d);
     position: relative;
   }
 
   // Fornt Side
   .doublesided__side-a {
-    z-index: 2;
     @include transform(rotateY(0deg));
+    z-index: 2;
 
-    &::after {
+    &[data-label]::after {
       @extend %reko-glyph;
+
       font-size: 1.64rem;
       position: absolute;
-      top: 1rem; left: 1rem;
+      top: 1rem;
+      left: 1rem;
       opacity: .64;
     }
 
-    &::before {
+    &[data-label]::before {
       content: attr(data-label);
       display: block;
       text-transform: uppercase;
@@ -206,30 +262,55 @@
     }
 
     &.cover__container {
-      background-color: $text-color!important;
-      color: $white!important;
+      background-color: $text-color !important;
+      color: $white !important;
 
-      &::before, &::after { opacity: .88; }
+      &[data-label]::before,
+      &[data-label]::after {
+        opacity: .88;
+      }
     }
   }
+
   // List type icons
   &.list-item--poll {
-    &::after { content: ""; display: none; }
-    .doublesided__side-a:after { content: "\74";}
+    &::after {
+      content: '';
+      display: none;
+    }
+
+    .doublesided__side-a::after {
+      content: '\74';
+    }
   }
+
   &.list-item--campaign {
-    &::after { content: ""; display: none; }
-    .doublesided__side-a:after { content: "\69";}
+    &::after {
+      content: '';
+      display: none;
+    }
+
+    .doublesided__side-a::after {
+      content: '\69';
+    }
   }
+
   &.list-item--promo {
-    &::after { content: ""; display: none; }
-    .doublesided__side-a:after { content: "\72";}
+    &::after {
+      content: '';
+      display: none;
+    }
+
+    .doublesided__side-a::after {
+      content: '\72';
+    }
   }
 
   // Back side
   .doublesided__side-b {
-    padding: 0;
     @include transform(rotateX(180deg));
+    padding: 0;
+
 
     .list-item__description {
       color: $text-color;
@@ -249,13 +330,14 @@
 
     .doublesided__side-a,
     .doublesided__side-b {
-      background-color: $white; box-shadow: $shadow-3;
+      background-color: $white;
+      box-shadow: $shadow-3;
     }
-  };
+  }
 
-  // Flip on hover
-  &:hover .doublesided__flipper,
-  &.hover .doublesided__flipper, {
+
+  // Flip
+  &.hover .doublesided__flipper {
     @include transform(rotateX(180deg));
   }
 }

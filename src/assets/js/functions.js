@@ -3,6 +3,11 @@
 * functions.js
 */
 
+function flipOver(item) {
+  var el = typeof item === 'object' ? item : document.getElementById(item);
+  el.classList.toggle('hover');
+}
+
 // Broken images
 function imgBroken(image) {
   // image.onerror = "";

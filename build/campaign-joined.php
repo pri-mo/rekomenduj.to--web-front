@@ -51,7 +51,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
                 <h3>Hi there!!!</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum reiciendis iusto odit cum labore officiis suscipit, itaque quod, quis nesciunt accusantium corporis, soluta libero facere! Itaque vitae libero natus nesciunt?</p>
                 <div>
-                  <a class="button">Click me...</a>
+                  <a href="" class="button">Click me...</a>
                 </div>
               </div>
             </div>
@@ -71,18 +71,14 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
           </ol>
           </div>
           <a href="" class="link__toggle-more"><span class="rg-right"></span>Czytaj więcej</a>
-
-          <div class="space--top">
-            <a href="campaign-joined.php" class="button button--cta">Chcę wziąć udział...</a>
-          </div>
         </div>
       </section>
 
       <div class="campaign__content">
         <section class="layout--base content-list__header">
           <?php
-          $headerIcon = 'rg-community';
-          $headerTitle = 'Bądź częścią tej społeczności';
+          $headerIcon = 'rg-influencer';
+          $headerTitle = 'Zadania w kampanii';
           ?>
           <div class="<?php echo $headerIcon ?> content-list__header-icon"></div>
           <h2 class="content-list__header-title"><?php echo $headerTitle ?></h2>
@@ -100,6 +96,57 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
           <a href="" class="campaign__tasks__item task--other">
             <span class="task__mission">Zostaw recenzję na</span><span class="task__target">Ceneo</span><span class="task__icon"></span>
           </a>
+        </section>
+        <section class="content-list campaign__priority-tasks">
+          <div class="list-sizer"></div>
+          <div class="list-item list-item--doublesided" id="promoShare">
+            <div class="doublesided__flipper">
+              <div class="doublesided__side-a">
+                <img src="https://unsplash.it/600/500?image=999" alt="" class="image--cover">
+                <div class="priority-task__promo-cta" onclick="flipOver('promoShare')"><span class="rg-share"></span>Udostępnij</div>
+              </div>
+              <div class="doublesided__side-b">
+              <div class="priority-task__back" onclick="flipOver('promoShare')"><span class="rg-left"></span></div>
+              </div>
+            </div>
+          </div>
+          <a class="list-item"></a>
+          <a class="list-item"></a>
+          <a class="list-item"></a>
+        </section>
+
+        <section class="layout--base content-list__header">
+          <?php
+          $headerIcon = 'rg-community';
+          $headerTitle = 'To mówią Ambasadorzy';
+          ?>
+          <div class="<?php echo $headerIcon ?> content-list__header-icon"></div>
+          <h2 class="content-list__header-title"><?php echo $headerTitle ?></h2>
+        </section>
+        <section class="content-list diary-entries">
+          <div class="list-item diary-entry">
+            <div class="diary-entry__timestamp">3 sie 2016</div>
+            <div class="diary-entry__user">
+              <div class="user__avatar"><img src="assets/images/spoof-profile-pic.jpg"></div>
+              <div class="user__name">Nina Todd</div>
+            </div>
+            <div class="diary-entry__content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
+            </div>
+            <a class="diary-entry__more"><span class="rg-more"></span></a>
+          </div>
+
+          <div class="list-item diary-entry">
+            <div class="diary-entry__timestamp">3 sie 2016</div>
+            <div class="diary-entry__user">
+              <div class="user__avatar"><img src="assets/images/spoof-profile-pic.jpg"></div>
+              <div class="user__name">Nina Todd</div>
+            </div>
+            <div class="diary-entry__content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
+            </div>
+            <a class="diary-entry__more"><span class="rg-more"></span></a>
+          </div>
         </section>
         <section class="content-list campaign__social-feed">
           <div class="list-sizer"></div>
@@ -158,40 +205,6 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
             <span class="social-feed__details" data-timestamp="3 sie 2016">@LipsumBot</span>
             <span class="social-feed__icon"></span>
           </a>
-        </section>
-
-        <section class="layout--base content-list__header">
-          <?php
-          $headerIcon = 'rg-influencer';
-          $headerTitle = 'To mówią Ambasadorzy';
-          ?>
-          <div class="<?php echo $headerIcon ?> content-list__header-icon"></div>
-          <h2 class="content-list__header-title"><?php echo $headerTitle ?></h2>
-        </section>
-        <section class="content-list diary-entries">
-          <div class="list-item diary-entry">
-            <div class="diary-entry__timestamp">3 sie 2016</div>
-            <div class="diary-entry__user">
-              <div class="user__avatar"><img src="assets/images/spoof-profile-pic.jpg"></div>
-              <div class="user__name">Nina Todd</div>
-            </div>
-            <div class="diary-entry__content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
-            </div>
-            <a class="diary-entry__more"><span class="rg-more"></span></a>
-          </div>
-
-          <div class="list-item diary-entry">
-            <div class="diary-entry__timestamp">3 sie 2016</div>
-            <div class="diary-entry__user">
-              <div class="user__avatar"><img src="assets/images/spoof-profile-pic.jpg"></div>
-              <div class="user__name">Nina Todd</div>
-            </div>
-            <div class="diary-entry__content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
-            </div>
-            <a class="diary-entry__more"><span class="rg-more"></span></a>
-          </div>
         </section>
       </div>
 

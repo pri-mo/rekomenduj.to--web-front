@@ -52,7 +52,7 @@ if( isset($contentList) && ($contentList!=null) ) {
   <div class="list-sizer"></div>
   <a href="#aaa" class="list-item list-item--promo" data-label="Promocja" data-index="1"><img src="assets/images/mkino.jpg" alt="" class="image--cover"><span class="list-item__name">Bilety na dowolny seans w Multikinie</span></a>
   <a href="#aaa" class="list-item list-item--promo" data-label="Do końca zostało 16h" data-index="2"><img src="assets/images/costa.jpg" alt="" class="image--cover"><span class="list-item__name">Poranek z Costa Coffee</span></a>
-  <div class="list-item list-item--promo list-item--doublesided">
+  <div class="list-item list-item--promo list-item--doublesided" onclick="flipOver(this)">
     <div class="doublesided__flipper">
       <a href="#aaa" class="doublesided__side-a" data-label="Promocja" data-index="3"><img src="/assets/images/backs/ph16.jpg" alt="" class="image--cover"><span class="list-item__name">Ogoleni z BaByliss</span></a>
       <a href="#aaa" class="doublesided__side-b"><span class="list-item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga odit culpa repellendus quia nesciunt est pariatur amet suscipit perferendis, rerum cumque ipsa, vitae earum ea facere nisi eaque sed possimus.</span></a>
