@@ -143,24 +143,23 @@
     }
   }
 
-  // Image
-  .question__img {
-    text-align: center;
+
+  // Rich media
+  .question__media {
     border: 1px solid  $frame-color;
-    margin-bottom: .64rem;
-
-    img {
-      max-height: 75vh;
-    }
-  }
-
-  // Video
-  .question__vid {
     position: relative;
-    padding-bottom: 100% / (16 / 9);
+    // padding-bottom: 100% / (16 / 9);
+    padding-bottom: 78%;
     margin-bottom: .64rem;
     height: 0;
     overflow: hidden;
+
+    img {
+      @include transform(translate(-50%, -50%));
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
 
     iframe {
       position: absolute;

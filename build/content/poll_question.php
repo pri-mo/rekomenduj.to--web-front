@@ -48,14 +48,14 @@ switch ($multiple) {
   <div class="question__name" data-label="Pytanie <?php echo $q; ?>" data-extrainfo="<?php echo $extraInfo; ?>">
     <?php
     if ($randChoice % 3 === 0) { ?>
-      <div class="question__img">
+      <div class="question__media">
       <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('800', '600')) ?>/<?php echo $faker->randomElement($array = array ('800', '600')) ?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084) ?>" alt=""></div>
     <?php
     }
     ?>
     <?php
     if ($randChoice % 7 === 0) { ?>
-      <div class="question__vid"><iframe src="https://www.youtube.com/embed/Wk5qT_814xM" frameborder="0" allowfullscreen></iframe></div>
+      <div class="question__media"><iframe src="https://www.youtube.com/embed/Wk5qT_814xM" frameborder="0" allowfullscreen></iframe></div>
     <?php
     }
 
