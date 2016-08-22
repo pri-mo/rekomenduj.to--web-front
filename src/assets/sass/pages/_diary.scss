@@ -6,7 +6,17 @@
 }
 
 .diary-entry {
-  // padding: 1rem;
+  margin-bottom: 0;
+
+  & + & {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top-color: $white;
+  }
+
+  &:last-child {
+    margin-bottom: 1%;
+  }
 }
 
 .diary-entry__timestamp {
@@ -42,15 +52,17 @@
 }
 
 .diary-entry__more {
-  @include size(1.5rem);
+  @include size(1.64rem);
+  line-height: 1.64rem;
+  cursor: pointer;
   display: block;
   color: $text-color;
+  font-size: 1.5rem;
   opacity: .64;
   position: absolute !important;
-  bottom: 1rem;
+  bottom: .64rem;
   right: 1rem;
   text-align: center;
-  line-height: 1.5rem;
 
   @include on-event {
     color: $text-color;

@@ -62,11 +62,15 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
 
         <div class="campaign__intro">
           <h2 class="campaign__name">Jack Daniel's Tennessee Honey</h2>
-          <p class="campaign__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur optio
-            odio voluptates quibusdam asperiores fugiat reprehenderit ipsa delectus assumenda iure, quaerat. At assumenda
-            alias dolor et reiciendis explicabo sequi beatae.
-            <a href="" class="link__toggle-more"><span class="rg-right"></span>Czytaj więcej</a>
-          </p>
+          <div class="campaign__description">
+          <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Consectetur optio odio voluptates quibusdam asperiores fugiat reprehenderit ipsa delectus assumenda iure, quaerat. At assumenda alias dolor et reiciendis explicabo sequi beatae.</p>
+          <ol>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+            <li>Ratione alias rerum enim labore ducimus, in iste.</li>
+            <li>Iusto in, fugiat est quam ducimus provident, quasi ipsum maiores dignissimos quidem doloremque aut.</li>
+          </ol>
+          </div>
+          <a href="" class="link__toggle-more"><span class="rg-right"></span>Czytaj więcej</a>
         </div>
       </section>
 

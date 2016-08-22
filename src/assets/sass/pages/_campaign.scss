@@ -7,10 +7,6 @@
   background-color: $white;
 
   box-shadow: $shadow-3;
-
-  a {
-    color: dynamic-color($white);
-  }
 }
 
 .cs__container {
@@ -24,7 +20,7 @@
   text-align: center;
 
   .swiper-pagination-bullet-active {
-    background-color: $brand-color;
+    background-color: $comp-color;
   }
 }
 
@@ -55,12 +51,27 @@
 
   .campaign__description {
     color: $text-color-faded;
-    padding-bottom: 1rem;
+
+    ul,
+    ol {
+      list-style-position: outside;
+      margin: 0 0 0 1.1rem;
+      padding: 0;
+
+      li {
+        margin: 0;
+        padding: 0 0 .36rem 0;
+      }
+    }
+
+    ul {list-style-type: disc;}
+    ol {list-style-type: decimal;}
   }
 
   .link__toggle-more {
-    padding: .36rem;
+    padding: .36rem 1rem .36rem .64rem;
     margin-top: .64rem;
+    color: $black;
 
     @include on-event {
       text-decoration: none;
