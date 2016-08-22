@@ -6,7 +6,12 @@
 // Broken images
 function imgBroken(image) {
   // image.onerror = "";
-  $(image).parent().removeClass('cover__container').attr('data-error', 'Image was broken. I deleted it...');
+  var randNum = Math.random()*16777215;
+  var randHex = '#' + Math.floor(randNum).toString(16);
+  var txtCol = (randNum > 11250603) ? '#000' : '#fff';
+  $(image).parent()
+          .removeClass('cover__container').attr('data-error', 'Image was broken. I deleted it...')
+          .css({'backgroundColor': randHex, 'color': txtCol});
   image.remove();
   return true;
 }
