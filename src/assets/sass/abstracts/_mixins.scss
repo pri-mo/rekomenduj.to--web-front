@@ -6,11 +6,10 @@
 /// @author Harry Roberts
 /// @param {Bool} $self [false] - Whether or not to include current selector
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
-@mixin on-event($self: false) {
-  @if $self {
-    &,
-    &:hover,
-    &:active {
+@mixin on-event($mobile-safe: true) {
+  @if $mobile-safe {
+    body:not(.device--mobile) &:hover,
+    body:not(.device--mobile) &:active {
       // &:focus {
       @content;
     }

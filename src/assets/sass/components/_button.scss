@@ -12,6 +12,7 @@
   border: 1px solid transparentize($content, $frame);
   box-shadow: 0;
   color: $content;
+  cursor: pointer;
   display: inline-block;
   font-size: 1.36rem;
   font-weight: $regular;
@@ -28,27 +29,19 @@
   }
 
   &.button--secondary {
-    color: transparentize($content, .36);
+    color: transparentize($content, .25);
   }
 
   &.button--cta {
-    .ink {
-      background-color: transparentize($white, .22);
-    }
+    background-color: $white;
 
-    &::after {
-      @include size(0);
-      @include transform(translate(-50%, -50%));
-      @include transition($transition);
-
+    .device--mobile & {
       background-color: $accept-color;
-      border-radius: 100%;
-      content: '';
-      display: block;
-      left: 50%;
-      position: absolute;
-      top: 50%;
-      z-index: -1;
+      color: $white;
+
+      .ink {
+        background-color: transparentize($white, .22);
+      }
     }
   }
 
@@ -66,7 +59,7 @@
 
   @include on-event {
     background-color: $white;
-    border-color: transparent;
+    border-color: $white;
     box-shadow: $shadow-button;
     color: $text-color;
     outline: none;
@@ -74,9 +67,11 @@
 
     &.button--cta {
       color: $white;
+      border-color: $accept-color;
+      background-color: $accept-color;
 
-      &::after {
-        @include size(10rem);
+      .ink {
+        background-color: transparentize($white, .22);
       }
     }
   }
@@ -92,7 +87,6 @@
 
   &.button--icon {
     @include size(1.36rem * 3);
-
     padding: 0;
 
     [data-icon] {

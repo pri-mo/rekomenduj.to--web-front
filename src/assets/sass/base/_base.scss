@@ -33,7 +33,8 @@ body {
 // Prevent transitions before elements load;
 
 body {
-  padding-bottom: 2rem;
+  padding-bottom: 5rem;
+
   &.preload * {
     @include transition(none !important);
   }

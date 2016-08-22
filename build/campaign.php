@@ -71,6 +71,10 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
           </ol>
           </div>
           <a href="" class="link__toggle-more"><span class="rg-right"></span>Czytaj więcej</a>
+
+          <div class="space--top">
+            <a class="button button--cta">Chcę wziąć udział...</a>
+          </div>
         </div>
       </section>
 

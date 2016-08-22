@@ -27,6 +27,11 @@
   margin: .5rem 0;
 }
 
+.space--top { padding-top: 1rem; }
+.space--bottom { padding-bottom: 1rem; }
+.space--left { padding-left: 1rem; }
+.space--right { padding-right: 1rem; }
+
 // Hide text while making it readable for screen readers
 // 1. Needed in WebKit-based browsers because of an implementation bug;
 //    See: https://code.google.com/p/chromium/issues/detail?id=457146
