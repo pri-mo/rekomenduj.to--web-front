@@ -142,6 +142,95 @@
 }
 
 
+// ---------------------------------------------------------
+//  Main campaign tasks
+// ---------------------------------------------------------
+.campaign__priority {
+  margin-top: 0 !important;
+}
+
+.priority__item {
+
+  .doublesided__side-a {
+    .doublesided__trigger {
+      font-weight: $bold;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+  }
+
+  .doublesided__side-b {
+    //
+  }
+
+  &.priority--share {
+    .priority--share__post-snippet {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      font-size: .88rem;
+      line-height: 1.36em;
+    }
+
+    .priority--share__post-preview {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      padding: 0 0 0 4.64rem;
+      width: calc(100% - 5rem);
+    }
+
+    .post-preview__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4rem;
+    }
+
+    .post-preview__title {
+      font-size: 1rem;
+      line-height: 1.3em;
+      color: $text-color-faded;
+    }
+
+    .post-preview__text {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      font-size: .8rem;
+      line-height: 1.3em;
+      color: $text-color-faded;
+      max-height: 5 * 1.28em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: .64;
+
+      &::before {
+        @include size(100% 1px);
+        content: '';
+        display: block;
+        background-color: $frame-color;
+        margin: 1rem 0;
+      }
+    }
+
+    .priority--share__social-channels {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      text-align: center;
+
+      > div {display: inline-block;}
+    }
+  }
+
+}
+
+
+
 .campaign__social-feed {
 
   > .social-feed__item {

@@ -97,19 +97,31 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
             <span class="task__mission">Zostaw recenzję na</span><span class="task__target">Ceneo</span><span class="task__icon"></span>
           </a>
         </section>
-        <section class="content-list campaign__priority-tasks">
+        <section class="content-list campaign__priority">
           <div class="list-sizer"></div>
-          <div class="list-item list-item--doublesided" id="promoShare">
+
+          <div class="list-item list-item--doublesided priority__item priority--share" id="promoShare">
             <div class="doublesided__flipper">
               <div class="doublesided__side-a">
                 <img src="https://unsplash.it/600/500?image=999" alt="" class="image--cover">
-                <div class="priority-task__promo-cta" onclick="flipOver('promoShare')"><span class="rg-share"></span>Udostępnij</div>
+                <div class="doublesided__trigger" onclick="flipOver('promoShare')">Udostępnij ten post<span class="rg-share"></span></div>
+                <div class="priority--share__post-snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolor, impedit deserunt recusandae cum eveniet possimus odit! Modi, rerum. Voluptates commodi at nam cum aspernatur neque expedita, incidunt consectetur inventore!</div>
               </div>
               <div class="doublesided__side-b">
-              <div class="priority-task__back" onclick="flipOver('promoShare')"><span class="rg-left"></span></div>
+                <div class="doublesided__trigger" onclick="flipOver('promoShare')"><span class="rg-left"></span></div>
+                <div class="priority--share__post-preview">
+                  <img src="https://unsplash.it/100/100?image=999" alt="" class="post-preview__image">
+                  <div class="post-preview__title">Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur.</div>
+                  <div class="post-preview__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                </div>
+                <div class="priority--share__social-channels">
+                  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Udostępnij</a></div>
+                </div>
               </div>
             </div>
           </div>
+
           <a class="list-item"></a>
           <a class="list-item"></a>
           <a class="list-item"></a>

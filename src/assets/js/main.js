@@ -3,6 +3,14 @@
 * main.js
 */
 
+var isTouchDevice = 'ontouchstart' in document.documentElement;
+var body = document.getElementsByTagName('body')[0];
+
+if (isTouchDevice) {
+  body.classList.add('device--touch');
+} else {
+  body.classList.add('device--no-touch');
+}
 
 //// Do stuff after page load
 $(function() {
