@@ -87,7 +87,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
           <a href="" class="campaign__tasks__item task--facebook">
             <span class="task__mission">Dołącz do nas na</span><span class="task__target">Facebooku</span><span class="task__icon"></span>
           </a>
-          <a href="" class="campaign__tasks__item task--instagram">
+          <a href="https://www.instagram.com/rekomendujto/" class="campaign__tasks__item task--instagram">
             <span class="task__mission">Dołącz do nas na</span><span class="task__target">Instagramie</span><span class="task__icon"></span>
           </a>
           <a href="" class="campaign__tasks__item task--google-plus">
@@ -102,9 +102,9 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
 
           <div class="list-item list-item--doublesided priority__item priority--share" id="promoShare">
             <div class="doublesided__flipper">
-              <div class="doublesided__side-a">
+              <div class="doublesided__side-a" onclick="flipOver('promoShare')">
                 <img src="https://unsplash.it/600/500?image=999" alt="" class="image--cover">
-                <div class="doublesided__trigger" onclick="flipOver('promoShare')">Udostępnij ten post<span class="rg-share"></span></div>
+                <div class="doublesided__trigger">Udostępnij ten post<span class="rg-share"></span></div>
                 <div class="priority--share__post-snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolor, impedit deserunt recusandae cum eveniet possimus odit! Modi, rerum. Voluptates commodi at nam cum aspernatur neque expedita, incidunt consectetur inventore!</div>
               </div>
               <div class="doublesided__side-b">
