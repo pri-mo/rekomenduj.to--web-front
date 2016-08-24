@@ -404,7 +404,7 @@ section.profile__focus-box {
   .stats__cell--longform {
     @include flex(2);
 
-    font-size: .88rem;
+    font-size: .75rem;
     line-height: 1.36em;
     opacity: .64;
   }
@@ -448,7 +448,7 @@ section.profile__focus-box {
       @include flex(0 1 auto);
 
       color: rgba($text-color, .36);
-      padding: 1rem;
+      padding: .88rem;
       width: 50%;
 
       @include on-event {
@@ -481,12 +481,13 @@ section.profile__focus-box {
 
     .channel__icon {
       font-size: 1.5rem;
-      padding: 0 .5rem;
+      padding: 0 .5rem 0 0;
     }
 
     .channel__name {
       display: inline-block;
       padding: .36rem 0;
+      width: 64%;
     }
   }
 }

@@ -69,6 +69,7 @@
           </a>
           <div class="roll-out__content">
             <a href="#" class="social-reach__add-channel"><span class="channel__icon sr-facebook"></span><span class="channel__name">Facebook</span></a>
+            <a class="social-reach__add-channel"><span class="channel__icon sr-facebook-square"></span><span class="channel__name">Facebook Page Name</span></a>
             <a href="#" class="social-reach__add-channel"><span class="channel__icon sr-twitter"></span><span class="channel__name">Twitter</span></a>
             <a href="#" class="social-reach__add-channel"><span class="channel__icon sr-google-plus"></span><span class="channel__name">Google+</span></a>
             <a href="#" class="social-reach__add-channel"><span class="channel__icon sr-instagram"></span><span class="channel__name">Instagram</span></a>
