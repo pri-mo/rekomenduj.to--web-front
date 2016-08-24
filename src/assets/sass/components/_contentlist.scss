@@ -22,6 +22,10 @@
   overflow: hidden;
   position: relative;
 
+  @include respond-to('desktop') {
+    text-align: left;
+  }
+
   // + .content-list { margin-top: -23rem;}
 
   .content-list__header-icon {
@@ -30,12 +34,22 @@
     border-radius: 100%;
     line-height: $ico-size-m * 1.36;
     margin: .5rem auto 0;
+
+    @include respond-to('desktop') {
+      display: inline-block;
+      line-height: $ico-size-l;
+    }
   }
 
   .content-list__header-title {
     font-weight: $bold;
     color: $text-color-faded;
     letter-spacing: -.036em;
+
+    @include respond-to('desktop') {
+      display: inline-block;
+      line-height: $ico-size-l;
+    }
   }
 
   &:nth-child(n+2) .content-list__header-title {

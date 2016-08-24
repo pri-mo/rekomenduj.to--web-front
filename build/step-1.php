@@ -61,22 +61,22 @@ $tagsTemplate = 'template--steps';
         <div class="grid__item grid__item--1of2">
           <div class="input input--date input--show-label">
             <input tabindex
-            name="user-birthday" id="user-birthday" type="date" max="{$maxDate}"
+            name="user-birthday" id="user-birthday" type="text" max="{$maxDate}"
             autocomplete="birthday"
             required
             spellcheck="true"
-            placeholder="Podaj datę urodzenia">
+            placeholder="Podaj datę">
             <label for="user-birthday"
             data-focused="Moja data urodzenia"
             data-original="Podaj datę urodzenia"
-            data-invalid="To pole jest wymagane.">Podaj datę urodzenia</label>
+            data-invalid="To pole jest wymagane.">Data urodzenia</label>
           </div>
         </div>
 
         <div class="grid__item grid__item--1of2">
           <div class="input input--select input--show-label">
             <select name="user-gender" id="user-gender" required>
-              <option value="" selected disabled>Wybierz płeć</option>
+              <option value="" selected disabled>Podaj płeć</option>
               <option value="K">Kobieta</option>
               <option value="M">Mężczyzna</option>
             </select>

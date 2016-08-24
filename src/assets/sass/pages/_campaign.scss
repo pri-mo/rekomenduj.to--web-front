@@ -132,6 +132,10 @@
       right: .64rem;
     }
 
+    @include respond-to('desktop') {
+      width: calc(25% - 4px);
+    }
+
     @include on-event {
       background-color: $brand-color;
       border-color: $brand-color;
@@ -227,6 +231,9 @@
     }
   }
 
+  @include respond-to('desktop') {
+    width: calc((100% / 3) - 4px);
+  }
 }
 
 
