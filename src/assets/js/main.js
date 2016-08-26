@@ -139,7 +139,7 @@ $(function() {
   —— NOTE Just for beta testing localstorage data
   */
   // save data on change
-  $(document).on('change', 'input, select, textarea', function() {
+  $(document).on('change', 'input:not([type=file]), select, textarea', function() {
     var inputName = this.name;
     var inputVal = this.value;
     localStorage.setItem(inputName, inputVal);
@@ -148,7 +148,7 @@ $(function() {
 
   // fill data if exists
   if (localStorage.length > 0) {
-    $('input, select, textarea').each(function() {
+    $('input:not([type=file]), select, textarea').each(function() {
       var inputName = this.name;
       $(this).val(localStorage.getItem(inputName)).addClass('input--used');
 

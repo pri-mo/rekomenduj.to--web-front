@@ -2,7 +2,11 @@
 // This file contains images declarations.
 // -----------------------------------------------------------------------------
 
-.cover__container { overflow: hidden; }
+.cover__container {
+  overflow: hidden;
+  background-color: $black;
+  color: $white;
+}
 
 .image--cover {
   @include transform($move-to-center scale(1.1));

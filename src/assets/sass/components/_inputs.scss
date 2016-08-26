@@ -90,7 +90,7 @@
     margin-top: 1rem;
   }
 
-  input,
+  input:not([type=file]),
   select,
   textarea,
   label {
@@ -104,7 +104,7 @@
   }
 
   //// Text fields
-  input {
+  input:not([type=file]) {
     @include appearance(none);
     @include transition(.64s $ease-out-expo);
 
@@ -593,6 +593,63 @@
     }
   }
 
+  /// File Upload
+  &.input--file-upload {
+    margin: 0;
+    padding: 0;
+    height: 6rem;
+    overflow: hidden;
+    // border: 1px solid $frame-color;
+
+    .input__field {
+      display: none;
+    }
+
+    .file-upload__file-preview {
+      z-index: 0 !important;
+    }
+
+    input {
+      width: .1px;
+      height: .1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -100;
+    }
+
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.5rem 0 0 4.5rem;
+      display: block;
+      cursor: pointer;
+
+      .file-upload__icon {
+        @include transform(translate3d(0%, -50%, 0));
+        font-size: $ico-size-m;
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+      }
+
+      .file-upload__cta {
+        display: block;
+        font-size: .88rem;
+        line-height: 1.36em;
+      }
+
+      .file-upload__file-size {
+        display: block;
+        font-size: .75rem;
+        line-height: 1.36em;
+      }
+    }
+  }
+
   //// Expetions for labeled instances
   &.input--show-label {
     input,
@@ -665,6 +722,21 @@
             opacity: 1;
           }
         }
+      }
+    }
+  }
+
+  &.input--tight-text {
+    input,
+    textarea,
+    select {
+      font-size: 1rem;
+      line-height: 1.3em;
+      height: 2.64rem;
+
+      &:not(:focus):not(.input--used) + label {
+        font-size: 1rem;
+        line-height: 1.3em;
       }
     }
   }

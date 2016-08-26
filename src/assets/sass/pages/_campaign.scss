@@ -231,6 +231,50 @@
     }
   }
 
+  &.priority--hashtag {
+
+    .priority--hashtag__cta {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      text-align: center;
+
+      span {
+        font-size: 1.36rem;
+        display: block;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba($white, .22);
+      }
+      strong {}
+    }
+
+    .priority--hashtag__post-compose {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      padding: 0;
+    }
+
+    .priority--hashtag__upload {
+      margin: -1rem -1rem 0;
+      // width: 70px;
+      // height: 70px;
+      // border-radius: 100%;
+      // border: 1px solid $frame-color;
+      // img {position: relative;}
+    }
+    .file-upload__file-preview {
+      z-index: 0 !important;
+    }
+
+    .priority--hashtag__text {
+      // margin-right: -2rem;
+    }
+  }
+
   @include respond-to('desktop') {
     width: calc((100% / 3) - 4px);
   }

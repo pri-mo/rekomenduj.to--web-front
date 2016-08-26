@@ -100,21 +100,21 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
         <section class="content-list campaign__priority">
           <div class="list-sizer"></div>
 
-          <div class="list-item list-item--doublesided priority__item priority--share" id="promoShare">
+          <div class="list-item list-item--doublesided priority__item priority--share" id="promoShare_01">
             <div class="doublesided__flipper">
-              <div class="doublesided__side-a" onclick="flipOver('promoShare')">
+              <div class="doublesided__side-a" onclick="flipOver('promoShare_01')">
                 <img src="https://unsplash.it/600/500?image=999" alt="" class="image--cover">
                 <div class="doublesided__trigger">Udostępnij ten post<span class="rg-share"></span></div>
                 <div class="priority--share__post-snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolor, impedit deserunt recusandae cum eveniet possimus odit! Modi, rerum. Voluptates commodi at nam cum aspernatur neque expedita, incidunt consectetur inventore!</div>
               </div>
               <div class="doublesided__side-b">
-                <div class="doublesided__trigger" onclick="flipOver('promoShare')"><span class="rg-left"></span></div>
                 <div class="priority--share__post-preview">
                   <img src="https://unsplash.it/100/100?image=999" alt="" class="post-preview__image">
                   <div class="post-preview__title">Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore eu fugiat nulla pariatur.</div>
                   <div class="post-preview__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                 </div>
+                <div class="doublesided__trigger" onclick="flipOver('promoShare_01')"><span class="rg-left"></span></div>
                 <div class="priority--share__social-channels">
                   <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Udostępnij</a></div>
                 </div>
@@ -122,9 +122,39 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
             </div>
           </div>
 
-          <a class="list-item"></a>
-          <a class="list-item"></a>
-          <a class="list-item"></a>
+          <div class="list-item list-item--doublesided priority__item priority--hashtag hover" id="promoHash_01">
+            <div class="doublesided__flipper">
+              <div class="doublesided__side-a" onclick="flipOver('promoHash_01')">
+                <img src="https://unsplash.it/600/500?image=1" alt="" class="image--cover">
+                <div class="doublesided__trigger">Puść własny post<span class="rg-send-go"></span></div>
+                <div class="priority--hashtag__cta"><span>Wkręcasz szefa, że coś robisz ale tak naprawdę opierdalasz się sromotnie?</span> Hashtag <strong>#NaRobocie</strong></div>
+              </div>
+              <div class="doublesided__side-b">
+                <div class="priority--hashtag__post-compose">
+                  <div class="input input--file-upload priority--hashtag__upload">
+                    <img src="" class="file-upload__file-preview">
+                    <input type="file" name="file" id="file" class="input--file-upload__control">
+                    <label for="file">
+                      <span class="rg-add-photo file-upload__icon"></span>
+                      <span class="file-upload__cta">Wybierz zdjęcie...</span>
+                      <span class="file-upload__file-size"></span>
+                    </label>
+                  </div>
+                  <div class="input input--tight-text priority--hashtag__text">
+                    <textarea tabindex name="hashtagPostText" id="hashtagPostText" spellcheck="true" placeholder="Ta historia jest o Tobie..."></textarea>
+                    <label for="hashtagPostText"
+                    data-focused="#NaRobocie"
+                    data-original="Co tam #NaRobocie?"
+                    data-invalid="Twoja odpowiedź jest dla nas ważna"></label>
+                    <div class="input__field"></div>
+                  </div>
+                </div>
+                <div class="doublesided__trigger" onclick="flipOver('promoHash_01')"><span class="rg-left"></span></div>
+              </div>
+            </div>
+          </div>
+          <!-- <a class="list-item"></a> -->
+          <!-- <a class="list-item"></a> -->
         </section>
 
         <section class="layout--base content-list__header">
@@ -236,6 +266,38 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
       centeredSlides: true,
       paginationClickable: true,
       spaceBetween: 10
+    });
+  </script>
+  <!-- Some file input stuff -->
+  <script>
+    var inputs = document.querySelectorAll( '.input--file-upload__control' );
+    Array.prototype.forEach.call( inputs, function( input )
+    {
+      var label     = document.querySelectorAll( '.file-upload__cta' )[0],
+          labelSize = document.querySelectorAll( '.file-upload__file-size' )[0],
+          preview   = document.querySelectorAll( '.file-upload__file-preview' )[0],
+          labelVal  = label.innerHTML;
+
+      input.addEventListener( 'change', function( e ) {
+        var fileName = e.target.value.split( '\\' ).pop(),
+            files = e.target.files,
+            fileSize = files[0].size / 1024 / 1024;
+            reader = new FileReader();
+
+        reader.onload = function(e) {
+          preview.setAttribute('src', e.target.result);
+          preview.classList.add('image--cover');
+          preview.parentElement.classList.add('cover__container')
+        }
+
+        if ( fileName ) {
+          label.innerHTML = 'Klasunia...';
+          labelSize.innerHTML = Math.round(fileSize * 100) / 100 + "MB";
+          reader.readAsDataURL(files[0]);
+        } else {
+          labelVal = 'Wybierz zdjęcie...';
+        }
+      });
     });
   </script>
 </body>
