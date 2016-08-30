@@ -624,7 +624,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      padding: 1.5rem 0 0 4.5rem;
+      padding: 1.5rem 0 0 5rem;
       display: block;
       cursor: pointer;
 
@@ -633,7 +633,7 @@
         font-size: $ico-size-m;
         position: absolute;
         top: 50%;
-        left: 1rem;
+        left: 1.5rem;
       }
 
       .file-upload__cta {
@@ -731,8 +731,8 @@
     textarea,
     select {
       font-size: 1rem;
-      line-height: 1.3em;
-      height: 2.64rem;
+      line-height: 1.25em;
+      height: 2.5rem;
 
       &:not(:focus):not(.input--used) + label {
         font-size: 1rem;

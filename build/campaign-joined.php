@@ -287,7 +287,8 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
         reader.onload = function(e) {
           preview.setAttribute('src', e.target.result);
           preview.classList.add('image--cover');
-          preview.parentElement.classList.add('cover__container')
+          preview.parentElement.classList.add('cover__container');
+          preview.parentElement.parentElement.classList.add('has-preview');
         }
 
         if ( fileName ) {

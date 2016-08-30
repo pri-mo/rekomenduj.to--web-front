@@ -4,8 +4,12 @@
 
 .cover__container {
   overflow: hidden;
-  background-color: $black;
+  background-color: $black !important;
   color: $white;
+
+  &.profile__pic-container {
+    background-color: transparent !important;
+  }
 }
 
 .image--cover {

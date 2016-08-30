@@ -256,22 +256,20 @@
       left: 1rem;
       right: 1rem;
       padding: 0;
+
+      &.has-preview + .doublesided__trigger {
+        color: $white;
+      }
     }
 
     .priority--hashtag__upload {
       margin: -1rem -1rem 0;
-      // width: 70px;
-      // height: 70px;
-      // border-radius: 100%;
-      // border: 1px solid $frame-color;
-      // img {position: relative;}
-    }
-    .file-upload__file-preview {
-      z-index: 0 !important;
+      // border-bottom: 1px solid  $frame-color;
+      background-color: $brand-color;
     }
 
     .priority--hashtag__text {
-      // margin-right: -2rem;
+      margin-top: .5rem;
     }
   }
 

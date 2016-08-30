@@ -60,3 +60,28 @@
     }
   }
 }
+
+.template--plain {
+  h2,
+  h3,
+  h4,
+  h5 {
+    padding-bottom: .64rem;
+    margin-bottom: .36rem;
+  }
+
+  ol {
+    margin: 0;
+    padding: 0 0 1rem 1.36rem;
+
+    li { padding-bottom: .64rem; }
+
+    > li {
+      list-style-type: decimal;
+
+      > ol > li {
+        list-style-type: lower-alpha;
+      }
+    }
+  }
+}
