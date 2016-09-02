@@ -404,6 +404,7 @@
 
 .answer--drag,
 .answer--sort {
+  @include transition(none !important);
   display: block;
   padding: 1rem;
 
