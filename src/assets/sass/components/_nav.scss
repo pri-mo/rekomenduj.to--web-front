@@ -55,7 +55,7 @@ header {
   .nav--primary,
   .nav--secondary {
     @include transition(unquote($nav-transition));
-    box-shadow: 0 1px 0 rgba($nav-color, .11);
+    // box-shadow: 0 1px 0 rgba($nav-color, .11);
     color: $nav-color;
     height: $nav-height;
     position: relative;
@@ -105,7 +105,7 @@ header {
 
   .nav__icon--logo {
     @include transform(translate(-50%, -50%));
-    @include transition(font-size .36s);
+    @include transition(opacity .36s);
     font-size: $nav-height / 2;
     left: 50%;
     opacity: .22;
@@ -113,8 +113,11 @@ header {
 
   .nav__icon--inbox {
     @include transform(translate(0%, -50%));
+    @include size($nav-height - $cube);
+    border-radius: 50%;
     line-height: 1;
     right: 1rem;
+    overflow: visible;
 
     &::before {
       top: 0;
@@ -181,6 +184,7 @@ header {
   .nav__menu-trigger {
     @include transform(translate(0%, -50%));
     height: ($nav-height - $cube);
+    border-radius: 50%;
     left: .5rem;
     outline: none;
     position: absolute;
@@ -188,15 +192,15 @@ header {
     width: ($nav-height - $cube);
 
     .helper__nav-cube-canvas {
-      @include transform(translate(-50%, -50%) scale(.5));
+      @include transform(translate(-5%, -50%) scale(.5));
       height: 2 * $cube;
-      left: 50%;
+      left: 0;
+      right: 0;
       line-height: 2 * $cube;
-      margin-left: -.25rem;
       position: absolute;
       top: 50%;
       width: 2 * $cube;
-      perspective: 5000px;
+      @include perspective(5000px);
     }
 
     .nav__icon-cube {
@@ -213,11 +217,18 @@ header {
       padding: 0;
       top: 0;
       transition: opacity .36s .36s;
+
+      &::before {
+        top: 0;
+      }
     }
 
     .nav__icon--menu-open {
       @include transform(translateZ(-$cube / 2) rotateX(0deg));
       opacity: 1;
+      &::before {
+        top: -.05em;
+      }
     }
 
     .nav__icon--menu-close {
@@ -240,20 +251,27 @@ header {
   // Nav states
   &.scrolled,
   &.nav--show-menu {
-    .nav--primary,
-    .nav--secondary {
+
+    .nav__menu-trigger,
+    .nav__icon--inbox {
       background-color: $white;
-      box-shadow: $shadow-3;
-      color: $nav-color;
-      height: ($nav-height - .75);
+      box-shadow: $shadow-2a;
     }
+    // .nav--primary,
+    // .nav--secondary {
+    //   background-color: $white;
+    //   box-shadow: $shadow-3;
+    //   color: $nav-color;
+    //   height: ($nav-height - .75);
+    // }
 
     .nav--secondary {
-      box-shadow: $shadow-2a;
+      // box-shadow: $shadow-2a;
     }
 
     .nav__icon--logo {
-      font-size: $nav-height - 2.5;
+      // font-size: $nav-height - 2.5;
+      opacity: 0;
     }
   }
 
