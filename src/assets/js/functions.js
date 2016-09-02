@@ -140,17 +140,17 @@ function updPicks() {
     updCovers: function () {
       return this.each(function() {
         var $el = $(this);
-        var $parent = $(this).parent();
+        var $parent = this.parentElement;
         var height = this.height;
         var width = this.width;
-        var widthRatio = $parent.width / width;
+        var widthRatio = $parent.offsetWidth / width;
         var imgRatio = height / width;
-        var parRatio = $parent.height() / $parent.width();
-        var compareRatios = imgRatio*parRatio;
+        var parRatio = $parent.offsetHeight / $parent.offsetWidth;
+        var compareRatios = imgRatio/parRatio;
         var ratioDifference = imgRatio-parRatio;
 
         if ( imgRatio >= parRatio ) {
-          if ( compareRatios < imgRatio && compareRatios <= parRatio && ratioDifference < 0.164 && ratioDifference > 0 ){
+          if ( compareRatios < 1 && ratioDifference < 0.164 && ratioDifference > 0 ){
             if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
           } else {
             if ( !$el.hasClass('cover-width') ) $el.removeClass('cover--height').addClass('cover--width');

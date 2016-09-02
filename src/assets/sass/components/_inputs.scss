@@ -743,7 +743,11 @@
 }
 
 .input {
-  @include input($back: $white, $focus: $brand-color);
+  @include input($back: $white, $focus: $brand-color-darker);
+}
+
+.input--focus-green {
+  @include input($back: $white, $focus: $accept-color);
 }
 
 // The Inverse themes

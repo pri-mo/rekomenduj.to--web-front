@@ -65,17 +65,16 @@
   @include flex(0 1 auto);
   @include transition(.36s);
   width: 100% - 2%;
+  height: 0;
   margin: 1%;
-  display: block;
   background-color: $white;
   border: 1px solid $frame-color;
   color: $text-color;
-  padding: 1rem;
+  padding: 0 0 49%;
   position: relative;
-  min-height: 15rem;
 
   &[data-label] {
-    padding: 3.5rem 1rem 1rem;
+    // padding: 3.5rem 1rem 1rem;
   }
 
   &[data-label]::after,
@@ -84,21 +83,22 @@
     display: block;
     // color: $accent-color;
     opacity: .64;
+    position: absolute;
+    left: 1rem;
   }
 
   &[data-label]::after {
     @extend %reko-glyph;
 
     font-size: 1.64rem;
-    position: absolute;
     top: 1rem;
-    left: 1rem;
   }
 
   &[data-label]::before {
     content: attr(data-label);
     text-transform: uppercase;
     font-size: .8em;
+    top: 3.64rem;
   }
 
   .list-item__name {
@@ -107,13 +107,21 @@
     font-weight: $bold;
     font-size: 1.3rem;
     line-height: 1.3em;
-    padding-right: 2rem;
-    padding-top: .5rem;
+    position: absolute;
+    bottom: .64rem;
+    left: 1rem;
+    right: 20%;
   }
 
   @include respond-to('ph-landscape' and 'phablet') {
     width: 100% / 2 - 1%;
     margin: .5%;
+    padding-bottom: 50%;
+
+    &.priority__item {
+      width: 99%;
+      padding-bottom: 75%;
+    }
   }
 
   @include respond-to('tablet') {
@@ -123,7 +131,6 @@
       width: 2 * 100% / 3 - 1%;
 
       .list-item__name {
-        padding-right: 36%;
         font-size: 1.3rem;
       }
     }
@@ -133,6 +140,7 @@
   @include respond-to('desktop') {
     width: 100% / 4 - 1%;
     margin: .5%;
+    padding-bottom: 24.5%;
 
     &:nth-child(5n+3) {
       width: 100% / 4 - 1%;
@@ -140,6 +148,7 @@
 
     &:nth-child(5n+4) {
       width: 100% / 2 - 1%;
+      padding-bottom: 24.5%;
 
       .list-item__name {
         padding-right: 36%;
@@ -163,6 +172,8 @@
   }
 
   &.list-item--campaign {
+    padding-bottom: 100%;
+
     &::after {
       content: '\69';
     }
@@ -218,10 +229,11 @@
 // Special case of two sides with a flip
 .list-item--doublesided {
   @include perspective(1000px);
-  padding: 0;
+  padding: 0 0 100% 0;
   background-color: transparent;
   border: 0;
-  height: 12rem;
+  height: 0;
+  min-height: 0;
 
   .doublesided__trigger {
     cursor: pointer;
@@ -269,7 +281,7 @@
     @include transform-style(preserve-3d);
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
   }
 
   // Front Side

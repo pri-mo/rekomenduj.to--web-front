@@ -233,6 +233,17 @@
 
   &.priority--hashtag {
 
+    .doublesided__side-b {
+      padding-bottom: 4rem;
+
+      .doublesided__trigger {
+        color: $white;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+    }
+
     .priority--hashtag__cta {
       position: absolute;
       bottom: 1rem;
@@ -247,29 +258,113 @@
         margin-bottom: 1rem;
         border-bottom: 1px solid rgba($white, .22);
       }
-      strong {}
-    }
 
-    .priority--hashtag__post-compose {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      right: 1rem;
-      padding: 0;
-
-      &.has-preview + .doublesided__trigger {
-        color: $white;
+      strong {
+        //
       }
     }
 
     .priority--hashtag__upload {
       margin: -1rem -1rem 0;
       // border-bottom: 1px solid  $frame-color;
-      background-color: $brand-color;
+      background-color: $accept-color;
+      color: $white;
     }
 
     .priority--hashtag__text {
       margin-top: .5rem;
+    }
+
+    .priority--hashtag__social-channels {
+      @include display(flex);
+      @include align-items(stretch);
+      @include justify-content(space-between);
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+
+      > div,
+      > a {
+        @include flex(0 1 auto);
+        @include size(5rem);
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, .11);
+        cursor: pointer;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        span {
+          display: block;
+          text-align: center;
+          font-size: 2.5rem;
+          line-height: 5rem;
+
+          &::before {
+            color: $white;
+            top: -.05em;
+          }
+        }
+      }
+
+      .social-channels__item {
+        @include transform( translateZ(-1px) );
+        overflow: hidden;
+        border-radius: 50%;
+
+        &::before {
+          @include transition(background-color .25s ease);
+          background-color: rgba($white, 0);
+          display: block;
+          border-radius: 50%;
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-left: -2.5rem;
+          margin-top: -2.5rem;
+          width: 5rem;
+          height: 5rem;
+        }
+
+        &.item--active {
+          position: relative;
+
+          &::before {
+            @include animation(toggleChannel .25s ease forwards);
+          }
+
+          &.item--facebook::before { background-color: $color-facebook; }
+          &.item--twitter::before { background-color: $color-twitter; }
+          &.item--google::before { background-color: $color-google-plus; }
+          &.item--instagram::before { background-color: $color-instagram; }
+        }
+
+        @at-root {
+          @include keyframes(toggleChannel) {
+            0% {
+              @include transform(scale(0));
+            }
+            100% {
+              @include transform(scale(1));
+            }
+          }
+        }
+
+        span {
+          //
+        }
+      }
+
+      .priority--hashtag__share-button {
+        background-color: $accept-color;
+
+        span {
+          padding: 0;
+        }
+      }
     }
   }
 

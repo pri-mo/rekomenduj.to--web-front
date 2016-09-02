@@ -6,7 +6,7 @@
 }
 
 .diary-entry {
-  padding: 3.5rem 1rem 1rem;
+  padding: 0 0 64%;
   margin-bottom: 0;
 
   & + & {
@@ -49,7 +49,10 @@
 }
 
 .diary-entry__content {
-
+  position: absolute;
+  top: 3.64rem;
+  left: 1rem;
+  right: 1rem;
 }
 
 .diary-entry__more {
