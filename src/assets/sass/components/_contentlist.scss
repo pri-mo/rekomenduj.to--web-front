@@ -122,6 +122,12 @@
       width: 99%;
       padding-bottom: 75%;
     }
+
+    &.list-item--doublesided,
+    &.list-item--campaign {
+      width: 99%;
+      padding-bottom: 50%;
+    }
   }
 
   @include respond-to('tablet') {
@@ -172,8 +178,6 @@
   }
 
   &.list-item--campaign {
-    padding-bottom: 100%;
-
     &::after {
       content: '\69';
     }
