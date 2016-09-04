@@ -58,7 +58,6 @@ h1 {
 h2 {
   font-size: $header-2;
   counter-reset: subsection;
-  color: red;
 
   .content--small-type & {
     font-size: $header-3;
