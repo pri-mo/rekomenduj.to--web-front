@@ -8,6 +8,7 @@ body {
   font-size: $text-font-size;
   font-weight: $light;
   line-height: 1.5;
+  counter-reset: section;
 }
 
 h1,
@@ -56,10 +57,17 @@ h1 {
 
 h2 {
   font-size: $header-2;
+  counter-reset: subsection;
+  color: red;
 
   .content--small-type & {
     font-size: $header-3;
   }
+}
+
+h2::before {
+    counter-increment: section;
+    content: counter(section, upper-roman) '. ';
 }
 
 h3 {
