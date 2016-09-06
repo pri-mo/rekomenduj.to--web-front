@@ -57,16 +57,19 @@ h1 {
 
 h2 {
   font-size: $header-2;
-  counter-reset: subsection;
+  // counter-reset: subsection;
 
   .content--small-type & {
     font-size: $header-3;
   }
-}
 
-h2::before {
-    counter-increment: section;
-    content: counter(section, upper-roman) '. ';
+  .content--terms-and-condition & {
+    counter-reset: subsection;
+    &::before {
+        counter-increment: section;
+        content: counter(section, upper-roman) '. ';
+    }
+  }
 }
 
 h3 {
@@ -98,6 +101,9 @@ li {
 
   .content--small-type & {
     font-size: .88rem;
+  }
+  .content--terms-and-condition & {
+    text-align: justify;
   }
 }
 

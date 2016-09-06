@@ -31,7 +31,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
       <section class="layout--base paint--brand layout__header--content-page">
         <h1>Regulamin serwisu Rekomenduj.to</h1>
       </section>
-      <section class="layout--base content--small-type">
+      <section class="layout--base content--small-type content--terms-and-condition">
         <h2>Postanowienia ogólne</h2>
             <ol>
                 <li>Regulamin niniejszy reguluje zasady korzystania serwisu Rekomenduj.to</li>
@@ -48,11 +48,11 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
                 </li>
             </ol>
 
-        <h2>Zasady rejestracji i uczestnictwa w serwisie  www.rekomenduj.to</h2>
+        <h2 class="counter">Zasady rejestracji i uczestnictwa w serwisie  www.rekomenduj.to</h2>
             <ol>
                 <li>Użytkownikiem serwisu Rekomenduj.to może zostać:
                   <ol>
-                      <li>pełnoletnia osoba fizyczna posiadająca pełną zdolność do czynności prawnych zamieszkała na terenie Polski</li>
+                      <li>pełnoletnia osoba fizyczna posiadająca pełną zdolność do czynności prawnych zamieszkała na terenie Polski,</li>
                       <li>osoba niepełnoletnia, powyżej 14 roku życia, posiadająca ograniczoną zdolność do czynności prawnych, zamieszkała na terenie Polski, za zgodą rodziców lub opiekunów prawnych.</li>
                     </ol>
                 </li>
@@ -64,7 +64,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
                         <li> akceptację niniejszego Regulaminu oraz Polityki Prywatności, przy czym w imieniu osoby niepełnoletniej akceptacji dokonują rodzice lub opiekunowie prawni.</li>
                     </ol>
                 </li>
-                <li>Założenie Konta oraz korzystanie z serwisu  Rekomenduj.to jest dobrowolne i bezpłatne.</li>
+                <li>Założenie Konta oraz korzystanie z serwisu Rekomenduj.to jest dobrowolne i bezpłatne.</li>
                 <li>Zakreślenie odpowiedniego pola obok formułki „Zapoznałem się i akceptuję warunki i zasady Regulaminu strony oraz politykę prywatności” umieszczonej w serwisie  Rekomenduj.to oznacza, że Użytkownik zapoznał się i akceptuje postanowienia Regulaminu i Polityki Prywatności oraz zobowiązuje się do przestrzegania Regulaminu. Brak akceptacji powyższej klauzuli uniemożliwia założenie Konta oraz korzystanie z serwisu Rekomenduj.to.</li>
                 <li>Nieprawidłowe lub niekompletne wypełnienie formularza uniemożliwia rejestracę.</li>
                 <li>Prawidłowe wypełnienie i przesłanie formularza rejestracyjnego oraz innych czynności związanych z założeniem Konta, po dokonaniu rejestracji Konta – zgodnie z warunkami niniejszego Regulaminu - w systemie informatycznym Buzz Media jest równoznaczne z zawarciem umowy o zapewnienie dostępu do zawartości serwisu Rekomenduj.to i świadczeń objętych niniejszym Regulaminem.</li>
