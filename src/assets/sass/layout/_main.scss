@@ -1,0 +1,85 @@
+// ---------------------------------------------------------------------
+// Main content section styles (mainly for homepage and desktop layout)
+// ---------------------------------------------------------------------
+
+body {
+
+  &.device--desktop {
+    padding: 0 1rem;
+
+    .page__wrapper {
+      @include clearfix;
+      position: relative;
+    }
+
+    main,
+    header {
+      @include transition(none);
+      position: relative;
+      float: left;
+    }
+
+    header {
+      display: block;
+      background-color: $menu-background-color;
+      padding-top: 10rem;
+
+      @include respond-to('phablet') {
+        @include grid--cell-width('4');
+      }
+
+      @include respond-to('tablet') {
+        @include grid--cell-width('3');
+      }
+
+      @include respond-to('desktop') {
+        @include grid--cell-width('3');
+      }
+    }
+
+    .nav--primary {
+      @include transform(none);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .nav__icon--logo {
+      @include transform(translate3d(0, -50%, 0));
+      background-color: $base-color;
+      opacity: 1;
+      left: -1px;
+      top: 5.5rem;
+      padding-right: 1.11rem;
+      color: $menu-icons-color;
+    }
+
+    .nav__menu-trigger {
+      display: none;
+    }
+
+    main {
+
+      @include respond-to('tablet') {
+        @include grid--cell-width('8');
+        @include grid--cell-push('1');
+      }
+
+      @include respond-to('desktop') {
+        @include grid--cell-width('8');
+        @include grid--cell-push('1');
+      }
+
+      // &::before {
+      //   @include grid--cell-width('4');
+      //   height: 100vh;
+      //   display: block;
+      //   content: '';
+      //   float: left;
+      //   z-index: -1;
+      // }
+    }
+  }
+
+}

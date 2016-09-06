@@ -5,16 +5,17 @@
 /// Regular font family
 /// @type List
 $text-font-stack: 'MontserratWeb', Montserrat, sans-serif !default;
+// $root-size: calc(100% + 4 * (100vw - 600px) / 400) !default;
 
 /// Basic font size
 /// @type Length
-$text-font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (800 - 320))) !default;
+$text-font-size: 1rem !default;
 
 /// Header sizes
 /// @type Length
-$header-1: calc(28px + (32 - 28) * ((100vw - 320px) / (800 - 320))) !default;
-$header-2: calc(21px + (24 - 21) * ((100vw - 320px) / (800 - 320))) !default;
-$header-3: calc(18px + (21 - 18) * ((100vw - 320px) / (800 - 320))) !default;
+$header-1: 1.75rem !default;
+$header-2: 1.5rem !default;
+$header-3: 1.25rem !default;
 
 /// Font weights
 /// @type Weight
@@ -24,9 +25,9 @@ $bold: 600;
 
 /// icon sizes
 /// @type Length
-$ico-size-s: 1rem;
-$ico-size-m: 3rem;
-$ico-size-l: 4rem;
+$ico-size-s: 1.64rem;
+$ico-size-m: 2.36rem;
+$ico-size-l: 3.36rem;
 $ico-size-xl: 7rem;
 
 /// Basic colors
@@ -125,6 +126,23 @@ $move-to-center: translate3d(-50%, -50%, 0) !default;
 /// Below that is 100%
 /// @type Length
 $max-width: 1330px !default;
+
+/// Grid widths
+$cell-size: 100% / 12;
+$grid: (
+  '12': ( 100% ),
+  '11': ( #{$cell-size} * 11 ),
+  '10': ( #{$cell-size} * 10 ),
+  '9': ( #{$cell-size} * 9 ),
+  '8': ( #{$cell-size} * 8 ),
+  '7': ( #{$cell-size} * 7 ),
+  '6': ( #{$cell-size} * 6 ),
+  '5': ( #{$cell-size} * 5 ),
+  '4': ( #{$cell-size} * 4 ),
+  '3': ( #{$cell-size} * 3 ),
+  '2': ( #{$cell-size} * 2 ),
+  '1': ( #{$cell-size} )
+  ) !default;
 
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length

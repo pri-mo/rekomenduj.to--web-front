@@ -2,7 +2,7 @@ $nav-height: 4rem;
 $menu-width: calc(100% - 3.64rem);
 
 // Nav realted body setup
-body {
+.device--mobile {
   transition: padding .3s;
 
   header,
@@ -46,11 +46,14 @@ header {
   $nav-transition: 'background-color .64s, box-shadow .36s, height .36s';
   // 3D Menu Trigger
   $cube: 1.36rem;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: 1000;
+
+  .device--mobile & {
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+  }
 
   .nav--primary,
   .nav--secondary {
@@ -182,6 +185,7 @@ header {
   }
 
   .nav__menu-trigger {
+    @include transition(.36s);
     @include transform(translate(0%, -50%));
     height: ($nav-height - $cube);
     border-radius: 50%;
@@ -193,6 +197,7 @@ header {
 
     .helper__nav-cube-canvas {
       @include transform(translate(-5%, -50%) scale(.5));
+      @include perspective(5000px);
       height: 2 * $cube;
       left: 0;
       right: 0;
@@ -200,7 +205,6 @@ header {
       position: absolute;
       top: 50%;
       width: 2 * $cube;
-      @include perspective(5000px);
     }
 
     .nav__icon-cube {
@@ -226,6 +230,7 @@ header {
     .nav__icon--menu-open {
       @include transform(translateZ(-$cube / 2) rotateX(0deg));
       opacity: 1;
+
       &::before {
         top: -.05em;
       }
@@ -249,8 +254,8 @@ header {
     }
   }
   // Nav states
-  &.scrolled,
-  &.nav--show-menu {
+  .device--mobile &.scrolled,
+  .device--mobile &.nav--show-menu {
 
     .nav__menu-trigger,
     .nav__icon--inbox {
@@ -316,15 +321,18 @@ nav a {
 }
 
 .nav__main-menu {
-  background-color: $menu-background-color;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  padding: 1rem 1rem 3rem;
-  position: absolute;
-  right: 100vw;
-  width: $menu-width;
-  -webkit-overflow-scrolling: touch;
+
+  .device--mobile & {
+    background-color: $menu-background-color;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 1rem 1rem 3rem;
+    position: absolute;
+    right: 100vw;
+    width: $menu-width;
+    -webkit-overflow-scrolling: touch;
+  }
 
   .nav__position {
     margin: .11rem 0;
@@ -342,6 +350,10 @@ nav a {
     padding: .36rem .64rem;
     text-transform: uppercase;
 
+    @include respond-to('tablet') {
+      font-size: .88rem;
+    }
+
     &[class^='rg-']::before {
       color: $menu-icons-color;
       font-size: 1.64rem;
@@ -349,7 +361,7 @@ nav a {
     }
 
     &.nav__link--tiny {
-      font-size: .75rem;
+      font-size: .75em;
     }
   }
 

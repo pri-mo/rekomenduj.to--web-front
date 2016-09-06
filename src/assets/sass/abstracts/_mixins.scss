@@ -22,6 +22,19 @@
   }
 }
 
+/// Grid functions
+@function grid-space($width) {
+  @return map-get($grid, $width);
+}
+
+@mixin grid--cell-width($width) {
+  width: calc(#{grid-space($width)} - .36rem);
+}
+
+@mixin grid--cell-push($grid-cells) {
+  left: calc(#{grid-space($grid-cells)} + .64rem);
+}
+
 
 /// Mixes a color with yellow.
 ///

@@ -14,6 +14,20 @@
   vertical-align: top;
 }
 
+html {
+  font-size: 100%;
+
+  // Scales by 1px for every 100px from 600px to 1000px
+  @include respond-to('tablet') {
+    font-size: calc(75% + 5 * (100vw - 768px) / 768);
+  }
+
+  // Scales by 0.5px for every 100px from 1000px to 2000px
+  @include respond-to('desktop') {
+    font-size: calc(88% + 5 * (100vw - 1024px) / 1024);
+  }
+}
+
 html,
 body {
   // background-color: $base-grey;
@@ -21,7 +35,6 @@ body {
   // background: image('grain-bright.jpg'); background-size: 300px;
   background-color: $base-color;
   box-sizing: border-box;
-  font-size: $text-font-size;
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
@@ -37,6 +50,20 @@ body {
 
   &.preload * {
     @include transition(none !important);
+  }
+
+  // TODO Development aid
+  &::before {
+    opacity: .64;
+    display: none;
+    content: '';
+    position: fixed;
+    background: image('grid.png') top center;
+    background-size: 100% auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }
 
