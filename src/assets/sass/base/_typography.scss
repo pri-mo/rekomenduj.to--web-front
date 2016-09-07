@@ -65,9 +65,10 @@ h2 {
 
   .content--terms-and-condition & {
     counter-reset: subsection;
+
     &::before {
-        counter-increment: section;
-        content: counter(section, upper-roman) '. ';
+      counter-increment: section;
+      content: counter(section, upper-roman) '. ';
     }
   }
 }
@@ -102,8 +103,11 @@ li {
   .content--small-type & {
     font-size: .88rem;
   }
+
   .content--terms-and-condition & {
-    text-align: justify;
+    @include respond-to('tablet') {
+      text-align: justify;
+    }
   }
 }
 

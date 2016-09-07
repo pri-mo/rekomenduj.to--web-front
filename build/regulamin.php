@@ -37,13 +37,13 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
                 <li>Regulamin niniejszy reguluje zasady korzystania serwisu Rekomenduj.to</li>
                 <li>Definicje pojęć użytych w Regulaminie:
                     <ol>
-                        <li>„Rekomenduj.to” – oznacza serwis internetowy prowadzony przez Buzz Media udostępniany pod adresem  www.rekomenduj.to</li>
-                        <li>„Buzz Media” – oznacza Buzz Media Paweł Suchocki, al. Wilanowska 81 lok. 24, 02-765 Warszawa, NIP 586-21-35-290, wpisaną do Centralnej Ewidencji i Informacji o Działalności Gospodarczej przez Prezydenta Miasta Gdyni, adres e-mail hello@rekomenduj.to</li>
-                        <li>„Użytkownik” – oznacza każdą osobę fizyczną, która zarejestrowała się w serwisie Rekomenduj.to</li>
-                        <li>„Konto” – prowadzone dla Użytkownika przez Buzz Media konto, będące zbiorem zasobów, w którym gromadzone są Dane Użytkownika oraz informacje o jego działaniach w ramach serwisu Rekomenduj.to</li>
-                        <li>„Dane” – dane osobowe Użytkownika oraz inne dane i treści zamieszczane przez Użytkownika w serwisie Rekomenduj.to</li>
-                        <li>„Kampania” – okres testowania produktów lub usług przez Użytkownika, podczas którego Użytkownik testuje produkt lub próbki produktu lub otrzymuje informacje dotyczące produktu lub usług, jak również wyraża swoją opinię o produkcie lub usługach oraz wypełnia ankietę podsumowującą</li>
-                        <li>„Ambasador Kampanii”– Użytkownik zakwalifikowany przez Buzz Media do udziału w Kampanii</li>
+                        <li><strong>„Rekomenduj.to”</strong> – oznacza serwis internetowy prowadzony przez Buzz Media udostępniany pod adresem  www.rekomenduj.to</li>
+                        <li><strong>„Buzz Media”</strong> – oznacza Buzz Media Paweł Suchocki, al. Wilanowska 81 lok. 24, 02-765 Warszawa, NIP 586-21-35-290, wpisaną do Centralnej Ewidencji i Informacji o Działalności Gospodarczej przez Prezydenta Miasta Gdyni, adres e-mail hello@rekomenduj.to</li>
+                        <li><strong>„Użytkownik”</strong> – oznacza każdą osobę fizyczną, która zarejestrowała się w serwisie Rekomenduj.to</li>
+                        <li><strong>„Konto”</strong> – prowadzone dla Użytkownika przez Buzz Media konto, będące zbiorem zasobów, w którym gromadzone są Dane Użytkownika oraz informacje o jego działaniach w ramach serwisu Rekomenduj.to</li>
+                        <li><strong>„Dane”</strong> – dane osobowe Użytkownika oraz inne dane i treści zamieszczane przez Użytkownika w serwisie Rekomenduj.to</li>
+                        <li><strong>„Kampania”</strong> – okres testowania produktów lub usług przez Użytkownika, podczas którego Użytkownik testuje produkt lub próbki produktu lub otrzymuje informacje dotyczące produktu lub usług, jak również wyraża swoją opinię o produkcie lub usługach oraz wypełnia ankietę podsumowującą</li>
+                        <li><strong>„Ambasador Kampanii”</strong> – Użytkownik zakwalifikowany przez Buzz Media do udziału w Kampanii</li>
                     </ol>
                 </li>
             </ol>
