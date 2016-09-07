@@ -8,6 +8,7 @@ body {
   font-size: $text-font-size;
   font-weight: $light;
   line-height: 1.5;
+  counter-reset: section;
 }
 
 h1,
@@ -56,9 +57,18 @@ h1 {
 
 h2 {
   font-size: $header-2;
+  // counter-reset: subsection;
 
   .content--small-type & {
     font-size: $header-3;
+  }
+
+  .content--terms-and-condition & {
+    counter-reset: subsection;
+    &::before {
+        counter-increment: section;
+        content: counter(section, upper-roman) '. ';
+    }
   }
 }
 
@@ -91,6 +101,9 @@ li {
 
   .content--small-type & {
     font-size: .88rem;
+  }
+  .content--terms-and-condition & {
+    text-align: justify;
   }
 }
 
