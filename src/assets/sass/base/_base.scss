@@ -26,6 +26,10 @@ html {
   @include respond-to('desktop') {
     font-size: calc(88% + 5 * (100vw - 1024px) / 1024);
   }
+
+  @include respond-to('hd') {
+    font-size: calc(88% + 5 * (100vw - 1400px) / 1400);
+  }
 }
 
 html,

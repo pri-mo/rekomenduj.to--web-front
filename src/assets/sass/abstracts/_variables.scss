@@ -153,7 +153,8 @@ $breakpoints: (
   'ph-landscape': (min-width: 360px, orientation: landscape),
   'phablet': (min-width: 410px),
   'tablet': (min-width: 768px),
-  'desktop': (min-width: 1024px)
+  'desktop': (min-width: 1024px),
+  'hd': (min-width: 1400px)
   ) !default;
 
 /// Relative or absolute URL where all assets are served from

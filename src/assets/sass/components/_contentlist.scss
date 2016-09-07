@@ -68,7 +68,7 @@
   background-color: $white;
   border: 1px solid $frame-color;
   color: $text-color;
-  padding: 0 0 64%;
+  padding: 0 0 50%;
   position: relative;
 
   &[data-label] {
@@ -89,14 +89,14 @@
     @extend %reko-glyph;
 
     font-size: $ico-size-s;
-    top: 1rem;
+    top: .64rem;
   }
 
   &[data-label]::before {
     content: attr(data-label);
     text-transform: uppercase;
     font-size: .8em;
-    top: 3.64rem;
+    top: 3rem;
   }
 
   .list-item__name {
@@ -104,7 +104,7 @@
     display: block;
     font-weight: $bold;
     font-size: $header-3;
-    line-height: 1.3em;
+    line-height: 1.25em;
     position: absolute;
     bottom: .64rem;
     left: 1rem;
@@ -156,7 +156,6 @@
       padding-bottom: 24.5%;
 
       .list-item__name {
-        padding-right: 36%;
         font-size: 1.3rem;
       }
     }
