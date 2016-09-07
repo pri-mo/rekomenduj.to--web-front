@@ -456,7 +456,7 @@ section.profile__focus-box {
         color: $text-color;
       }
 
-      @include respond-to('ph-landscape') {
+      @include respond-to('phone-long') {
         width: 25%;
       }
 

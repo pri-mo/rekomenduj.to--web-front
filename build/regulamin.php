@@ -43,7 +43,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
                         <li><strong>„Konto”</strong> – prowadzone dla Użytkownika przez Buzz Media konto, będące zbiorem zasobów, w którym gromadzone są Dane Użytkownika oraz informacje o jego działaniach w ramach serwisu Rekomenduj.to</li>
                         <li><strong>„Dane”</strong> – dane osobowe Użytkownika oraz inne dane i treści zamieszczane przez Użytkownika w serwisie Rekomenduj.to</li>
                         <li><strong>„Kampania”</strong> – okres testowania produktów lub usług przez Użytkownika, podczas którego Użytkownik testuje produkt lub próbki produktu lub otrzymuje informacje dotyczące produktu lub usług, jak również wyraża swoją opinię o produkcie lub usługach oraz wypełnia ankietę podsumowującą</li>
-                        <li><strong>„Ambasador Kampanii”</strong> – Użytkownik zakwalifikowany przez Buzz Media do udziału w Kampanii</li>
+                        <li><strong>„Ambasador Kampanii”</strong>– Użytkownik zakwalifikowany przez Buzz Media do udziału w Kampanii</li>
                     </ol>
                 </li>
             </ol>

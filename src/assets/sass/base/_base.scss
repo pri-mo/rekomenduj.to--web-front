@@ -52,8 +52,11 @@ body {
 body {
   padding-bottom: 5rem;
 
-  &.preload * {
-    @include transition(none !important);
+  &.preload {
+    img { opacity: 0; }
+    * {
+      @include transition(none !important);
+    }
   }
 
   // TODO Development aid

@@ -9,7 +9,7 @@
 
   @at-root section#{&} {
     padding: 0 0 2rem;
-    margin: calc(1rem - 1%) 0;
+    margin: calc(1rem - 1%) -.5rem;
   }
 }
 
@@ -55,6 +55,7 @@
   }
 }
 
+// TODO Delete content list sizer from html
 .list-sizer {
   display: none;
 }
@@ -77,7 +78,7 @@
 
   &[data-label]::after,
   &[data-label]::before {
-    @include transition(.36s);
+    @include transition(100);
     display: block;
     // color: $accent-color;
     opacity: .64;
@@ -100,10 +101,10 @@
   }
 
   .list-item__name {
-    @include transition(0s);
+    @include transition(100);
     display: block;
     font-weight: $bold;
-    font-size: $header-3;
+    font-size: $header-4;
     line-height: 1.25em;
     position: absolute;
     bottom: .64rem;
@@ -111,8 +112,16 @@
     right: 20%;
   }
 
-  @include respond-to('ph-landscape' and 'phablet') {
-    width: 100% / 2 - 1%;
+  // List item sizes
+  $solo: 100% - 1%;
+  $half: 100% / 2 - 1%;
+  $third: 100% / 3 - 1%;
+  $two-third: 200% / 3 - 1%;
+  $quart: 100% / 4 - 1%;
+
+  // List item on Phablet
+  @include respond-to('phone-long' and 'phablet') {
+    width: $half;
     margin: .5%;
     padding-bottom: 50%;
 
@@ -128,36 +137,44 @@
     }
   }
 
+  // List item on tablet
   @include respond-to('tablet') {
-    width: 100% / 3 - 1%;
-    padding-bottom: (100% / 2.5);
+    width: $third;
+    padding-bottom: 36%;
 
-    &:nth-child(5n+3) {
-      width: 2 * 100% / 3 - 1%;
+    &:nth-child(4n+2) {
+      width: $two-third;
+    }
 
-      .list-item__name {
-        font-size: 1.3rem;
+    &.list-item--doublesided,
+    &.list-item--campaign {
+      width: $half;
+      padding-bottom: 50%;
+
+      &:only-child {
+        width: $solo;
+        padding-bottom: 36%;
+
+        .list-item__name {
+          font-size: $header-2;
+        }
       }
     }
   }
 
-
+  // List item on Desktop
   @include respond-to('desktop') {
-    width: 100% / 4 - 1%;
+    width: $quart;
     margin: .5%;
     padding-bottom: 24.5%;
 
-    &:nth-child(5n+3) {
-      width: 100% / 4 - 1%;
+    &:not(.list-item--campaign):not(.priority__item):nth-child(4n+2) {
+      width: $quart;
     }
 
-    &:nth-child(5n+4) {
-      width: 100% / 2 - 1%;
+    &:nth-child(5n+3) {
+      width: $half;
       padding-bottom: 24.5%;
-
-      .list-item__name {
-        font-size: 1.3rem;
-      }
     }
   }
 
@@ -166,6 +183,45 @@
   .image--cover {
     z-index: -1;
     opacity: .64;
+  }
+
+  // Item has a cover image
+  &.cover__container {
+    background-color: $black;
+    color: $white;
+
+    &::before,
+    &::after {
+      opacity: .88;
+    }
+  }
+
+
+  // Desktop Hover
+  @include on-event {
+    @include transform(scale(1.02));
+    text-decoration: none;
+    color: $white;
+    background-color: $brand-color;
+    box-shadow: $shadow-1;
+
+    z-index: 11;
+
+    &::before,
+    &::after {
+      opacity: 1;
+    }
+
+    &.cover__container, .cover__container {
+      background-color: $brand-color-darker;
+      color: $white !important;
+      box-shadow: $shadow-2a;
+
+      .image--cover {
+        @include transform($move-to-center scale(1.25));
+        opacity: .36;
+      }
+    }
   }
 
   // Types of items
@@ -184,46 +240,6 @@
   &.list-item--promo {
     &::after {
       content: '\72';
-    }
-  }
-
-  // Item has a cover image
-  &.cover__container {
-    background-color: $black;
-    color: $white;
-
-    &::before,
-    &::after {
-      opacity: .88;
-      color: $white;
-    }
-  }
-
-  // Desktop Hover
-  @include on-event {
-    @include transform(scale(1.036));
-    text-decoration: none;
-    color: $white;
-    background-color: $brand-color;
-    box-shadow: $shadow-2;
-
-    z-index: 11;
-
-    &::before,
-    &::after {
-      color: $white;
-      opacity: 1;
-    }
-
-    &.cover__container {
-      background-color: $brand-color-darker;
-      color: $white !important;
-      box-shadow: $shadow-2a;
-
-      .image--cover {
-        @include transform($move-to-center scale(1.25));
-        opacity: .11;
-      }
     }
   }
 }

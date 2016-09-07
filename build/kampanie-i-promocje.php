@@ -27,7 +27,7 @@ $tagsTemplate = 'template--contentlist template--campaigns';
 
       <?php
       $contentItems = "campaigns";
-      $contentItemsCount = 1;
+      $contentItemsCount = 2;
 
       include("content/content-list.php");
       ?>
@@ -41,7 +41,7 @@ $tagsTemplate = 'template--contentlist template--campaigns';
         2 => "Promocja kończy się za 2 dni",
         // 2 => "{$date} to ostatni dzień promocji"
       ];
-      $contentItemsCount = 5;
+      $contentItemsCount = 8;
 
       include("content/content-list.php");
 

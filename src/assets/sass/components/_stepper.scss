@@ -40,7 +40,7 @@
   .stepper__content {
     padding: 1rem;
 
-    @include respond-to('ph-portrait') { padding: 1rem 0;}
+    @include respond-to('phone-tall') { padding: 1rem 0;}
   }
 
   &.stepper--intro {

@@ -45,7 +45,7 @@ switch ($contentItems) {
 </section>
 
 <section class="layout--base content-list">
-  <div class="list-sizer"></div>
+
 <?php
 for ($i=0; $i < $itemCount; $i++) {
   $randChoice = $faker->numberBetween($min = 0, $max = $itemCount);

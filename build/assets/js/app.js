@@ -260,11 +260,10 @@ $(function() {
     $(this).addClass('preload');
     $(this).on('load', function() {
       $(this).removeClass('preload');
+    }).each(function() {
+      if(this.complete) $(this).load();
     });
   });
-
-  // Prevent transitions on load.
-  $('body').removeClass('preload');
 
   // Set classes to cover images based on dimensions of parent and image.
   $('img.image--cover').each(function() {

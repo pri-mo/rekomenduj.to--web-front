@@ -98,7 +98,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
           </a>
         </section>
         <section class="content-list campaign__priority">
-          <div class="list-sizer"></div>
+
 
           <div class="list-item list-item--doublesided priority__item priority--share" id="promoShare_01">
             <div class="doublesided__flipper">
@@ -196,7 +196,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
           </div>
         </section>
         <section class="content-list campaign__social-feed">
-          <div class="list-sizer"></div>
+
           <a href="" class="list-item social-feed__item item--facebook">
             <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
             <span class="social-feed__details" data-timestamp="3 sie 2016">Kaśka</span>

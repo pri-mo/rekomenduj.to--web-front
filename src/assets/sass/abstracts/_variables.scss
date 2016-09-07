@@ -16,6 +16,7 @@ $text-font-size: 1rem !default;
 $header-1: 1.75rem !default;
 $header-2: 1.5rem !default;
 $header-3: 1.25rem !default;
+$header-4: 1.15rem !default;
 
 /// Font weights
 /// @type Weight
@@ -149,12 +150,12 @@ $grid: (
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 /// @see {mixin} respond-to
 $breakpoints: (
-  'ph-portrait': (min-width: 360px, orientation: portrait),
-  'ph-landscape': (min-width: 360px, orientation: landscape),
+  'phone-tall': (min-width: 360px, orientation: portrait),
+  'phone-long': (min-width: 360px, orientation: landscape),
   'phablet': (min-width: 410px),
   'tablet': (min-width: 768px),
   'desktop': (min-width: 1024px),
-  'hd': (min-width: 1400px)
+  'hd': (min-width: 1366px)
   ) !default;
 
 /// Relative or absolute URL where all assets are served from
