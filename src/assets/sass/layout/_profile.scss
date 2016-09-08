@@ -1,4 +1,4 @@
-.profile__photoedit {
+.profile__photo {
   padding: 1.64rem 1rem;
   position: relative;
   text-align: center;
@@ -43,7 +43,7 @@ $button-size: 3 * 1.36rem;
     padding-bottom: 100%;
   }
 
-  + .profile__photoedit .profile__icon {
+  + .profile__photo .profile__icon {
     opacity: 0;
   }
 }
@@ -58,7 +58,7 @@ $button-size: 3 * 1.36rem;
   width: $button-size;
   z-index: 0;
 
-  .profile__photoedit:hover &,
+  .profile__photot:hover &,
   .device--mobile & {
     width: calc(#{$pic-size} + #{$button-size} * 3);
   }
@@ -80,17 +80,26 @@ $button-size: 3 * 1.36rem;
   }
 }
 
-.profile__welcome {
+.profile__hi {
   color: $white;
   position: relative;
 }
 
-section.profile__focus-box {
+.profile__focus-box {
   margin-top: -10rem;
   padding: 0;
 
+  // TODO delete after html update
   & + & {
     margin-top: 1rem;
+  }
+
+  > div {
+    margin-top: 1rem;
+  }
+
+  + .content-list {
+    clear: both;
   }
 }
 
@@ -386,6 +395,8 @@ section.profile__focus-box {
 
 // Social Reach
 .focus--social-reach {
+  padding: 0;
+
   .social-reach__stats {
     @include align-items(stretch);
     @include display(flex);

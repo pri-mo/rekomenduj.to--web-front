@@ -1,7 +1,7 @@
-<section class="layout--base layout__header">
+<section class="layout--base layout__header profile__welcome">
   <!-- NOTE Gdy jest zdjęcie -->
   <?php if( isset($userPhoto) && ($userPhoto!=null) ) { ?>
-    <div class="profile__photoedit">
+    <div class="profile__photo">
       <div class="profile__pic-container">
         <img src="/assets/images/spoof-profile-pic.jpg" alt="" class="image--cover profile__uploaded">
       </div>
@@ -11,17 +11,17 @@
       </div>
     </div>
     <?php } else { ?>
-      <div class="profile__photoedit">
+      <div class="profile__photo">
         <div class="profile__icon" data-icon="h"></div>
         <a href="" class="button">Dodaj swoje zdjęcie</a>
       </div>
       <?php } ?>
 
-      <h2 class="profile__welcome">Cześć <span id="welcomeName"></span></h2>
+      <h2 class="profile__hi">Cześć <span id="welcomeName"></span></h2>
     </section>
 
-    <section class="layout--card profile__focus-box">
-      <div class="focus--social-reach">
+    <section class="layout--base profile__focus-box">
+      <div class="layout--card focus--social-reach">
         <div class="roll-out roll-out__container">
           <a href="" class="roll-out__trigger social-reach__add" id="triggerAddSocial">
             <span class="roll-out__value">

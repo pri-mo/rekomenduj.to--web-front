@@ -39,6 +39,16 @@
   }
 }
 
+.template--profile {
+
+  .layout__header {
+    @include respond-to('tablet') {
+      width: 50%;
+    }
+  }
+
+}
+
 .template--campaigns {
   //
 }

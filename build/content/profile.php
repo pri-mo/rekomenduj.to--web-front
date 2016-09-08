@@ -1,7 +1,6 @@
-<section class="layout--base layout__header">
-
+<section class="layout--base layout__header profile__welcome">
   <!-- NOTE User view -->
-  <div class="profile__photoedit">
+  <div class="profile__photo">
     <div class="profile__pic-container">
       <?php if( isset($userPhoto) && ($userPhoto!=null) ) { ?>
       <img src="/assets/images/spoof-profile-pic.jpg" alt="" class="image--cover profile__uploaded">
@@ -10,13 +9,13 @@
       <?php } ?>
     </div>
   </div>
-  <h2 class="profile__welcome">Cześć Marta</h2>
+  <h2 class="profile__hi">Cześć Marta</h2>
 </section>
 
-<?php if( isset($tasks) && ($tasks!=null) ) { ?>
-
-  <section class="layout--card profile__focus-box">
-    <div class="focus--new-user">
+<?php if( isset($tasks) || isset($campInvite) ) { ?>
+  <section class="layout--base profile__focus-box">
+    <?php if( isset($tasks) && ($tasks!=null) ) { ?>
+    <div class="layout--card focus--new-user">
       Twoje pierwsze kroki
       <ul class="focus__tasks">
         <?php if( !$userPhoto ) { ?>
@@ -27,24 +26,19 @@
         <li><a href="profile-empty.php"><span data-icon="y"></span>Wypełnij ankietę</a></li>
       </ul>
     </div>
-  </section>
-
-<?php } ?>
-
-<?php
-if( isset($campInvite) && ($campInvite!=null) ) {
-?>
-
-  <section class="layout--card-3 profile__focus-box">
+    <?php } ?>
+    <?php if( isset($campInvite) && ($campInvite!=null) ) { ?>
     <div class="focus--new-campaign" data-label="Zapraszamy Cię do kampanii...">
         <img src="/assets/images/backs/ph17.jpg" alt="" class="image--cover">
         <span class="new-campaign__name">Kocham gotować</span>
         <a href="#a" class="button">Poznaj szczegóły</a>
     </div>
+    <?php } ?>
   </section>
+<?php } ?>
 
-<?php }
 
+<?php
 if( isset($contentList) && ($contentList!=null) ) {
 ?>
 
