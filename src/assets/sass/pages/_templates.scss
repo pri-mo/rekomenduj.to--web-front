@@ -3,6 +3,18 @@
 // -----------------------------------------------------------------------------
 
 .template--intro {
+  padding: 0 !important;
+
+  .page__wrapper {
+    max-width: none;
+  }
+
+  main {
+    left: 0 !important;
+    width: 100% !important;
+    @include transition(none !important)
+  }
+
   .splash {
     @include transform(translateY(-50%));
 
