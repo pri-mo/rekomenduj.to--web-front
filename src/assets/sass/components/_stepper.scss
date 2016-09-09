@@ -16,21 +16,23 @@
     }
 
     .stepper__nav-item {
+      @include transform(scale(.5));
+      @include size(1.5rem);
       display: block;
       background-color: $text-color;
       border-radius: 100%;
-      opacity: .36;
-      @include transform(scale(.5));
-      @include size(1.5rem);
+      opacity: .2;
 
       &.current {
-        opacity: .64;
         @include transform(scale(.64));
+        opacity: 1;
+        background-color: $comp-color;
       }
 
       @include on-event {
-        opacity: 1;
         @include transform(scale(1));
+        opacity: 1;
+        background-color: $comp-color;
       }
     }
 
