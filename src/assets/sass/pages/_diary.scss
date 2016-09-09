@@ -18,6 +18,18 @@
   &:last-child {
     margin-bottom: 1%;
   }
+
+  @include respond-to('tablet') {
+    &,
+    & + &,
+    &:last-child {
+      width: (100% / 2 - 1%);
+      border: 1px solid $frame-color;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-bottom: 36%;
+    }
+  }
 }
 
 .diary-entry__timestamp {

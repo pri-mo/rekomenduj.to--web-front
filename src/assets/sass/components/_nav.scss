@@ -36,7 +36,7 @@ $menu-width: calc(100% - 3.64rem);
 
   &:not(.template--poll) {
     main > section:first-of-type {
-      padding-top: ($nav-height + .5rem);
+      padding-top: $nav-height;
     }
   }
 }

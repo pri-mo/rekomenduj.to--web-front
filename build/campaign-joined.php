@@ -122,7 +122,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
             </div>
           </div>
 
-          <div class="list-item list-item--doublesided priority__item priority--hashtag hover" id="promoHash_01">
+          <div class="list-item list-item--doublesided priority__item priority--hashtag" id="promoHash_01">
             <div class="doublesided__flipper">
               <div class="doublesided__side-a" onclick="flipOver('promoHash_01')">
                 <img src="https://unsplash.it/600/500?image=1" alt="" class="image--cover">
@@ -267,10 +267,10 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
   <script>
   var swiper = new Swiper('.cs__container', {
     pagination: '.cs__pagination',
-      slidesPerView: 1.1,
-      centeredSlides: true,
+      slidesPerView: 1,
       paginationClickable: true,
-      spaceBetween: 10
+      spaceBetween: 0,
+      roundLengths: true
     });
   </script>
   <!-- TODO Javascript for file input and classes -->

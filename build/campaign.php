@@ -207,10 +207,10 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
   <script>
   var swiper = new Swiper('.cs__container', {
     pagination: '.cs__pagination',
-      slidesPerView: 1.1,
-      centeredSlides: true,
+      slidesPerView: 1,
       paginationClickable: true,
-      spaceBetween: 10
+      spaceBetween: 0,
+      roundLengths: true
     });
   </script>
 </body>

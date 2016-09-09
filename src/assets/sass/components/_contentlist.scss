@@ -151,13 +151,13 @@
       width: $half;
       padding-bottom: 50%;
 
+      .list-item__name {
+        font-size: $header-2;
+      }
+
       &:only-child {
         width: $solo;
         padding-bottom: 36%;
-
-        .list-item__name {
-          font-size: $header-2;
-        }
       }
     }
   }
@@ -168,13 +168,23 @@
     margin: .5%;
     padding-bottom: 24.5%;
 
-    &:not(.list-item--campaign):not(.priority__item):nth-child(4n+2) {
+    &:nth-child(4n+2) {
       width: $quart;
     }
 
     &:nth-child(5n+3) {
       width: $half;
       padding-bottom: 24.5%;
+    }
+
+    &.list-item--doublesided,
+    &.list-item--campaign {
+      width: $half;
+
+      &:only-child {
+        width: $solo;
+        padding-bottom: 36%;
+      }
     }
   }
 

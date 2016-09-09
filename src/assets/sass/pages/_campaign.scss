@@ -5,6 +5,8 @@
 .layout__header--campaign {
   color: dynamic-color($white);
   background-color: $white;
+  padding-left: 0;
+  padding-right: 0;
 
   box-shadow: $shadow-3;
 }
@@ -12,11 +14,17 @@
 .cs__container {
   width: 100%;
   height: 80vw;
-  margin: 1rem 0;
+  margin: 0;
+  padding-bottom: 3rem;
+  overflow: hidden;
+
+  @include respond-to('tablet') {
+    height: 64vh;
+  }
 }
 
 .cs__pagination {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   text-align: center;
 
   .swiper-pagination-bullet-active {
@@ -33,11 +41,10 @@
 
   text-align: center;
   background-color: $white;
-  border: 1px solid $frame-color;
   width: 80vw;
 
-  &.cs__item--video {
-    background-color: $black;
+  .cslider__txt-content {
+    padding: 1rem;
   }
 }
 
@@ -98,6 +105,10 @@
   @include flex-flow(row wrap);
   position: relative;
   margin: calc(1rem - 1%);
+
+  @include respond-to('tablet') {
+    margin: calc(1rem - 1%) -.5%;
+  }
 
   > .campaign__tasks__item {
     @include flex(0 1 auto);
@@ -287,7 +298,7 @@
       > div,
       > a {
         @include flex(0 1 auto);
-        @include size(5rem);
+        @include size(4rem);
         border-radius: 50%;
         background-color: rgba(0, 0, 0, .11);
         cursor: pointer;
@@ -299,8 +310,8 @@
         span {
           display: block;
           text-align: center;
-          font-size: 2.5rem;
-          line-height: 5rem;
+          font-size: $header-1;
+          line-height: 4rem;
 
           &::before {
             color: $white;
@@ -376,23 +387,44 @@
 
 
 .campaign__social-feed {
+  $spacing: .5;
+  $spacing-pr: $spacing * 1%;
+  $spacing-vw: $spacing * 1vw;
 
   > .social-feed__item {
-    width: calc(50% - 4px);
-    height: calc(50vw - 4px);
+    width: calc(50% - (#{$spacing-pr} * 2));
+    height: calc(50vw - (#{$spacing-vw} * 2));
     min-height: 0;
     padding: .64rem;
-    margin: 2px;
+    margin: $spacing-pr;
 
     // &:first-of-type,
     &:nth-of-type(5n+1) {
-      width: calc(100% - 4px);
+      width: calc(100% - 1%);
+    }
+
+    @include respond-to('tablet') {
+      width: calc((100% / 3) - (#{$spacing-pr} * 2));
+      height: calc((100vw / 4) - (#{$spacing-vw} * 3));
+
+      &:nth-of-type(5n+1),
+      &:nth-of-type(5n+2) {
+        width: calc(50% - (#{$spacing-pr} * 2));
+      }
+    }
+
+    @include respond-to('desktop') {
+      width: calc((100% / 3) - (#{$spacing-pr} * 2));
+      height: calc((100vw / 4) - (#{$spacing-vw} * 3));
+
+      &:nth-of-type(5n+1),
+      &:nth-of-type(5n+2) {
+        width: calc(50% - (#{$spacing-pr} * 2));
+      }
     }
 
     &.cover__container {
       border: 0;
-
-      .image--cover { opacity: .88; }
     }
 
     .social-feed__text {
@@ -437,10 +469,6 @@
       background-color: $brand-color;
       border-color: $brand-color;
       color: $white;
-
-      .image--cover {
-        opacity: .1;
-      }
     }
   }
 }
