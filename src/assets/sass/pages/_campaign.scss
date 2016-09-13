@@ -27,8 +27,30 @@
   margin-top: 1.5rem;
   text-align: center;
 
+  .swiper-pagination-bullet {
+    height: auto;
+    border-radius: 0;
+    width: 2rem;
+    margin: 0 1px !important;
+    padding: 1rem 0;
+    background-color: transparent !important;
+
+    &::before {
+      background-color: $text-color-faded;
+      content: '';
+      display: block;
+      height: 2px;
+      width: 2rem;
+      border-radius: 1px;
+    }
+  }
+
   .swiper-pagination-bullet-active {
-    background-color: $comp-color;
+    background-color: transparent;
+
+    &::before {
+      background-color: $comp-color;
+    }
   }
 }
 

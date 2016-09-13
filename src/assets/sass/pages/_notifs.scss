@@ -42,7 +42,7 @@ $notifs-icon-space: 2 * $notifs-padding + $notifs-icon-size;
   border: 1px solid $base-color;
   border-bottom: 1px solid $frame-color;
   color: $text-color-faded;
-  display: block;
+  display: block !important;
   padding: $notifs-padding;
   padding-left: $notifs-icon-space + 2 * $notifs-padding;
   position: relative;

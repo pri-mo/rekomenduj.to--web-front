@@ -54,9 +54,11 @@
 .template--profile {
 
   .layout__header {
-    @include respond-to('tablet') {
-      width: 50%;
-    }
+    //
+  }
+
+  .focus__tasks li {
+    font-size: 1.36rem;
   }
 
 }

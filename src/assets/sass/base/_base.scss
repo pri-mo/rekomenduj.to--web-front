@@ -15,7 +15,11 @@
 }
 
 html {
-  font-size: 100%;
+  font-size: 88%;
+
+  @include respond-to('phone-tall') {
+    font-size: 100%;
+  }
 
   // Scales by 1px for every 100px from 600px to 1000px
   @include respond-to('tablet') {

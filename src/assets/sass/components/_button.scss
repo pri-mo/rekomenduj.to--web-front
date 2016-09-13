@@ -18,7 +18,7 @@
   font-weight: $regular;
   line-height: 1em;
   overflow: hidden;
-  padding: 1.36rem 2rem;
+  padding: 1.1rem 2rem;
   position: relative;
   text-align: center;
   white-space: nowrap;
@@ -86,7 +86,7 @@
   }
 
   &.button--icon {
-    @include size(1.36rem * 3);
+    @include size(1.2rem * 3);
     padding: 0;
 
     [data-icon] {

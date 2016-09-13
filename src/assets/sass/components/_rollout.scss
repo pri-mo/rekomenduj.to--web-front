@@ -85,6 +85,10 @@ $rollout-height: (2 * $padding-size + $line-height);
   .layout__group & {
     margin: 0 .64rem;
 
+    @include respond-to('tablet') {
+      margin: 0;
+    }
+
     &:not(:nth-last-child(1)):not(.roll-out--opened) {
       border-bottom-color: $white;
     }
