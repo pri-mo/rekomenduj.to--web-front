@@ -1,7 +1,25 @@
 $nav-height: 4rem;
 $menu-width: calc(100% - 3.64rem);
 
-// Nav realted body setup
+// General navigation styles
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: rgba($text-color, .64);
+  text-decoration: none;
+  display: block;
+
+  @include on-event {
+    color: $text-color;
+    text-decoration: none;
+  }
+}
+
+// Mobile setup
 .device--mobile {
   transition: padding .3s;
 
@@ -41,19 +59,11 @@ $menu-width: calc(100% - 3.64rem);
   }
 }
 
-// Nav bar
-header {
+// Nav bar inside the app
+.scope--inside {
   $nav-transition: 'background-color .64s, box-shadow .36s, height .36s';
   // 3D Menu Trigger
   $cube: 1.36rem;
-
-  .device--mobile & {
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: 1000;
-  }
 
   .nav--primary,
   .nav--secondary {
@@ -150,34 +160,27 @@ header {
 
       @at-root {
         @include keyframes(intro-scale) {
-          0% {
-            @include size(0);
+          0% { @include size(0);
           }
 
-          100% {
-            @include size(16px);
+          100% { @include size(16px);
           }
         }
 
         @include keyframes(attention) {
-          0% {
-            @include size(16px);
+          0% { @include size(16px);
           }
 
-          5% {
-            @include size(10px);
+          5% { @include size(10px);
           }
 
-          10% {
-            @include size(18px);
+          10% { @include size(18px);
           }
 
-          11% {
-            @include size(16px);
+          11% { @include size(16px);
           }
 
-          100% {
-            @include size(16px);
+          100% { @include size(16px);
           }
         }
       }
@@ -254,33 +257,20 @@ header {
     }
   }
   // Nav states
-  .device--mobile &.scrolled,
-  .device--mobile &.nav--show-menu {
+  &.device--mobile .scrolled {
 
     .nav__menu-trigger,
     .nav__icon--inbox {
       background-color: $white;
       box-shadow: $shadow-2a;
     }
-    // .nav--primary,
-    // .nav--secondary {
-    //   background-color: $white;
-    //   box-shadow: $shadow-3;
-    //   color: $nav-color;
-    //   height: ($nav-height - .75);
-    // }
-
-    .nav--secondary {
-      // box-shadow: $shadow-2a;
-    }
 
     .nav__icon--logo {
-      // font-size: $nav-height - 2.5;
       opacity: 0;
     }
   }
 
-  &.hidden {
+  .hidden {
     @include transform(translate(0, -$nav-height));
 
     .nav--primary {
@@ -296,27 +286,10 @@ header {
     }
   }
 
-  &.nav--show-menu {
+  .nav--show-menu {
     .nav--secondary {
       @include transform(translate(0, -$nav-height));
     }
-  }
-}
-
-// Main Menu
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav a {
-  color: rgba($text-color, .64);
-  text-decoration: none;
-
-  @include on-event {
-    color: $text-color;
-    text-decoration: none;
   }
 }
 
@@ -412,4 +385,29 @@ nav a {
       }
     }
   }
+}
+
+// Outside scope
+.scope--outside {
+
+  .nav__main-menu--public {
+    display: block;
+  }
+
+  .main-menu--public__container {
+    display: block;
+  }
+
+  .main-menu--public__left {
+    display: block;
+  }
+
+  .main-menu--public__right {
+    display: block;
+  }
+
+  .main-menu--public__logo {
+    display: block;
+  }
+
 }
