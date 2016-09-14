@@ -12,32 +12,46 @@ body {
       position: relative;
     }
 
-    main,
-    header {
-      @include transition(none);
-      position: relative;
-      float: left;
-    }
-
-    header {
-      display: block;
-      background-color: $menu-background-color;
-      padding-top: 10rem;
-
-      @include respond-to('phablet') {
-        @include grid--cell-width('4');
+    &.scope--inside {
+      main,
+      header {
+        @include transition(none);
+        position: relative;
+        float: left;
       }
 
-      @include respond-to('tablet') {
-        @include grid--cell-width('3');
+      header {
+        display: block;
+        background-color: $menu-background-color;
+        padding-top: 10rem;
+
+        @include respond-to('phablet') {
+          @include grid--cell-width('4');
+        }
+
+        @include respond-to('tablet') {
+          @include grid--cell-width('3');
+        }
+
+        @include respond-to('desktop') {
+          @include grid--cell-width('3');
+        }
+
+        @include respond-to('hd') {
+          @include grid--cell-width('2');
+        }
       }
 
-      @include respond-to('desktop') {
-        @include grid--cell-width('3');
-      }
+      main {
+        @include respond-to('tablet') {
+          @include grid--cell-width('8');
+          @include grid--cell-push('1');
+        }
 
-      @include respond-to('hd') {
-        @include grid--cell-width('2');
+        @include respond-to('desktop') {
+          @include grid--cell-width('8');
+          @include grid--cell-push('1');
+        }
       }
     }
 
@@ -61,28 +75,6 @@ body {
 
     .nav__menu-trigger {
       display: none;
-    }
-
-    main {
-
-      @include respond-to('tablet') {
-        @include grid--cell-width('8');
-        @include grid--cell-push('1');
-      }
-
-      @include respond-to('desktop') {
-        @include grid--cell-width('8');
-        @include grid--cell-push('1');
-      }
-
-      // &::before {
-      //   @include grid--cell-width('4');
-      //   height: 100vh;
-      //   display: block;
-      //   content: '';
-      //   float: left;
-      //   z-index: -1;
-      // }
     }
   }
 

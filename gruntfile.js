@@ -109,7 +109,7 @@ module.exports = function (grunt) {
 
     watch: {
       options: {
-        livereload: 65535,
+        livereload: true,
         interval: 1000
       },
       sass: {

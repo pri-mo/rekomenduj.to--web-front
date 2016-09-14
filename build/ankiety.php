@@ -2,7 +2,7 @@
 
 $lang = 'pl';
 
-$tagsBodyBasic = 'preload device--mobile'; // platform-ios
+$tagsBodyBasic = 'preload scope--inside device--mobile'; // platform-ios
 
 $tagsNav = '';
 $tagsTemplate = 'template--contentlist template--poll-list';

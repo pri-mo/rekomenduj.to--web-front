@@ -2,36 +2,36 @@
 
 $lang = 'pl';
 
-$tagsBodyBasic = 'preload device--mobile';
+$tagsBodyBasic = 'preload scope--outside device--mobile';
 
-$tagsNav = 'nav--transparent';
-$tagsTemplate = 'template--intro';
+$tagsNav = '';
+$tagsTemplate = 'template--public';
 
 ?>
 
 <!DOCTYPE html>
 <html lang="<?php echo $lang ?>">
 <head>
-  <?php include 'components/head.php' ?>
+  <?php include 'public/components/head.php' ?>
   <meta http-equiv="refresh">
 </head>
 
 <body class="<?php echo $tagsBodyBasic . ' ' . $tagsNav . ' ' . $tagsTemplate ?>">
-  <?php include 'components/bof-scripts.php' ?>
+  <?php include 'public/components/bof-scripts.php' ?>
 
   <div class="page__wrapper">
 
-    <!-- <?php include 'components/nav.php' ?> -->
+    <?php include 'public/components/nav.php' ?>
 
     <main>
 
-      <?php include 'content/welcome.php' ?>
+      <!-- <?php include 'public/home.php' ?> -->
 
     </main>
 
-    <?php include 'components/footer.php' ?>
+    <?php include 'public/components/footer.php' ?>
   </div>
 
-  <?php include 'components/eof-scripts.php' ?>
+  <?php include 'public/components/eof-scripts.php' ?>
 </body>
 </html>
