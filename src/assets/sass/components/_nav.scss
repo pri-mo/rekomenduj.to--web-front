@@ -387,27 +387,122 @@ nav a {
   }
 }
 
-// Outside scope
+// Outside scope navigation
 .scope--outside {
 
+  // Main Navigation
   .nav__main-menu--public {
+    @include clearfix;
     display: block;
   }
 
   .main-menu--public__container {
     display: block;
+
+    ul {}
+    li {
+      display: inline-block;
+      margin: 0 1rem;
+    }
   }
 
   .main-menu--public__left {
-    display: block;
+    display: none;
+    float: left;
+
+    @include respond-to('tablet') {
+      display: block;
+    }
+
+    li {
+      margin-left: 0;
+    }
   }
 
   .main-menu--public__right {
     display: block;
+    float: right;
+
+    li {
+      margin-right: 0;
+
+      &:first-child {
+        display: none;
+
+        @include respond-to('phablet') {
+          display: inline-block;
+        }
+      }
+    }
   }
 
   .main-menu--public__logo {
+    @include transform(translate(0, -50%));
+    top: 53.6%;
+    left: 1rem;
     display: block;
+    position: absolute;
+    font-size: 0;
+    letter-spacing: -.015em;
+    line-height: $ico-size-m;
+    font-weight: $bold;
+
+    @include respond-to('tablet') {
+      @include transform(translate(-50%, -50%));
+      left: 50%;
+    }
+
+    a::before {
+      font-size: $ico-size-m;
+    }
+  }
+
+  // Footer navigation
+  .nav__footer-menu--public {
+    @include clearfix;
+
+    ul {}
+    li {
+      display: inline-block;
+      margin: .15rem .5rem;
+
+      @include respond-to('tablet') {
+        margin: 0 .36rem;
+      }
+    }
+  }
+
+  .footer-menu--public--left {
+    display: block;
+
+    @include respond-to('tablet') {
+      float: left;
+      li {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .footer-menu--public--right {
+    display: block;
+    margin-top: 1rem;
+
+    @include respond-to('tablet') {
+      float: right;
+      margin-top: 0;
+
+      li {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .footer__copyright p {
+    margin-top: 1rem;
+
+    @include respond-to('phablet') {
+      margin-top: 0;
+    }
   }
 
 }

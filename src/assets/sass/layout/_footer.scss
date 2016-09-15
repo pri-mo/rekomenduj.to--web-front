@@ -1,3 +1,26 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
+
+.scope--inside {
+  // &.device--mobile footer {
+  //   left: 0;
+  //   position: fixed;
+  //   top: 0;
+  //   width: 100vw;
+  //   z-index: 1000;
+  // }
+}
+
+.scope--outside {
+  footer {
+    // position: absolute;
+    width: 100%;
+    padding: 1rem;
+    background-color: $brand-color;
+
+    * {
+      font-size: .75rem;
+    }
+  }
+}
