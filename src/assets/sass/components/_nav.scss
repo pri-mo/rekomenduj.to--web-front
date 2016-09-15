@@ -13,7 +13,6 @@ nav a {
   display: block;
 
   @include on-event {
-    color: $text-color;
     text-decoration: none;
   }
 }
@@ -314,6 +313,10 @@ nav a {
       font-size: .88rem;
     }
 
+    @include on-event {
+      color: $black;
+    }
+
     &[class^='rg-']::before {
       color: $menu-icons-color;
       font-size: 1.64rem;
@@ -376,11 +379,17 @@ nav a {
 
 // Outside scope navigation
 .scope--outside {
+  $nav-padding: .15em .36em;
+
+  nav a {
+    padding: $nav-padding;
+  }
 
   // Main Navigation
   .nav__main-menu--public {
     @include clearfix;
     display: block;
+    padding: 1rem 0;
   }
 
   .main-menu--public__container {
@@ -457,6 +466,16 @@ nav a {
         margin: 0 .36rem;
       }
     }
+
+    a {
+      color: transparentize($white, .36);
+
+      @at-root .nav__footer-menu--public a {
+        @include on-event($scope: '.device--no-touch.scope--outside') {
+          color: $white;
+        }
+      }
+    }
   }
 
   .footer-menu--public--left {
@@ -486,6 +505,7 @@ nav a {
 
   .footer__copyright p {
     margin-top: 1rem;
+    padding: $nav-padding;
 
     @include respond-to('phablet') {
       margin-top: 0;

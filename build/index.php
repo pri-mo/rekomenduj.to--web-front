@@ -32,8 +32,8 @@ $tagsTemplate = 'template--public template--full-width template--home';
             <h1>Niezwykła siła zwykłych rozmów.</h1>
             <h3>A Ty, co dzisiaj polecisz?</h3>
             <div class="header__buttons">
-              <a href="" class="button">Zarejestruj się</a>
               <a href="" class="button">Zaloguj się</a>
+              <a href="" class="button button--cta force--cta">Zarejestruj się</a>
             </div>
           </div>
         </div>

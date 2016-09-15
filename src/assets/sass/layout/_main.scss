@@ -86,39 +86,43 @@
     @include flex(1);
   }
 
-.header{
-  padding: 0;
-  height: 50vh;
+  .header {
+    padding: 0;
+    height: 50vh;
 
-  @include respond-to('tablet') {
-    height: 64vh;
+    @include respond-to('tablet') {
+      height: 64vh;
+    }
+
+    .header__container {
+      @include size(100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header__background {
+      @include size(100%);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+
+      &:not(.cover__container) {
+        background: $brand-color image('reko-pattern.png') fixed center center no-repeat;
+        background-size: cover;
+      }
+    }
+
+    .header__content {
+      padding: 3rem;
+      color: $white;
+      text-shadow: $shadow-2;
+    }
+
+    .header__buttons {
+    }
   }
-
-  .header__container {
-    @include size(100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .header__background {
-    @include size(100%);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-
-    background-color: $accept-color;
-    color: $white;
-  }
-
-  .header__content {
-    padding: 3rem;
-  }
-
-  .header__buttons {
-  }
-}
 
 }

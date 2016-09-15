@@ -33,10 +33,12 @@
   }
 
   &.button--cta {
-    background-color: $white;
+    background-color: $face;
 
-    .device--mobile & {
+    .device--mobile &,
+    &.force--cta {
       background-color: $accept-color;
+      border-color: $accept-color;
       color: $white;
 
       .ink {
@@ -117,8 +119,9 @@ button,
 
   // When on cover photo
   .cover__video &,
-  .cover__container & {
-    @include button($back: $black);
+  .cover__container &,
+  .header & {
+    @include button($back: $black, $frame: .36);
   }
 
   .layout__header & {

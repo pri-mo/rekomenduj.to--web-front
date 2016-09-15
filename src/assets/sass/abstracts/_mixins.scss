@@ -6,21 +6,23 @@
 /// @author Harry Roberts
 /// @param {Bool} $self [false] - Whether or not to include current selector
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
-@mixin on-event($mobile-safe: true) {
+@mixin on-event($mobile-safe: true, $scope: '.device--no-touch') {
+  $s: unquote($scope);
+
   @if $mobile-safe {
-    body:not(.device--mobile) &:hover,
-    body:not(.device--mobile) &:active {
+    #{$s} &:hover,
+    #{$s} &:active {
       // &:focus {
-      @content;
-    }
-  } @else {
-    &:hover,
-    &:active {
+        @content;
+      }
+    } @else {
+      &:hover,
+      &:active {
       // &:focus {
-      @content;
+        @content;
+      }
     }
   }
-}
 
 /// Grid functions
 @function grid-space($width) {
@@ -141,7 +143,7 @@
   //               rgba($color, .0),
   //               rgba(#63E2FF, .22) 77%; // set the faint color highlights
   $color-specs: rgba($color, .64) 11%,
-                rgba($color, .22),
+  rgba($color, .22),
                 rgba($color2, .36) 88%; // set the faint color highlights
 
   $overlay: rgba($color, $alpha), rgba($color, $alpha); // set the brand overlay
