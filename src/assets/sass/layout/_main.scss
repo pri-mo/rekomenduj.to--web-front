@@ -2,92 +2,118 @@
 // Main content section styles (mainly for homepage and desktop layout)
 // ---------------------------------------------------------------------
 
-body {
-
-  &.device--desktop {
-
-    .page__wrapper {
-      @include clearfix;
-      position: relative;
-    }
-
-    &.scope--inside {
-      padding: 0 1rem 10rem;
-
-      main,
-      header {
-        @include transition(none);
-        position: relative;
-        float: left;
-      }
-
-      header {
-        display: block;
-        background-color: $menu-background-color;
-        padding-top: 10rem;
-
-        @include respond-to('phablet') {
-          @include grid--cell-width('4');
-        }
-
-        @include respond-to('tablet') {
-          @include grid--cell-width('3');
-        }
-
-        @include respond-to('desktop') {
-          @include grid--cell-width('3');
-        }
-
-        @include respond-to('hd') {
-          @include grid--cell-width('2');
-        }
-      }
-
-      main {
-        @include respond-to('tablet') {
-          @include grid--cell-width('8');
-          @include grid--cell-push('1');
-        }
-
-        @include respond-to('desktop') {
-          @include grid--cell-width('8');
-          @include grid--cell-push('1');
-        }
-      }
-
-      .nav--primary {
-        @include transform(none);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
-
-      .nav__icon--logo {
-        @include transform(translate3d(0, -50%, 0));
-        background-color: $base-color;
-        opacity: 1;
-        left: -1px;
-        top: 5.5rem;
-        padding-right: 1.11rem;
-        color: $menu-icons-color;
-      }
-
-      .nav__menu-trigger {
-        display: none;
-      }
-    }
+.device--desktop {
+  .page__wrapper {
+    @include clearfix;
+    position: relative;
   }
 
-  &.scope--outside {
-    .page__wrapper {
-      @include display(flex);
-      @include flex-direction(column);
-      min-height: 100%;
+  &.scope--inside {
+    padding: 0 1rem 10rem;
+
+    main,
+    header {
+      @include transition(none);
+      position: relative;
+      float: left;
+    }
+
+    header {
+      display: block;
+      background-color: $menu-background-color;
+      padding-top: 10rem;
+
+      @include respond-to('phablet') {
+        @include grid--cell-width('4');
+      }
+
+      @include respond-to('tablet') {
+        @include grid--cell-width('3');
+      }
+
+      @include respond-to('desktop') {
+        @include grid--cell-width('3');
+      }
+
+      @include respond-to('hd') {
+        @include grid--cell-width('2');
+      }
     }
 
     main {
-      @include flex(1);
+      @include respond-to('tablet') {
+        @include grid--cell-width('8');
+        @include grid--cell-push('1');
+      }
+
+      @include respond-to('desktop') {
+        @include grid--cell-width('8');
+        @include grid--cell-push('1');
+      }
+    }
+
+    .nav--primary {
+      @include transform(none);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .nav__icon--logo {
+      @include transform(translate3d(0, -50%, 0));
+      background-color: $base-color;
+      opacity: 1;
+      left: -1px;
+      top: 5.5rem;
+      padding-right: 1.11rem;
+      color: $menu-icons-color;
+    }
+
+    .nav__menu-trigger {
+      display: none;
     }
   }
+}
+
+.scope--outside {
+  .page__wrapper {
+    @include display(flex);
+    @include flex-direction(column);
+  }
+
+  main {
+    @include flex(1);
+  }
+
+.header{
+  padding: 0;
+  height: 50vh;
+
+  .header__container {
+    @include size(100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header__background {
+    @include size(100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    background-color: $accept-color;
+    color: $white;
+  }
+
+  .header__content {
+  }
+
+  .header__buttons {
+  }
+}
+
 }

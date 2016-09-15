@@ -459,54 +459,60 @@ $(function() {
   * Original script by Alex Cican
   * http://alexcican.com/post/teehan-lax-navigation/
   */
-  var previousScroll = 0, // previous scroll position
-  menuOffset = 36, // height of menu (once scroll passed it, menu is hidden)
-  hideShowOffset = 10; // scrolling value after which triggers hide/show menu
+  var previousScroll = 0; // previous scroll position
+  var menuOffset = 36; // height of menu (once scroll passed it, menu is hidden)
+  var hideShowOffset = 10; // scrolling value after which triggers hide/show menu
+  var $head = document.getElementsByTagName('header')[0];
 
   // on scroll hide/show menu
   $(window).on('scroll load', function() {
 
-    if (!$('header').hasClass('nav--show-menu')) {
+    if (!$head.classList.contains('nav--show-menu')) {
 
       var currentScroll = $(this).scrollTop(), // gets current scroll position
       scrollDifference = Math.abs(currentScroll - previousScroll); // calculates how fast user is scrolling
 
+      console.log($head.classList + ":  " + currentScroll + " / " + scrollDifference + " / " + previousScroll);
+
       // if scrolled past menu
       if (currentScroll > menuOffset) {
 
-        if (!$('header').hasClass('scrolled')) {
-          $('header').addClass('scrolled');
+        if (!$head.classList.contains('scrolled')) {
+          $head.classList.add('scrolled');
         }
 
         // if scrolling faster than hideShowOffset hide/show menu
         if (scrollDifference >= hideShowOffset) {
           if (currentScroll > previousScroll) {
             // scrolling down; hide menu
-            if (!$('header').hasClass('hidden')) {
-              $('header').addClass('hidden');
-            }
+            // console.log('Down');
+            // if (!$head.classList.contains('hidden')) {
+              $head.classList.add('hidden');
+            // }
           } else {
             // scrolling up; show menu
-            if ($('header').hasClass('hidden')) {
-              $('header').removeClass('hidden');
-            }
+            // console.log('Up');
+            // if ($head.classList.contains('hidden')) {
+              $head.classList.remove('hidden');
+            // }
           }
         }
       } else {
-        $('header').removeClass('scrolled');
+        $head.classList.remove('scrolled');
         // only remove “detached” class if user is at the top of document (menu jump fix)
         if (currentScroll <= 0){
-          $('header').removeClass('hidden');
+          // console.log('Reset');
+          $head.classList.remove('hidden');
         }
       }
 
       // if user is at the bottom of document show menu
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        $('body:not(.template--poll) header').removeClass('hidden');
-      }
+      // if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      //   console.log('Floor')
+      //   $('body:not(.template--poll) header').removeClass('hidden');
+      // }
 
-      // replace previous scroll position with new one
-      previousScroll = currentScroll;
+      previousScroll = currentScroll; // replace previous scroll position with new one
     }
   });
 
@@ -523,14 +529,14 @@ $(function() {
 
   // clicking on secondary nav shows primary manu
   $('header .nav--secondary').on('click touchstart', function(e){
-    if ($('header').hasClass('hidden')) {
-      $('header').removeClass('hidden');
+    if ($head.classList.contains('hidden')) {
+      $head.classList.remove('hidden');
       e.preventDefault();
     }
   });
 
   $('main').on('click touchstart', function(e) {
-    if ($('header').hasClass('nav--show-menu')) {
+    if ($head.classList.contains('nav--show-menu')) {
       hideNav();
       e.preventDefault();
     }
@@ -538,7 +544,7 @@ $(function() {
 
   // checks if navigation’s popover is shown
   function showHideNav() {
-    if ($('header').hasClass('nav--show-menu')) {
+    if ($head.classList.contains('nav--show-menu')) {
       hideNav();
     } else {
       showNav();

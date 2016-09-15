@@ -31,6 +31,10 @@ $ico-size-m: 2.36rem;
 $ico-size-l: 3.36rem;
 $ico-size-xl: 7rem;
 
+/// Nav height
+/// @type Length
+$nav-height: 4rem !default;
+
 /// Basic colors
 /// @type Color
 $white: #fff !default;

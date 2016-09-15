@@ -3,12 +3,18 @@
 // -----------------------------------------------------------------------------
 
 .scope--inside {
-  &.device--mobile header {
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: 1000;
+  &.device--mobile {
+    header {
+      left: 0;
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      z-index: 1000;
+    }
+
+    main > section:first-of-type {
+      padding-top: $nav-height;
+    }
   }
 }
 

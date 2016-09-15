@@ -2,12 +2,14 @@
 // This file contains style overrides based on template tags.
 // -----------------------------------------------------------------------------
 
-.template--intro {
-  padding: 0 !important;
-
+.template--full-width {
   .page__wrapper {
     max-width: none;
   }
+}
+
+.template--intro {
+  padding: 0 !important;
 
   main {
     @include transition(none !important);

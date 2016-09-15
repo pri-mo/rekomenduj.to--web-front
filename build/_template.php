@@ -5,7 +5,7 @@ $lang = 'pl';
 $tagsBodyBasic = 'preload scope--outside device--mobile';
 
 $tagsNav = '';
-$tagsTemplate = 'template--public template--home';
+$tagsTemplate = 'template--public';
 
 ?>
 
@@ -25,19 +25,7 @@ $tagsTemplate = 'template--public template--home';
 
     <main>
 
-      <section class="layout--base header">
-        <div class="header__container">
-          <div class="header__background"></div>
-          <div class="header__content">
-            <h1>Niezwykła siła zwykłych rozmów.</h1>
-            <h3>A Ty, co dzisiaj polecisz?</h3>
-            <div class="header__buttons">
-              <a href="" class="button">Zarejestruj się</a>
-              <a href="" class="button">Zaloguj się</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- Content here -->
 
     </main>
 

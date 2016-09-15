@@ -11,11 +11,17 @@
 // 1. Make the container full-width with a maximum width
 // 2. Center it in the viewport
 // 3. Leave some space on the edges, especially valuable on small screens
-.page__wrapper {
+.page__wrapper,
+.layout__container {
   max-width: $max-width; // 1
   margin-left: auto; // 2
   margin-right: auto; // 2
   width: 100%; // 1
+  position: relative;
+}
+
+.page__wrapper {
+  min-height: 100vh;
 }
 
 .divider {
