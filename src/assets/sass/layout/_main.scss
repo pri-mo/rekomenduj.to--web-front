@@ -90,6 +90,10 @@
   padding: 0;
   height: 50vh;
 
+  @include respond-to('tablet') {
+    height: 64vh;
+  }
+
   .header__container {
     @include size(100%);
     position: relative;
@@ -110,6 +114,7 @@
   }
 
   .header__content {
+    padding: 3rem;
   }
 
   .header__buttons {

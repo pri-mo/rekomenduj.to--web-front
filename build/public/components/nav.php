@@ -1,5 +1,5 @@
 <header>
-  <nav class="nav__main-menu--public">
+  <nav class="layout__container nav__main-menu--public">
     <div class="main-menu--public__container">
       <ul class="main-menu--public__left">
         <li><a href="#" class="nav__link">Pytania</a></li>

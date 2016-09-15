@@ -1,5 +1,5 @@
 <footer>
-  <nav class="nav__footer-menu--public">
+  <nav class="layout__container nav__footer-menu--public">
     <ul class="footer-menu--public--left">
       <li><a href="#">O nas</a></li>
       <li><a href="#">Pytania i odpowiedzi</a></li>

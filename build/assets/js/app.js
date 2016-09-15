@@ -472,7 +472,7 @@ $(function() {
       var currentScroll = $(this).scrollTop(), // gets current scroll position
       scrollDifference = Math.abs(currentScroll - previousScroll); // calculates how fast user is scrolling
 
-      console.log($head.classList + ":  " + currentScroll + " / " + scrollDifference + " / " + previousScroll);
+      // console.log($head.classList + ":  " + currentScroll + " / " + scrollDifference + " / " + previousScroll);
 
       // if scrolled past menu
       if (currentScroll > menuOffset) {

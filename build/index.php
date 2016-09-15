@@ -5,7 +5,7 @@ $lang = 'pl';
 $tagsBodyBasic = 'preload scope--outside device--mobile';
 
 $tagsNav = '';
-$tagsTemplate = 'template--public template--home';
+$tagsTemplate = 'template--public template--full-width template--home';
 
 ?>
 
@@ -28,7 +28,7 @@ $tagsTemplate = 'template--public template--home';
       <section class="layout--base header">
         <div class="header__container">
           <div class="header__background"></div>
-          <div class="header__content">
+          <div class="layout__container header__content">
             <h1>Niezwykła siła zwykłych rozmów.</h1>
             <h3>A Ty, co dzisiaj polecisz?</h3>
             <div class="header__buttons">
