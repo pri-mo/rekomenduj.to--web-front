@@ -31,10 +31,19 @@
 
 @mixin grid--cell-width($width) {
   width: calc(#{grid-space($width)} - .36rem);
+  margin-right: .64rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 @mixin grid--cell-push($grid-cells) {
-  left: calc(#{grid-space($grid-cells)} + .64rem);
+  left: calc(#{grid-space($grid-cells)});
+}
+
+@mixin grid--cell-pull($grid-cells) {
+  left: calc( ( #{grid-space($grid-cells)} * -1) + .64rem);
 }
 
 
@@ -47,7 +56,7 @@
 
 @function warm($color, $percent) {
   $scaled: scale-color($color, $red: $percent, $blue: -$percent);
-  @return scale-color($scaled, $lightness: -( $percent * .25 ) );
+  @return scale-color($scaled, $lightness: -($percent * .25));
 }
 
 

@@ -22,6 +22,11 @@
 
 .page__wrapper {
   min-height: 100vh;
+
+  // TODO Development aid
+
+  background: image('grid.png') top center repeat-y;
+  background-size: 100% auto;
 }
 
 .divider {

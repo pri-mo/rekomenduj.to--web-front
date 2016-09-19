@@ -80,7 +80,7 @@
     }
   }
 
-  &:first-child {
+  .roll-out__content > &:first-child {
     margin-top: -.36rem;
   }
 

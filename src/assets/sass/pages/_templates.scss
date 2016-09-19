@@ -42,6 +42,8 @@
 }
 
 .template--profile--empty {
+  padding-bottom: 0;
+
   main {
     @include brand-gradient($image: 'backs/ph12.jpg');
 

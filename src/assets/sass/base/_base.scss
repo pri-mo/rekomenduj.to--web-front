@@ -64,20 +64,6 @@ body {
       @include transition(none !important);
     }
   }
-
-  // TODO Development aid
-  &::before {
-    opacity: .64;
-    display: none;
-    content: '';
-    position: fixed;
-    background: image('grid.png') top center;
-    background-size: 100% auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
 }
 
 
@@ -174,6 +160,14 @@ footer {
 
   > .grid__item {
     @include flex(0 1 auto);
+    position: relative;
+    margin-right: .64rem;
+
+    @for $i from 1 through 12 {
+      &.grid__span--#{$i} { @include grid--cell-width(#{$i}); }
+      &.grid__push--#{$i} { @include grid--cell-push(#{$i}); }
+      &.grid__pull--#{$i} { @include grid--cell-pull(#{$i}); }
+    }
 
     &.grid__item--1of8 {
       width: (100% / 8);
@@ -209,19 +203,6 @@ footer {
 
     // TODO Grid System - Revise breakpoints
 
-  }
-
-  &.grid--gutter {
-    $gutter: 1rem;
-
-    section & {
-      margin: -($gutter / 2);
-      margin-top: $gutter / 2;
-    }
-
-    > .grid__item {
-      padding: $gutter / 2;
-    }
   }
 }
 

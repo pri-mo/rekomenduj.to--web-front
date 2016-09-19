@@ -142,8 +142,8 @@
                 <div class="input__field"></div>
               </div>
 
-              <div class="grid__container grid--gutter">
-                <div class="grid__item grid__item--1of2">
+              <div class="grid__container">
+                <div class="grid__item grid__span--6">
                   <div class="input input--date input--show-label">
                     <input tabindex
                     name="user-birthday" id="user-birthday" type="date" <?php echo 'max="' . date('Y-m-d', strtotime('-14 years')) . '"'; ?>
@@ -158,7 +158,7 @@
                   </div>
                 </div>
 
-                <div class="grid__item grid__item--1of2">
+                <div class="grid__item grid__span--6">
                   <div class="input input--select input--show-label">
                     <select name="user-gender" id="user-gender" required>
                       <option value="" selected disabled>Podaj płeć</option>
@@ -227,8 +227,8 @@
                 data-invalid="To pole jest wymagane"></label>
               </div>
 
-              <div class="grid__container grid--gutter">
-                <div class="grid__item grid__item--1of2">
+              <div class="grid__container">
+                <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-house" id="user-addr-house" type="text" autocomplete="address-line2"
                     required
@@ -240,7 +240,7 @@
                   </div>
                 </div>
 
-                <div class="grid__item grid__item--1of2">
+                <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-flat" id="user-addr-flat" type="text" autocomplete="address-line2"
                     spellcheck="false" placeholder="...">
@@ -252,8 +252,8 @@
                 </div>
               </div>
 
-              <div class="grid__container grid--gutter">
-                <div class="grid__item grid__item--1of2">
+              <div class="grid__container">
+                <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-zip" id="user-addr-zip" type="text" autocomplete="postal-code"
                     required pattern="[0-9]{2} [0-9]{3}|[0-9]{2}-[0-9]{3}"
@@ -265,7 +265,7 @@
                   </div>
                 </div>
 
-                <div class="grid__item grid__item--1of2">
+                <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-city" id="user-addr-city" type="text" autocomplete="address-level2"
                     required

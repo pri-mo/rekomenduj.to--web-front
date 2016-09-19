@@ -92,8 +92,8 @@ function updKids() {
     if(kids > nowKids) {
       for(i = 0; i < (kids-nowKids); i++) {
         n = 1 + nowKids + i;
-        $('#kidsInputs').append('<div class="grid__container grid--gutter" data-row="'+ n +'">' +
-          '  <div class="grid__item grid__item--1of2">' +
+        $('#kidsInputs').append('<div class="grid__container" data-row="'+ n +'">' +
+          '  <div class="grid__item grid__span--6">' +
           '    <div class="input input--date input--show-label">' +
           '      <input tabindex' +
           '      name="user-baby' + n + '-bday" id="user-baby' + n + '-bday" type="date" max="' + yyyy + '-' + mm + '-' + dd + '"' +
@@ -107,7 +107,7 @@ function updKids() {
           '      data-invalid="To pole jest wymagane."></label>' +
           '    </div>' +
           '  </div>' +
-          '  <div class="grid__item grid__item--1of2">' +
+          '  <div class="grid__item grid__span--6">' +
           '    <div class="input input--select input--show-label">' +
           '      <select name="user-baby' + n + '-gender" id="user-baby' + n + '-gender" required>' +
           '        <option value="" selected disabled>Podaj płeć</option>' +
