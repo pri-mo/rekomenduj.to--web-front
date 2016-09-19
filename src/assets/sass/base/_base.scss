@@ -152,8 +152,7 @@ footer {
 }
 
 // Grid system
-// TODO Finish grid system
-.grid__container {
+.grid__wrapper {
   @include display(flex);
   @include flex-flow(row wrap);
   position: relative;
@@ -161,48 +160,37 @@ footer {
   > .grid__item {
     @include flex(0 1 auto);
     position: relative;
-    margin-right: .64rem;
 
     @for $i from 1 through 12 {
-      &.grid__span--#{$i} { @include grid--cell-width(#{$i}); }
-      &.grid__push--#{$i} { @include grid--cell-push(#{$i}); }
-      &.grid__pull--#{$i} { @include grid--cell-pull(#{$i}); }
+      &.grid__span--#{$i} { @include grid--cell-width('12'); margin-right: 0;}
+      &.grid__push--#{$i} { @include grid--cell-push(0); }
+      &.grid__pull--#{$i} { @include grid--cell-pull(0); }
     }
 
-    &.grid__item--1of8 {
-      width: (100% / 8);
+    @include respond-to('phone-tall') {
+      @for $i from 1 through 12 {
+        &.grid__span--#{$i} { @include grid--cell-width('6'); }
+        &.grid__push--#{$i} { @include grid--cell-push(0); }
+        &.grid__pull--#{$i} { @include grid--cell-pull(0); }
+      }
+
+      &:nth-child(even) {
+        margin-right: 0;
+      }
     }
 
-    &.grid__item--1of7 {
-      width: (100% / 7);
+    @include respond-to('phone-long') {
+      @for $i from 1 through 12 {
+        &.grid__span--#{$i} { @include grid--cell-width(#{$i}); }
+        &.grid__push--#{$i} { @include grid--cell-push(#{$i}); }
+        &.grid__pull--#{$i} { @include grid--cell-pull(#{$i}); }
+      }
     }
 
-    &.grid__item--1of6 {
-      width: (100% / 6);
+    &.grid__content,
+    &.cover__container {
+      padding: 1rem;
     }
-
-    &.grid__item--1of5 {
-      width: (100% / 5);
-    }
-
-    &.grid__item--1of4 {
-      width: (100% / 4);
-    }
-
-    &.grid__item--1of3 {
-      width: (100% / 3);
-    }
-
-    &.grid__item--1of2 {
-      width: (100% / 2);
-    }
-
-    &.grid__item--1of1 {
-      width: 100%;
-    }
-
-    // TODO Grid System - Revise breakpoints
-
   }
 }
 

@@ -142,7 +142,7 @@
                 <div class="input__field"></div>
               </div>
 
-              <div class="grid__container">
+              <div class="grid__wrapper">
                 <div class="grid__item grid__span--6">
                   <div class="input input--date input--show-label">
                     <input tabindex
@@ -227,7 +227,7 @@
                 data-invalid="To pole jest wymagane"></label>
               </div>
 
-              <div class="grid__container">
+              <div class="grid__wrapper">
                 <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-house" id="user-addr-house" type="text" autocomplete="address-line2"
@@ -252,7 +252,7 @@
                 </div>
               </div>
 
-              <div class="grid__container">
+              <div class="grid__wrapper">
                 <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-zip" id="user-addr-zip" type="text" autocomplete="postal-code"

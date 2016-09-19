@@ -39,11 +39,15 @@ $tagsTemplate = 'template--public template--full-width template--home';
         </div>
       </section>
 
-      <section class="layout__container grid__container">
-        <div class="grid__item grid__span--6">
+      <section class="layout__container grid__wrapper">
+        <div class="grid__item grid__span--4 grid__content">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis laborum fuga tempora, mollitia obcaecati sunt, quae explicabo blanditiis non adipisci nostrum consequuntur repellat. Illum fugit tempora sunt consectetur pariatur sapiente.</p>
         </div>
-        <div class="grid__item grid__span--6" style="background-color: #8d9">
+        <div class="grid__item grid__span--4">
+          <img src="assets/images/backs/ph1.jpg" class="image--cover" alt="">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas facere dicta rem nihil laudantium impedit doloremque, labore. Officia dolore optio vero magni accusantium, eius, aspernatur facere, consequuntur cum fugit perferendis.</p>
+        </div>
+        <div class="grid__item grid__span--4 grid__content">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero rerum est molestiae odit ab nostrum placeat veniam rem ullam esse, atque deleniti dolor corporis eaque repudiandae tenetur, possimus, praesentium illum?</p>
         </div>
       </section>

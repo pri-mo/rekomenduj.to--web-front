@@ -43,7 +43,7 @@
       <?php } ?>
     </div>
 
-    <div class="grid__container layout__button-bar button-bar--divided space--l flow--center">
+    <div class="grid__wrapper layout__button-bar button-bar--divided space--l flow--center">
       <?php if ($passremind) { ?>
       <div class="grid__item grid__item--1of2"><a href="sign-in.php" class="link--spare">Logowanie</a></div>
       <?php } else { ?>

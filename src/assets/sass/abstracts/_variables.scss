@@ -156,6 +156,7 @@ $grid: (
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 /// @see {mixin} respond-to
 $breakpoints: (
+  'only-small': (max-width: 410px),
   'phone-tall': (min-width: 360px, orientation: portrait),
   'phone-long': (min-width: 360px, orientation: landscape),
   'phablet': (min-width: 410px),

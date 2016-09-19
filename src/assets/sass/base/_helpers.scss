@@ -32,7 +32,7 @@
   // background: image('grid.png') top center repeat-y;
   // background-size: 100% auto;
 
-  padding: 0 1rem;
+  padding: 0 .5rem;
 
   @include respond-to('hd') {
     padding: 0;

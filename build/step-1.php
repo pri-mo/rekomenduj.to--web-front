@@ -57,7 +57,7 @@ $tagsTemplate = 'template--steps';
         data-invalid="To pole jest wymagane.">Jak masz na nazwisko?</label>
       </div>
 
-      <div class="grid__container grid--gutter">
+      <div class="grid__wrapper grid--gutter">
         <div class="grid__item grid__item--1of2">
           <div class="input input--date input--show-label">
             <input tabindex

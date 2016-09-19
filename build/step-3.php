@@ -40,7 +40,7 @@ $tagsTemplate = 'template--steps';
         data-invalid="To pole jest wymagane"></label>
       </div>
 
-      <div class="grid__container grid--gutter">
+      <div class="grid__wrapper grid--gutter">
         <div class="grid__item grid__item--1of2">
         <div class="input">
           <input tabindex name="user-addr-house" id="user-addr-house" type="text" autocomplete="address-line2"
@@ -65,7 +65,7 @@ $tagsTemplate = 'template--steps';
         </div>
       </div>
 
-      <div class="grid__container grid--gutter">
+      <div class="grid__wrapper grid--gutter">
         <div class="grid__item grid__item--1of2">
         <div class="input">
           <input tabindex name="user-addr-zip" id="user-addr-zip" type="text" autocomplete="postal-code"

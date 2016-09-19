@@ -39,11 +39,19 @@
 }
 
 @mixin grid--cell-push($grid-cells) {
-  left: grid-space($grid-cells);
+  @if ($grid-cells == 0) {
+    left: 0;
+  } @else {
+    left: grid-space($grid-cells);
+  }
 }
 
 @mixin grid--cell-pull($grid-cells) {
-  left: (grid-space($grid-cells) * -1);
+  @if ($grid-cells == 0) {
+    margin-left: 0;
+  } @else {
+    margin-left: (grid-space($grid-cells) * -1);
+  }
 }
 
 
