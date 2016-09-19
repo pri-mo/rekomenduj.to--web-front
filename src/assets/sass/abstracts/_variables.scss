@@ -133,20 +133,22 @@ $move-to-center: translate3d(-50%, -50%, 0) !default;
 $max-width: 1330px !default;
 
 /// Grid widths
-$cell-size: 100% / 12;
+$column: 8.3928571429%;
+$gutter-size: 100% * .007142857143 !default;
+$cell-size: $column;
 $grid: (
-  '12': ( 100% ),
-  '11': ( #{$cell-size} * 11 ),
-  '10': ( #{$cell-size} * 10 ),
-  '9': ( #{$cell-size} * 9 ),
-  '8': ( #{$cell-size} * 8 ),
-  '7': ( #{$cell-size} * 7 ),
-  '6': ( #{$cell-size} * 6 ),
-  '5': ( #{$cell-size} * 5 ),
-  '4': ( #{$cell-size} * 4 ),
-  '3': ( #{$cell-size} * 3 ),
-  '2': ( #{$cell-size} * 2 ),
-  '1': ( #{$cell-size} )
+  '12': (100%),
+  '11': ($cell-size * 11 - $gutter-size),
+  '10': ($cell-size * 10 - $gutter-size),
+  '9': ($cell-size * 9 - $gutter-size),
+  '8': ($cell-size * 8 - $gutter-size),
+  '7': ($cell-size * 7 - $gutter-size),
+  '6': ($cell-size * 6 - $gutter-size),
+  '5': ($cell-size * 5 - $gutter-size),
+  '4': ($cell-size * 4 - $gutter-size),
+  '3': ($cell-size * 3 - $gutter-size),
+  '2': ($cell-size * 2 - $gutter-size),
+  '1': ($cell-size - $gutter-size)
   ) !default;
 
 /// Breakpoints map

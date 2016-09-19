@@ -24,9 +24,19 @@
   min-height: 100vh;
 
   // TODO Development aid
+  // background: image('grid.png') top center repeat-y;
+  // background-size: 100% auto;
+}
 
-  background: image('grid.png') top center repeat-y;
-  background-size: 100% auto;
+.layout__container {
+  // background: image('grid.png') top center repeat-y;
+  // background-size: 100% auto;
+
+  padding: 0 1rem;
+
+  @include respond-to('hd') {
+    padding: 0;
+  }
 }
 
 .divider {

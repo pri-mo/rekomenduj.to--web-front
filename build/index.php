@@ -39,16 +39,12 @@ $tagsTemplate = 'template--public template--full-width template--home';
         </div>
       </section>
 
-      <section class="grid__container grid--gutter">
-        <div class="grid__item grid__span--4 grid__push--1">
+      <section class="layout__container grid__container">
+        <div class="grid__item grid__span--6">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis laborum fuga tempora, mollitia obcaecati sunt, quae explicabo blanditiis non adipisci nostrum consequuntur repellat. Illum fugit tempora sunt consectetur pariatur sapiente.</p>
         </div>
-        <div class="grid__item grid__span--5 grid__push--2" style="background-color: #8d9">
-          <div class="grid__container">
-            <div class="grid__item grid__span--6 grid__pull--1">
-              <h2>Hello world... I'm moved.</h2>
-            </div>
-          </div>
+        <div class="grid__item grid__span--6" style="background-color: #8d9">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero rerum est molestiae odit ab nostrum placeat veniam rem ullam esse, atque deleniti dolor corporis eaque repudiandae tenetur, possimus, praesentium illum?</p>
         </div>
       </section>
 

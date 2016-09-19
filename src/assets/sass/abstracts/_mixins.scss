@@ -30,8 +30,8 @@
 }
 
 @mixin grid--cell-width($width) {
-  width: calc(#{grid-space($width)} - .36rem);
-  margin-right: .64rem;
+  width: grid-space($width);
+  margin-right: $gutter-size;
 
   &:last-child {
     margin-right: 0;
@@ -39,11 +39,11 @@
 }
 
 @mixin grid--cell-push($grid-cells) {
-  left: calc(#{grid-space($grid-cells)});
+  left: grid-space($grid-cells);
 }
 
 @mixin grid--cell-pull($grid-cells) {
-  left: calc( ( #{grid-space($grid-cells)} * -1) + .64rem);
+  left: (grid-space($grid-cells) * -1);
 }
 
 
