@@ -84,11 +84,12 @@
 
   main {
     @include flex(1);
+    padding-bottom: 3rem;
   }
 
   .header {
     padding: 0;
-    height: 50vh;
+    height: auto;
 
     @include respond-to('tablet') {
       height: 64vh;
@@ -119,16 +120,57 @@
       padding: 3rem;
       color: $white;
       text-shadow: $shadow-2;
+
+      @include respond-to('tablet') {
+        @include transform(translate(-50%, -50%));
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+      }
     }
 
     .header__buttons {
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 4rem;
 
       .button {
         margin-bottom: 1rem;
       }
     }
   }
+}
 
+/// Components
+/// NOTE Not sure... maybe needs it's own file
+
+.comp__feature {
+  padding: 2rem 1rem !important;
+
+  h2,
+  p { text-align: center; }
+
+  h2 {
+    color: $brand-color-darker;
+  }
+
+  p {
+    margin: 1rem 0;
+
+    &::before,
+    &::after {
+      @include size(3rem 1px);
+      background-color: $text-color-faded;
+      content: '';
+      display: block;
+      margin: 1rem auto;
+      opacity: .3;
+    }
+  }
+
+  [class^='rg-'],
+  [class*=' rg-'],
+  [data-icon] {
+    color: $text-color-faded;
+  }
 }

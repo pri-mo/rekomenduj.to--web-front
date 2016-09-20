@@ -1,0 +1,108 @@
+// Grid system
+.grid__wrapper {
+  @include display(flex);
+  @include flex-flow(row wrap);
+  position: relative;
+
+  > .grid__item {
+    @include flex(0 1 auto);
+    @include grid--cell-width('12');
+    @include grid--cell-push(0);
+    @include grid--cell-pull(0);
+    position: relative;
+    margin-bottom: $gutter-size;
+    margin-right: 0;
+
+    @for $i from 1 through 12 {
+      &.grid__xs-span--#{$i} { @include grid--cell-width(#{$i}, true); }
+      &.grid__xs-push--#{$i} { @include grid--cell-push(#{$i}, true); }
+      &.grid__xs-pull--#{$i} { @include grid--cell-pull(#{$i}, true); }
+    }
+
+    @include respond-to('phone-tall') {
+      @for $i from 1 through 12 {
+        &.grid__span--#{$i} { @include grid--cell-width('6');}
+      }
+
+      &:nth-child(even) {
+        margin-right: 0;
+      }
+    }
+
+    @include respond-to('phone-long') {
+      @for $i from 1 through 12 {
+        &.grid__span--#{$i} { @include grid--cell-width(#{$i}); margin-bottom: 0;}
+        &.grid__push--#{$i} { @include grid--cell-push(#{$i}); }
+        &.grid__pull--#{$i} { @include grid--cell-pull(#{$i}); }
+      }
+    }
+
+    &.cover__container {
+      min-height: 50vw;
+
+      @include respond-to('phone-long') {
+        min-height: 36vw;
+      }
+
+      @include respond-to('tablet') {
+        min-height: 20vw;
+      }
+
+      .grid__content {
+        background-color: rgba($black, .22);
+      }
+    }
+
+    .grid__content {
+      display: block;
+      padding: 1rem;
+      min-height: 100%;
+    }
+  }
+
+  &.grid--simple-rwd {
+    > .grid__item {
+
+      @for $i from 1 through 12 {
+        &.grid__span--#{$i} { @include grid--cell-width('12'); margin-right: 0;}
+        &.grid__push--#{$i} { @include grid--cell-push(0); }
+        &.grid__pull--#{$i} { @include grid--cell-pull(0); }
+      }
+
+      @include respond-to('phone-long') {
+        @for $i from 1 through 12 {
+          &.grid__span--#{$i} { @include grid--cell-width(#{$i}); }
+          &.grid__push--#{$i} { @include grid--cell-push(#{$i}); }
+          &.grid__pull--#{$i} { @include grid--cell-pull(#{$i}); }
+        }
+      }
+    }
+  }
+
+  &.grid--no-gutter {
+    > .grid__item {
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+
+      @for $i from 1 through 12 {
+        &.grid__span--#{$i} { @include grid--cell-width('12', true);}
+        &.grid__push--#{$i} { @include grid--cell-push(0, true); }
+        &.grid__pull--#{$i} { @include grid--cell-pull(0, true); }
+      }
+
+      @for $i from 1 through 12 {
+        &.grid__xs-span--#{$i} { @include grid--cell-width(#{$i}, true); }
+        &.grid__xs-push--#{$i} { @include grid--cell-push(#{$i}, true); }
+        &.grid__xs-pull--#{$i} { @include grid--cell-pull(#{$i}, true); }
+      }
+
+      @include respond-to('phone-long') {
+        @for $i from 1 through 12 {
+          &.grid__span--#{$i} { @include grid--cell-width(#{$i}, true); }
+          &.grid__push--#{$i} { @include grid--cell-push(#{$i}, true); }
+          &.grid__pull--#{$i} { @include grid--cell-pull(#{$i}, true); }
+        }
+      }
+    }
+  }
+}

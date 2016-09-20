@@ -25,32 +25,40 @@
   }
 
 /// Grid functions
-@function grid-space($width) {
-  @return map-get($grid, $width);
-}
-
-@mixin grid--cell-width($width) {
-  width: grid-space($width);
-  margin-right: $gutter-size;
-
-  &:last-child {
-    margin-right: 0;
+@function grid-space($width, $no-gutter: false) {
+  @if ($no-gutter) {
+    @return map-get($grid--no-gutter, $width);
+  } @else {
+    @return map-get($grid, $width);
   }
 }
 
-@mixin grid--cell-push($grid-cells) {
+@mixin grid--cell-width($grid-cells, $no-gutter:false) {
+  @if ($no-gutter) {
+    width: grid-space($grid-cells, $no-gutter);
+  } @else {
+    width: grid-space($grid-cells, $no-gutter);
+    margin-right: $gutter-size;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@mixin grid--cell-push($grid-cells, $no-gutter:false) {
   @if ($grid-cells == 0) {
     left: 0;
   } @else {
-    left: grid-space($grid-cells);
+    left: grid-space($grid-cells, $no-gutter);
   }
 }
 
-@mixin grid--cell-pull($grid-cells) {
+@mixin grid--cell-pull($grid-cells, $no-gutter:false) {
   @if ($grid-cells == 0) {
     margin-left: 0;
   } @else {
-    margin-left: (grid-space($grid-cells) * -1);
+    margin-left: (grid-space($grid-cells, $no-gutter) * -1);
   }
 }
 

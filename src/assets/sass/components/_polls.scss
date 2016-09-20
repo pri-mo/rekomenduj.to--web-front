@@ -63,15 +63,15 @@
     padding: .64rem .64rem 0 2.36rem;
     position: relative;
     line-height: 2rem;
-    opacity: .36;
+    opacity: .64;
 
     .poll__icon {
       display: block;
       float: left;
-      font-size: 1.25rem;
+      font-size: $ico-size-s;
       line-height: 1rem;
       position: absolute;
-      top: 1rem;
+      top: $ico-size-s / 2;
       left: .64rem;
     }
 
@@ -91,6 +91,15 @@
         color: lighten($text-color-faded, 50%);
         font-size: .75rem;
         line-height: 1.25em;
+      }
+    }
+
+    @include respond-to('tablet') {
+      padding-left: 3rem;
+
+      .poll__icon {
+        font-size: $ico-size-m;
+        top: $ico-size-m / 2;
       }
     }
   }
@@ -148,11 +157,14 @@
   .question__media {
     border: 1px solid  $frame-color;
     position: relative;
-    // padding-bottom: 100% / (16 / 9);
     padding-bottom: 78%;
     margin-bottom: .64rem;
     height: 0;
     overflow: hidden;
+
+    @include respond-to('tablet') {
+      padding-bottom: 100% / (16 / 9);
+    }
 
     img {
       @include transform(translate(-50%, -50%));

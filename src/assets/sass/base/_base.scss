@@ -138,6 +138,35 @@ a {
 
 
 // General layout
+
+.page__wrapper,
+.layout__container {
+  max-width: $max-width; // 1
+  margin-left: auto; // 2
+  margin-right: auto; // 2
+  width: 100%; // 1
+  position: relative;
+}
+
+.page__wrapper {
+  min-height: 100vh;
+
+  // TODO Development aid
+  // background: image('grid.png') top center repeat-y;
+  // background-size: 100% auto;
+}
+
+.layout__container {
+  // background: image('grid.png') top center repeat-y;
+  // background-size: 100% auto;
+
+  padding: 0 .5rem;
+
+  @include respond-to('hd') {
+    padding: 0;
+  }
+}
+
 section {
   &.layout--fullscreen {
     min-height: 100vh;
@@ -149,49 +178,6 @@ main,
 footer {
   @include transform(translateZ(0));
   @include transition(transform .36s);
-}
-
-// Grid system
-.grid__wrapper {
-  @include display(flex);
-  @include flex-flow(row wrap);
-  position: relative;
-
-  > .grid__item {
-    @include flex(0 1 auto);
-    position: relative;
-
-    @for $i from 1 through 12 {
-      &.grid__span--#{$i} { @include grid--cell-width('12'); margin-right: 0;}
-      &.grid__push--#{$i} { @include grid--cell-push(0); }
-      &.grid__pull--#{$i} { @include grid--cell-pull(0); }
-    }
-
-    @include respond-to('phone-tall') {
-      @for $i from 1 through 12 {
-        &.grid__span--#{$i} { @include grid--cell-width('6'); }
-        &.grid__push--#{$i} { @include grid--cell-push(0); }
-        &.grid__pull--#{$i} { @include grid--cell-pull(0); }
-      }
-
-      &:nth-child(even) {
-        margin-right: 0;
-      }
-    }
-
-    @include respond-to('phone-long') {
-      @for $i from 1 through 12 {
-        &.grid__span--#{$i} { @include grid--cell-width(#{$i}); }
-        &.grid__push--#{$i} { @include grid--cell-push(#{$i}); }
-        &.grid__pull--#{$i} { @include grid--cell-pull(#{$i}); }
-      }
-    }
-
-    &.grid__content,
-    &.cover__container {
-      padding: 1rem;
-    }
-  }
 }
 
 // Elevations and layout

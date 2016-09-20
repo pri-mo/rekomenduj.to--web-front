@@ -76,11 +76,9 @@
 }
 
 .template--poll {
-  // main {
-  //   min-height: 100vh;
-  //   position: relative;
-  //   padding-left: 2rem;
-  // }
+  &.scope--inside.device--mobile main>section:first-of-type {
+    padding-top: 0;
+  }
 
   &.poll--end-screen {
     .poll__icon {

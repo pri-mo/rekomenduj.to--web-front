@@ -39,18 +39,45 @@ $tagsTemplate = 'template--public template--full-width template--home';
         </div>
       </section>
 
-      <section class="layout__container grid__wrapper">
-        <div class="grid__item grid__span--4 grid__content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis laborum fuga tempora, mollitia obcaecati sunt, quae explicabo blanditiis non adipisci nostrum consequuntur repellat. Illum fugit tempora sunt consectetur pariatur sapiente.</p>
+      <section class="layout__container grid__wrapper grid--simple-rwd">
+        <div class="grid__item grid__span--4 comp__feature">
+          <div class="grid__content">
+            <h2><span class="rg-user"></span>Dołączasz</h2>
+            <p>Zarejestruj się i wybierz akcję, która Ci się spodoba.</p>
+          </div>
         </div>
-        <div class="grid__item grid__span--4">
-          <img src="assets/images/backs/ph1.jpg" class="image--cover" alt="">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas facere dicta rem nihil laudantium impedit doloremque, labore. Officia dolore optio vero magni accusantium, eius, aspernatur facere, consequuntur cum fugit perferendis.</p>
+        <div class="grid__item grid__span--4 comp__feature">
+          <div class="grid__content">
+            <h2><span class="rg-campaign"></span>Zyskujesz</h2>
+            <p>Mamy dla Ciebie produkty lub ciekawe promocje.</p>
+          </div>
         </div>
-        <div class="grid__item grid__span--4 grid__content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero rerum est molestiae odit ab nostrum placeat veniam rem ullam esse, atque deleniti dolor corporis eaque repudiandae tenetur, possimus, praesentium illum?</p>
+        <div class="grid__item grid__span--4 comp__feature">
+          <div class="grid__content">
+            <h2><span class="rg-community"></span>Polecasz</h2>
+            <p>Testuj, dziel się, rozmawiaj i polecaj innym!</p>
+          </div>
         </div>
       </section>
+
+      <div class="layout__container grid__wrapper grid--no-gutter">
+        <div class="grid__item grid__xs-span--6 grid__span--3">
+          <img class="image--cover" src="assets/images/backs/ph1.jpg" alt="">
+          <div class="grid__content">111</div>
+        </div>
+        <div class="grid__item grid__xs-span--6 grid__span--3">
+          <img class="image--cover" src="assets/images/backs/ph3.jpg" alt="">
+          <div class="grid__content">111</div>
+        </div>
+        <div class="grid__item grid__xs-span--6 grid__span--3">
+          <img class="image--cover" src="assets/images/backs/ph6.jpg" alt="">
+          <div class="grid__content">111</div>
+        </div>
+        <div class="grid__item grid__xs-span--6 grid__span--3">
+          <img class="image--cover" src="assets/images/backs/ph9.jpg" alt="">
+          <div class="grid__content">111</div>
+        </div>
+      </div>
 
     </main>
 

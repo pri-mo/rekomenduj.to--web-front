@@ -25,6 +25,10 @@
     top: 0;
     left: 0;
     right: 0;
-    padding: 1rem 1.36rem;
+    padding: 0 1rem 0 0;
+
+    @include respond-to('tablet') {
+      padding: 1rem 1.36rem;
+    }
   }
 }

@@ -133,9 +133,11 @@ $move-to-center: translate3d(-50%, -50%, 0) !default;
 $max-width: 1330px !default;
 
 /// Grid widths
-$column: 8.3928571429%;
+// $column: 8.3928571429%;
+$column: 235 / 2800 * 100%;
 $gutter-size: 100% * .007142857143 !default;
 $cell-size: $column;
+$cell-size--no-gutter: 100% / 12;
 $grid: (
   '12': (100%),
   '11': ($cell-size * 11 - $gutter-size),
@@ -149,6 +151,21 @@ $grid: (
   '3': ($cell-size * 3 - $gutter-size),
   '2': ($cell-size * 2 - $gutter-size),
   '1': ($cell-size - $gutter-size)
+  ) !default;
+
+$grid--no-gutter: (
+  '12': (100%),
+  '11': ($cell-size--no-gutter * 11),
+  '10': ($cell-size--no-gutter * 10),
+  '9': ($cell-size--no-gutter * 9),
+  '8': ($cell-size--no-gutter * 8),
+  '7': ($cell-size--no-gutter * 7),
+  '6': ($cell-size--no-gutter * 6),
+  '5': ($cell-size--no-gutter * 5),
+  '4': ($cell-size--no-gutter * 4),
+  '3': ($cell-size--no-gutter * 3),
+  '2': ($cell-size--no-gutter * 2),
+  '1': ($cell-size--no-gutter)
   ) !default;
 
 /// Breakpoints map
