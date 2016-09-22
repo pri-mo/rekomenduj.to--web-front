@@ -1,6 +1,7 @@
 @mixin button($back: $brand-color, $content: dynamic-color($back), $frame: .11, $p: 0, $face: rgba(dynamic-color($back), .05)) {
   $rounding: 4rem;
   $frame: 1 - $frame;
+  $button-height: 1.23rem * 3;
 
   @include appearance(none);
   @include backface-visibility(hidden);
@@ -17,6 +18,9 @@
   font-size: 1.36rem;
   font-weight: $regular;
   line-height: 1em;
+  max-width: 20rem;
+  min-width: $button-height;
+  min-height: $button-height;
   overflow: hidden;
   padding: 1.1rem 2rem;
   position: relative;
@@ -34,12 +38,31 @@
 
   &.button--cta {
     background-color: $face;
+    text-shadow: $shadow-2;
 
     .device--mobile &,
     &.force--cta {
       background-color: $accept-color;
       border-color: $accept-color;
       color: $white;
+
+      &.button--with-loader {
+
+        &::before {
+          border: 3px solid $white;
+          border-right-color: transparent;
+          border-bottom-style: dotted;
+        }
+
+        &::after {
+          color: rgba($white, .36);
+        }
+
+        &.loading {
+          background-color: $accept-color !important;
+          border-color: $accept-color !important;
+        }
+      }
 
       .ink {
         background-color: transparentize($white, .22);
@@ -54,7 +77,6 @@
 
   &:only-child {
     @include transform(translate3d(-50%, 0, 0));
-
     margin: 0 0 0 50%;
     min-width: 50%;
   }
@@ -88,7 +110,7 @@
   }
 
   &.button--icon {
-    @include size(1.2rem * 3);
+    @include size($button-height);
     padding: 0;
 
     [data-icon] {
@@ -98,6 +120,67 @@
       position: absolute;
       top: 52%;
     }
+  }
+
+  &.button--with-loader {
+
+    &::before,
+    &::after {
+      @include transform($move-to-center);
+      display: block;
+      z-index: -1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: 0;
+    }
+
+    &::before {
+      @include size($button-height - .5rem);
+      @include animation(loader__spin 2s linear infinite);
+      border-radius: 50%;
+      border: 3px solid $content;
+      border-right-color: transparent;
+      border-bottom-style: dotted;
+      content: '';
+    }
+
+    &::after {
+      @extend %reko-glyph;
+      content: '\41';
+      color: rgba($content, .36);
+      margin-top: 1px;
+    }
+
+    &.loading {
+      background-color: $white !important;
+      border-color: $white !important;
+      box-shadow: $shadow-3;
+      color: rgba($content, 0) !important;
+      height: $button-height;
+      max-width: $button-height;
+      min-width: $button-height;
+      padding: 1.1rem 0;
+
+      &::before,
+      &::after {
+        @include transition(opacity .5s ease-in-out .15s);
+        opacity: 1;
+        z-index: 0;
+      }
+    }
+  }
+}
+
+@include keyframes('loader__spin') {
+  0% { @include transform($move-to-center rotate(0deg));
+  }
+  100% { @include transform($move-to-center rotate(360deg));
+  }
+}
+
+@include keyframes('loader__show-spinner') {
+  100% { opacity: 1;
   }
 }
 

@@ -462,6 +462,11 @@ footer {
 
 .flow--center {
   text-align: center;
+
+  .button {
+    @include transform(translate3d(0, 0, 0) !important);
+    margin: 0 !important;
+  }
 }
 
 // Ripples

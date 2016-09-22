@@ -31,13 +31,13 @@
     </div>
     <?php } ?>
 
-    <div class="layout__button-bar space--m flow--center">
+    <div class="layout__button-bar space--m">
       <?php if ($signup) { ?>
-      <a href="step-intro.php" class="button button--cta force--cta" name="button">Zarejestruj mnie</a>
+      <a href="#" onclick="this.classList.toggle('loading')" class="button button--cta force--cta button--with-loader" name="button">Zarejestruj mnie</a>
       <?php } elseif ($passremind) { ?>
-      <button type="button" name="button">Nie pamiętam hasła</button>
+      <button onclick="this.classList.toggle('loading')" class="button--with-loader" type="button" name="button">Nie pamiętam hasła</button>
       <?php } else { ?>
-      <a href="step-intro.php" class="button" name="button">Zaloguj mnie</a>
+      <a href="step-intro.php" class="button button--with-loader" name="button">Zaloguj mnie</a>
       <?php } ?>
     </div>
 
