@@ -98,7 +98,7 @@
   }
 
   &.grid--no-gutter {
-    padding: 0;
+    padding: inherit 0;
 
     > .grid__item {
       margin-right: 0 !important;

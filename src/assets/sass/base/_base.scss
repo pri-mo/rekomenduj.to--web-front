@@ -124,7 +124,7 @@ a {
   }
 
   &.link--spare {
-    display: block;
+    display: block !important;
     padding: 1rem;
     color: inherit;
     opacity: .64;
@@ -423,7 +423,16 @@ footer {
 
   &.button-bar--divided {
     .grid__item + .grid__item {
-      border-left: 1px solid rgba(dynamic-color($brand-color), .1);
+      &::before {
+        @include size(1px 100%);
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        background-color: rgba(dynamic-color($brand-color), .1);
+      }
     }
   }
 }

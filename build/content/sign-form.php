@@ -33,7 +33,7 @@
 
     <div class="layout__button-bar space--m flow--center">
       <?php if ($signup) { ?>
-      <a href="step-intro.php" class="button" name="button">Zarejestruj mnie</a>
+      <a href="step-intro.php" class="button button--cta force--cta" name="button">Zarejestruj mnie</a>
       <?php } elseif ($passremind) { ?>
       <button type="button" name="button">Nie pamiętam hasła</button>
       <?php } else { ?>
@@ -41,7 +41,7 @@
       <?php } ?>
     </div>
 
-    <div class="grid__wrapper layout__button-bar button-bar--divided space--l flow--center">
+    <div class="grid__wrapper grid--no-gutter layout__button-bar button-bar--divided space--l flow--center">
       <?php if ($passremind) { ?>
       <div class="grid__item grid__xs-span--6 grid__span--6"><a href="sign-in.php" class="link--spare">Logowanie</a></div>
       <?php } else { ?>
