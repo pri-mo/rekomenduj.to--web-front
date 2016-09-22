@@ -22,7 +22,7 @@ $tagsTemplate = 'template--intro';
 
     <?php include 'public/components/nav.php' ?>
 
-    <main class="layout--fullscreen paint--brand">
+    <main>
 
       <?php
       $signup = false; $passremind = true;

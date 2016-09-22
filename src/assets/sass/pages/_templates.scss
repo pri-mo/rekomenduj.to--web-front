@@ -20,7 +20,7 @@
   }
 
   @at-root header nav a {
-    @include on-event($scope: '.template--intro.device--no-touch') {
+    @include on-event($scope: '.scope--outside.template--intro.device--no-touch') {
       color: $accent-color;
     }
   }

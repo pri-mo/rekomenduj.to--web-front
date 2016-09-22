@@ -17,14 +17,14 @@
 
   .input.input--check {
     @include respond-to('tablet') {
-      max-height: none;
+      max-height: 50rem;
 
       &::after {
         display: none;
       }
 
       @include on-event {
-        max-height: none;
+        max-height: 50rem;
       }
     }
   }

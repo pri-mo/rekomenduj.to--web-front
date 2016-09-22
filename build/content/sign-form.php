@@ -1,4 +1,4 @@
-<section class="layout__container">
+<section class="layout__container paint--brand">
 
   <div class="sign-form">
 
