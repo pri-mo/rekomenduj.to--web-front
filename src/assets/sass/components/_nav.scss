@@ -512,4 +512,14 @@ nav a {
     }
   }
 
+  &.nav--transparent {
+    header {
+      z-index: 1;
+    }
+    main {
+      z-index: 0;
+      padding-top: 6rem;
+      margin-top: -6rem;
+    }
+  }
 }

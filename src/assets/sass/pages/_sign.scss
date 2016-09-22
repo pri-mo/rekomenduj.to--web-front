@@ -3,7 +3,31 @@
 // -----------------------------------------------------------------------------
 
 .sign-form {
-  padding: 0 $ico-size-s;
+  padding: 0 0 2rem;
+
+  @include respond-to('tablet') {
+    padding: 2rem;
+    max-width: 50vw;
+    margin: 5vh auto;
+  }
+
+  @include respond-to('desktop') {
+    max-width: 36vw;
+  }
+
+  .input.input--check {
+    @include respond-to('tablet') {
+      max-height: none;
+
+      &::after {
+        display: none;
+      }
+
+      @include on-event {
+        max-height: none;
+      }
+    }
+  }
 
   .icon--logo {
     color: dynamic-color($brand-color);

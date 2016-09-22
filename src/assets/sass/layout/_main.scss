@@ -127,6 +127,10 @@
         top: 50%;
         left: 50%;
         text-align: center;
+
+        h1 {font-size: $ico-size-m;}
+        h2 {font-size: $ico-size-m;}
+        h3 {font-size: $ico-size-s;}
       }
     }
 
@@ -139,13 +143,14 @@
       }
     }
   }
+
 }
 
 /// Components
 /// NOTE Not sure... maybe needs it's own file
 
 .comp__feature {
-  padding: 2rem 1rem !important;
+  padding: 4rem 1rem !important;
 
   h2,
   p { text-align: center; }
@@ -172,5 +177,85 @@
   [class*=' rg-'],
   [data-icon] {
     color: $text-color-faded;
+  }
+}
+
+.comp__hero-link {
+  display: block;
+  width: 100%;
+  height: 50vw;
+  background-color: $brand-color;
+  color: $white;
+
+  @include on-event {
+    color: $white;
+    background-color: $brand-color-darker;
+
+    &.tint-cover.cover__container {
+      background-color: $brand-color-darker;
+    }
+  }
+
+  @include respond-to('phone-long') {
+    height: 20vw;
+  }
+
+  &.tint-cover {
+    &.cover__container {
+      background-color: $brand-color-darker;
+    }
+
+    .image--cover {
+      @include filter(grayscale(100%));
+      opacity: .36;
+    }
+  }
+
+  .image--cover {
+    opacity: .64;
+  }
+
+  .text--cta {
+    font-size: $header-1;
+    line-height: 1.3;
+    font-weight: $bold;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+
+.comp__stat {
+  padding: 4rem .5rem;
+  margin-top: 5rem;
+
+  [class^='stat__content--'],
+  [class*=' stat__content--'] {
+    text-align: left;
+  }
+
+  .stat__content--num {
+    @include size(15vw);
+    display: block;
+    font-size: $ico-size-l;
+    font-weight: $heavy;
+    color: $brand-color;
+    border: 1px solid $frame-color;
+    letter-spacing: -.036em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .5rem;
+    line-height: 1;
+  }
+
+  .stat__content--desc {
+    position: relative;
+    top: -2rem;
+    font-size: $header-3;
+    font-weight: $bold;
   }
 }

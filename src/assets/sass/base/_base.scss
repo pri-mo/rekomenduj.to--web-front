@@ -134,6 +134,12 @@ a {
       opacity: 1;
     }
   }
+
+  .paint--brand &:not(.button) {
+    @include on-event {
+      color: $white;
+    }
+  }
 }
 
 
@@ -151,7 +157,10 @@ a {
 .page__wrapper {
   min-height: 100vh;
 
-  // TODO Development aid
+  .device--touch & {
+    max-width: none;
+  }
+  // NOTE Development aid
   // background: image('grid.png') top center repeat-y;
   // background-size: 100% auto;
 }
@@ -178,6 +187,7 @@ main,
 footer {
   @include transform(translateZ(0));
   @include transition(transform .36s);
+  position: relative;
 }
 
 // Elevations and layout

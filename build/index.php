@@ -60,24 +60,60 @@ $tagsTemplate = 'template--public template--full-width template--home';
         </div>
       </section>
 
-      <div class="layout__container grid__wrapper grid--no-gutter">
+      <section class="layout__container grid__wrapper">
         <div class="grid__item grid__xs-span--6 grid__span--3">
-          <img class="image--cover" src="assets/images/backs/ph1.jpg" alt="">
-          <div class="grid__content">111</div>
+          <a href="" class="comp__hero-link tint-cover">
+            <img class="image--cover" src="assets/images/backs/ph1.jpg" alt="">
+            <span class="text--cta">Jesteś influencerem?</span>
+          </a>
         </div>
         <div class="grid__item grid__xs-span--6 grid__span--3">
-          <img class="image--cover" src="assets/images/backs/ph3.jpg" alt="">
-          <div class="grid__content">111</div>
+          <a href="" class="comp__hero-link tint-cover">
+            <img class="image--cover" src="assets/images/backs/ph3.jpg" alt="">
+            <span class="text--cta">Masz pytania?</span>
+          </a>
         </div>
         <div class="grid__item grid__xs-span--6 grid__span--3">
-          <img class="image--cover" src="assets/images/backs/ph6.jpg" alt="">
-          <div class="grid__content">111</div>
+          <a href="" class="comp__hero-link tint-cover">
+            <img class="image--cover" src="assets/images/backs/ph6.jpg" alt="">
+            <span class="text--cta">Poznaj nasze akcje...</span>
+          </a>
         </div>
         <div class="grid__item grid__xs-span--6 grid__span--3">
-          <img class="image--cover" src="assets/images/backs/ph9.jpg" alt="">
-          <div class="grid__content">111</div>
+          <a href="" class="comp__hero-link tint-cover">
+            <img class="image--cover" src="assets/images/backs/ph9.jpg" alt="">
+            <span class="text--cta">Chcesz zorganizować własną kampanię?</span>
+          </a>
         </div>
-      </div>
+      </section>
+
+      <section class="layout__container grid__wrapper grid--simple-rwd">
+        <div class="grid__item grid__span--3 comp__stat">
+          <div class="grid__content">
+            <div class="stat__content--num">6,7 mln</div>
+            <div class="stat__content--desc">Znajomych, którzy przetestowali produkty w kampaniach Rekomenduj.to</div>
+          </div>
+        </div>
+        <div class="grid__item grid__span--3 comp__stat">
+          <div class="grid__content">
+            <div class="stat__content--num">86,5 tys.</div>
+            <div class="stat__content--desc">Blogerów w naszej społeczności</div>
+          </div>
+        </div>
+        <div class="grid__item grid__span--3 comp__stat">
+          <div class="grid__content">
+            <div class="stat__content--num">386,6 tys.</div>
+            <div class="stat__content--desc">Produktów testowanych przez naszą społeczność</div>
+          </div>
+        </div>
+        <div class="grid__item grid__span--3 comp__stat">
+          <div class="grid__content">
+            <div class="stat__content--num">12,3 mln</div>
+            <div class="stat__content--desc">Wypowiedzi Ambasadorów naszych akcji</div>
+          </div>
+        </div>
+
+      </section>
 
     </main>
 

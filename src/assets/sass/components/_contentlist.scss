@@ -212,9 +212,6 @@
     @include transform(scale(1.02));
     text-decoration: none;
     color: $white;
-    background-color: $brand-color;
-    box-shadow: $shadow-1;
-
     z-index: 11;
 
     &::before,
@@ -222,13 +219,16 @@
       opacity: 1;
     }
 
-    &.cover__container, .cover__container {
-      background-color: $brand-color-darker;
-      color: $white !important;
+    &:not(.cover__container) {
+      background-color: $brand-color;
+      box-shadow: $shadow-1;
+    }
+
+    &.cover__container,
+    .cover__container {
       box-shadow: $shadow-2a;
 
       .image--cover {
-        @include transform($move-to-center scale(1.25));
         opacity: .36;
       }
     }

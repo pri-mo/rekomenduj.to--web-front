@@ -57,7 +57,7 @@
     z-index: 3;
 
     &::after {
-      content: 'Show pass';
+      content: attr(data-label);
       display: block;
       position: absolute;
       top: 50%;
@@ -398,6 +398,7 @@
 
     &::after {
       @include transition(opacity .64s $ease-in-out-quad);
+      @include linear-gradient(top, rgba($back, 0), $back);
 
       content: '';
       display: block;
@@ -405,8 +406,8 @@
       bottom: 0;
       left: 3rem;
       right: 0;
-      height: 1px;
-      background: rgba($static, $alpha-minor);
+      height: 2rem;
+      z-index: 22;
     }
 
     input {
@@ -417,7 +418,7 @@
       @include hyphens(auto);
 
       cursor: pointer;
-      font-size: .75rem;
+      font-size: .64rem;
       line-height: 1.5em;
       padding-top: 1.5rem;
       padding-left: 3rem;

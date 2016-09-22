@@ -1,8 +1,6 @@
-<section class="layout--base layout--fullscreen paint--brand">
+<section class="layout__container">
 
   <div class="sign-form">
-
-    <div class="icon--logo"><span data-icon="A"></span></div>
 
     <div class="input">
       <input tabindex name="email" id="email" type="email" autocomplete="email" required spellcheck="false" placeholder="email@domena.pl">
@@ -19,7 +17,7 @@
       data-focused="Moje hasło"
       data-original="Podaj swoje hasło">Podaj swoje hasło</label>
 
-      <div class="input__show-password" id="showPass"></div>
+      <div class="input__show-password" id="showPass" data-label="Pokaż hasło"></div>
     </div>
     <?php } ?>
 
@@ -45,15 +43,15 @@
 
     <div class="grid__wrapper layout__button-bar button-bar--divided space--l flow--center">
       <?php if ($passremind) { ?>
-      <div class="grid__item grid__item--1of2"><a href="sign-in.php" class="link--spare">Logowanie</a></div>
+      <div class="grid__item grid__xs-span--6 grid__span--6"><a href="sign-in.php" class="link--spare">Logowanie</a></div>
       <?php } else { ?>
-      <div class="grid__item grid__item--1of2"><a href="password.php" class="link--spare">Hasło</a></div>
+      <div class="grid__item grid__xs-span--6 grid__span--6"><a href="password.php" class="link--spare">Hasło</a></div>
       <?php } ?>
 
       <?php if ($signup) { ?>
-      <div class="grid__item grid__item--1of2"><a href="sign-in.php" class="link--spare">Logowanie</a></div>
+      <div class="grid__item grid__xs-span--6 grid__span--6"><a href="sign-in.php" class="link--spare">Logowanie</a></div>
       <?php } else { ?>
-      <div class="grid__item grid__item--1of2"><a href="sign-up.php" class="link--spare">Rejestracja</a></div>
+      <div class="grid__item grid__xs-span--6 grid__span--6"><a href="sign-up.php" class="link--spare">Rejestracja</a></div>
       <?php } ?>
     </div>
 
