@@ -56,7 +56,8 @@ for ($i=0; $i < $itemCount; $i++) {
     data-index="<?php echo $i + 1 ?>">
   <?php
     if ($randChoice % 2 === 0) { ?>
-      <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('800', '600'))?>/<?php echo $faker->randomElement($array = array ('800', '600'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
+      <!-- <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('800', '600'))?>/<?php echo $faker->randomElement($array = array ('800', '600'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover"> -->
+      <img onerror="imgBroken(this)" src="assets/images/ph-safe.png" alt="" class="image--cover">
     <?php
     }
   ?>
