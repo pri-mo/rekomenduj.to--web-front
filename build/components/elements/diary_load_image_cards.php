@@ -74,10 +74,6 @@
     $( "#totalSize" ).attr('data-size', fileSizeSI(calculateImagesTotalSize()));
   }
 
-  function openFileExpl(){
-    $(":file").click();
-  }
-
   function setH(){
     $( "#c2").css('height', $( "#c1").height());
   }
