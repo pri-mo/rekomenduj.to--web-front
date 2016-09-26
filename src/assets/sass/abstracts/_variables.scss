@@ -129,6 +129,13 @@ $transition-l: .64s !default;
 $move-to-center: translate3d(-50%, -50%, 0) !default;
 $button-height: 1.23rem * 3 !default;
 
+// List item sizes
+$solo: 100% - 1% !default;
+$half: 100% / 2 - 1% !default;
+$third: 100% / 3 - 1% !default;
+$two-third: 200% / 3 - 1% !default;
+$quart: 100% / 4 - 1% !default;
+
 /// Container's maximum width
 /// Below that is 100%
 /// @type Length

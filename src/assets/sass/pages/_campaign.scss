@@ -202,6 +202,7 @@
 }
 
 .priority__item {
+  padding-bottom: $two-third;
 
   .doublesided__side-a {
     .doublesided__trigger {
@@ -454,11 +455,11 @@
 
   &.priority--points {
     width: 100%;
-    padding-bottom: 64%;
+    padding-bottom: $half;
 
     @include respond-to('phone-long') {
-      width: 49%;
-      padding-bottom: 24.5%;
+      width: $half;
+      padding-bottom: $quart;
     }
 
     &::before,
@@ -480,14 +481,14 @@
 
     &::after {
       content: attr(data-text) ' ' attr(data-points);
-      font-size: $header-3;
+      font-size: 1.36rem;
       font-weight: $heavy;
-      letter-spacing: -.05em;
+      letter-spacing: -.036em;
       bottom: .5rem;
       right: 1rem;
 
       @include respond-to('tablet') {
-        font-size: $header-2;
+        font-size: 1.64rem;
       }
     }
 
