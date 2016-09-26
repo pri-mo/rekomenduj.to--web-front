@@ -11,6 +11,10 @@
   }
 }
 
+.diary-media__upload-list {
+  //
+}
+
 .diary-media__items {
   @include display(flex);
   position: relative;
@@ -43,6 +47,10 @@
     border-top: 2px solid $frame-color;
     padding: 1rem 0 .5rem;
     margin-right: 0;
+
+    &:first-of-type {
+      margin-top: 2rem;
+    }
   }
 }
 

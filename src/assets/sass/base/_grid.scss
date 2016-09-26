@@ -30,6 +30,10 @@
             margin-right: inherit;
           }
         }
+
+        &:nth-of-type(even) {
+          margin-right: $gutter-size;
+        }
       }
 
       &.grid__xs-push--#{$i} { @include grid--cell-push(#{$i}); }
