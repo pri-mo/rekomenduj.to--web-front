@@ -2,31 +2,39 @@
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
 
-.scope--inside {
-  // &.device--mobile footer {
-  //   left: 0;
-  //   position: fixed;
-  //   top: 0;
-  //   width: 100vw;
-  //   z-index: 1000;
-  // }
-}
+// .scope--inside {
+// &.device--mobile footer {
+//   left: 0;
+//   position: fixed;
+//   top: 0;
+//   width: 100vw;
+//   z-index: 1000;
+// }
+// }
 
-.scope--outside {
-  footer {
-    // position: absolute;
-    width: 100%;
-    padding: 1rem;
-    background-color: $accent-color;
-    color: $white;
+// .scope--outside {
+footer {
+  clear: both;
 
-    @include respond-to('hd') {
-      border-radius: .36rem;
-      margin-bottom: 2rem;
-    }
+  // position: absolute;
+  width: 100%;
+  padding: 1rem;
+  background-color: $accent-color;
+  color: $white;
+  margin-top: 5rem;
 
-    * {
-      font-size: .75rem;
-    }
+  .scope--outside & {
+    margin-top: 0;
+  }
+
+  @include respond-to('hd') {
+    border-radius: .36rem;
+    margin-bottom: 2rem;
+  }
+
+  * {
+    font-size: .75rem;
   }
 }
+
+// }

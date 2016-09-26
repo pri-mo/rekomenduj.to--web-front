@@ -111,6 +111,7 @@
   &.button--icon {
     @include size($button-height);
     padding: 0;
+    border-radius: 49%;
 
     [data-icon] {
       @include transform($move-to-center);
