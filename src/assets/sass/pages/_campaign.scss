@@ -207,6 +207,10 @@
       font-weight: $bold;
       text-transform: uppercase;
       letter-spacing: .05em;
+
+      @include respond-to('tablet') {
+        font-size: 1.15rem;
+      }
     }
   }
 
@@ -301,9 +305,10 @@
       left: 1rem;
       right: 1rem;
       text-align: center;
+      font-size: 1.25rem;
+      line-height: 1.15;
 
       span {
-        font-size: 1.36rem;
         display: block;
         padding: 1rem;
         margin-bottom: 1rem;
@@ -322,6 +327,11 @@
       // border-bottom: 1px solid  $frame-color;
       background-color: $accept-color;
       color: $white;
+
+      &.cover__container {
+        background-color: $black;
+        box-shadow: none !important;
+      }
     }
 
     .priority--hashtag__text {

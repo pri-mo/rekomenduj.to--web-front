@@ -614,6 +614,10 @@
     overflow: hidden;
     // border: 1px solid $frame-color;
 
+    &.cover__container {
+      background-color: $black !important;
+    }
+
     .input__field {
       display: none;
     }
@@ -647,10 +651,6 @@
         position: absolute;
         top: 50%;
         left: 1.5rem;
-        &.diary {
-          // font-size: $ico-size-l;
-          left: 0.5rem;
-        }
       }
 
       .file-upload__cta {
