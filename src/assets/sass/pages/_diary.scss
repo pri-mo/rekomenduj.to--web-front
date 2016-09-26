@@ -103,6 +103,10 @@
   }
 }
 
+.diary__image-card--hide {
+  display: none;
+}
+
 .inputfile {
   width: .1px;
   height: .1px;
@@ -163,7 +167,7 @@
   padding-left: .5rem;
 
   &::after {
-    content: attr(data-name);
+    content: attr(data-size) ' z ' attr(data-total-size);
     display: block;
     padding-bottom: .5rem;
   }

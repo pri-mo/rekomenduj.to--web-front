@@ -32,12 +32,18 @@
     updateImagesTotalSize();
   }
 
+  function removeList(){
+    imagesToSend.forEach(function(val, key, map){
+      removeListElement(key);
+    });
+  }
+
   function loadImage(files, card){
     for(var i = 0; i < files.length; i++){
       numberOfImage += 1;
       $ ("#summary").before(addListElement(numberOfImage, files[i]))
-      imagesToSend.set(numberOfImage, [window.URL.createObjectURL(files[i]),
-                      files[i].size]);
+      imagesToSend.set(numberOfImage, [
+        window.URL.createObjectURL(files[i]), files[i].size]);
       document.querySelector("#image").src = window.URL.createObjectURL(files[i]);
     }
     if (files.length > 0 && card == 'card_add_images'){
@@ -55,7 +61,7 @@
   }
 
   function updateImagesTotalSize() {
-    $( "#totalSize" ).attr('data-size', fileSizeSI(calculateImagesTotalSize()));
+    $( "#total_size" ).attr('data-size', fileSizeSI(calculateImagesTotalSize()));
   }
 
   function setCardProgressHeight(){
@@ -63,8 +69,12 @@
   }
 
   function changeCard(prev, next){
+    if(prev == 'card_list_images' && imagesToSend.length == 0){
+      console.log('dodaj min 1 zdjecie');
+    }else{
       $("#"+prev).hide(); $("#"+next).show();
     }
+  }
 
 </script>
 <div id="card_add_images"
@@ -80,18 +90,17 @@
 </div>
 
 <div id="card_list_images"
-  class="layout--card diary-media__upload-list"
-  style="display: none">
+  class="layout--card diary-media__upload-list diary__image-card--hide">
   <div id="summary"
     class="diary-media__items total">
     <div class="input input--file-upload input--button">
       <input id="file"
         type="file"
         name="file"
-        multiple onchange="loadImage(this.files, 'c1')">
+        multiple onchange="loadImage(this.files, 'card_list_images')">
       <label for="file"><span data-icon="e"></span></label>
     </div>
-    <div id="totalSize"
+    <div id="total_size"
         class="diary-media__upload-total"
         data-label="Łącznie: "
         data-size=""></div>
@@ -103,26 +112,24 @@
 </div>
 
 <div id="card_upload_progress"
-    class="layout--card diary-media__upload-progress"
-    style="display:none">
+    class="layout--card diary-media__upload-progress diary__image-card--hide">
   <div class="progress-bar">
     <div class="progress-bar-content"></div>
     <!-- TODO  switch when loading is complete -->
     <label class="progress-bar-val"
-      data-name="21kB z 251MB"
+      data-size="21kB"
+      data-total-size="251MB"
       onclick="changeCard('card_upload_progress','card_show_image')">Ładuję...</label>
   </div>
-  <button id="stopUpload"
-  class="diary-media__floating-button button--icon button--cta ripple stop"
+  <button class="diary-media__floating-button button--icon button--cta ripple stop"
   data-icon="b"
   onclick="changeCard('card_upload_progress','card_list_images')" ></button>
 </div>
 
 <div id="card_show_image"
-  style="display: none;"
-  class="layout--card">
+  class="layout--card diary__image-card--hide">
   <img id="image" src="image"/>
   <span class="image-label"
     data-icon="n"
-    onclick="changeCard('card_show_image','card_add_images')">WYMIEŃ</span>
+    onclick="changeCard('card_show_image','card_add_images'); removeList()">WYMIEŃ</span>
 </div>
