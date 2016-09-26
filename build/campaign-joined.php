@@ -7,7 +7,7 @@ require_once 'vendor/autoload.php';
 $faker = Faker\Factory::create('pl_PL');
 $lang = 'pl';
 
-$tagsBodyBasic = 'preload scope--inside device--mobile'; // platform-ios
+$tagsBodyBasic = 'preload device--mobile scope--inside'; // platform-ios
 
 $tagsNav = '';
 $tagsTemplate = 'template--campaign';
@@ -103,13 +103,13 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
           <div class="list-item list-item--doublesided priority__item priority--share" id="promoShare_01">
             <div class="doublesided__flipper">
               <div class="doublesided__side-a" onclick="flipOver('promoShare_01')">
-                <img src="assets/images/ph-safe.png" alt="" class="image--cover">
+                <img src="https://unsplash.it/600/500?image=999" alt="" class="image--cover">
                 <div class="doublesided__trigger ripple">Udostępnij ten post<span class="rg-share"></span></div>
                 <div class="priority--share__post-snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolor, impedit deserunt recusandae cum eveniet possimus odit! Modi, rerum. Voluptates commodi at nam cum aspernatur neque expedita, incidunt consectetur inventore!</div>
               </div>
               <div class="doublesided__side-b">
                 <div class="priority--share__post-preview">
-                  <img src="assets/images/ph-safe.png" alt="" class="post-preview__image">
+                  <img src="https://unsplash.it/100/100?image=999" alt="" class="post-preview__image">
                   <div class="post-preview__title">Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore eu fugiat nulla pariatur.</div>
                   <div class="post-preview__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>

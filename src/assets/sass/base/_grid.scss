@@ -5,6 +5,10 @@
   position: relative;
   padding: 0 $gutter-size;
 
+  @include when-inside('.layout--card' or '.layout--card-') {
+    padding: 0;
+  }
+
   > .grid__item {
     @include flex(0 1 auto);
     @include grid--cell-width('12');
@@ -19,7 +23,7 @@
       &.grid__xs-span--#{$i} {
         @include grid--cell-width(#{$i});
 
-        &:nth-child(#{ceil(12 / $i)}n) {
+        &:nth-of-type(#{ceil(12 / $i)}n) {
           margin-right: 0;
 
           @include respond-to('phone-long') {
@@ -37,7 +41,7 @@
         &.grid__span--#{$i} { @include grid--cell-width('6');}
       }
 
-      &:nth-child(even) {
+      &:nth-of-type(even) {
         margin-right: 0;
       }
     }
@@ -47,7 +51,7 @@
         &.grid__span--#{$i} {
           @include grid--cell-width(#{$i});
 
-          &:nth-child(#{ceil(12 / $i)}n) { margin-right: 0; }
+          &:nth-of-type(#{ceil(12 / $i)}n) { margin-right: 0; }
         }
 
         &.grid__push--#{$i} { @include grid--cell-push(#{$i}); }
@@ -88,7 +92,7 @@
           &.grid__span--#{$i} {
             @include grid--cell-width(#{$i});
 
-            &:nth-child(#{floor(12 / $i)}n) { margin-right: 0; }
+            &:nth-of-type(#{floor(12 / $i)}n) { margin-right: 0; }
           }
           &.grid__push--#{$i} { @include grid--cell-push(#{$i}); }
           &.grid__pull--#{$i} { @include grid--cell-pull(#{$i}); }

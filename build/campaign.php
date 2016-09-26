@@ -7,7 +7,7 @@ require_once 'vendor/autoload.php';
 $faker = Faker\Factory::create('pl_PL');
 $lang = 'pl';
 
-$tagsBodyBasic = 'preload scope--inside device--mobile'; // platform-ios
+$tagsBodyBasic = 'preload device--mobile scope--inside'; // platform-ios
 
 $tagsNav = '';
 $tagsTemplate = 'template--campaign';

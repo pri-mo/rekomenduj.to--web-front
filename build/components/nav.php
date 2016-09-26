@@ -3,7 +3,7 @@
     <ul>
       <li class="nav__position"><a href="profile-with-photo.php" class="rg-home nav__link">Moje Reko</a></li>
       <li class="nav__position"><a href="kampanie-i-promocje.php" class="rg-campaign nav__link">Kampanie i promocje</a></li>
-      <li class="nav__position"><a href="#" class="rg-diary nav__link">Pamiętnik kampanii</a></li>
+      <li class="nav__position"><a href="diary.php" class="rg-diary nav__link">Pamiętnik kampanii</a></li>
       <li class="nav__position"><a href="ankiety.php" class="rg-poll nav__link">Ankiety</a></li>
       <li class="nav__position"><a href="profile-edit.php" class="rg-user nav__link">Dane profilu</a></li>
       <li class="nav__spacer"></li>

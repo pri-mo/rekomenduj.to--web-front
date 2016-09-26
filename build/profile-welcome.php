@@ -2,7 +2,7 @@
 
 $lang = 'pl';
 
-$tagsBodyBasic = 'preload scope--inside device--mobile';
+$tagsBodyBasic = 'preload device--mobile scope--inside';
 
 $tagsNav = 'nav--transparent';
 $tagsTemplate = 'template--steps';

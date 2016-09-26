@@ -122,11 +122,12 @@ $shadow-button: 0 4px 20px rgba(0, 0, 0, .16) !default;
 $shadows: $shadow-1, $shadow-2, $shadow-3;
 $shadows-heavy: $shadow-1a, $shadow-2a, $shadow-3a;
 
-/// Consistent transition and helpers
+/// Consistent helpers
 /// @type CSS
 $transition: .36s !default;
 $transition-l: .64s !default;
 $move-to-center: translate3d(-50%, -50%, 0) !default;
+$button-height: 1.23rem * 3 !default;
 
 /// Container's maximum width
 /// Below that is 100%

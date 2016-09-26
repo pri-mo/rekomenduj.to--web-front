@@ -1,7 +1,6 @@
 @mixin button($back: $brand-color, $content: dynamic-color($back), $frame: .11, $p: 0, $face: rgba(dynamic-color($back), .05)) {
   $rounding: 4rem;
   $frame: 1 - $frame;
-  $button-height: 1.23rem * 3;
 
   @include appearance(none);
   @include backface-visibility(hidden);

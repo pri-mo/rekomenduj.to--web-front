@@ -1,93 +1,256 @@
 // Diary
+.image-label {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 1.36rem;
+  color: white;
 
-
-.diary-entries {
-
+  &::before {
+    content: attr(data-icon);
+  }
 }
 
-.diary-entry {
-  padding: 0 0 64%;
-  margin-bottom: 0;
+.diary-media__items {
+  @include display(flex);
+  position: relative;
+  border-bottom: 1px solid $frame-color;
+  padding: .64rem 0;
+  margin-right: 3rem;
 
-  & + & {
-    margin-top: 0;
-    margin-bottom: 0;
-    border-top-color: $white;
+  @include respond-to('tablet') {
+    margin-right: 7rem;
   }
 
-  &:last-child {
-    margin-bottom: 1%;
+  .diary-media__remove-item {
+    margin-left: .5rem;
+    content: attr(data-icon);
+    font-size: $ico-size-m;
+    opacity: .36;
+    cursor: pointer;
+
+    @include respond-to('desktop') {
+      font-size: $ico-size-s;
+    }
   }
 
-  @include respond-to('phablet') {
-    &,
-    & + &,
-    &:last-child {
-      width: (100% / 2 - 1%);
-      border: 1px solid $frame-color;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding-bottom: 36%;
-      overflow: hidden;
+  &:nth-last-of-type(2) {
+    border-bottom: 0;
+  }
 
-      &::after {
-        content:'';
-        display: block;
+  &.total {
+    border-bottom: 0;
+    border-top: 2px solid $frame-color;
+    padding: 1rem 0 .5rem;
+    margin-right: 0;
+  }
+}
+
+.diary-media__upload-total {
+  display: block;
+  line-height: $button-height;
+  padding-left: 1rem;
+  font-weight: $bold;
+  white-space: nowrap;
+
+  &::before {
+    content: attr(data-label);
+    opacity: .75;
+  }
+
+  &::after {
+    content: attr(data-size);
+  }
+}
+
+.diary-media__file-details {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  &::before { // file name
+    content: attr(data-name);
+    padding-left: 1rem;
+  }
+
+  &::after { // file size
+    content: attr(data-size);
+    display: block;
+    font-size: .75rem;
+    opacity: .36;
+    padding-left: 1rem;
+  }
+}
+
+.diary-media__floating-button {
+  position: absolute;
+  right: 2rem;
+  bottom: 4rem;
+  font-size: 2rem;
+  line-height: $button-height;
+
+  @include when-inside('.diary-media__upload-progress') {
+    bottom: 2rem;
+  }
+}
+
+.inputfile {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.input.diary-media__upload {
+  label {
+    padding-top: 1rem;
+    padding-right: 1rem;
+
+    .file-upload__cta {
+      font-size: 1rem;
+
+      @include respond-to('tablet') {
+        font-size: 1.25rem;
       }
     }
   }
-}
-
-.diary-entry__timestamp {
-  font-size: .88rem;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  opacity: .36;
-}
-
-.diary-entry__user {
-  font-size: .88rem;
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  line-height: 2rem;
-
-  .user__avatar {
-    @include size(2rem);
-    display: inline-block;
-    border-radius: 2rem;
-    overflow: hidden;
-  }
-  .user__name {
-    display: inline-block;
-    font-weight: $bold;
-    padding-left: .36rem;
-  }
-}
-
-.diary-entry__content {
-  position: absolute;
-  top: 3.64rem;
-  left: 1rem;
-  right: 1rem;
-}
-
-.diary-entry__more {
-  @include size(1.64rem);
-  line-height: 1.64rem;
-  cursor: pointer;
-  display: block;
-  color: $text-color;
-  font-size: 1.5rem;
-  opacity: .64;
-  position: absolute !important;
-  bottom: .64rem;
-  right: 1rem;
-  text-align: center;
 
   @include on-event {
-    color: $text-color;
-    opacity: 1;
+    background-color: $accept-color;
+    color: $white;
   }
+
+}
+
+.diary-media__upload-progress {
+  position: relative;
+  border-top: 1px solid $frame-color;
+  max-height: 64vw;
+}
+
+.progress-bar {
+  position: absolute;
+  width: 66%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #f4c741;
+}
+
+.progress-bar-content {
+  height: 100%;
+  position: absolute;
+  line-height: 6rem;
+}
+
+.progress-bar-val {
+  color: $white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 1.64;
+  padding-left: .5rem;
+
+  &::after {
+    content: attr(data-name);
+    display: block;
+    padding-bottom: .5rem;
+  }
+}
+
+.diary-entries {
+
+  .diary-entry {
+    padding: 0 0 64%;
+    margin-bottom: 0;
+
+    & + & {
+      margin-top: 0;
+      margin-bottom: 0;
+      border-top-color: $white;
+    }
+
+    &:last-child {
+      margin-bottom: 1%;
+    }
+
+    @include respond-to('phablet') {
+      &,
+      & + &,
+      &:last-child {
+        width: 100% / 2 - 1%;
+        border: 1px solid $frame-color;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-bottom: 36%;
+        overflow: hidden;
+
+        &::after {
+          content: '';
+          display: block;
+        }
+      }
+    }
+  }
+
+  .diary-entry__timestamp {
+    font-size: .88rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    opacity: .36;
+  }
+
+  .diary-entry__user {
+    font-size: .88rem;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    line-height: 2rem;
+
+    .user__avatar {
+      @include size(2rem);
+
+      display: inline-block;
+      border-radius: 2rem;
+      overflow: hidden;
+    }
+
+    .user__name {
+      display: inline-block;
+      font-weight: $bold;
+      padding-left: .36rem;
+    }
+  }
+
+  .diary-entry__content {
+    position: absolute;
+    top: 3.64rem;
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .diary-entry__more {
+    @include size(1.64rem);
+
+    line-height: 1.64rem;
+    cursor: pointer;
+    display: block;
+    color: $text-color;
+    font-size: 1.5rem;
+    opacity: .64;
+    position: absolute !important;
+    bottom: .64rem;
+    right: 1rem;
+    text-align: center;
+
+    @include on-event {
+      color: $text-color;
+      opacity: 1;
+    }
+  }
+
 }

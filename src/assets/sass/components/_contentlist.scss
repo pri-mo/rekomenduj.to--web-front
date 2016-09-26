@@ -167,6 +167,7 @@
     width: $quart;
     margin: .5%;
     padding-bottom: 24.5%;
+    font-size: .75rem;
 
     &:nth-child(4n+2) {
       width: $quart;
@@ -344,6 +345,15 @@
         opacity: .88;
       }
     }
+    //tu
+    // .list-item__description {
+    //   color: $text-color;
+    //   display: block;
+    //   padding: .64rem 0;
+    //   border: 1px solid rgba($text-color, .11);
+    //   border-left: 0;
+    //   border-right: 0;
+    // }
   }
 
   // List type icons
