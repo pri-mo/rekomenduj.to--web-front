@@ -41,6 +41,8 @@
     }
 
     main {
+      padding-bottom: 2rem;
+
       @include respond-to('tablet') {
         @include grid--cell-width('8');
         @include grid--cell-push('1');
