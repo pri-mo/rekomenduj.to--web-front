@@ -4,7 +4,6 @@
   var numberOfImage = 0;
   var image = '';
 
-  // TODO funkcja źle przelicza rozmiar (MB = kb)... jeśli ma to jakieś znaczenie.
   function fileSizeSI(size) {
     var e = (Math.log(size) / Math.log(1e3)) | 0;
     return +(size / Math.pow(1e3, e)).toFixed(2) + ' ' + ('kMGTPEZY'[e - 1] || '') + 'B';
@@ -40,7 +39,7 @@
     for(var i = 0; i < files.length; i++){
       numberOfImage += 1;
       $ ("#c1-1").before(newLabel(numberOfImage, files[i]))
-      imagesToSend.set(numberOfImage, window.URL.createObjectURL(files[i]));
+      imagesToSend.set(numberOfImage, [window.URL.createObjectURL(files[i]), files[i].size]);
       document.querySelector("#image").src = window.URL.createObjectURL(files[i]);
     }
     if (files.length > 0 && card == 'c0'){
@@ -63,19 +62,16 @@
     updateTotalSizeToUpload();
   }
 
-  function setTotalSize(){
-    if ($(".diary-media__file-details").length == 0){
-      return 0;
-    }
-    return $(".diary-media__file-details").map(function () {
-      return parseFloat(/\d*\.\d*/.exec($(this).attr('data-size')))*1000;
-    }).toArray().reduce(function(x, y){
-      return x + y;
+  function calculateImagesTotalSize(){
+    var sum = 0;
+    imagesToSend.forEach(function(val, key, map){
+      sum += val[1];
     });
+    return sum;
   }
 
   function updateTotalSizeToUpload() {
-    $( "#totalSize" ).attr('data-size', fileSizeSI(setTotalSize()));
+    $( "#totalSize" ).attr('data-size', fileSizeSI(calculateImagesTotalSize()));
   }
 
   function openFileExpl(){
