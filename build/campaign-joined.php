@@ -158,7 +158,17 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
               </div>
             </div>
           </div>
-          <!-- <a class="list-item"></a> -->
+
+          <a href="#dontmove" class="list-item priority__item priority--points" data-points="120pkt" data-text="Wymień za">
+            <img src="assets/images/mkino.jpg" alt="" class="image--cover">
+            <span class="list-item__name">Wymień punkty na dwa bilety do Multikina</span>
+          </a>
+
+          <a href="#dontmove" class="list-item priority__item priority--points disabled" data-points="240pkt" data-text="Niestety, brakuje Ci">
+            <img src="assets/images/philipiak.jpg" alt="" class="image--cover">
+            <span class="list-item__name">Wymień punkty na zestaw garnków Philipiak</span>
+          </a>
+
           <!-- <a class="list-item"></a> -->
         </section>
 
