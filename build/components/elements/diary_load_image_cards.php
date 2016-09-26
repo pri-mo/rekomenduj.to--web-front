@@ -65,6 +65,7 @@
   }
 
   function setCardProgressHeight(){
+    fakeProgress('70%');
     $( "#card_upload_progress").css('height', $( "#card_list_images").height());
   }
 
@@ -74,6 +75,10 @@
     }else{
       $("#"+prev).hide(); $("#"+next).show();
     }
+  }
+
+  function fakeProgress(width) {
+    $ ( 'div#bar' ).css({'width': width});
   }
 
 </script>
@@ -90,7 +95,7 @@
 </div>
 
 <div id="card_list_images"
-  class="layout--card diary-media__upload-list diary__image-card--hide">
+  class="layout--card diary-media__upload-list diary-media__card--hide">
   <div id="summary"
     class="diary-media__items total">
     <div class="input input--file-upload input--button">
@@ -112,11 +117,10 @@
 </div>
 
 <div id="card_upload_progress"
-    class="layout--card diary-media__upload-progress diary__image-card--hide">
-  <div class="progress-bar">
-    <div class="progress-bar-content"></div>
+    class="layout--card diary-media__upload-progress diary-media__card--hide">
+  <div id="bar">
     <!-- TODO  switch when loading is complete -->
-    <label class="progress-bar-val"
+    <label
       data-size="21kB"
       data-total-size="251MB"
       onclick="changeCard('card_upload_progress','card_show_image')">Ładuję...</label>
@@ -127,9 +131,9 @@
 </div>
 
 <div id="card_show_image"
-  class="layout--card diary__image-card--hide">
+  class="layout--card diary-media__card--hide">
   <img id="image" src="image"/>
-  <span class="image-label"
+  <span class="diary-media__label--replace"
     data-icon="n"
     onclick="changeCard('card_show_image','card_add_images'); removeList()">WYMIEŃ</span>
 </div>
