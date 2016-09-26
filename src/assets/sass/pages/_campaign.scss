@@ -7,7 +7,6 @@
   background-color: $white;
   padding-left: 0;
   padding-right: 0;
-
   box-shadow: $shadow-3;
 }
 
@@ -56,9 +55,13 @@
 
 .cs__item {
   @include display(flex);
+
   @include box-pack(center);
+
   @include box-align(center);
+
   @include justify-content(center);
+
   @include align-items(center);
 
   text-align: center;
@@ -93,8 +96,13 @@
       }
     }
 
-    ul {list-style-type: disc;}
-    ol {list-style-type: decimal;}
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
   }
 
   .link__toggle-more {
@@ -124,16 +132,20 @@
 // campaign__tasks__item
 .campaign__tasks {
   @include display(flex);
+
   @include flex-flow(row wrap);
+
   position: relative;
   margin: calc(1rem - 1%);
 
   @include respond-to('tablet') {
-    margin: calc(1rem - 1%) -.5%;
+    margin: calc(1rem - 1%) -0.5%;
   }
+
 
   > .campaign__tasks__item {
     @include flex(0 1 auto);
+
     // color: $white;
     border: 1px solid $frame-color;
     background-color: $white;
@@ -157,6 +169,7 @@
 
     .task__icon {
       @extend %social-logo;
+
       line-height: 1;
       display: block;
       font-size: 3rem;
@@ -169,15 +182,17 @@
       width: calc(25% - 4px);
     }
 
+
     @include on-event {
       background-color: $brand-color;
       border-color: $brand-color;
 
-      * { color: $white; }
+      * {
+        color: $white;
+      }
     }
   }
 }
-
 
 // ---------------------------------------------------------
 //  Main campaign tasks
@@ -187,7 +202,6 @@
 }
 
 .priority__item {
-
   .doublesided__side-a {
     .doublesided__trigger {
       font-weight: $bold;
@@ -197,7 +211,9 @@
   }
 
   .doublesided__side-b {
-    //
+    .doublesided__trigger {
+      color: $text-color;
+    }
   }
 
   &.priority--share {
@@ -246,6 +262,7 @@
 
       &::before {
         @include size(100% 1px);
+
         content: '';
         display: block;
         background-color: $frame-color;
@@ -260,12 +277,13 @@
       right: 1rem;
       text-align: center;
 
-      > div {display: inline-block;}
+      > div {
+        display: inline-block;
+      }
     }
   }
 
   &.priority--hashtag {
-
     .doublesided__side-b {
       padding-bottom: 4rem;
 
@@ -289,16 +307,18 @@
         display: block;
         padding: 1rem;
         margin-bottom: 1rem;
-        border-bottom: 1px solid rgba($white, .22);
+        border-bottom: 1px solid rgba($white, 0.22);
       }
 
       strong {
         //
+
       }
     }
 
     .priority--hashtag__upload {
       margin: -1rem -1rem 0;
+
       // border-bottom: 1px solid  $frame-color;
       background-color: $accept-color;
       color: $white;
@@ -310,8 +330,11 @@
 
     .priority--hashtag__social-channels {
       @include display(flex);
+
       @include align-items(stretch);
+
       @include justify-content(space-between);
+
       position: absolute;
       bottom: 1rem;
       left: 1rem;
@@ -320,9 +343,11 @@
       > div,
       > a {
         @include flex(0 1 auto);
+
         @include size(4rem);
+
         border-radius: 50%;
-        background-color: rgba(0, 0, 0, .11);
+        background-color: rgba(0, 0, 0, 0.11);
         cursor: pointer;
 
         &:first-child {
@@ -343,12 +368,14 @@
       }
 
       .social-channels__item {
-        @include transform( translateZ(-1px) );
+        @include transform(translateZ(-1px));
+
         overflow: hidden;
         border-radius: 50%;
 
         &::before {
-          @include transition(background-color .25s ease);
+          @include transition(background-color 0.25s ease);
+
           background-color: rgba($white, 0);
           display: block;
           border-radius: 50%;
@@ -366,13 +393,24 @@
           position: relative;
 
           &::before {
-            @include animation(toggleChannel .25s ease forwards);
+            @include animation(toggleChannel 0.25s ease forwards);
           }
 
-          &.item--facebook::before { background-color: $color-facebook; }
-          &.item--twitter::before { background-color: $color-twitter; }
-          &.item--google::before { background-color: $color-google-plus; }
-          &.item--instagram::before { background-color: $color-instagram; }
+          &.item--facebook::before {
+            background-color: $color-facebook;
+          }
+
+          &.item--twitter::before {
+            background-color: $color-twitter;
+          }
+
+          &.item--google::before {
+            background-color: $color-google-plus;
+          }
+
+          &.item--instagram::before {
+            background-color: $color-instagram;
+          }
         }
 
         @at-root {
@@ -380,6 +418,7 @@
             0% {
               @include transform(scale(0));
             }
+
             100% {
               @include transform(scale(1));
             }
@@ -388,6 +427,7 @@
 
         span {
           //
+
         }
       }
 
@@ -406,10 +446,8 @@
   }
 }
 
-
-
 .campaign__social-feed {
-  $spacing: .5;
+  $spacing: 0.5;
   $spacing-pr: $spacing * 1%;
   $spacing-vw: $spacing * 1vw;
 
@@ -435,6 +473,7 @@
       }
     }
 
+
     @include respond-to('desktop') {
       width: calc((100% / 3) - (#{$spacing-pr} * 2));
       height: calc((100vw / 4) - (#{$spacing-vw} * 3));
@@ -444,6 +483,7 @@
         width: calc(50% - (#{$spacing-pr} * 2));
       }
     }
+
 
     &.cover__container {
       border: 0;
@@ -480,6 +520,7 @@
 
     .social-feed__icon {
       @extend %social-logo;
+
       font-size: 2rem;
       line-height: 1;
       position: absolute;
@@ -495,13 +536,13 @@
   }
 }
 
-
 // Tasks variations ------------------------------------------------------------
 .task--other {
   color: #f26522;
 
   .task__icon::before {
     @extend %reko-glyph;
+
     content: '\53';
     font-size: 3.36rem;
     line-height: .75;
@@ -676,7 +717,6 @@
     content: '\73';
   }
 }
-
 
 // Social Feed channels -----------------------------------------------------------
 .item--facebook {
