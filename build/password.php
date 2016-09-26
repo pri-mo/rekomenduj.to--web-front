@@ -2,7 +2,7 @@
 
 $lang = 'pl';
 
-$tagsBodyBasic = 'preload device--mobile scope--inside';
+$tagsBodyBasic = 'preload scope--outside device--mobile';
 
 $tagsNav = 'nav--transparent';
 $tagsTemplate = 'template--intro';
@@ -12,28 +12,28 @@ $tagsTemplate = 'template--intro';
 <!DOCTYPE html>
 <html lang="<?php echo $lang ?>">
 <head>
-  <?php include 'components/head.php' ?>
+  <?php include 'public/components/head.php' ?>
 </head>
 
 <body class="<?php echo $tagsBodyBasic . ' ' . $tagsNav . ' ' . $tagsTemplate ?>">
-  <?php include 'components/bof-scripts.php' ?>
+  <?php include 'public/components/bof-scripts.php' ?>
 
   <div class="page__wrapper">
 
-    <?php // include 'components/nav.php' ?>
+    <?php include 'public/components/nav.php' ?>
 
-    <main>
+    <main class="layout--fullscreen paint--brand">
 
       <?php
-      $signup = false; $passremind = true;
+      $signup = false; $passremind = true; $passchange = false;
       include 'content/sign-form.php'
       ?>
 
     </main>
 
-    <?php include 'components/footer.php' ?>
+    <?php include 'public/components/footer.php' ?>
   </div>
 
-  <?php include 'components/eof-scripts.php' ?>
+  <?php include 'public/components/eof-scripts.php' ?>
 </body>
 </html>

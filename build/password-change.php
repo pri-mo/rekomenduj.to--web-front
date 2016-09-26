@@ -25,7 +25,7 @@ $tagsTemplate = 'template--intro';
     <main class="layout--fullscreen paint--brand">
 
       <?php
-      $signup = true; $passremind = false; $passchange = false;
+      $signup = false; $passremind = false; $passchange = true;
       include 'content/sign-form.php'
       ?>
 
