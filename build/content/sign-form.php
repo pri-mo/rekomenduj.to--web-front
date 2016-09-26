@@ -19,7 +19,7 @@
       data-focused="Moje hasło"
       data-original="Podaj swoje hasło">Podaj swoje hasło</label>
 
-      <div class="input__show-password" id="showPass" data-label="Pokaż hasło"></div>
+      <div class="input__show-password" id="showPass" data-label-show="Pokaż hasło" data-label-hide="Ukryj hasło"></div>
     </div>
     <?php } ?>
 

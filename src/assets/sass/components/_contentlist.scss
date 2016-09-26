@@ -118,13 +118,6 @@
     right: 20%;
   }
 
-  // List item sizes
-  $solo: 100% - 1%;
-  $half: 100% / 2 - 1%;
-  $third: 100% / 3 - 1%;
-  $two-third: 200% / 3 - 1%;
-  $quart: 100% / 4 - 1%;
-
   // List item on Phablet
   @include respond-to('phone-long' and 'phablet') {
     width: $half;
@@ -268,7 +261,8 @@
 .list-item--doublesided {
   @include perspective(1000px);
 
-  padding: 0 0 100% 0;
+  padding: 0;
+  padding-bottom: $half;
   background-color: transparent !important;
   box-shadow: none !important;
   border: 0;

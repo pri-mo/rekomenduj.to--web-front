@@ -202,6 +202,8 @@
 }
 
 .priority__item {
+  padding-bottom: $two-third;
+
   .doublesided__side-a {
     .doublesided__trigger {
       font-weight: $bold;
@@ -448,6 +450,68 @@
           padding: 0;
         }
       }
+    }
+  }
+
+  &.priority--points {
+    width: 100%;
+    padding-bottom: $half;
+
+    @include respond-to('phone-long') {
+      width: $half;
+      padding-bottom: $quart;
+    }
+
+    &::before,
+    &::after {
+      display: block;
+      position: absolute;
+      opacity: 1;
+      width: calc(36% - 1rem);
+      text-align: right;
+    }
+
+    &::before {
+      content: '';
+      background-color: $brand-color;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+    }
+
+    &::after {
+      content: attr(data-text) ' ' attr(data-points);
+      font-size: 1.36rem;
+      font-weight: $heavy;
+      letter-spacing: -.036em;
+      bottom: .5rem;
+      right: 1rem;
+
+      @include respond-to('tablet') {
+        font-size: 1.64rem;
+      }
+    }
+
+    &.cover__container {
+      border: 0;
+    }
+
+    &.disabled {
+      &::before {
+        background-color: $accent-color;
+      }
+      &::after {
+        content: attr(data-text) ' ' attr(data-points);
+      }
+
+      .image--cover {
+        @include filter(grayscale(100%));
+        opacity: .25;
+      }
+    }
+
+    .list-item__name {
+      padding-right: 20%;
     }
   }
 
