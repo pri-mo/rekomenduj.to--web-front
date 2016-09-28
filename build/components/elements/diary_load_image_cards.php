@@ -70,11 +70,7 @@
   }
 
   function changeCard(prev, next){
-    if(prev == 'card_list_images' && imagesToSend.length == 0){
-      console.log('dodaj min 1 zdjecie');
-    }else{
-      $("#"+prev).hide(); $("#"+next).show();
-    }
+    $("#"+prev).hide(); $("#"+next).show();
   }
 
   function fakeProgress(width) {
