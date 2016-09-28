@@ -398,6 +398,12 @@ footer {
   padding-top: 7rem !important;
   margin-bottom: 1rem;
 
+  &.public {
+    padding-top: 2rem !important;
+    background-color: darken($white, 23%)!important;
+    counter-reset: section;
+  }
+
   &.paint--brand { color: $white; }
 }
 
