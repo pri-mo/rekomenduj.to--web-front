@@ -91,7 +91,7 @@
 </div>
 
 <div id="card_list_images"
-  class="layout--card diary-media__upload-list diary-media__card--hide">
+  class="layout--card diary-media__upload-list" style="display: none">
   <div id="summary"
     class="diary-media__items total">
     <div class="input input--file-upload input--button">
@@ -113,7 +113,7 @@
 </div>
 
 <div id="card_upload_progress"
-    class="layout--card diary-media__upload-progress diary-media__card--hide">
+    class="layout--card diary-media__upload-progress " style="display: none">
   <div id="bar">
     <!-- TODO  switch when loading is complete -->
     <label
@@ -127,7 +127,7 @@
 </div>
 
 <div id="card_show_image"
-  class="layout--card diary-media__card--hide">
+  class="layout--card " style="display: none">
   <img id="image" src="image"/>
   <span class="diary-media__label--replace"
     data-icon="n"
