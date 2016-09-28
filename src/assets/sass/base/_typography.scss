@@ -135,7 +135,7 @@ li {
 }
 a {
   .content--privacy-policy & {
-    color: $black;
+    color: $black !important;
     &:hover {
       color: $brand-color!important;
     }
