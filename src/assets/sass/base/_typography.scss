@@ -69,18 +69,23 @@ h1 {
 
 h2 {
   font-size: $header-2;
-  // counter-reset: subsection;
 
   .content--small-type & {
     font-size: $header-3;
   }
 
   .content--terms-and-condition & {
-    counter-reset: subsection;
 
     &::before {
       counter-increment: section;
       content: counter(section, upper-roman) '. ';
+    }
+  }
+  .content--privacy-policy & {
+
+    &::before {
+      counter-increment: section;
+      content: counter(section) '. ';
     }
   }
 }
@@ -119,6 +124,20 @@ li {
   .content--terms-and-condition & {
     @include respond-to('tablet') {
       text-align: justify;
+    }
+  }
+  .content--privacy-policy & {
+    list-style-type: none !important;
+    @include respond-to('tablet') {
+      text-align: justify;
+    }
+  }
+}
+a {
+  .content--privacy-policy & {
+    color: $black !important;
+    &:hover {
+      color: $brand-color!important;
     }
   }
 }

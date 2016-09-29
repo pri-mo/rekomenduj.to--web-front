@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <link rel="import" href="bower_components/paper-card/paper-card.html" />
+  <link rel="import" href="bower_components/paper-button/paper-button.html"  />
+  <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html"  />
+  <link rel="import" href="bower_components/paper-material/paper-material.html"  />
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html"  />
+  <link rel="import" href="bower_components/iron-collapse/iron-collapse.html"  />
+  <link rel="import" href="bower_components/iron-icon/iron-icon.html"  />
+  <link rel="import" href="bower_components/iron-icons/iron-icons.html"  />
+  <link rel="import" href="bower_components/iron-pages/iron-pages.html"  />
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html" />
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button-light.html" />
+  <link rel="import" href="bower_components/app-layout/app-header/app-header.html"  />
+  <link rel="import" href="bower_components/app-layout/app-header-layout/app-header-layout.html"  />
+  <link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html"  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+
+  <paper-toolbar>
+    <paper-icon-button icon="menu" title="menu"></paper-icon-button>
+    <span class="title">Rekomenduj.to</span>
+    <paper-icon-button icon="refresh"></paper-icon-button>
+    <paper-icon-button icon="add">+</paper-icon-button>
+  </paper-toolbar>
+
+  <iron-pages selected="0">
+      <paper-card heading="Aktualna kampania" image="https://unsplash.it/600/300?image=971" alt="Aktualna kampania" style="margin:2%;">
+        <div class="card-content" style="text-align: justify!important">
+          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+        </div>
+      </paper-card>
+
+      <paper-card heading="Aktualna kampania" image="https://unsplash.it/600/300?image=856" alt="Aktualna kampania" style="margin:2%;">
+        <div class="card-content" style="text-align: justify!important">
+          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+        </div>
+      </paper-card>
+
+      <paper-card heading="Aktualna kampania" image="https://unsplash.it/600/300?image=949" alt="Aktualna kampania" style="margin:2%;">
+        <div class="card-content" style="text-align: justify!important">
+          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+        </div>
+      </paper-card>
+  </iron-pages>
+
+  <script>
+    var pages = document.querySelector('iron-pages');
+    pages.addEventListener('click', function(e) {
+      pages.selectNext();
+    });
+  </script>
+
+  <paper-toolbar style="margin-top:2%; margin-bottom:2%">
+    <span>Archiwalne kampanie</span>
+  </paper-toolbar>
+
+<div class="w3-row-padding">
+  <div class="w3-third">
+    <paper-card heading="kampania 1"
+    image="https://unsplash.it/300/300?image=856"
+    alt="kampania 1">
+      <div class="card-content">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </div>
+    </paper-card>
+  </div>
+
+  <div class="w3-third">
+    <paper-card heading="kampania 2"
+    image="https://unsplash.it/300/300?image=1062"
+    alt="kampania 2">
+      <div class="card-content">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </div>
+    </paper-card>
+  </div>
+
+  <div class="w3-third">
+    <paper-card heading="kampania 3"
+    image="https://unsplash.it/300/300?image=835"
+    alt="kampania 3">
+      <div class="card-content">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </div>
+    </paper-card>
+  </div>
+
+  <div class="w3-third" style="padding-top:2%!important">
+    <paper-card heading="kampania 1"
+    image="https://unsplash.it/300/300?image=842"
+    alt="kampania 1">
+      <div class="card-content">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </div>
+    </paper-card>
+  </div>
+</div>
+<paper-toolbar style="margin-top:2%; margin-bottom:2%">
+  <span>Feed</span>
+</paper-toolbar>
+<div class="w3-row-padding">
+  <div class="w3-third">
+    <paper-card heading="#rekomendujto"
+    image="https://unsplash.it/300/300?image=853"
+    alt="#rekomendujto">
+      <div class="card-content">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </div>
+    </paper-card>
+  </div>
+
+  <div class="w3-third">
+    <paper-card heading="#rekomendujto"
+    image="https://unsplash.it/300/300?image=855"
+    alt="#rekomendujto">
+      <div class="card-content">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </div>
+    </paper-card>
+  </div>
+  <div class="w3-third">
+    <paper-card heading="#rekomendujto"
+    image="https://unsplash.it/300/300?image=885"
+    alt="#rekomendujto">
+      <div class="card-content">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </div>
+    </paper-card>
+  </div>
+  <div class="w3-third" style="padding-top:2%!important">
+    <paper-card heading="#rekomendujto"
+    image="https://unsplash.it/300/300?image=833"
+    alt="#rekomendujto">
+      <div class="card-content">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </div>
+    </paper-card>
+  </div>
+</div>
+<paper-toolbar style="margin-top:2%; margin-bottom:2%">
+  <span>Footer</span>
+</paper-toolbar>
+</body>
+</html>
