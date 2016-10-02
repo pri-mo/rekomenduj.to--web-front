@@ -30,6 +30,8 @@
     </div></div>
     <div class="nav__icon--logo" data-icon="A" tabindex="0" id="triggerLogo"></div>
     <a href="notifications.php" class="nav__icon--inbox  inbox--notify no-ripple" data-icon="M" tabindex="0" id="triggerInbox"></a>
+    <!-- TODO if there is no Notifications -->
+    <!-- <a href="" class="nav__icon--inbox no-ripple" data-icon="M" tabindex="0" id="triggerInbox"></a> -->
   </div>
   <?php
   if (strpos($tagsNav, 'nav--double') !== false) {
