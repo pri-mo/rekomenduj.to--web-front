@@ -24,7 +24,7 @@ nav a {
 
   &.content--to-side {
     header,
-    main {
+    main, footer {
       @include transform(translate3d($menu-width, 0, 0));
 
       @include transition(transform 0.36s);
