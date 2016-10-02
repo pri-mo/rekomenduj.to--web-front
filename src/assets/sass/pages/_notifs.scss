@@ -77,3 +77,22 @@ $notifs-icon-space: 2 * $notifs-padding + $notifs-icon-size;
 .notifs {
   margin-top: 1rem;
 }
+
+.notifis-empty {
+  text-align:center;
+  width:100%;
+  color:darken($white, 15%);
+}
+.notifis-empty-info {
+  font-size: $header-1;
+  font-weight: $light;
+  color: $grey;
+  &::after {
+    display: block;
+    content: attr(data-name);
+    font-size: $header-3;
+  }
+}
+.notifis-empty-icon {
+  font-size:($ico-size-xl * 1.25);
+}

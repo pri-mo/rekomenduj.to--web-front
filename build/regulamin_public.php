@@ -5,7 +5,7 @@ $lang = 'pl';
 $tagsBodyBasic = 'preload scope--outside device--mobile';
 
 $tagsNav = '';
-$tagsTemplate = '';
+$tagsTemplate = 'template--plain';
 
 ?>
 
