@@ -68,6 +68,10 @@
   background-color: $white;
   width: 80vw;
 
+  &.cs__item--video {
+    background-color: $black;
+  }
+
   .cslider__txt-content {
     padding: 1rem;
   }
@@ -201,18 +205,35 @@
   margin-top: 0 !important;
 }
 
-.priority__item {
-  padding-bottom: $two-third;
+.list-item.priority__item {
+  padding-bottom: $solo;
+  width: $solo;
+
+  @include respond-to('tablet') {
+    padding-bottom: $half;
+    width: $half;
+  }
+
+  @include respond-to('desktop') {
+    width: $third;
+    padding-bottom: $third;
+  }
+
+  .image--cover {
+    opacity: 1;
+  }
+
+  @include on-event {
+    .image--cover {
+      opacity: .64;
+    }
+  }
 
   .doublesided__side-a {
     .doublesided__trigger {
       font-weight: $bold;
       text-transform: uppercase;
       letter-spacing: .05em;
-
-      @include respond-to('tablet') {
-        font-size: 1.15rem;
-      }
     }
   }
 
@@ -228,8 +249,8 @@
       bottom: 1rem;
       left: 1rem;
       right: 1rem;
-      font-size: .88rem;
       line-height: 1.36em;
+      padding: 1.5rem 0px;
     }
 
     .priority--share__post-preview {
@@ -306,21 +327,21 @@
       bottom: 1rem;
       left: 1rem;
       right: 1rem;
-      text-align: center;
-      font-size: 1.25rem;
-      line-height: 1.15;
+      // text-align: center;
+      // font-size: 1.25rem;
+      line-height: 1.36;
 
       span {
         display: block;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid rgba($white, 0.22);
+        padding: 1.5rem 0;
+        // margin-bottom: 1rem;
+        // border-bottom: 1px solid rgba($white, 0.22);
       }
 
-      strong {
-        //
+      // strong {
+      //   //
 
-      }
+      // }
     }
 
     .priority--hashtag__upload {
@@ -462,6 +483,7 @@
       padding-bottom: $quart;
     }
 
+
     &::before,
     &::after {
       display: block;
@@ -473,7 +495,6 @@
 
     &::before {
       content: '';
-      background-color: $brand-color;
       top: -1px;
       right: -1px;
       bottom: -1px;
@@ -481,42 +502,41 @@
 
     &::after {
       content: attr(data-text) ' ' attr(data-points);
-      font-size: 1.36rem;
-      font-weight: $heavy;
+      font-size: 1rem;
+      font-weight: $bold;
       letter-spacing: -.036em;
       bottom: .5rem;
       right: 1rem;
-
-      @include respond-to('tablet') {
-        font-size: 1.64rem;
-      }
     }
 
     &.cover__container {
       border: 0;
+
+      .image--cover,
+      &:hover .image--cover {
+        opacity: 1;
+      }
     }
 
     &.disabled {
-      &::before {
-        background-color: $accent-color;
-      }
       &::after {
         content: attr(data-text) ' ' attr(data-points);
       }
 
       .image--cover {
-        @include filter(grayscale(100%));
-        opacity: .25;
+        // @include filter(grayscale(100%));
+        opacity: .75 !important;
+      }
+
+      .list-item__name {
+        opacity: .75;
       }
     }
 
     .list-item__name {
+      font-size: 1.36rem;
       padding-right: 20%;
     }
-  }
-
-  @include respond-to('desktop') {
-    width: calc((100% / 3) - 4px);
   }
 }
 

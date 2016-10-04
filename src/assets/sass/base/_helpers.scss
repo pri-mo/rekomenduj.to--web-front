@@ -29,6 +29,24 @@
   white-space: nowrap;
 }
 
+// Content flow
+.flow--right {
+  text-align: right;
+}
+
+.flow--center {
+  text-align: center;
+}
+
+.flow--left,
+.flow--right,
+.flow--center {
+  .button {
+    @include transform(translate3d(0, 0, 0) !important);
+    margin: 0 !important;
+  }
+}
+
 // Hide element while making it readable for screen readers
 // Shamelessly borrowed from HTML5Boilerplate:
 // https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133

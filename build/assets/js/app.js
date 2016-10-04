@@ -203,12 +203,12 @@ function updPicks() {
 
         if ( imgRatio >= parRatio ) {
           if ( compareRatios < 1 && ratioDifference < 0.164 && ratioDifference > 0 ){
-            if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
+            if ( !$el.hasClass('cover--height') ) $el.removeClass('cover--width').addClass('cover--height');
           } else {
-            if ( !$el.hasClass('cover-width') ) $el.removeClass('cover--height').addClass('cover--width');
+            if ( !$el.hasClass('cover--width') ) $el.removeClass('cover--height').addClass('cover--width');
           }
         } else {
-          if ( !$el.hasClass('cover-height') ) $el.removeClass('cover--width').addClass('cover--height');
+          if ( !$el.hasClass('cover--height') ) $el.removeClass('cover--width').addClass('cover--height');
         }
         // console.log($(this).parent().attr('data-index') + ': widthRatio: ' + widthRatio + '; ' + parRatio + ' / ' + imgRatio + '\n   (diff:' + ratioDifference + ') (comp:' + compareRatios + ')');
       });

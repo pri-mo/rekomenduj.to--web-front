@@ -65,13 +65,13 @@
 
   @include transition(0.36s);
 
-  width: 100% - 2%;
+  width: $solo;
   height: 0;
   margin: 1%;
   background-color: $white;
   border: 1px solid $frame-color;
   color: $text-color;
-  padding: 0 0 50%;
+  padding: 0 0 $solo;
   position: relative;
 
   &[data-label] {
@@ -122,17 +122,17 @@
   @include respond-to('phone-long' and 'phablet') {
     width: $half;
     margin: .5%;
-    padding-bottom: 50%;
+    padding-bottom: $half;
 
     &.priority__item {
-      width: 99%;
-      padding-bottom: 75%;
+      width: $solo;
+      padding-bottom: $solo;
     }
 
     &.list-item--doublesided,
     &.list-item--campaign {
-      width: 99%;
-      padding-bottom: 50%;
+      width: $solo;
+      padding-bottom: $half;
     }
   }
 
@@ -140,16 +140,16 @@
   // List item on tablet
   @include respond-to('tablet') {
     width: $third;
-    padding-bottom: 36%;
+    padding-bottom: $third;
 
-    &:nth-child(4n+2) {
+    &:nth-of-type(4n+2) {
       width: $two-third;
     }
 
     &.list-item--doublesided,
     &.list-item--campaign {
       width: $half;
-      padding-bottom: 50%;
+      padding-bottom: $half;
 
       .list-item__name {
         font-size: $header-2;
@@ -157,7 +157,7 @@
 
       &:only-child {
         width: $solo;
-        padding-bottom: 36%;
+        padding-bottom: $half;
       }
     }
   }
@@ -167,7 +167,7 @@
   @include respond-to('desktop') {
     width: $quart;
     margin: .5%;
-    padding-bottom: 24.5%;
+    padding-bottom: $quart;
     font-size: .75rem;
 
     &:nth-child(4n+2) {
@@ -176,16 +176,17 @@
 
     &:nth-child(5n+3) {
       width: $half;
-      padding-bottom: 24.5%;
+      padding-bottom: $quart;
     }
 
     &.list-item--doublesided,
     &.list-item--campaign {
       width: $half;
+      padding-bottom: $half;
 
       &:only-child {
         width: $solo;
-        padding-bottom: 36%;
+        padding-bottom: $third;
       }
     }
   }

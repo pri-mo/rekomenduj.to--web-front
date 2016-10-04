@@ -28,6 +28,12 @@ $tagsTemplate = 'template--public template--full-width template--home';
       <section class="layout--base header">
         <div class="header__container">
           <div class="header__background"></div>
+          <div class="video__container">
+            <video autoplay loop="true" width="100%" height="100%">
+              <source type="video/mp4" src="/assets/cover-video.mp4">
+            </video>
+          </div>
+
           <div class="layout__container header__content">
             <h1>Niezwykła siła zwykłych rozmów.</h1>
             <h3>A Ty, co dzisiaj polecisz?</h3>
@@ -60,59 +66,47 @@ $tagsTemplate = 'template--public template--full-width template--home';
         </div>
       </section>
 
-      <section class="layout__container grid__wrapper">
-        <div class="grid__item grid__xs-span--6 grid__span--3">
-          <a href="" class="comp__hero-link tint-cover">
-            <img class="image--cover" src="assets/images/backs/ph1.jpg" alt="">
-            <span class="text--cta">Jesteś influencerem?</span>
-          </a>
-        </div>
-        <div class="grid__item grid__xs-span--6 grid__span--3">
-          <a href="" class="comp__hero-link tint-cover">
-            <img class="image--cover" src="assets/images/backs/ph3.jpg" alt="">
-            <span class="text--cta">Masz pytania?</span>
-          </a>
-        </div>
-        <div class="grid__item grid__xs-span--6 grid__span--3">
-          <a href="" class="comp__hero-link tint-cover">
-            <img class="image--cover" src="assets/images/backs/ph6.jpg" alt="">
-            <span class="text--cta">Poznaj nasze akcje...</span>
-          </a>
-        </div>
-        <div class="grid__item grid__xs-span--6 grid__span--3">
-          <a href="" class="comp__hero-link tint-cover">
-            <img class="image--cover" src="assets/images/backs/ph9.jpg" alt="">
-            <span class="text--cta">Chcesz zorganizować własną kampanię?</span>
-          </a>
-        </div>
-      </section>
-
       <section class="layout__container grid__wrapper grid--simple-rwd">
-        <div class="grid__item grid__span--3 comp__stat">
-          <div class="grid__content">
-            <div class="stat__content--num">6,7 mln</div>
-            <div class="stat__content--desc">Znajomych, którzy przetestowali produkty w kampaniach Rekomenduj.to</div>
+        <div class="grid__item grid__span--6">
+          <div href="" class="comp__rich-feature">
+            <div class="rich-feature__back-image"><img class="image--cover" src="assets/images/home-akcje.jpg" alt=""></div>
+            <div class="rich-feature__content">
+              <h3 class="headline">Poznaj nasze akcje...</h3>
+              <p><strong>2,5 mln osób</strong> wzięło udział w naszych akcjach. Zobacz jakie kampanie zrealizowaliśmy.</p>
+              <div class="flow--left"><a href="#dontmove" class="button">Nasze kampanie</a></div>
+            </div>
           </div>
         </div>
-        <div class="grid__item grid__span--3 comp__stat">
-          <div class="grid__content">
-            <div class="stat__content--num">86,5 tys.</div>
-            <div class="stat__content--desc">Blogerów w naszej społeczności</div>
+        <div class="grid__item grid__span--6">
+          <div href="" class="comp__rich-feature">
+            <div class="rich-feature__back-image"><img class="image--cover" src="assets/images/home-blogger.jpg" alt=""></div>
+            <div class="rich-feature__content">
+              <h3 class="headline">Jesteś influencerem?</h3>
+              <p>Nasza społeczność influencerów dociera do <strong>12 mln osób</strong>. Bądź jednym z nich i bierz udział w naszych kampaniach! </p>
+              <div class="flow--left"><a href="#dontmove" class="button">Poznaj szczegóły</a></div>
+            </div>
           </div>
         </div>
-        <div class="grid__item grid__span--3 comp__stat">
-          <div class="grid__content">
-            <div class="stat__content--num">386,6 tys.</div>
-            <div class="stat__content--desc">Produktów testowanych przez naszą społeczność</div>
+        <div class="grid__item grid__span--6">
+          <div href="" class="comp__rich-feature">
+            <div class="rich-feature__back-image"><img class="image--cover" src="assets/images/home-kampania.jpg" alt=""></div>
+            <div class="rich-feature__content">
+              <h3 class="headline">Chcesz zorganizować własną kampanię?</h3>
+              <p>Wygenerowaliśmy <strong>ponad 130 tys. insightów</strong> na temat testowanych produktów. Postaw na marketing rekomendacji i poznaj niezwykłą siłę swoich konsumentów. </p>
+              <div class="flow--left"><a href="#dontmove" class="button">Twoja kampania</a></div>
+            </div>
           </div>
         </div>
-        <div class="grid__item grid__span--3 comp__stat">
-          <div class="grid__content">
-            <div class="stat__content--num">12,3 mln</div>
-            <div class="stat__content--desc">Wypowiedzi Ambasadorów naszych akcji</div>
+        <div class="grid__item grid__span--6">
+          <div href="" class="comp__rich-feature">
+            <div class="rich-feature__back-image"><img class="image--cover" src="assets/images/home-questions.jpg" alt=""></div>
+            <div class="rich-feature__content">
+              <h3 class="headline">Masz pytania?</h3>
+              <p><strong>85% Polaków rekomenduje produkty swoim znajomym</strong>. Wierzymy w siłę marketingu rekomendacji. Dowiedz się na czym polegają nasze akcje i jak zostać Ambasadorem swoich ulubionych marek.</p>
+              <div class="flow--left"><a href="#dontmove" class="button">Poznaj odpowiedzi</a></div>
+            </div>
           </div>
         </div>
-
       </section>
 
     </main>

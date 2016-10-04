@@ -145,6 +145,8 @@ $max-width: 1330px !default;
 // $column: 8.3928571429%;
 $column: 235 / 2800 * 100%;
 $gutter-size: 100% * .0125 !default;
+$large-gutter-size: 100% * .025 !default;
+
 $cell-size: $column;
 $cell-size--no-gutter: 100% / 12;
 $grid: (

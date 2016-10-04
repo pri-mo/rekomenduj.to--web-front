@@ -14,18 +14,23 @@
   color: $content;
   cursor: pointer;
   display: inline-block;
-  font-size: 1.36rem;
+  font-size: ($button-height / 3);
   font-weight: $regular;
-  line-height: 1em;
+  line-height: $button-height;
   max-width: 20rem;
   min-width: $button-height;
   min-height: $button-height;
   overflow: hidden;
-  padding: 1.1rem 2rem;
+  padding: 0 ($button-height / 2);
   position: relative;
   text-align: center;
   white-space: nowrap;
   z-index: 1;
+
+  @include respond-to('tablet') {
+    // font-size: 1.15rem;
+    // line-height: 1;
+  }
 
   .ink {
     background-color: transparentize($text-color, .88);
@@ -77,7 +82,7 @@
   &:only-child {
     @include transform(translate3d(-50%, 0, 0));
     margin: 0 0 0 50%;
-    min-width: 50%;
+    // min-width: 50%;
   }
 
   @include on-event {
@@ -102,10 +107,10 @@
   [data-icon] {
     display: inline-block;
     font-size: 1.25em;
-    line-height: 1;
-    margin-bottom: -.3em;
+    line-height: $button-height;
+    margin-bottom: -.36em;
     position: relative;
-    top: -.1em;
+    // top: -.1em;
   }
 
   &.button--icon {

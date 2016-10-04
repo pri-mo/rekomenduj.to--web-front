@@ -29,15 +29,16 @@ h4 {
   }
 
   &.headline {
+    color: $brand-color-darker;
     line-height: 1.5;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     margin-bottom: 2rem;
     position: relative;
 
+
     &::after {
-      @include size(5rem .36rem);
-      background-color: $accent-color;
-      border-radius: .64rem;
+      @include size(5rem 2px);
+      background-color: $brand-color-lighter;
       bottom: 0;
       content: '';
       left: 0;
