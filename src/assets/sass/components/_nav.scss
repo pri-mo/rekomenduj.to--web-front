@@ -1,5 +1,7 @@
 $menu-width: calc(100% - 3.64rem);
 $nav-padding: 0.15em 0.36em;
+$nav-transition: 'background-color .64s, box-shadow .36s, height .36s';
+$cube: 1.36rem;
 
 // General navigation styles
 nav ul {
@@ -18,41 +20,8 @@ nav a {
   }
 }
 
-// Mobile setup
-.device--mobile {
-  transition: padding .3s;
-
-  &.content--to-side {
-    header,
-    main, footer {
-      @include transform(translate3d($menu-width, 0, 0));
-
-      @include transition(transform 0.36s);
-    }
-
-    main {
-      a,
-      button {
-        pointer-events: none;
-      }
-    }
-  }
-
-  &.nav--single {
-    padding-top: $nav-height;
-  }
-
-  &.nav--double {
-    padding-top: $nav-height * 2;
-  }
-}
-
 // Nav bar inside the app
 .scope--inside {
-  $nav-transition: 'background-color .64s, box-shadow .36s, height .36s';
-
-  // 3D Menu Trigger
-  $cube: 1.36rem;
 
   .nav--primary,
   .nav--secondary {
@@ -257,18 +226,6 @@ nav a {
 
       opacity: 0;
     }
-
-    .content--to-side & .nav__icon-cube {
-      @include transform(translateZ($cube / 2) rotateX(-90deg));
-
-      .nav__icon--menu-open {
-        opacity: 0;
-      }
-
-      .nav__icon--menu-close {
-        opacity: 1;
-      }
-    }
   }
 
   // Nav states
@@ -304,6 +261,42 @@ nav a {
     .nav--secondary {
       @include transform(translate(0, -$nav-height));
     }
+  }
+
+  &.content--to-side {
+    header,
+    main, footer {
+      @include transform(translate3d($menu-width, 0, 0));
+
+      @include transition(transform 0.36s);
+    }
+
+    main {
+      a,
+      button {
+        pointer-events: none;
+      }
+    }
+
+    .nav__icon-cube {
+      @include transform(translateZ($cube / 2) rotateX(-90deg));
+
+      .nav__icon--menu-open {
+        opacity: 0;
+      }
+
+      .nav__icon--menu-close {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.nav--single {
+    padding-top: $nav-height;
+  }
+
+  &.nav--double {
+    padding-top: $nav-height * 2;
   }
 }
 
