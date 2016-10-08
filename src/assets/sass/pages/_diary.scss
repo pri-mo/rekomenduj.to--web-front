@@ -1,5 +1,5 @@
 // Diary
-.diary-media__label--replace{
+.diary-media__label--replace {
   position: absolute;
   top: 2rem;
   left: 2rem;
@@ -17,6 +17,7 @@
 
 .diary-media__items {
   @include display(flex);
+
   position: relative;
   border-bottom: 1px solid $frame-color;
   padding: .64rem 0;
@@ -25,6 +26,7 @@
   @include respond-to('tablet') {
     margin-right: 7rem;
   }
+
 
   .diary-media__remove-item {
     margin-left: .5rem;
@@ -121,7 +123,6 @@
     background-color: $accept-color;
     color: $white;
   }
-
 }
 
 .diary-media__upload-progress {
@@ -150,6 +151,113 @@
         padding-bottom: .5rem;
       }
     }
+  }
+}
 
+.diary__past-feed {
+  .list-item--diary-entry {
+    width: $solo;
+
+    &::before {
+      padding-bottom: 75%;
+    }
+
+    @include respond-to('phone-long') {
+      width: $half;
+    }
+
+    @include respond-to('tablet') {
+      width: $half;
+
+      &::before {
+        padding-bottom: 50%;
+      }
+    }
+
+    .social-feed__text {
+      display: block;
+      font-size: .9rem;
+      line-height: 1.3em;
+      overflow: hidden;
+      position: absolute;
+      top: .64rem;
+      left: .64rem;
+      right: .64rem;
+      bottom: 3rem;
+
+      em {
+        font-weight: $bold;
+        font-style: normal;
+      }
+    }
+
+    .social-feed__details {
+      opacity: .9;
+      display: block;
+      font-size: .88rem;
+      position: absolute;
+      bottom: .64rem;
+      left: .64rem;
+
+      &::after {
+        display: block;
+        content: attr(data-timestamp);
+        font-size: .75em;
+        line-height: 1;
+      }
+    }
+
+    .social-feed__icon {
+      @extend %reko-glyph;
+
+      font-size: 2rem;
+      line-height: 1;
+      position: absolute;
+      top: auto;
+      left: auto;
+      bottom: .64rem;
+      right: .64rem;
+      z-index: 1;
+    }
+
+    &.notify {
+      &::after {
+        @include size(0);
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        content: '';
+        border: 2rem solid $brand-color;
+        // border-top-color: transparent;
+        // border-left-color: transparent;
+        border-top-left-radius: 100px;
+        z-index: 0;
+      }
+
+      .social-feed__icon::before {
+        content: '\54';
+      }
+    }
+
+    &.public {
+      &::after {
+        @include size(0);
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        content: '';
+        border: 2rem solid rgba($black, .05);
+        // border-top-color: transparent;
+        // border-left-color: transparent;
+        border-top-left-radius: 100px;
+        z-index: 0;
+      }
+
+      .social-feed__icon::before {
+        content: '\33';
+      }
+    }
   }
 }

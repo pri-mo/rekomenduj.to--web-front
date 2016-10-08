@@ -62,29 +62,12 @@ $tagsTemplate = 'template--contentlist template--campaigns';
       </section>
 
       <?php
-      $headerIcon = 'rg-stack';
-      $headerTitle = 'Poprzednie wpisy';
-      include("components/elements/diary_header.php");
+      $contentItems = "diary";
+      $contentItemsCount = 10;
+
+      include 'content/content-list.php'
+
       ?>
-
-
-      <section class="content-list diary-entries">
-        <div class="list-item diary-entry">
-          <div class="diary-entry__timestamp">3 sie 2016</div>
-          <div class="diary-entry__content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
-          </div>
-          <a class="diary-entry__more"><span class="rg-more"></span></a>
-        </div>
-
-        <div class="list-item diary-entry">
-          <div class="diary-entry__timestamp">3 sie 2016</div>
-          <div class="diary-entry__content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
-          </div>
-          <a class="diary-entry__more"><span class="rg-more"></span></a>
-        </div>
-      </section>
     </main>
 
     <?php include 'components/footer.php' ?>

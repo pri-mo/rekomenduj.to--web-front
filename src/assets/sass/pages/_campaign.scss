@@ -599,6 +599,13 @@
 // Campaign social feed ----------------------------------------------------------------------------------------------
 .campaign__social-feed {
   .social-feed__item {
+
+    &.item--twitter {
+      @include on-event {
+        background-color: $color-twitter
+      }
+    }
+
     .social-feed__text {
       display: block;
       font-size: .9rem;
@@ -643,7 +650,7 @@
     }
 
     // Diary entries
-    &.item--diary-entry {
+    &.list-item--diary-entry {
       &::after {
         @include size(0px);
 
@@ -652,8 +659,9 @@
         right: 0;
         content: '';
         border: 2rem solid $brand-color;
-        border-top-color: transparent;
-        border-left-color: transparent;
+        // border-top-color: transparent;
+        // border-left-color: transparent;
+        border-top-left-radius: 100px;
         z-index: 0;
       }
 

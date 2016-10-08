@@ -44,6 +44,13 @@ switch ($contentItems) {
   $headerTitle = 'To mówią Ambasadorzy';
   break;
 
+  case 'diary':
+  $itemType = 'list-item--diary-entry';
+  $contentListClass = 'diary__past-feed';
+  $itemLink = '#showContentInModal';
+  $headerIcon = 'rg-stack';
+  $headerTitle = 'Poprzednie wpisy';
+
   default:
     # code...
   break;
@@ -61,7 +68,7 @@ $randItemCount = $faker->numberBetween($min = 1, $max = $itemCount);
 <section class="layout--base content-list <?php echo $contentListClass ?>" data-items="<?php echo $randItemCount ?>">
 
   <?php
-  if ( $contentItems !== 'social' ) { // Other than social items
+  if ( $contentItems !== 'social' && $contentItems !== 'diary' ) { // Other than social and diary items
 
     // Open for loop
     for ( $i = 0; $i < $randItemCount; $i++) {
@@ -85,24 +92,23 @@ $randItemCount = $faker->numberBetween($min = 1, $max = $itemCount);
       <?php
     } // close for loop
 
-  } else {// Social Items
+  } else {// Social and diary Items
 
     // Open for loop
     for ( $i = 0; $i < $randItemCount; $i++) {
 
-      $socialChannel = $faker->randomElement($array = array ('item--facebook', 'item--instagram', 'item--twitter'));
+      $socialChannel = $faker->randomElement($array = array ('item--facebook', 'item--instagram', 'item--twitter', 'item--google-plus'));
       $socialTimeStamp = $faker->numberBetween($min = 1, $max = 28) . ' wrz 2016';
       $randChoice = $faker->numberBetween($min = 0, $max = $itemCount);
 
-      if ($randChoice % 2 === 0) {
+      if ($randChoice % 2 === 0 && $contentItems !== 'diary') {
 
         // Plain social channel
-
         echo '<a  href="' . $itemLink . '" class="list-item ' . $itemType . ' ' . $socialChannel . '">';
 
         if ( $socialChannel !== 'item--twitter' || $socialChannel == 'item--instagram' ) {
-          $imgURI = "https://unsplash.it/" . $faker->randomElement($array = array ('800', '600')) . "/" . $faker->randomElement($array = array ('800', '600')) . "?image=" . $faker->numberBetween($min = 0, $max = 1084);
-          $imgURI_backup = "https://unsplash.it/" . $faker->randomElement($array = array ('800', '600')) . "/" . $faker->randomElement($array = array ('800', '600')) . "?image=" . $faker->numberBetween($min = 0, $max = 1084);
+          $imgURI = "https://unsplash.it/" . $faker->randomElement($array = array ('600', '300')) . "/" . $faker->randomElement($array = array ('600', '300')) . "?image=" . $faker->numberBetween($min = 0, $max = 1084);
+          $imgURI_backup = "https://unsplash.it/" . $faker->randomElement($array = array ('600', '300')) . "/" . $faker->randomElement($array = array ('600', '300')) . "?image=" . $faker->numberBetween($min = 0, $max = 1084);
           ?>
           <img src="<?php echo $imgURI ?>" onerror="imgBroken(this)" data-src-backup="<?php echo $imgURI_backup ?>" alt="Image placeholder powered by Unsplash" class="image--cover">
           <?php
@@ -123,11 +129,33 @@ $randItemCount = $faker->numberBetween($min = 1, $max = $itemCount);
       } else {
 
         // Diary entry
-        echo '<a href="' . $itemLink . '" class="list-item ' . $itemType . ' item--diary-entry">';
+        if ($itemType == 'list-item--diary-entry') {
+          if ($randChoice % 3 === 0) {
+            echo '<a href="' . $itemLink . '" class="list-item ' . $itemType . ' notify">';
+          } elseif ($randChoice % 5 === 0) {
+            echo '<a href="' . $itemLink . '" class="list-item ' . $itemType . ' public">';
+          } else {
+            echo '<a href="' . $itemLink . '" class="list-item ' . $itemType . '">';
+          }
+        } else {
+          echo '<a href="' . $itemLink . '" class="list-item ' . $itemType . ' list-item--diary-entry">';
+        }
         echo '  <span class="social-feed__text">' . $faker->text($maxNbChars = 320) . '</span>';
-        echo '  <span class="social-feed__details" data-timestamp="'. $socialTimeStamp . '">' . $faker->firstName() . ' ' . $faker->lastName() . '</span>';
+
+        if ($itemType == 'list-item--diary-entry') {
+          if ($randChoice % 3 === 0) {
+            echo '  <span class="social-feed__details" data-timestamp="'. $socialTimeStamp . '">Komentarz moderatora...</span>';
+          } elseif ($randChoice % 5 === 0) {
+            echo '  <span class="social-feed__details" data-timestamp="'. $socialTimeStamp . '">Kometarz publiczny</span>';
+          } else {
+            echo '  <span class="social-feed__details" data-timestamp="'. $socialTimeStamp . '"></span>';
+          }
+        } else {
+          echo '  <span class="social-feed__details" data-timestamp="'. $socialTimeStamp . '">' . $faker->firstName() . ' ' . $faker->lastName() . '</span>';
+        }
         echo '  <span class="social-feed__icon"></span>';
         echo '</a>';
+
       }
     }
   }

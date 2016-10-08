@@ -26,13 +26,23 @@
   }
 
   &[data-items="6"],
-  &[data-items="9"] {
+  &[data-items="9"],
+  &[data-items="16"],
+  &[data-items="19"],
+  &[data-items="26"],
+  &[data-items="29"] {
     &::after {
       @extend %fake-item;
       width: $quart;
     }
   }
-  &[data-items="5"] {
+  &[data-items="5"],
+  &[data-items="15"],
+  &[data-items="12"],
+  &[data-items="22"],
+  &[data-items="25"],
+  &[data-items="32"],
+  &[data-items="35"], {
     &::after {
       @extend %fake-item;
       width: $half
@@ -226,6 +236,10 @@
 
     &:nth-child(4n+2) {
       width: $quart;
+
+      &::before {
+        padding-bottom: 100%;
+      }
     }
 
     &:nth-child(5n+3),
