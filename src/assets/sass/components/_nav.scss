@@ -23,6 +23,16 @@ nav a {
 // Nav bar inside the app
 .scope--inside {
 
+  &.device--mobile {
+    &.nav--single {
+      padding-top: $nav-height;
+    }
+
+    &.nav--double {
+      padding-top: $nav-height * 2;
+    }
+  }
+
   .nav--primary,
   .nav--secondary {
     @include transition(unquote($nav-transition));
@@ -290,14 +300,6 @@ nav a {
       }
     }
   }
-
-  &.nav--single {
-    padding-top: $nav-height;
-  }
-
-  &.nav--double {
-    padding-top: $nav-height * 2;
-  }
 }
 
 .nav__main-menu {
@@ -331,6 +333,10 @@ nav a {
 
     @include respond-to('tablet') {
       font-size: .88rem;
+    }
+
+    @include respond-to('desktop') {
+      font-size: .75rem;
     }
 
 
@@ -449,13 +455,14 @@ nav a {
     li {
       margin-right: 0;
 
-      &:first-child {
-        display: none;
+      // TODO return when menu normal
+      // &:first-child {
+      //   display: none;
 
-        @include respond-to('phablet') {
-          display: inline-block;
-        }
-      }
+      //   @include respond-to('phablet') {
+      //     display: inline-block;
+      //   }
+      // }
     }
   }
 
@@ -500,6 +507,7 @@ nav a {
 .nav__footer-menu--public,
 .nav__footer-menu--inside {
   @include clearfix;
+  padding: 0;
 
   ul {}
 

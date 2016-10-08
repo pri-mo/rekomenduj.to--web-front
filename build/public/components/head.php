@@ -28,6 +28,9 @@ function livereload() {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+<link color="#606060" href="/assets/images/icon.svg" rel="mask-icon">
+<link rel="shortcut icon" href="/assets/images/favicon.ico">
+
 <title>Rekomenduj.to</title>
 
 <link rel="stylesheet" href="<?php verFile('/assets/css/main.min.css'); ?>" media="screen" charset="utf-8">

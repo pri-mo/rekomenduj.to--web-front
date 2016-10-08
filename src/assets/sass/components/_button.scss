@@ -82,7 +82,6 @@
   &:only-child {
     @include transform(translate3d(-50%, 0, 0));
     margin: 0 0 0 50%;
-    // min-width: 50%;
   }
 
   @include on-event {
@@ -118,7 +117,9 @@
     padding: 0;
     border-radius: 49%;
 
-    [data-icon] {
+    [data-icon],
+    [class^='sr-'],
+    [class*=' sr-'] {
       @include transform($move-to-center);
 
       left: 50%;

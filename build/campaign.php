@@ -43,14 +43,14 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
               $slideNumber = "cslider-" . $i;
             ?>
             <div class="swiper-slide cs__item" id="<?php echo $slideNumber ?>">
-              <img class="image--cover" alt="" src="https://unsplash.it/500/?image=<?php echo $dispImage ?>" />
+              <img class="image--cover" alt="" src="https://unsplash.it/1000/562/?image=<?php echo $dispImage ?>" />
             </div>
             <?php } ?>
             <div class="swiper-slide cs__item" id="csslider-6">
               <div class="cslider__txt-content">
                 <h3>Hi there!!!</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum reiciendis iusto odit cum labore officiis suscipit, itaque quod, quis nesciunt accusantium corporis, soluta libero facere! Itaque vitae libero natus nesciunt?</p>
-                <div>
+                <p><?php echo $faker->text ?></p>
+                <div class="flow--center">
                   <a class="button">Click me...</a>
                 </div>
               </div>
@@ -101,74 +101,15 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
             <span class="task__mission">Zostaw recenzję na</span><span class="task__target">Ceneo</span><span class="task__icon"></span>
           </a>
         </section>
-        <section class="content-list campaign__social-feed">
 
-          <a href="" class="list-item social-feed__item item--facebook">
-            <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
-            <span class="social-feed__details" data-timestamp="3 sie 2016">Kaśka</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--facebook">
-            <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
-            <span class="social-feed__details" data-timestamp="3 sie 2016">Kaśka</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--instagram">
-            <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
-            <span class="social-feed__details" data-timestamp="3 sie 2016">@SomeOneElse</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--twitter">
-            <span class="social-feed__text">Lorem ipsum dolor sit amet, <em>#consectetur</em> adipiscing elit. Donec scelerisque mauris nec libero volutpat rutrum. Etiam interdum massa volutpat.</span>
-            <span class="social-feed__details" data-timestamp="3 sie 2016">@LipsumBot</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--instagram">
-            <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
-            <span class="social-feed__details" data-timestamp="3 sie 2016">@SomeOneElse</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--facebook">
-            <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
-            <span class="social-feed__details" data-timestamp="3 sie 2016">Kaśka</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--facebook">
-            <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
-            <span class="social-feed__details" data-timestamp="3 sie 2016">Kaśka</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--facebook">
-            <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
-            <span class="social-feed__details" data-timestamp="3 sie 2016">Kaśka</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--instagram">
-            <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
-            <span class="social-feed__details" data-timestamp="3 sie 2016">@SomeOneElse</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--instagram">
-            <img onerror="imgBroken(this)" src="https://unsplash.it/<?php echo $faker->randomElement($array = array ('400', '300'))?>/<?php echo $faker->randomElement($array = array ('400', '300'))?>?image=<?php echo $faker->numberBetween($min = 0, $max = 1084)?>" alt="" class="image--cover">
-            <span class="social-feed__details" data-timestamp="3 sie 2016">@SomeOneElse</span>
-            <span class="social-feed__icon"></span>
-          </a>
-          <a href="" class="list-item social-feed__item item--twitter">
-            <span class="social-feed__text">Lorem ipsum dolor sit amet, <em>#consectetur</em> adipiscing elit. Donec scelerisque mauris nec libero volutpat rutrum. Etiam interdum massa volutpat.</span>
-            <span class="social-feed__details" data-timestamp="3 sie 2016">@LipsumBot</span>
-            <span class="social-feed__icon"></span>
-          </a>
-        </section>
+        <?php
+        $contentItems = "social";
+        $contentItemsCount = 30;
 
-        <section class="layout--base content-list__header">
-          <?php
-          $headerIcon = 'rg-influencer';
-          $headerTitle = 'To mówią Ambasadorzy';
-          ?>
-          <div class="<?php echo $headerIcon ?> content-list__header-icon"></div>
-          <h2 class="content-list__header-title"><?php echo $headerTitle ?></h2>
-        </section>
-        <section class="content-list diary-entries">
+        include 'content/content-list.php'
+
+        ?>
+        <!-- <section class="content-list diary-entries">
           <div class="list-item diary-entry">
             <div class="diary-entry__timestamp">3 sie 2016</div>
             <div class="diary-entry__user">
@@ -180,19 +121,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
             </div>
             <a class="diary-entry__more"><span class="rg-more"></span></a>
           </div>
-
-          <div class="list-item diary-entry">
-            <div class="diary-entry__timestamp">3 sie 2016</div>
-            <div class="diary-entry__user">
-              <div class="user__avatar"><img src="assets/images/spoof-profile-pic.jpg"></div>
-              <div class="user__name">Nina Todd</div>
-            </div>
-            <div class="diary-entry__content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
-            </div>
-            <a class="diary-entry__more"><span class="rg-more"></span></a>
-          </div>
-        </section>
+        </section> -->
       </div>
 
     </main>

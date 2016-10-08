@@ -12,68 +12,80 @@
 
 .cs__container {
   width: 100%;
-  height: 80vw;
   margin: 0;
-  padding-bottom: 3rem;
   overflow: hidden;
+  position: relative;
 
-  @include respond-to('tablet') {
-    height: 64vh;
+  &::before {
+    display: block;
+    content: '';
+    padding-bottom: calc(#{100%/(16/9)} + 3rem);
   }
-}
 
-.cs__pagination {
-  margin-top: 1.5rem;
-  text-align: center;
-
-  .swiper-pagination-bullet {
+  .swiper-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 3rem;
     height: auto;
-    border-radius: 0;
-    width: 2rem;
-    margin: 0 1px !important;
-    padding: 1rem 0;
-    background-color: transparent !important;
+  }
 
-    &::before {
-      background-color: $text-color-faded;
-      content: '';
-      display: block;
-      height: 2px;
+  .cs__pagination {
+    margin-top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    .swiper-pagination-bullet {
+      height: auto;
+      border-radius: 0;
       width: 2rem;
-      border-radius: 1px;
+      margin: 0 1px !important;
+      padding: 1rem 0;
+      background-color: transparent !important;
+
+      &::before {
+        background-color: $text-color-faded;
+        content: '';
+        display: block;
+        height: 2px;
+        width: 2rem;
+        border-radius: 1px;
+      }
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: transparent;
+
+      &::before {
+        background-color: $comp-color;
+      }
     }
   }
 
-  .swiper-pagination-bullet-active {
-    background-color: transparent;
+  .cs__item {
+    @include display(flex);
 
-    &::before {
-      background-color: $comp-color;
+    @include box-pack(center);
+
+    @include box-align(center);
+
+    @include justify-content(center);
+
+    @include align-items(center);
+
+    text-align: center;
+    background-color: $white;
+    width: 80vw;
+
+    &.cs__item--video {
+      background-color: $black;
     }
-  }
-}
 
-.cs__item {
-  @include display(flex);
-
-  @include box-pack(center);
-
-  @include box-align(center);
-
-  @include justify-content(center);
-
-  @include align-items(center);
-
-  text-align: center;
-  background-color: $white;
-  width: 80vw;
-
-  &.cs__item--video {
-    background-color: $black;
-  }
-
-  .cslider__txt-content {
-    padding: 1rem;
+    .cslider__txt-content {
+      padding: 1rem 2rem;
+    }
   }
 }
 
@@ -87,6 +99,27 @@
 
   .campaign__description {
     color: $text-color-faded;
+    max-height: 300px;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      @include linear-gradient(top, rgba($white, 0), rgba($white, 1));
+
+      @include transition($transition-l);
+
+      display: block;
+      content: '';
+      width: 100%;
+      height: 3rem;
+      position: absolute;
+      bottom: 0;
+      opacity: 1;
+    }
+
+    &.full::after {
+      opacity: 0;
+    }
 
     ul,
     ol {
@@ -206,18 +239,17 @@
 }
 
 .list-item.priority__item {
-  padding-bottom: $solo;
   width: $solo;
 
   @include respond-to('tablet') {
-    padding-bottom: $half;
     width: $half;
   }
 
+
   @include respond-to('desktop') {
     width: $third;
-    padding-bottom: $third;
   }
+
 
   .image--cover {
     opacity: 1;
@@ -228,6 +260,7 @@
       opacity: .64;
     }
   }
+
 
   .doublesided__side-a {
     .doublesided__trigger {
@@ -308,6 +341,25 @@
         display: inline-block;
       }
     }
+
+    &:only-child {
+      .priority--share__post-preview {
+        padding-left: 36%;
+      }
+
+      .post-preview__title {
+        font-size: 1.36rem;
+      }
+
+      .post-preview__text {
+        font-size: 1rem;
+      }
+
+      .post-preview__image {
+        width: 35%;
+        box-shadow: $shadow-1;
+      }
+    }
   }
 
   &.priority--hashtag {
@@ -327,6 +379,7 @@
       bottom: 1rem;
       left: 1rem;
       right: 1rem;
+
       // text-align: center;
       // font-size: 1.25rem;
       line-height: 1.36;
@@ -334,14 +387,17 @@
       span {
         display: block;
         padding: 1.5rem 0;
+
         // margin-bottom: 1rem;
         // border-bottom: 1px solid rgba($white, 0.22);
+
       }
 
       // strong {
       //   //
 
       // }
+
     }
 
     .priority--hashtag__upload {
@@ -476,15 +532,12 @@
 
   &.priority--points {
     width: 100%;
-    padding-bottom: $half;
 
     @include respond-to('phone-long') {
       width: $half;
-      padding-bottom: $quart;
     }
 
 
-    &::before,
     &::after {
       display: block;
       position: absolute;
@@ -494,10 +547,7 @@
     }
 
     &::before {
-      content: '';
-      top: -1px;
-      right: -1px;
-      bottom: -1px;
+      padding-bottom: 50% !important;
     }
 
     &::after {
@@ -515,6 +565,12 @@
       .image--cover,
       &:hover .image--cover {
         opacity: 1;
+      }
+
+      .image--cover {
+        @include transform($move-to-top scale(1.01));
+
+        top: 0;
       }
     }
 
@@ -540,55 +596,19 @@
   }
 }
 
+// Campaign social feed ----------------------------------------------------------------------------------------------
 .campaign__social-feed {
-  $spacing: 0.5;
-  $spacing-pr: $spacing * 1%;
-  $spacing-vw: $spacing * 1vw;
-
-  > .social-feed__item {
-    width: calc(50% - (#{$spacing-pr} * 2));
-    height: calc(50vw - (#{$spacing-vw} * 2));
-    min-height: 0;
-    padding: .64rem;
-    margin: $spacing-pr;
-
-    // &:first-of-type,
-    &:nth-of-type(5n+1) {
-      width: calc(100% - 1%);
-    }
-
-    @include respond-to('tablet') {
-      width: calc((100% / 3) - (#{$spacing-pr} * 2));
-      height: calc((100vw / 4) - (#{$spacing-vw} * 3));
-
-      &:nth-of-type(5n+1),
-      &:nth-of-type(5n+2) {
-        width: calc(50% - (#{$spacing-pr} * 2));
-      }
-    }
-
-
-    @include respond-to('desktop') {
-      width: calc((100% / 3) - (#{$spacing-pr} * 2));
-      height: calc((100vw / 4) - (#{$spacing-vw} * 3));
-
-      &:nth-of-type(5n+1),
-      &:nth-of-type(5n+2) {
-        width: calc(50% - (#{$spacing-pr} * 2));
-      }
-    }
-
-
-    &.cover__container {
-      border: 0;
-    }
-
+  .social-feed__item {
     .social-feed__text {
       display: block;
       font-size: .9rem;
       line-height: 1.3em;
-      height: 7 * 1.3em;
       overflow: hidden;
+      position: absolute;
+      top: .64rem;
+      left: .64rem;
+      right: .64rem;
+      bottom: 3rem;
 
       em {
         font-weight: $bold;
@@ -622,10 +642,35 @@
       right: .64rem;
     }
 
-    @include on-event {
-      background-color: $brand-color;
-      border-color: $brand-color;
-      color: $white;
+    // Diary entries
+    &.item--diary-entry {
+      &::after {
+        @include size(0px);
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        content: '';
+        border: 2rem solid $brand-color;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        z-index: 0;
+      }
+
+      .social-feed__icon {
+        @extend %reko-glyph;
+
+        position: absolute;
+        top: auto;
+        left: auto;
+        bottom: .64rem;
+        right: .64rem;
+        z-index: 1;
+
+        &::before {
+          content: '\41';
+        }
+      }
     }
   }
 }

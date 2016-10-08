@@ -127,14 +127,15 @@ $shadows-heavy: $shadow-1a, $shadow-2a, $shadow-3a;
 $transition: .36s !default;
 $transition-l: .64s !default;
 $move-to-center: translate3d(-50%, -50%, 0) !default;
+$move-to-top: translate3d(-50%, 0, 0) !default;
 $button-height: 1.23rem * 3 !default;
 
 // List item sizes
-$solo: 100% - 1% !default;
-$half: 100% / 2 - 1% !default;
-$third: 100% / 3 - 1% !default;
-$two-third: 200% / 3 - 1% !default;
-$quart: 100% / 4 - 1% !default;
+$solo: calc(100% - 6px) !default;
+$half: calc((100% / 2) - 6px) !default;
+$third: calc((100% / 3) - 6px) !default;
+$two-third: calc((100% / 3) - 6px) !default;
+$quart: calc((100% / 4) - 6px) !default;
 
 /// Container's maximum width
 /// Below that is 100%
